@@ -1,0 +1,28 @@
+{
+  "name": "lucid-abyss",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.5",
+    "@astrojs/ts-plugin": "^1.10.5",
+    "@prettier/plugin-oxc": "^0.0.4",
+    "@tailwindcss/vite": "^4.1.16",
+    "astro": "^5.15.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "tailwindcss": "^4.1.16",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@latest"
+  }
+}

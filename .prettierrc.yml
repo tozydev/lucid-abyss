@@ -1,0 +1,13 @@
+plugins:
+  - "prettier-plugin-astro"
+  - "@prettier/plugin-oxc"
+  - "prettier-plugin-tailwindcss"
+
+singleQuote: false
+semi: false
+tabWidth: 2
+printWidth: 120
+bracketSameLine: false
+jsxSingleQuote: false
+trailingComma: all
+singleAttributePerLine: true

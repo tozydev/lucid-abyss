@@ -1,0 +1,47 @@
+---
+import astroLogo from "@assets/astro.svg"
+import background from "@assets/background.svg"
+import "@styles/global.css"
+---
+
+<div
+  id="container"
+  class="h-full font-sans md:flex md:flex-col"
+>
+  <img
+    id="background"
+    src={background.src}
+    alt=""
+    fetchpriority="high"
+    class="fixed inset-0 -z-10 h-full w-full blur-[100px]"
+  />
+  <main class="flex h-full justify-center">
+    <section
+      id="hero"
+      class="flex flex-col items-center justify-center p-4 text-center"
+    >
+      <a href="https://astro.build"
+        ><img
+          src={astroLogo.src}
+          width="115"
+          height="48"
+          alt="Astro Homepage"
+        /></a
+      >
+      <h1 class="mt-4 bg-linear-to-r from-blue-500 to-purple-600 bg-clip-text pb-2 text-5xl font-bold text-transparent">
+        Coming Soon!
+      </h1>
+      <p class="mt-4 max-w-md text-lg text-gray-700">
+        My website is currently under construction. Stay tuned for updates!
+      </p>
+      <div class="pt-6">
+        <a
+          href="https://github.com/tozydev"
+          class="rounded-[10px] bg-[linear-gradient(83.21deg,#3245ff_0%,#bc52ee_100%)] px-3 py-2.5 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),inset_0_-2px_0_rgba(0,0,0,0.24)] transition hover:text-[rgb(230,230,230)] hover:shadow-none"
+        >
+          My GitHub
+        </a>
+      </div>
+    </section>
+  </main>
+</div>

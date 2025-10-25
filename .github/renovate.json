@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "timezone": "Asia/Ho_Chi_Minh",
+  "prHourlyLimit": 5,
+  "schedule": [
+    "* 0-6 * * 0,6"
+  ]
+}

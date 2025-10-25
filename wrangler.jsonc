@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": "dist/_worker.js/index.js",
+  "name": "lucid-abyss",
+  "compatibility_date": "2025-10-25",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "placement": {
+    "mode": "smart"
+  },
+  "routes": [
+    {
+      "custom_domain": true,
+      "pattern": "tozydev.id.vn"
+    }
+  ]
+}

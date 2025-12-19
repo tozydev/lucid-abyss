@@ -1,0 +1,20 @@
+### General
+.DS_Store
+build/
+out/
+
+### IntelliJ
+*.iml
+*.ipr
+*.iws
+
+### Gradle
+.gradle/
+
+### Kotlin
+.kotlin/
+kotlin-js-store/
+
+### Kobweb
+*/.kobweb/*
+!*/.kobweb/conf.yaml

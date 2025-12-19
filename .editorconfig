@@ -1,0 +1,23 @@
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[{*.kt,*.kts}]
+ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
+
+ij_kotlin_name_count_to_use_star_import = 2147483647
+ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
+ij_kotlin_packages_to_use_import_on_demand = androidx.compose.runtime.*, com.varabyte.kobweb.compose.ui.modifiers.*, org.jetbrains.compose.web.css.*, org.jetbrains.compose.web.dom.*
+
+# Enable trailing commas
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
+
+ktlint_standard_no-wildcard-imports = disabled
+ktlint_function_naming_ignore_when_annotated_with = Composable
+
+compose_modifier_missing_ignore_annotated = Page, App, Layout
+compose_check_modifiers_for_visibility = only_public

@@ -167,7 +167,13 @@ private fun NavigationItem(
     path: String,
     content: @Composable (isActive: Boolean) -> Unit,
 ) {
-    val isActive = ctx.route.path == path
+    val isActive =
+        if (path == "/") {
+            ctx.route.path == "/"
+        } else {
+            ctx.route.path.startsWith(path)
+        }
+
     Link(
         path = path,
         variant = NavigationItemLinkVariant,

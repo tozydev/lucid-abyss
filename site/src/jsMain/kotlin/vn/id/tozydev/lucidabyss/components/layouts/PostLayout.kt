@@ -99,7 +99,7 @@ val PostStyle =
     }
 
 @InitRoute
-fun initMarkdownLayout(ctx: InitRouteContext) {
+fun initPostLayout(ctx: InitRouteContext) {
     val title = ctx.markdown!!.frontMatter["title"]?.singleOrNull()
     require(title != null) { "Markdown file must set \"title\" in frontmatter" }
 

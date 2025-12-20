@@ -5,7 +5,6 @@ import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.OverflowWrap
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
@@ -20,47 +19,54 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.Container
 import vn.id.tozydev.lucidabyss.components.widgets.NoScaleOnHoverContainerVariant
-import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
+import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
 val PostStyle =
     CssStyle {
+        val colorScheme = colorMode.toColorScheme()
         base { Modifier.fillMaxSize() }
 
         cssRule("h1") {
             Modifier
-                .fontSize(3.cssRem)
-                .fontWeight(400)
-                .margin(bottom = 2.5.cssRem)
-                .lineHeight(1.2) // 1.5x doesn't look as good on very large text
+                .fontSize(3.5.cssRem)
+                .fontWeight(FontWeight.Medium)
+                .lineHeight(4.cssRem)
+                .margin(bottom = 1.cssRem)
         }
 
         cssRule("h2") {
             Modifier
-                .fontSize(3.cssRem)
-                .fontWeight(300)
-                .margin(topBottom = 2.cssRem)
+                .fontSize(2.cssRem)
+                .fontWeight(FontWeight.Medium)
+                .lineHeight(2.5.cssRem)
+                .margin(top = 2.75.cssRem, bottom = 1.5.cssRem)
         }
 
         cssRule("h3") {
             Modifier
-                .fontSize(2.4.cssRem)
-                .fontWeight(300)
-                .margin(topBottom = 1.5.cssRem)
+                .fontSize(1.75.cssRem)
+                .fontWeight(FontWeight.Normal)
+                .lineHeight(2.25.cssRem)
+                .margin(top = 2.25.cssRem, bottom = 1.25.cssRem)
         }
 
         cssRule("h4") {
             Modifier
-                .fontSize(1.2.cssRem)
-                .fontWeight(FontWeight.Bolder)
-                .margin(top = 1.cssRem, bottom = 0.5.cssRem)
+                .fontSize(1.25.cssRem)
+                .fontWeight(FontWeight.Normal)
+                .lineHeight(2.cssRem)
+                .margin(topBottom = 1.125.cssRem)
         }
 
-        cssRule("ul") {
-            Modifier.fillMaxWidth().overflowWrap(OverflowWrap.BreakWord)
+        cssRule("ul, ol") {
+            Modifier
+                .fillMaxWidth()
+                .padding(left = 1.5.cssRem)
+                .overflowWrap(OverflowWrap.BreakWord)
         }
 
         cssRule(" :is(li,ol,ul)") {
-            Modifier.margin(bottom = 0.25.cssRem)
+            Modifier.margin(bottom = 0.5.cssRem)
         }
 
         cssRule("code") {
@@ -83,8 +89,8 @@ val PostStyle =
             Modifier
                 .display(DisplayStyle.Block)
                 .fillMaxWidth()
-                .backgroundColor(Colors.WhiteSmoke)
-                .border(1.px, LineStyle.Solid, colorMode.toPalette().color)
+                .backgroundColor(colorScheme.surfaceContainerHighest)
+                .border(1.px, LineStyle.Solid, colorScheme.outline)
                 .borderRadius(0.25.cssRem)
                 .padding(0.5.cssRem)
                 .fontSize(1.cssRem)

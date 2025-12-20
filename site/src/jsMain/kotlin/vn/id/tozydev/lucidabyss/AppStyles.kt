@@ -4,6 +4,7 @@ import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
+import com.varabyte.kobweb.silk.components.layout.HorizontalDividerStyle
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
@@ -13,6 +14,7 @@ import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
 import com.varabyte.kobweb.silk.theme.modifyStyle
+import com.varabyte.kobweb.silk.theme.modifyStyleBase
 import org.jetbrains.compose.web.css.*
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
@@ -36,6 +38,9 @@ fun initSiteStyles(ctx: InitSilkContext) {
     }
 
     with(ctx.theme) {
+        modifyStyleBase(HorizontalDividerStyle) {
+            Modifier.fillMaxWidth()
+        }
         modifyStyle(LinkStyle) {
             val colorScheme = colorMode.toColorScheme()
             val colorModifier = Modifier.color(colorScheme.primary)

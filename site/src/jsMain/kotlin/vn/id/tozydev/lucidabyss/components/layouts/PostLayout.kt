@@ -12,14 +12,17 @@ import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.toAttrs
+import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.widgets.Container
+import vn.id.tozydev.lucidabyss.components.widgets.NoScaleOnHoverContainerVariant
+import vn.id.tozydev.lucidabyss.models.PageLayoutData
 
-val MarkdownStyle =
+val PostStyle =
     CssStyle {
         base { Modifier.fillMaxSize() }
 
@@ -99,8 +102,13 @@ fun initMarkdownLayout(ctx: InitRouteContext) {
 
 @Composable
 @Layout(".components.layouts.PageLayout")
-fun MarkdownLayout(content: @Composable () -> Unit) {
-    Div(MarkdownStyle.toAttrs()) {
-        content()
+fun PostLayout(content: @Composable () -> Unit) {
+    Container(
+        modifier = PostStyle.toModifier(),
+        variant = NoScaleOnHoverContainerVariant,
+    ) {
+        Article {
+            content()
+        }
     }
 }

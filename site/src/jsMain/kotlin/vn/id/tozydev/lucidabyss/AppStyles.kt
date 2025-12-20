@@ -1,61 +1,38 @@
 package vn.id.tozydev.lucidabyss
 
 import com.varabyte.kobweb.compose.css.ScrollBehavior
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.silk.components.forms.ButtonStyle
-import com.varabyte.kobweb.silk.components.forms.ButtonVars
-import com.varabyte.kobweb.silk.components.layout.HorizontalDividerStyle
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.addVariantBase
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
-import com.varabyte.kobweb.silk.theme.colors.palette.color
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.modifyStyle
-import com.varabyte.kobweb.silk.theme.modifyStyleBase
 import org.jetbrains.compose.web.css.*
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
-    // This site does not need scrolling itself, but this is a good demonstration for how you might enable this in your
-    // own site. Note that we only enable smooth scrolling unless the user has requested reduced motion, which is
-    // considered a best practice.
-    ctx.stylesheet.registerStyle("html") {
-        cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {
-            Modifier.scrollBehavior(ScrollBehavior.Smooth)
+    with(ctx.stylesheet) {
+        registerStyle("html") {
+            cssRule(CSSMediaQuery.MediaFeature("prefers-reduced-motion", StylePropertyValue("no-preference"))) {
+                Modifier.scrollBehavior(ScrollBehavior.Smooth)
+            }
         }
-    }
-
-    ctx.stylesheet.registerStyleBase("body") {
-        Modifier
-            .fontFamily(
-                "-apple-system",
-                "BlinkMacSystemFont",
-                "Segoe UI",
-                "Roboto",
-                "Oxygen",
-                "Ubuntu",
-                "Cantarell",
-                "Fira Sans",
-                "Droid Sans",
-                "Helvetica Neue",
-                "sans-serif",
-            ).fontSize(16.px)
-            .lineHeight(1.5)
-    }
-
-    // Silk dividers only extend 90% by default; we want full width dividers in our site
-    ctx.theme.modifyStyleBase(HorizontalDividerStyle) {
-        Modifier.fillMaxWidth()
+        registerStyleBase("body") {
+            Modifier
+                .fontFamily("Inter", "sans-serif")
+                .fontSize(16.px)
+                .lineHeight(1.5)
+                .styleModifier {
+                    property("-webkit-font-smoothing", " antialiased")
+                }
+        }
     }
 
     with(ctx.theme) {
@@ -72,24 +49,92 @@ fun initSiteStyles(ctx: InitSilkContext) {
     }
 }
 
-val HeadlineTextStyle =
+val TypeDisplayLargeStyle =
     CssStyle.base {
         Modifier
-            .fontSize(3.cssRem)
-            .textAlign(TextAlign.Start)
-            .lineHeight(1.2) // 1.5x doesn't look as good on very large text
+            .fontSize(3.5.cssRem)
+            .lineHeight(4.cssRem)
+            .fontWeight(400)
+            .letterSpacing((-0.25).px)
     }
 
-val SubheadlineTextStyle =
+val TypeDisplayMediumStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(2.8.cssRem)
+            .lineHeight(3.25.cssRem)
+            .fontWeight(400)
+            .letterSpacing(0.px)
+    }
+val TypeHeadlineLargeStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(2.cssRem)
+            .lineHeight(2.5.cssRem)
+            .fontWeight(400)
+            .letterSpacing(0.px)
+    }
+val TypeHeadlineMediumStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(1.75.cssRem)
+            .lineHeight(2.25.cssRem)
+            .fontWeight(400)
+            .letterSpacing(0.px)
+    }
+val TypeHeadlineSmallStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(1.5.cssRem)
+            .lineHeight(2.cssRem)
+            .fontWeight(400)
+            .letterSpacing(0.px)
+    }
+val TypeTitleLargeStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(1.375.cssRem)
+            .lineHeight(1.75.cssRem)
+            .fontWeight(400)
+            .letterSpacing(0.px)
+    }
+val TypeTitleMediumStyle =
     CssStyle.base {
         Modifier
             .fontSize(1.cssRem)
-            .textAlign(TextAlign.Start)
-            .color(
-                colorMode
-                    .toPalette()
-                    .color
-                    .toRgb()
-                    .copyf(alpha = 0.8f),
-            )
+            .lineHeight(1.5.cssRem)
+            .fontWeight(500)
+            .letterSpacing(0.15.px)
+    }
+val TypeBodyLargeStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(1.cssRem)
+            .lineHeight(1.5.cssRem)
+            .fontWeight(400)
+            .letterSpacing(0.5.px)
+    }
+val TypeBodyMediumStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(0.875.cssRem)
+            .lineHeight(1.25.cssRem)
+            .fontWeight(400)
+            .letterSpacing(0.25.px)
+    }
+val TypeLabelLargeStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(0.875.cssRem)
+            .lineHeight(1.25.cssRem)
+            .fontWeight(500)
+            .letterSpacing(0.1.px)
+    }
+val TypeLabelMediumStyle =
+    CssStyle.base {
+        Modifier
+            .fontSize(0.75.cssRem)
+            .lineHeight(1.cssRem)
+            .fontWeight(500)
+            .letterSpacing(0.5.px)
     }

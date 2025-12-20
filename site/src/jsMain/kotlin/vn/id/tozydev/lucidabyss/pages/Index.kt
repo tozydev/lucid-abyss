@@ -14,18 +14,15 @@ import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
-import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
+import vn.id.tozydev.lucidabyss.models.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
 import vn.id.tozydev.lucidabyss.components.widgets.Container
-import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
@@ -33,11 +30,8 @@ fun initHomePage(ctx: InitRouteContext) {
 }
 
 @Page
-@Layout(".components.layouts.PageLayout")
 @Composable
 fun HomePage() {
-    val colorMode by ColorMode.currentState
-    val colorScheme = colorMode.toColorScheme()
     Div(
         Modifier
             .fillMaxSize()

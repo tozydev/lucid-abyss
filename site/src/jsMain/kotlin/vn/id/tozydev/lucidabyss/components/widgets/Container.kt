@@ -8,14 +8,19 @@ import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.silk.style.ComponentKind
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.CssStyleVariant
+import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
+sealed interface ContainerKind : ComponentKind
+
 val ContainerStyle =
-    CssStyle {
+    CssStyle<ContainerKind> {
         val colorScheme = colorMode.toColorScheme()
         base {
             Modifier
@@ -42,12 +47,23 @@ val ContainerStyle =
         }
     }
 
+val NoScaleOnHoverContainerVariant =
+    ContainerStyle.addVariant {
+        hover {
+            Modifier
+                .transform {
+                    scale(1.0)
+                }
+        }
+    }
+
 @Composable
 fun Container(
     modifier: Modifier = Modifier,
+    variant: CssStyleVariant<ContainerKind>? = null,
     content: @Composable () -> Unit,
 ) {
-    Box(ContainerStyle.toModifier().then(modifier)) {
+    Box(ContainerStyle.toModifier(variant).then(modifier)) {
         content()
     }
 }

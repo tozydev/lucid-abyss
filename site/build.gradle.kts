@@ -13,6 +13,9 @@ kobweb {
             description.set("Powered by Kobweb")
         }
     }
+    markdown {
+        defaultLayout = ".components.layouts.PostLayout"
+    }
 }
 
 kotlin {

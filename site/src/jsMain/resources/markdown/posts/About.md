@@ -1,5 +1,4 @@
 ---
-layout: .components.layouts.MarkdownLayout
 title: About
 ---
 

@@ -26,6 +26,7 @@ import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.vars.color.BorderColorVar
 import org.jetbrains.compose.web.css.*
 import vn.id.tozydev.lucidabyss.components.widgets.Container
 import vn.id.tozydev.lucidabyss.components.widgets.ThemeButton
@@ -86,7 +87,7 @@ private fun NavigationHeader() {
                 Modifier
                     .size(64.px)
                     .borderRadius(50.percent)
-                    .border(1.px, LineStyle.Solid, Color.currentColor),
+                    .border(1.px, LineStyle.Solid, BorderColorVar.value()),
         )
     }
 }
@@ -114,7 +115,7 @@ private fun NavigationContent() {
                 MdiPerson(style = IconStyle.OUTLINED)
             }
         }
-        NavigationItem("/posts") { isActive ->
+        NavigationItem("/posts/") { isActive ->
             if (isActive) {
                 MdiArticle()
             } else {

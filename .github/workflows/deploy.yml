@@ -55,7 +55,9 @@ jobs:
 
       - name: Move kobweb binary
         working-directory: kobweb-cli
-        run: mv kobweb-*/* .
+        run: |
+          mv kobweb-*/* .
+          chmod +x bin/kobweb
 
       - name: Run export
         working-directory: site

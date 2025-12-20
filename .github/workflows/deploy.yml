@@ -53,9 +53,13 @@ jobs:
           extract: true
           out-file-path: kobweb-cli
 
+      - name: Move kobweb binary
+        working-directory: kobweb-cli
+        run: mv kobweb-*/* .
+
       - name: Run export
         working-directory: site
-        run: ${{ github.workspace }}/kobweb-cli/bin/kobweb export --notty --layout static
+        run: ../kobweb-cli/bin/kobweb export --notty --layout static
 
       - name: Upload artifact
         uses: actions/upload-artifact@v6

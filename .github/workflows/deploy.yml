@@ -49,7 +49,7 @@ jobs:
         with:
           repository: varabyte/kobweb-cli
           latest: true
-          fileName: "koybweb-*.zip"
+          fileName: "kobweb-*.zip"
           extract: true
           out-file-path: kobweb-cli
 

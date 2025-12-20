@@ -11,6 +11,9 @@ concurrency:
   group: "deploy-main"
   cancel-in-progress: true
 
+env:
+  DEPLOYMENT_URL: https://tozydev.id.vn
+
 jobs:
   export:
     runs-on: ubuntu-latest
@@ -74,7 +77,7 @@ jobs:
   deploy:
     environment:
       name: Cloudflare Workers
-      url: ${{ steps.deploy.outputs.deployment-url }}
+      url: ${{ env.DEPLOYMENT_URL }}
 
     runs-on: ubuntu-latest
     needs: export

@@ -14,7 +14,6 @@ import kotlinx.browser.document
 import org.jetbrains.compose.web.css.*
 import vn.id.tozydev.lucidabyss.components.sections.Footer
 import vn.id.tozydev.lucidabyss.components.sections.Navigation
-import vn.id.tozydev.lucidabyss.models.PageLayoutData
 
 val PageContentStyle =
     CssStyle {
@@ -23,6 +22,10 @@ val PageContentStyle =
                 .fillMaxSize()
         }
     }
+
+data class PageLayoutData(
+    val title: String,
+)
 
 @Composable
 @Layout

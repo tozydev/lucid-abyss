@@ -20,7 +20,7 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.models.PageLayoutData
+import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
 import vn.id.tozydev.lucidabyss.components.widgets.Container
 

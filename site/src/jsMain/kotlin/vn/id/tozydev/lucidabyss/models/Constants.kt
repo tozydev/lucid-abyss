@@ -6,4 +6,6 @@ object Constants {
     const val EMAIL_URL = "mailto:$EMAIL"
 
     const val KOBWEB_URL = "https://github.com/varabyte/kobweb"
+
+    const val DEFAULT_COVER_IMAGE = "/post-cover.webp"
 }

@@ -1,5 +1,6 @@
 package vn.id.tozydev.lucidabyss
 
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -142,4 +143,12 @@ val TypeLabelMediumStyle =
             .lineHeight(1.cssRem)
             .fontWeight(500)
             .letterSpacing(0.5.px)
+    }
+
+val TypeEmphasizedTitleLarge =
+    CssStyle.base {
+        Modifier
+            .fontWeight(FontWeight.Medium)
+            .fontSize(1.375.cssRem)
+            .lineHeight(1.75.cssRem)
     }

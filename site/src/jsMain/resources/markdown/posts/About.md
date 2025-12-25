@@ -9,12 +9,8 @@ tags:
   - guide
 ---
 
-# About this template
-
 This template is intended to both demonstrate some fundamentals of the Kobweb framework and act a starting point you can
 build your own site from.
-
----
 
 ## Learn
 

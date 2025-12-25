@@ -12,6 +12,7 @@ import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.graphics.ImageDecoding
 import com.varabyte.kobweb.silk.components.graphics.ImageLoading
+import com.varabyte.kobweb.silk.style.extendedByBase
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.datetime.format
@@ -22,8 +23,16 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.elements.Time
 import vn.id.tozydev.lucidabyss.models.Post
 import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.styles.TypeLabelStyle
 import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
+
+val PostCardStyle =
+    ContainerStyle.extendedByBase {
+        Modifier
+            .fillMaxSize()
+            .padding(0.px)
+    }
 
 val format =
     DateTimeComponents.Format {
@@ -40,56 +49,55 @@ fun PostCard(
     modifier: Modifier = Modifier,
 ) {
     val pageCtx = rememberPageContext()
-    Container(
-        Modifier
-            .padding(0.px)
-            .onClick {
-                pageCtx.router.navigateTo(post.route)
-            }.then(modifier),
+    Column(
+        modifier =
+            PostCardStyle
+                .toModifier()
+                .onClick {
+                    pageCtx.router.navigateTo(post.route)
+                }.then(modifier),
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Image(
-                post.coverImagePathOrDefault,
-                alt = "Cover image for ${post.title}",
-                loading = ImageLoading.Lazy,
-                decoding = ImageDecoding.Auto,
+        Image(
+            post.coverImagePathOrDefault,
+            alt = "Cover image for ${post.title}",
+            loading = ImageLoading.Lazy,
+            decoding = ImageDecoding.Auto,
+            modifier =
+                Modifier
+                    .size(100.percent, 15.cssRem)
+                    .objectFit(ObjectFit.Cover)
+                    .borderRadius(0.25.cssRem)
+                    .borderRadius(1.5.cssRem)
+                    .flexShrink(0),
+        )
+        Column(
+            Modifier
+                .padding(top = 1.cssRem, leftRight = 1.5.cssRem, bottom = 1.5.cssRem)
+                .gap(0.5.cssRem)
+                .fillMaxSize(),
+        ) {
+            Row(
                 modifier =
                     Modifier
-                        .size(100.percent, 15.cssRem)
-                        .objectFit(ObjectFit.Cover)
-                        .borderRadius(0.25.cssRem)
-                        .borderRadius(2.cssRem)
-                        .flexShrink(0),
-            )
-            Column(
-                Modifier
-                    .padding(top = 1.cssRem, leftRight = 1.5.cssRem, bottom = 1.5.cssRem)
-                    .gap(0.5.cssRem)
-                    .fillMaxSize(),
+                        .fillMaxWidth()
+                        .gap(0.25.cssRem)
+                        .margin(bottom = 0.5.cssRem),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Row(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .gap(0.25.cssRem)
-                            .margin(bottom = 0.5.cssRem),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Time(datetime = post.publishedAt.toString(), TypeLabelStyle.toAttrs()) {
-                        Text(post.publishedAt.format(format))
-                    }
+                Time(datetime = post.publishedAt.toString(), TypeLabelStyle.toAttrs()) {
+                    Text(post.publishedAt.format(format))
                 }
-                H3(
-                    TypeTitleStyle
-                        .toModifier()
-                        .margin(0.px)
-                        .toAttrs(),
-                ) {
-                    Text(post.title)
-                }
-                P(Modifier.margin(0.px).toAttrs()) {
-                    Text(post.description)
-                }
+            }
+            H3(
+                TypeTitleStyle
+                    .toModifier()
+                    .margin(0.px)
+                    .toAttrs(),
+            ) {
+                Text(post.title)
+            }
+            P(Modifier.margin(0.px).toAttrs()) {
+                Text(post.description)
             }
         }
     }

@@ -3,8 +3,10 @@ package vn.id.tozydev.lucidabyss.components.layouts
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.boxClasses
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.layout.Layout
@@ -12,8 +14,9 @@ import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.browser.document
 import org.jetbrains.compose.web.css.*
-import vn.id.tozydev.lucidabyss.components.sections.Footer
+import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.sections.Navigation
+import vn.id.tozydev.lucidabyss.components.sections.PageFooter
 
 val PageContentStyle =
     CssStyle {
@@ -52,10 +55,15 @@ fun PageLayout(
         Column(
             Modifier.flex(1).gap(1.cssRem),
         ) {
-            Box(modifier = PageContentStyle.toModifier()) {
+            Main(
+                Modifier
+                    .boxClasses()
+                    .then(PageContentStyle.toModifier())
+                    .toAttrs(),
+            ) {
                 content()
             }
-            Footer()
+            PageFooter(Modifier.fillMaxWidth())
         }
     }
 }

@@ -8,21 +8,29 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiEmail
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.selectors.hover
+import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
-import vn.id.tozydev.lucidabyss.components.widgets.Container
+import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.components.widgets.GitHubIcon
 import vn.id.tozydev.lucidabyss.models.Constants
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
 @Composable
-fun Footer(modifier: Modifier = Modifier) {
-    Container(modifier.fillMaxWidth()) {
+fun PageFooter(modifier: Modifier = Modifier) {
+    Footer(
+        ContainerStyle
+            .toModifier()
+            .then(modifier)
+            .toAttrs(),
+    ) {
         Row(
             modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,

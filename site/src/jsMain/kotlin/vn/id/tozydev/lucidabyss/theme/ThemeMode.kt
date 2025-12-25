@@ -32,7 +32,7 @@ enum class ThemeMode {
         get() =
             when (this) {
                 Light -> Dark
-                Dark -> Light
+                Dark -> System
                 System -> Light
             }
 

@@ -31,13 +31,23 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.widgets.Container
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
 import vn.id.tozydev.lucidabyss.styles.TypeDisplayStyle
 import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
 import vn.id.tozydev.lucidabyss.theme.colorScheme
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
+
+val HeroStyle =
+    ContainerStyle.extendedByBase {
+        Modifier
+            .display(DisplayStyle.Grid)
+            .gridTemplateColumns {
+                size(1.fr)
+                size(auto)
+            }.gap(2.cssRem)
+    }
 
 val HeroDisplayStyle =
     TypeDisplayStyle.extendedByBase {
@@ -50,19 +60,13 @@ val HeroDisplayStyle =
 fun Hero(modifier: Modifier = Modifier) {
     val ctx = rememberPageContext()
     val colorScheme = ColorMode.current.toColorScheme()
-    Container(
-        Modifier
-            .gridTemplateColumns {
-                size(1.fr)
-                size(auto)
-            }.gap(2.cssRem)
-            .then(modifier),
+    Section(
+        HeroStyle
+            .toModifier()
+            .then(modifier)
+            .toAttrs(),
     ) {
-        Column(
-            Modifier
-                .fillMaxSize()
-                .gridArea("auto"),
-        ) {
+        Column(Modifier.fillMaxSize()) {
             P(
                 TypeTitleStyle
                     .toModifier()
@@ -113,14 +117,10 @@ fun Hero(modifier: Modifier = Modifier) {
                         .backgroundColor(colorScheme.primaryContainer)
                         .color(colorScheme.onPrimaryContainer),
             ) {
-                SpanText("Tìm hiểu thêm về tôi")
+                Text("Tìm hiểu thêm về tôi")
             }
         }
-        Column(
-            Modifier
-                .fillMaxSize()
-                .gridArea("auto"),
-        ) {
+        Column(Modifier.fillMaxSize()) {
             HeroAvatar()
         }
     }

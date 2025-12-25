@@ -8,6 +8,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
@@ -20,38 +21,37 @@ import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
-import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariant
+import com.varabyte.kobweb.silk.style.extendedByBase
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.style.vars.color.BorderColorVar
 import org.jetbrains.compose.web.css.*
-import vn.id.tozydev.lucidabyss.components.widgets.Container
+import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.components.widgets.ThemeButton
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 
 val NavigationStyle =
-    CssStyle {
-        base {
-            Modifier
-                .position(Position.Sticky)
-                .top(1.cssRem)
-                .height(100.vh - 2.cssRem)
-                .padding(topBottom = 2.cssRem, leftRight = 1.cssRem)
-        }
+    ContainerStyle.extendedByBase {
+        Modifier
+            .position(Position.Sticky)
+            .top(1.cssRem)
+            .height(100.vh - 2.cssRem)
+            .padding(topBottom = 2.cssRem, leftRight = 1.cssRem)
     }
 
 @Composable
 fun Navigation(modifier: Modifier = Modifier) {
-    Container(
-        modifier =
-            NavigationStyle
-                .toModifier()
-                .then(modifier),
+    Nav(
+        NavigationStyle
+            .toModifier()
+            .then(modifier)
+            .toAttrs(),
     ) {
         Column(
             modifier = Modifier.fillMaxSize().gap(2.cssRem),

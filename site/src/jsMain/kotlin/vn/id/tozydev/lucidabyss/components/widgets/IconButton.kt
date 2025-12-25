@@ -36,6 +36,7 @@ fun IconButton(
 ) {
     Button(
         onClick = { onClick() },
+        modifier = modifier,
         variant = IconButtonVariant,
     ) {
         content()

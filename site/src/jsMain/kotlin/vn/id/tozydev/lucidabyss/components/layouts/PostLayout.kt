@@ -11,18 +11,22 @@ import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.widgets.Container
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.theme.colorScheme
 
-val PostStyle =
+val PostLayoutStyle =
     CssStyle {
-        base { Modifier.fillMaxSize() }
+    }
+
+val ArticleStyle =
+    CssStyle {
+        base { Modifier.fillMaxSize().flex(1) }
 
         cssRule("h1") {
             Modifier
@@ -107,10 +111,8 @@ fun initPostLayout(ctx: InitRouteContext) {
 @Composable
 @Layout(".components.layouts.PageLayout")
 fun PostLayout(content: @Composable () -> Unit) {
-    Container(
-        modifier = PostStyle.toModifier(),
-    ) {
-        Article {
+    Section(ContainerStyle.toAttrs()) {
+        Article(ArticleStyle.toAttrs()) {
             content()
         }
     }

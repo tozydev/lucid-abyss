@@ -1,7 +1,9 @@
 package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.ObjectFit
+import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -12,7 +14,8 @@ import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.graphics.ImageDecoding
 import com.varabyte.kobweb.silk.components.graphics.ImageLoading
-import com.varabyte.kobweb.silk.style.extendedByBase
+import com.varabyte.kobweb.silk.style.extendedBy
+import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import kotlinx.datetime.format
@@ -28,10 +31,17 @@ import vn.id.tozydev.lucidabyss.styles.TypeLabelStyle
 import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
 
 val PostCardStyle =
-    ContainerStyle.extendedByBase {
-        Modifier
-            .fillMaxSize()
-            .padding(0.px)
+    ContainerStyle.extendedBy {
+        base {
+            Modifier
+                .fillMaxSize()
+                .padding(0.px)
+        }
+        hover {
+            Modifier
+                .pointerEvents(PointerEvents.Auto)
+                .cursor(Cursor.Pointer)
+        }
     }
 
 val format =

@@ -19,12 +19,11 @@ import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.MonthNames
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.TypeBodyLargeStyle
-import vn.id.tozydev.lucidabyss.TypeEmphasizedTitleLarge
-import vn.id.tozydev.lucidabyss.TypeLabelMediumStyle
 import vn.id.tozydev.lucidabyss.components.elements.Time
 import vn.id.tozydev.lucidabyss.models.Post
 import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
+import vn.id.tozydev.lucidabyss.styles.TypeLabelStyle
+import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
 
 val format =
     DateTimeComponents.Format {
@@ -76,19 +75,19 @@ fun PostCard(
                             .margin(bottom = 0.5.cssRem),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Time(datetime = post.publishedAt.toString(), TypeLabelMediumStyle.toAttrs()) {
+                    Time(datetime = post.publishedAt.toString(), TypeLabelStyle.toAttrs()) {
                         Text(post.publishedAt.format(format))
                     }
                 }
                 H3(
-                    TypeEmphasizedTitleLarge
+                    TypeTitleStyle
                         .toModifier()
                         .margin(0.px)
                         .toAttrs(),
                 ) {
                     Text(post.title)
                 }
-                P(TypeBodyLargeStyle.toModifier().margin(0.px).toAttrs()) {
+                P(Modifier.margin(0.px).toAttrs()) {
                     Text(post.description)
                 }
             }

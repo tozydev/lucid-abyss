@@ -1,10 +1,8 @@
 package vn.id.tozydev.lucidabyss.pages
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
@@ -14,8 +12,6 @@ import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
-import com.varabyte.kobweb.navigation.BasePath
-import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.*
@@ -41,8 +37,8 @@ fun HomePage() {
             .gap(1.cssRem)
             .gridAutoFlow(GridAutoFlow.Row)
             .gridTemplateAreas(
-                "hero hero working-project me",
-                ". . latest-posts latest-posts",
+                "hero hero hero .",
+                "working-project contact latest-posts latest-posts",
             ).toAttrs(),
     ) {
         Hero(
@@ -62,33 +58,6 @@ fun HomePage() {
                 )
             }
         } */
-
-        Container(
-            Modifier
-                .fillMaxSize()
-                .gridArea("me"),
-        ) {
-            Column(
-                Modifier.fillMaxSize().gap(1.cssRem),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-            ) {
-                Row {
-                    SpanText("tozydev", Modifier.fontWeight(FontWeight.Bold))
-                    SpanText(" | ", Modifier.padding(leftRight = 0.5.cssRem))
-                    SpanText("📍 Việt Nam", Modifier.fontWeight(FontWeight.Bold))
-                }
-                Image(
-                    src = BasePath.prependTo("/gravatar.png"),
-                    alt = "tozydev's Gravatar",
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .borderRadius(2.cssRem)
-                            .border(1.px, LineStyle.Solid, Colors.LightGray),
-                )
-            }
-        }
 
         Container(
             Modifier

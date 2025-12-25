@@ -10,8 +10,8 @@ import com.varabyte.kobweb.compose.ui.attrsModifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.rememberPageContext
-import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.components.graphics.ImageLoading
 import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiArticle
 import com.varabyte.kobweb.silk.components.icons.mdi.MdiHome
@@ -30,7 +30,9 @@ import com.varabyte.kobweb.silk.style.vars.color.BorderColorVar
 import org.jetbrains.compose.web.css.*
 import vn.id.tozydev.lucidabyss.components.widgets.Container
 import vn.id.tozydev.lucidabyss.components.widgets.ThemeButton
+import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
+import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 
 val NavigationStyle =
     CssStyle {
@@ -81,8 +83,9 @@ private fun NavigationHeader() {
         variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
     ) {
         Image(
-            src = BasePath.prependTo("/gravatar.png"),
+            src = getGravatarUrl(EMAIL_HASH, size = 64),
             alt = "Logo",
+            loading = ImageLoading.Eager,
             modifier =
                 Modifier
                     .size(64.px)

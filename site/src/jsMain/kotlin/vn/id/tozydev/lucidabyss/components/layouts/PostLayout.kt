@@ -18,12 +18,10 @@ import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.Container
-import vn.id.tozydev.lucidabyss.components.widgets.NoScaleOnHoverContainerVariant
-import vn.id.tozydev.lucidabyss.theme.toColorScheme
+import vn.id.tozydev.lucidabyss.theme.colorScheme
 
 val PostStyle =
     CssStyle {
-        val colorScheme = colorMode.toColorScheme()
         base { Modifier.fillMaxSize() }
 
         cssRule("h1") {
@@ -111,7 +109,6 @@ fun initPostLayout(ctx: InitRouteContext) {
 fun PostLayout(content: @Composable () -> Unit) {
     Container(
         modifier = PostStyle.toModifier(),
-        variant = NoScaleOnHoverContainerVariant,
     ) {
         Article {
             content()

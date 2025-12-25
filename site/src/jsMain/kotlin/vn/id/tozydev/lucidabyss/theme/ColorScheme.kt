@@ -3,10 +3,10 @@ package vn.id.tozydev.lucidabyss.theme
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
+import com.varabyte.kobweb.silk.style.CssStyleScope
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.border
-import com.varabyte.kobweb.silk.theme.colors.palette.button
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 
 data class ColorScheme(
@@ -47,6 +47,9 @@ data class ColorScheme(
     val surfaceContainerLow: Color,
     val surfaceContainerLowest: Color,
 )
+
+inline val CssStyleScope.colorScheme: ColorScheme
+    get() = colorMode.toColorScheme()
 
 val LightColorsScheme =
     ColorScheme(

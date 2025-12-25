@@ -11,7 +11,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.silk.style.ComponentKind
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.CssStyleVariant
-import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
@@ -27,7 +26,7 @@ val ContainerStyle =
                 .padding(1.5.cssRem)
                 .backgroundColor(colorScheme.surfaceContainer)
                 .color(colorScheme.onSurface)
-                .borderRadius(2.cssRem)
+                .borderRadius(1.5.cssRem)
                 .border(1.px, LineStyle.Solid, colorScheme.outline)
                 .transition {
                     property(TransitionProperty.All)
@@ -37,22 +36,10 @@ val ContainerStyle =
         }
         hover {
             Modifier
-                .transform {
-                    scale(1.02)
-                }.boxShadow(
+                .boxShadow(
                     of(0.px, 4.px, 8.px, 3.px, Color.rgba(0, 0, 0, 0.15f)),
                 ).border {
                     color(colorScheme.primary)
-                }
-        }
-    }
-
-val NoScaleOnHoverContainerVariant =
-    ContainerStyle.addVariant {
-        hover {
-            Modifier
-                .transform {
-                    scale(1.0)
                 }
         }
     }

@@ -6,7 +6,9 @@ import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.OverflowWrap
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.add
+import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
@@ -17,6 +19,8 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.generated.filePathToPost
+import vn.id.tozydev.lucidabyss.models.Post
 import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.theme.colorScheme
 
@@ -102,15 +106,23 @@ val ArticleStyle =
 
 @InitRoute
 fun initPostLayout(ctx: InitRouteContext) {
-    val title = ctx.markdown!!.frontMatter["title"]?.singleOrNull()
-    require(title != null) { "Markdown file must set \"title\" in frontmatter" }
+    val post =
+        requireNotNull(filePathToPost[ctx.markdown?.path]) {
+            "No post metadata found for path: ${ctx.markdown?.path}"
+        }
 
-    ctx.data.add(PageLayoutData(title))
+    ctx.data.add(PageLayoutData(post.title))
+    ctx.data.add(post)
 }
 
 @Composable
 @Layout(".components.layouts.PageLayout")
-fun PostLayout(content: @Composable () -> Unit) {
+fun PostLayout(
+    ctx: PageContext,
+    content: @Composable () -> Unit,
+) {
+    val post = ctx.data.getValue<Post>()
+
     Section(ContainerStyle.toAttrs()) {
         Article(ArticleStyle.toAttrs()) {
             content()

@@ -16,7 +16,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.widgets.PostCard
-import vn.id.tozydev.lucidabyss.generated.posts
+import vn.id.tozydev.lucidabyss.generated.filePathToPost
 
 val PostsPageStyle =
     CssStyle {
@@ -43,7 +43,7 @@ fun initPostsPage(ctx: InitRouteContext) {
 @Composable
 fun PostsPage() {
     Div(PostsPageStyle.toModifier().toAttrs()) {
-        posts.forEach {
+        filePathToPost.values.forEach {
             PostCard(it)
         }
     }

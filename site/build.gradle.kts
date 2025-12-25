@@ -22,6 +22,7 @@ kobweb {
         defaultLayout = ".components.layouts.PostLayout"
         process = { markdownEntries ->
             data class Post(
+                val filePath: String,
                 val route: String,
                 val title: String,
                 val description: String,
@@ -42,6 +43,7 @@ kobweb {
                 val coverImage = frontMatter["coverImage"]?.singleOrNull()
 
                 return Post(
+                    filePath = filePath,
                     route = route,
                     title = title,
                     author = author,
@@ -80,20 +82,21 @@ kobweb {
                 import kotlin.time.Instant
                 import vn.id.tozydev.lucidabyss.models.Post
 
-                val posts =
-                    listOf(
+                val filePathToPost =
+                    mapOf(
                 ${
                     posts.joinToString("") { post ->
                         """
-                        Post(
-                            route = "${post.route}",
-                            title = "${post.title.replace("\"", "\\\"")}",
-                            author = "${post.author.replace("\"", "\\\"")}",
-                            description = "${post.description.replace("\"", "\\\"")}",
-                            publishedAt = Instant.parse("${post.publishedAt}"),
-                            modifiedAt = ${if (post.modifiedAt != null) "Instant.parse(\"${post.modifiedAt}\")" else "null"},
-                            tags = setOf(${post.tags.joinToString(", ") { "\"${it.replace("\"", "\\\"")}\"" }}),
-                            coverImage = ${
+                        "${post.filePath}" to
+                            Post(
+                                route = "${post.route}",
+                                title = "${post.title.replace("\"", "\\\"")}",
+                                author = "${post.author.replace("\"", "\\\"")}",
+                                description = "${post.description.replace("\"", "\\\"")}",
+                                publishedAt = Instant.parse("${post.publishedAt}"),
+                                modifiedAt = ${if (post.modifiedAt != null) "Instant.parse(\"${post.modifiedAt}\")" else "null"},
+                                tags = setOf(${post.tags.joinToString(", ") { "\"${it.replace("\"", "\\\"")}\"" }}),
+                                coverImage = ${
                             if (post.coverImage != null) {
                                 "\"${
                                     post.coverImage.replace(
@@ -105,7 +108,7 @@ kobweb {
                                 "null"
                             }
                         },
-                        ),"""
+                            ),"""
                     }
                 }
                     )

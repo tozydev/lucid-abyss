@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.styles
 
 import com.varabyte.kobweb.compose.css.ScrollBehavior
+import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
@@ -10,6 +11,7 @@ import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.SilkStylesheet
 import com.varabyte.kobweb.silk.init.registerStyleBase
+import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
 import com.varabyte.kobweb.silk.theme.MutableSilkTheme
@@ -47,6 +49,12 @@ private fun MutableSilkTheme.customizeWidgetStyles() {
     modifyStyle(LinkStyle) {
         val colorScheme = colorMode.toColorScheme()
         val colorModifier = Modifier.color(colorScheme.primary)
+        base {
+            Modifier.textDecorationLine(TextDecorationLine.Underline)
+        }
+        hover {
+            Modifier.color(colorScheme.onPrimaryContainer)
+        }
         link {
             colorModifier
         }

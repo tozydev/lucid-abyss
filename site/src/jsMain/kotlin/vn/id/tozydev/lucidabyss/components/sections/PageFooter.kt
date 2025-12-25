@@ -18,9 +18,9 @@ import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.components.widgets.GitHubIcon
 import vn.id.tozydev.lucidabyss.models.Constants
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
 @Composable
@@ -70,6 +70,7 @@ val IconLinkVariant =
                 .display(DisplayStyle.LegacyInlineFlex)
                 .alignItems(AlignItems.Center)
                 .justifyContent(JustifyContent.Center)
+                .textDecorationLine(TextDecorationLine.None)
         }
         hover {
             Modifier

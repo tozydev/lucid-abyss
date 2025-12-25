@@ -30,9 +30,9 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.style.vars.color.BorderColorVar
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.components.widgets.ThemeButton
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.theme.toColorScheme
 import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 
@@ -139,6 +139,7 @@ val NavigationItemLinkVariant =
                 .alignItems(AlignItems.Center)
                 .justifyContent(JustifyContent.Center)
                 .borderRadius(50.percent)
+                .textDecorationLine(TextDecorationLine.None)
         }
         hover {
             Modifier

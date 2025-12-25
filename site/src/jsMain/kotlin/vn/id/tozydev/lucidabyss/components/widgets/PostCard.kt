@@ -18,9 +18,6 @@ import com.varabyte.kobweb.silk.style.extendedBy
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeComponents
-import kotlinx.datetime.format.MonthNames
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.elements.Time
@@ -29,6 +26,7 @@ import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.styles.TypeLabelStyle
 import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
+import vn.id.tozydev.lucidabyss.utils.formatDate
 
 val PostCardStyle =
     ContainerStyle.extendedBy {
@@ -42,15 +40,6 @@ val PostCardStyle =
                 .pointerEvents(PointerEvents.Auto)
                 .cursor(Cursor.Pointer)
         }
-    }
-
-val format =
-    DateTimeComponents.Format {
-        monthName(MonthNames.ENGLISH_ABBREVIATED)
-        chars(" ")
-        day()
-        chars(", ")
-        year()
     }
 
 @Composable
@@ -95,7 +84,7 @@ fun PostCard(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Time(datetime = post.publishedAt.toString(), TypeLabelStyle.toAttrs()) {
-                    Text(post.publishedAt.format(format))
+                    Text(post.publishedAt.formatDate())
                 }
             }
             H3(

@@ -2,41 +2,55 @@ package vn.id.tozydev.lucidabyss.components.layouts
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.OverflowWrap
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
+import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.components.graphics.ImageDecoding
+import com.varabyte.kobweb.silk.components.graphics.ImageLoading
+import com.varabyte.kobweb.silk.components.layout.HorizontalDivider
+import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toAttrs
+import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.color
 import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.elements.Time
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 import vn.id.tozydev.lucidabyss.models.Post
+import vn.id.tozydev.lucidabyss.models.authorAvatarUrl
+import vn.id.tozydev.lucidabyss.models.authorWebsite
+import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.styles.ContainerStyle
+import vn.id.tozydev.lucidabyss.styles.TypeDisplayModifier
+import vn.id.tozydev.lucidabyss.styles.TypeLabelStyle
 import vn.id.tozydev.lucidabyss.theme.colorScheme
-
-val PostLayoutStyle =
-    CssStyle {
-    }
+import vn.id.tozydev.lucidabyss.theme.toColorScheme
+import vn.id.tozydev.lucidabyss.utils.formatDate
 
 val ArticleStyle =
     CssStyle {
         base { Modifier.fillMaxSize().flex(1) }
 
         cssRule("h1") {
-            Modifier
-                .fontSize(3.5.cssRem)
-                .fontWeight(FontWeight.Medium)
-                .lineHeight(4.cssRem)
+            TypeDisplayModifier
                 .margin(bottom = 1.cssRem)
         }
 
@@ -122,10 +136,104 @@ fun PostLayout(
     content: @Composable () -> Unit,
 ) {
     val post = ctx.data.getValue<Post>()
+    val colorScheme = ColorMode.current.toColorScheme()
 
-    Section(ContainerStyle.toAttrs()) {
-        Article(ArticleStyle.toAttrs()) {
-            content()
+    Article(ArticleStyle.toAttrs()) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .gap(1.cssRem),
+        ) {
+            Div(
+                Modifier
+                    .fillMaxWidth()
+                    .display(DisplayStyle.Grid)
+                    .gridTemplateColumns { repeat(2) { minmax(0.px, 1.fr) } }
+                    .gridAutoFlow(GridAutoFlow.Row)
+                    .gap(0.5.cssRem)
+                    .toAttrs(),
+            ) {
+                Header(
+                    ContainerStyle
+                        .toModifier()
+                        .fillMaxWidth()
+                        .display(DisplayStyle.Flex)
+                        .flexDirection(FlexDirection.Column)
+                        .justifyContent(JustifyContent.Center)
+                        .toAttrs(),
+                ) {
+                    H1 {
+                        Text(post.title)
+                    }
+                    P(
+                        Modifier
+                            .color(colorScheme.onSurfaceVariant)
+                            .fontWeight(FontWeight.Medium)
+                            .toAttrs(),
+                    ) {
+                        Text(post.description)
+                    }
+
+                    HorizontalDivider()
+
+                    Row(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .gap(1.cssRem),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Image(
+                            src = post.authorAvatarUrl,
+                            alt = "Avatar of ${post.author}",
+                            modifier =
+                                Modifier
+                                    .size(3.cssRem)
+                                    .borderRadius(50.percent),
+                            loading = ImageLoading.Lazy,
+                            decoding = ImageDecoding.Async,
+                        )
+                        Column(
+                            modifier =
+                                Modifier
+                                    .flexGrow(1)
+                                    .gap(0.325.cssRem),
+                            horizontalAlignment = Alignment.Start,
+                            verticalArrangement = Arrangement.Center,
+                        ) {
+                            Span(TypeLabelStyle.toAttrs()) {
+                                Text("By ")
+                                Link(post.authorWebsite) {
+                                    Text(post.author)
+                                }
+                            }
+                            Time(
+                                datetime = post.publishedAt.toString(),
+                                attrs = TypeLabelStyle.toAttrs(),
+                            ) {
+                                Text(post.publishedAt.formatDate())
+                            }
+                        }
+                    }
+                }
+
+                Image(
+                    src = post.coverImagePathOrDefault,
+                    alt = "Cover image for ${post.title}",
+                    modifier =
+                        Modifier
+                            .borderRadius(1.5.cssRem)
+                            .objectFit(ObjectFit.Cover)
+                            .maxWidth(100.percent)
+                            .maxHeight(630.px),
+                    loading = ImageLoading.Lazy,
+                    decoding = ImageDecoding.Async,
+                )
+            }
+
+            Div(ContainerStyle.toAttrs()) {
+                content()
+            }
         }
     }
 }

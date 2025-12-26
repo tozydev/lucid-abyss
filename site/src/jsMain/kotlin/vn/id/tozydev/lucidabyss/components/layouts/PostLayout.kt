@@ -5,6 +5,9 @@ import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.OverflowWrap
+import com.varabyte.kobweb.compose.css.TextTransform
+import com.varabyte.kobweb.compose.dom.ref
+import com.varabyte.kobweb.compose.dom.registerRefScope
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -21,8 +24,11 @@ import com.varabyte.kobweb.core.layout.Layout
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.graphics.ImageDecoding
 import com.varabyte.kobweb.silk.components.graphics.ImageLoading
+import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
+import com.varabyte.kobweb.silk.components.icons.mdi.MdiToc
 import com.varabyte.kobweb.silk.components.layout.HorizontalDivider
 import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
@@ -32,7 +38,11 @@ import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import org.w3c.dom.HTMLElement
 import vn.id.tozydev.lucidabyss.components.elements.Time
+import vn.id.tozydev.lucidabyss.components.widgets.HeadingItem
+import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
+import vn.id.tozydev.lucidabyss.components.widgets.getHeadingHierarchy
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 import vn.id.tozydev.lucidabyss.models.Post
 import vn.id.tozydev.lucidabyss.models.authorAvatarUrl
@@ -48,6 +58,11 @@ import vn.id.tozydev.lucidabyss.utils.formatDate
 val ArticleStyle =
     CssStyle {
         base { Modifier.fillMaxSize().flex(1) }
+
+        cssRule("p") {
+            Modifier
+                .margin(bottom = 1.cssRem)
+        }
 
         cssRule("h1") {
             TypeDisplayModifier
@@ -144,7 +159,7 @@ fun PostLayout(
                 .fillMaxWidth()
                 .gap(1.cssRem),
         ) {
-            Div(
+            Header(
                 Modifier
                     .fillMaxWidth()
                     .display(DisplayStyle.Grid)
@@ -153,13 +168,14 @@ fun PostLayout(
                     .gap(0.5.cssRem)
                     .toAttrs(),
             ) {
-                Header(
+                Div(
                     ContainerStyle
                         .toModifier()
                         .fillMaxWidth()
                         .display(DisplayStyle.Flex)
                         .flexDirection(FlexDirection.Column)
                         .justifyContent(JustifyContent.Center)
+                        .padding(3.5.cssRem)
                         .toAttrs(),
                 ) {
                     H1 {
@@ -231,8 +247,71 @@ fun PostLayout(
                 )
             }
 
-            Div(ContainerStyle.toAttrs()) {
-                content()
+            Row(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .gap(1.cssRem),
+            ) {
+                var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
+                Div(
+                    ContainerStyle
+                        .toModifier()
+                        .flex(1)
+                        .padding(3.5.cssRem)
+                        .toAttrs {
+                            ref {
+                                contentRef = it
+                                onDispose { }
+                            }
+                        },
+                ) {
+                    content()
+                }
+                Aside(
+                    Modifier
+                        .position(Position.Sticky)
+                        .top(1.cssRem)
+                        .toAttrs(),
+                ) {
+                    Section(
+                        ContainerStyle
+                            .toModifier()
+                            .display(DisplayStyle.Flex)
+                            .flexDirection(FlexDirection.Column)
+                            .gap(1.cssRem)
+                            .width(20.cssRem)
+                            .toAttrs(),
+                    ) {
+                        var hierarchy by remember(ctx.route.path) { mutableStateOf(emptyList<HeadingItem>()) }
+                        // Fetch headings only once elements are added to the DOM
+                        registerRefScope(
+                            ref(contentRef, ctx.route.path) {
+                                hierarchy = contentRef?.getHeadingHierarchy().orEmpty()
+                            },
+                        )
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth().gap(0.5.cssRem),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            MdiToc(style = IconStyle.ROUNDED)
+                            SpanText(
+                                "Mục lục",
+                                modifier =
+                                    TypeLabelStyle
+                                        .toModifier()
+                                        .textTransform(TextTransform.Uppercase)
+                                        .fontWeight(FontWeight.Bold),
+                            )
+                        }
+
+                        TableOfContents(
+                            hierarchy = hierarchy,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                }
             }
         }
     }

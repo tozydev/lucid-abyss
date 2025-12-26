@@ -57,8 +57,6 @@ import vn.id.tozydev.lucidabyss.utils.formatDate
 
 val ArticleStyle =
     CssStyle {
-        base { Modifier.fillMaxSize().flex(1) }
-
         cssRule("p") {
             Modifier
                 .margin(bottom = 1.cssRem)
@@ -153,164 +151,163 @@ fun PostLayout(
     val post = ctx.data.getValue<Post>()
     val colorScheme = ColorMode.current.toColorScheme()
 
-    Article(ArticleStyle.toAttrs()) {
-        Column(
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .gap(1.cssRem),
+    ) {
+        Header(
             Modifier
                 .fillMaxWidth()
-                .gap(1.cssRem),
+                .display(DisplayStyle.Grid)
+                .gridTemplateColumns { repeat(2) { minmax(0.px, 1.fr) } }
+                .gridAutoFlow(GridAutoFlow.Row)
+                .gap(0.5.cssRem)
+                .toAttrs(),
         ) {
-            Header(
-                Modifier
+            Div(
+                ContainerStyle
+                    .toModifier()
                     .fillMaxWidth()
-                    .display(DisplayStyle.Grid)
-                    .gridTemplateColumns { repeat(2) { minmax(0.px, 1.fr) } }
-                    .gridAutoFlow(GridAutoFlow.Row)
-                    .gap(0.5.cssRem)
+                    .display(DisplayStyle.Flex)
+                    .flexDirection(FlexDirection.Column)
+                    .justifyContent(JustifyContent.Center)
+                    .padding(3.5.cssRem)
                     .toAttrs(),
             ) {
-                Div(
-                    ContainerStyle
-                        .toModifier()
-                        .fillMaxWidth()
-                        .display(DisplayStyle.Flex)
-                        .flexDirection(FlexDirection.Column)
-                        .justifyContent(JustifyContent.Center)
-                        .padding(3.5.cssRem)
+                H1 {
+                    Text(post.title)
+                }
+                P(
+                    Modifier
+                        .color(colorScheme.onSurfaceVariant)
+                        .fontWeight(FontWeight.Medium)
                         .toAttrs(),
                 ) {
-                    H1 {
-                        Text(post.title)
-                    }
-                    P(
-                        Modifier
-                            .color(colorScheme.onSurfaceVariant)
-                            .fontWeight(FontWeight.Medium)
-                            .toAttrs(),
-                    ) {
-                        Text(post.description)
-                    }
-
-                    HorizontalDivider()
-
-                    Row(
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .gap(1.cssRem),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Image(
-                            src = post.authorAvatarUrl,
-                            alt = "Avatar of ${post.author}",
-                            modifier =
-                                Modifier
-                                    .size(3.cssRem)
-                                    .borderRadius(50.percent),
-                            loading = ImageLoading.Lazy,
-                            decoding = ImageDecoding.Async,
-                        )
-                        Column(
-                            modifier =
-                                Modifier
-                                    .flexGrow(1)
-                                    .gap(0.325.cssRem),
-                            horizontalAlignment = Alignment.Start,
-                            verticalArrangement = Arrangement.Center,
-                        ) {
-                            Span(TypeLabelStyle.toAttrs()) {
-                                Text("By ")
-                                Link(post.authorWebsite) {
-                                    Text(post.author)
-                                }
-                            }
-                            Time(
-                                datetime = post.publishedAt.toString(),
-                                attrs = TypeLabelStyle.toAttrs(),
-                            ) {
-                                Text(post.publishedAt.formatDate())
-                            }
-                        }
-                    }
+                    Text(post.description)
                 }
 
-                Image(
-                    src = post.coverImagePathOrDefault,
-                    alt = "Cover image for ${post.title}",
+                HorizontalDivider()
+
+                Row(
                     modifier =
                         Modifier
-                            .borderRadius(1.5.cssRem)
-                            .objectFit(ObjectFit.Cover)
-                            .maxWidth(100.percent)
-                            .maxHeight(630.px),
-                    loading = ImageLoading.Lazy,
-                    decoding = ImageDecoding.Async,
-                )
+                            .fillMaxWidth()
+                            .gap(1.cssRem),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Image(
+                        src = post.authorAvatarUrl,
+                        alt = "Avatar of ${post.author}",
+                        modifier =
+                            Modifier
+                                .size(3.cssRem)
+                                .borderRadius(50.percent),
+                        loading = ImageLoading.Lazy,
+                        decoding = ImageDecoding.Async,
+                    )
+                    Column(
+                        modifier =
+                            Modifier
+                                .flexGrow(1)
+                                .gap(0.325.cssRem),
+                        horizontalAlignment = Alignment.Start,
+                        verticalArrangement = Arrangement.Center,
+                    ) {
+                        Span(TypeLabelStyle.toAttrs()) {
+                            Text("By ")
+                            Link(post.authorWebsite) {
+                                Text(post.author)
+                            }
+                        }
+                        Time(
+                            datetime = post.publishedAt.toString(),
+                            attrs = TypeLabelStyle.toAttrs(),
+                        ) {
+                            Text(post.publishedAt.formatDate())
+                        }
+                    }
+                }
             }
 
-            Row(
+            Image(
+                src = post.coverImagePathOrDefault,
+                alt = "Cover image for ${post.title}",
                 modifier =
                     Modifier
-                        .fillMaxWidth()
-                        .gap(1.cssRem),
+                        .borderRadius(1.5.cssRem)
+                        .objectFit(ObjectFit.Cover)
+                        .maxWidth(100.percent)
+                        .maxHeight(630.px),
+                loading = ImageLoading.Lazy,
+                decoding = ImageDecoding.Async,
+            )
+        }
+
+        Row(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .gap(1.cssRem),
+        ) {
+            var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
+            Article(
+                ArticleStyle
+                    .toModifier()
+                    .then(ContainerStyle.toModifier())
+                    .flex(1)
+                    .padding(3.5.cssRem)
+                    .toAttrs {
+                        ref {
+                            contentRef = it
+                            onDispose { }
+                        }
+                    },
             ) {
-                var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
-                Div(
+                content()
+            }
+            Aside(
+                Modifier
+                    .position(Position.Sticky)
+                    .top(1.cssRem)
+                    .toAttrs(),
+            ) {
+                Section(
                     ContainerStyle
                         .toModifier()
-                        .flex(1)
-                        .padding(3.5.cssRem)
-                        .toAttrs {
-                            ref {
-                                contentRef = it
-                                onDispose { }
-                            }
-                        },
-                ) {
-                    content()
-                }
-                Aside(
-                    Modifier
-                        .position(Position.Sticky)
-                        .top(1.cssRem)
+                        .display(DisplayStyle.Flex)
+                        .flexDirection(FlexDirection.Column)
+                        .gap(1.cssRem)
+                        .width(20.cssRem)
                         .toAttrs(),
                 ) {
-                    Section(
-                        ContainerStyle
-                            .toModifier()
-                            .display(DisplayStyle.Flex)
-                            .flexDirection(FlexDirection.Column)
-                            .gap(1.cssRem)
-                            .width(20.cssRem)
-                            .toAttrs(),
+                    var hierarchy by remember(ctx.route.path) { mutableStateOf(emptyList<HeadingItem>()) }
+                    // Fetch headings only once elements are added to the DOM
+                    registerRefScope(
+                        ref(contentRef, ctx.route.path) {
+                            hierarchy = contentRef?.getHeadingHierarchy().orEmpty()
+                        },
+                    )
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth().gap(0.5.cssRem),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        var hierarchy by remember(ctx.route.path) { mutableStateOf(emptyList<HeadingItem>()) }
-                        // Fetch headings only once elements are added to the DOM
-                        registerRefScope(
-                            ref(contentRef, ctx.route.path) {
-                                hierarchy = contentRef?.getHeadingHierarchy().orEmpty()
-                            },
-                        )
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth().gap(0.5.cssRem),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            MdiToc(style = IconStyle.ROUNDED)
-                            SpanText(
-                                "Mục lục",
-                                modifier =
-                                    TypeLabelStyle
-                                        .toModifier()
-                                        .textTransform(TextTransform.Uppercase)
-                                        .fontWeight(FontWeight.Bold),
-                            )
-                        }
-
-                        TableOfContents(
-                            hierarchy = hierarchy,
-                            modifier = Modifier.fillMaxWidth(),
+                        MdiToc(style = IconStyle.ROUNDED)
+                        SpanText(
+                            "Mục lục",
+                            modifier =
+                                TypeLabelStyle
+                                    .toModifier()
+                                    .textTransform(TextTransform.Uppercase)
+                                    .fontWeight(FontWeight.Bold),
                         )
                     }
+
+                    TableOfContents(
+                        hierarchy = hierarchy,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
                 }
             }
         }

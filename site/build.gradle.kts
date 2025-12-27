@@ -58,7 +58,7 @@ kobweb {
             val invalidPosts = mutableListOf<MarkdownEntry>()
             val posts =
                 markdownEntries
-                    .filter { it.route.startsWith("/posts/") }
+                    .filter { it.route.startsWith("/blog/") }
                     .mapNotNull { entry ->
                         entry.toPost().also {
                             if (it == null) {

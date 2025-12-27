@@ -118,7 +118,7 @@ private fun NavigationContent() {
                 MdiPerson(style = IconStyle.OUTLINED)
             }
         }
-        NavigationItem("/posts/") { isActive ->
+        NavigationItem("/blog/") { isActive ->
             if (isActive) {
                 MdiArticle()
             } else {

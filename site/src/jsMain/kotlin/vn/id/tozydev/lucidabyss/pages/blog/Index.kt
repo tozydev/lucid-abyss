@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.pages.posts
+package vn.id.tozydev.lucidabyss.pages.blog
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -18,7 +18,7 @@ import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.widgets.PostCard
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 
-val PostsPageStyle =
+val BlogPageStyle =
     CssStyle {
         base {
             Modifier
@@ -34,15 +34,15 @@ val PostsPageStyle =
     }
 
 @InitRoute
-fun initPostsPage(ctx: InitRouteContext) {
-    ctx.data.add(PageLayoutData("Posts"))
+fun initBlogPage(ctx: InitRouteContext) {
+    ctx.data.add(PageLayoutData("Blog"))
 }
 
 @Page
 @Layout(".components.layouts.PageLayout")
 @Composable
-fun PostsPage() {
-    Div(PostsPageStyle.toModifier().toAttrs()) {
+fun BlogPage() {
+    Div(BlogPageStyle.toModifier().toAttrs()) {
         filePathToPost.values.forEach {
             PostCard(it)
         }

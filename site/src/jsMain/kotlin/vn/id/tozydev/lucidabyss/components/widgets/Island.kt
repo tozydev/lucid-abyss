@@ -66,6 +66,11 @@ val ColumnIslandVariant =
             .flexDirection(FlexDirection.Column)
     }
 
+val NoPaddingIslandVariant =
+    IslandStyle.addVariantBase {
+        Modifier.padding(0.px)
+    }
+
 @Composable
 fun Island(
     modifier: Modifier = Modifier,

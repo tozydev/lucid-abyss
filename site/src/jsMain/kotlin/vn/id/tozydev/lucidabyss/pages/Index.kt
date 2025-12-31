@@ -9,25 +9,59 @@ import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
+import vn.id.tozydev.lucidabyss.components.sections.FeaturedProject
 import vn.id.tozydev.lucidabyss.components.sections.Hero
+import vn.id.tozydev.lucidabyss.components.sections.LatestPost
+import vn.id.tozydev.lucidabyss.components.sections.Location
+import vn.id.tozydev.lucidabyss.components.sections.Quote
+import vn.id.tozydev.lucidabyss.components.sections.Socials
+import vn.id.tozydev.lucidabyss.components.sections.TechStack
 
 val HomePageStyle =
-    CssStyle.base {
-        Modifier
-            .fillMaxSize()
-            .display(DisplayStyle.Grid)
-            .gridTemplateColumns { repeat(4) { minmax(0.px, 1.fr) } }
-            .gridAutoRows { minmax(10.cssRem, auto) }
-            .gap(1.cssRem)
-            .gridAutoFlow(GridAutoFlow.Row)
-            .gridTemplateAreas(
-                "hero hero hero .",
-            )
+    CssStyle {
+        base {
+            Modifier
+                .display(DisplayStyle.Grid)
+                .gridTemplateColumns { repeat(1) { minmax(0.px, 1.fr) } }
+                .gridAutoRows { size(minContent) }
+                .gridTemplateAreas(
+                    "hero",
+                    "quote",
+                    "location",
+                    "latest-post",
+                    "featured-project",
+                    "tech-stack",
+                    "socials",
+                ).gap(1.cssRem)
+        }
+
+        Breakpoint.MD {
+            Modifier
+                .gridTemplateColumns { repeat(2) { minmax(0.px, 1.fr) } }
+                .gridTemplateAreas(
+                    "hero hero",
+                    "quote location",
+                    "latest-post latest-post",
+                    "featured-project featured-project",
+                    "tech-stack tech-stack",
+                    "socials socials",
+                )
+        }
+        Breakpoint.LG {
+            Modifier
+                .gridTemplateColumns { repeat(4) { minmax(0.px, 1.fr) } }
+                .gridTemplateAreas(
+                    "hero hero quote location",
+                    "hero hero latest-post latest-post",
+                    "featured-project featured-project tech-stack tech-stack",
+                    "featured-project featured-project socials socials",
+                )
+        }
     }
 
 @InitRoute
@@ -39,10 +73,18 @@ fun initHomePage(ctx: InitRouteContext) {
 @Composable
 fun HomePage() {
     Div(HomePageStyle.toModifier().toAttrs()) {
-        Hero(
-            Modifier
-                .fillMaxSize()
-                .gridArea("hero"),
-        )
+        Hero(Modifier.gridArea("hero"))
+
+        Quote(Modifier.gridArea("quote"))
+
+        Location(Modifier.gridArea("location"))
+
+        LatestPost(Modifier.gridArea("latest-post"))
+
+        FeaturedProject(Modifier.gridArea("featured-project"))
+
+        TechStack(Modifier.gridArea("tech-stack"))
+
+        Socials(Modifier.gridArea("socials"))
     }
 }

@@ -10,7 +10,10 @@ import com.varabyte.kobweb.compose.css.TransitionProperty
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.functions.RadialGradient
 import com.varabyte.kobweb.compose.css.functions.radialGradient
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
+import com.varabyte.kobweb.compose.foundation.layout.Row
+import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
@@ -22,6 +25,7 @@ import com.varabyte.kobweb.silk.components.forms.ButtonSize
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.graphics.ImageDecoding
 import com.varabyte.kobweb.silk.components.graphics.ImageLoading
+import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.extendedByBase
@@ -31,8 +35,10 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.styles.ContainerStyle
+import vn.id.tozydev.lucidabyss.components.widgets.ColumnIslandVariant
+import vn.id.tozydev.lucidabyss.components.widgets.Island
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
+import vn.id.tozydev.lucidabyss.styles.ContainerStyle
 import vn.id.tozydev.lucidabyss.styles.TypeDisplayStyle
 import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
 import vn.id.tozydev.lucidabyss.theme.colorScheme
@@ -58,6 +64,70 @@ val HeroDisplayStyle =
 
 @Composable
 fun Hero(modifier: Modifier = Modifier) {
+    Island(
+        modifier = modifier,
+        variance = ColumnIslandVariant,
+    ) {
+        Image(
+            src = getGravatarUrl(EMAIL_HASH, 80),
+            alt = "tozydev's avatar",
+            modifier =
+                Modifier
+                    .width(5.cssRem)
+                    .height(5.cssRem)
+                    .borderRadius(1.cssRem)
+                    .border(2.px, LineStyle.Solid, Colors.White), // todo: use theme color
+        )
+
+        H1 {
+            Text("Xin chào, tôi là")
+            Br()
+            SpanText("Thanh Tân")
+        }
+        P {
+            Text("Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với ")
+            SpanText(
+                "Kotlin",
+                modifier =
+                    Modifier
+                        .backgroundImage(
+                            radialGradient(
+                                shape = RadialGradient.Shape.Circle(RadialGradient.Extent.FarthestSide),
+                                position = CSSPosition.TopRight,
+                            ) {
+                                add(Color.rgb(0xE44857))
+                                add(Color.rgb(0xC711E1), 50.4494.percent)
+                                add(Color.rgb(0x7F52FF), 100.percent)
+                            }, // todo: add Kotlin gradient
+                        ).background { clip(BackgroundClip.Text) }
+                        .color(Colors.Transparent)
+                        .fontWeight(FontWeight.Bold),
+            )
+            Text(". Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...")
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(1.cssRem),
+        ) {
+            Button(
+                onClick = {},
+            ) {
+                FaUser(modifier = Modifier.margin(right = 0.5.cssRem))
+                Text("Tìm hiểu thêm")
+            }
+
+            Button(
+                onClick = {},
+            ) {
+                Text("Xem bài viết")
+            }
+        }
+    }
+}
+
+@Composable
+fun OldHero(modifier: Modifier = Modifier) {
     val ctx = rememberPageContext()
     val colorScheme = ColorMode.current.toColorScheme()
     Section(

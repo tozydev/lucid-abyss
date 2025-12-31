@@ -27,7 +27,7 @@ import vn.id.tozydev.lucidabyss.components.widgets.Island
 fun FeaturedProject(modifier: Modifier = Modifier) {
     Island(
         modifier = modifier,
-        variance = ColumnIslandVariant,
+        variant = ColumnIslandVariant,
     ) {
         // todo cover background image
         Row(

@@ -59,7 +59,7 @@ fun PageFooter(modifier: Modifier = Modifier) {
             .then(modifier)
             .toAttrs(),
     ) {
-        Island(variance = PageFooterIslandVariant) {
+        Island(variant = PageFooterIslandVariant) {
             Row(
                 modifier = Modifier.flexGrow(1),
                 verticalAlignment = Alignment.CenterVertically,

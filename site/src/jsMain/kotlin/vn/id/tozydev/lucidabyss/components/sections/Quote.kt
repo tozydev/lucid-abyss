@@ -13,7 +13,7 @@ import vn.id.tozydev.lucidabyss.components.widgets.Island
 fun Quote(modifier: Modifier = Modifier) {
     Island(
         modifier = modifier,
-        variance = ColumnIslandVariant,
+        variant = ColumnIslandVariant,
     ) {
         P { Text("“Code is like humor. When you have to explain it, it’s bad.”") }
         SpanText("– Cory House", Modifier.alignSelf(AlignSelf.FlexEnd))

@@ -69,13 +69,13 @@ val ColumnIslandVariant =
 @Composable
 fun Island(
     modifier: Modifier = Modifier,
-    variance: CssStyleVariant<IslandKind>? = null,
+    variant: CssStyleVariant<IslandKind>? = null,
     ref: ElementRefScope<HTMLElement>? = null,
     content: @Composable () -> Unit,
 ) {
     Div(
         IslandStyle
-            .toModifier(variance)
+            .toModifier(variant)
             .then(modifier)
             .toAttrs(),
     ) {

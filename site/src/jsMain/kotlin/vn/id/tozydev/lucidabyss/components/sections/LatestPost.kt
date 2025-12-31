@@ -21,7 +21,7 @@ import vn.id.tozydev.lucidabyss.components.widgets.Island
 fun LatestPost(modifier: Modifier = Modifier) {
     Island(
         modifier = modifier,
-        variance = ColumnIslandVariant,
+        variant = ColumnIslandVariant,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

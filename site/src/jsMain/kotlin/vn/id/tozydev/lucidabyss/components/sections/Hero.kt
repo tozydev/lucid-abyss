@@ -66,7 +66,7 @@ val HeroDisplayStyle =
 fun Hero(modifier: Modifier = Modifier) {
     Island(
         modifier = modifier,
-        variance = ColumnIslandVariant,
+        variant = ColumnIslandVariant,
     ) {
         Image(
             src = getGravatarUrl(EMAIL_HASH, 80),

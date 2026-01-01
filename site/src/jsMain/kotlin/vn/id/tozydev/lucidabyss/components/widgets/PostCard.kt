@@ -38,13 +38,11 @@ sealed interface PostCardKind : ComponentKind
 val PostCardStyle =
     CssStyle<PostCardKind>(
         {
-            IslandStyle.toModifier(ColumnIslandVariant)
+            IslandStyle.toModifier(ColumnIslandVariant then NoPaddingIslandVariant)
         },
     ) {
         base {
-            Modifier
-                .fillMaxSize()
-                .padding(0.px)
+            Modifier.fillMaxSize()
         }
         hover {
             Modifier

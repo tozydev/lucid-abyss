@@ -14,8 +14,18 @@ build your own site from.
 
 ## Learn
 
-If this is your first time using Kobweb, please open this site's project in an IDE and take a few minutes to look around
-the code.
+> [!NOTE]
+> Lorem ipsum...
+
+> [!QUOTE]
+> Lorem ipsum...
+
+> Hello,
+> World!
+
+If this is your **first time using Kobweb**, _please open this_ site's project in an IDE and take a few minutes to look
+around
+the ~~code~~.
 
 ### Files
 
@@ -24,12 +34,12 @@ the code.
 This file declares a method that is an entry point for all pages on your site. You can rename the file and the method if
 you like. Kobweb searches for a single method at compile time annotated with `@App`.
 
-#### AppStyles.kt
+#### `AppStyles.kt`
 
 An example of declaring generally useful styles that can be used anywhere across the whole site. Otherwise, you normally
 declare styles close to the widget that uses them.
 
-#### SiteTheme.kt
+#### `SiteTheme.kt`
 
 An example of how to define some site-specific colors, effectively extending the palette provided by Silk.
 

@@ -2,8 +2,6 @@ package vn.id.tozydev.lucidabyss.components.layouts
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.Overflow
-import com.varabyte.kobweb.compose.css.OverflowWrap
 import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.dom.registerRefScope
@@ -22,10 +20,9 @@ import com.varabyte.kobweb.silk.components.icons.mdi.MdiToc
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.extendedBy
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.palette.color
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
@@ -42,9 +39,8 @@ import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
 import vn.id.tozydev.lucidabyss.components.widgets.getHeadingHierarchy
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 import vn.id.tozydev.lucidabyss.models.Post
-import vn.id.tozydev.lucidabyss.styles.Text2XlModifier
+import vn.id.tozydev.lucidabyss.styles.ProseStyle
 import vn.id.tozydev.lucidabyss.styles.TextSmStyle
-import vn.id.tozydev.lucidabyss.theme.colorScheme
 
 @InitRoute
 fun initPostLayout(ctx: InitRouteContext) {
@@ -112,82 +108,9 @@ val ArticleContainerStyle =
     }
 
 val BlogArticleStyle =
-    CssStyle({ IslandStyle.toModifier() }) {
+    ProseStyle.extendedBy({ IslandStyle.toModifier() }) {
         base {
             Modifier.padding(3.cssRem)
-        }
-
-        cssRule("p") {
-            Modifier
-                .margin(bottom = 1.cssRem)
-        }
-
-        cssRule("h1") {
-            Text2XlModifier
-                .margin(bottom = 1.cssRem)
-        }
-
-        cssRule("h2") {
-            Modifier
-                .fontSize(2.cssRem)
-                .fontWeight(FontWeight.Medium)
-                .lineHeight(2.5.cssRem)
-                .margin(top = 2.75.cssRem, bottom = 1.5.cssRem)
-        }
-
-        cssRule("h3") {
-            Modifier
-                .fontSize(1.75.cssRem)
-                .fontWeight(FontWeight.Normal)
-                .lineHeight(2.25.cssRem)
-                .margin(top = 2.25.cssRem, bottom = 1.25.cssRem)
-        }
-
-        cssRule("h4") {
-            Modifier
-                .fontSize(1.25.cssRem)
-                .fontWeight(FontWeight.Normal)
-                .lineHeight(2.cssRem)
-                .margin(topBottom = 1.125.cssRem)
-        }
-
-        cssRule("ul, ol") {
-            Modifier
-                .fillMaxWidth()
-                .padding(left = 1.5.cssRem)
-                .overflowWrap(OverflowWrap.BreakWord)
-        }
-
-        cssRule(" :is(li,ol,ul)") {
-            Modifier.margin(bottom = 0.5.cssRem)
-        }
-
-        cssRule("code") {
-            Modifier
-                .color(
-                    colorMode
-                        .toPalette()
-                        .color
-                        .toRgb()
-                        .copyf(alpha = 0.8f),
-                ).fontWeight(FontWeight.Bolder)
-        }
-
-        cssRule("pre") {
-            Modifier
-                .margin(top = 0.5.cssRem, bottom = 2.cssRem)
-                .fillMaxWidth()
-        }
-        cssRule("pre > code") {
-            Modifier
-                .display(DisplayStyle.Block)
-                .fillMaxWidth()
-                .backgroundColor(colorScheme.surfaceContainerHighest)
-                .border(1.px, LineStyle.Solid, colorScheme.outline)
-                .borderRadius(0.25.cssRem)
-                .padding(0.5.cssRem)
-                .fontSize(1.cssRem)
-                .overflow { x(Overflow.Auto) }
         }
     }
 

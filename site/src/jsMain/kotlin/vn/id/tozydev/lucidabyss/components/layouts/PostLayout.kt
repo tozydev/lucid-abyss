@@ -42,8 +42,8 @@ import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
 import vn.id.tozydev.lucidabyss.components.widgets.getHeadingHierarchy
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 import vn.id.tozydev.lucidabyss.models.Post
-import vn.id.tozydev.lucidabyss.styles.TypeDisplayModifier
-import vn.id.tozydev.lucidabyss.styles.TypeLabelStyle
+import vn.id.tozydev.lucidabyss.styles.Text2XlModifier
+import vn.id.tozydev.lucidabyss.styles.TextSmStyle
 import vn.id.tozydev.lucidabyss.theme.colorScheme
 
 @InitRoute
@@ -123,7 +123,7 @@ val BlogArticleStyle =
         }
 
         cssRule("h1") {
-            TypeDisplayModifier
+            Text2XlModifier
                 .margin(bottom = 1.cssRem)
         }
 
@@ -226,7 +226,7 @@ private fun PostContent(content: @Composable (() -> Unit)) {
                         SpanText(
                             "Mục lục",
                             modifier =
-                                TypeLabelStyle
+                                TextSmStyle
                                     .toModifier()
                                     .textTransform(TextTransform.Uppercase)
                                     .fontWeight(FontWeight.Bold),

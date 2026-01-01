@@ -1,5 +1,6 @@
 package vn.id.tozydev.lucidabyss.styles
 
+import com.varabyte.kobweb.compose.css.OverflowWrap
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -14,11 +15,11 @@ import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.selectors.link
 import com.varabyte.kobweb.silk.style.selectors.visited
+import com.varabyte.kobweb.silk.style.vars.color.ColorVar
 import com.varabyte.kobweb.silk.theme.MutableSilkTheme
 import com.varabyte.kobweb.silk.theme.modifyStyle
 import com.varabyte.kobweb.silk.theme.modifyStyleBase
 import org.jetbrains.compose.web.css.*
-import vn.id.tozydev.lucidabyss.theme.toColorScheme
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
@@ -35,7 +36,9 @@ private fun SilkStylesheet.customizeGlobalStyles() {
     registerStyleBase("body") {
         Modifier
             .fontFamily("Inter", "sans-serif")
-            .then(TypeBodyModifier)
+            .fontSize(16.px)
+            .lineHeight(1.5.cssRem)
+            .overflowWrap(OverflowWrap.BreakWord)
             .styleModifier {
                 property("-webkit-font-smoothing", "antialiased")
             }
@@ -47,13 +50,12 @@ private fun MutableSilkTheme.customizeWidgetStyles() {
         Modifier.fillMaxWidth()
     }
     modifyStyle(LinkStyle) {
-        val colorScheme = colorMode.toColorScheme()
-        val colorModifier = Modifier.color(colorScheme.primary)
+        val colorModifier = Modifier.color(ColorVar.value())
         base {
-            Modifier.textDecorationLine(TextDecorationLine.Underline)
+            Modifier
         }
         hover {
-            Modifier.color(colorScheme.onPrimaryContainer)
+            colorModifier.textDecorationLine(TextDecorationLine.None)
         }
         link {
             colorModifier

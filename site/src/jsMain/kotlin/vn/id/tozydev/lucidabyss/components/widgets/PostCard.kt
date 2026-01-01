@@ -29,8 +29,8 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.elements.Time
 import vn.id.tozydev.lucidabyss.models.Post
 import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
-import vn.id.tozydev.lucidabyss.styles.TypeLabelStyle
-import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
+import vn.id.tozydev.lucidabyss.styles.Text2XlStyle
+import vn.id.tozydev.lucidabyss.styles.TextSmStyle
 import vn.id.tozydev.lucidabyss.utils.formatDate
 
 sealed interface PostCardKind : ComponentKind
@@ -109,12 +109,12 @@ fun PostCard(
             ) {
                 TopicBadge("Test")
                 SpanText("•")
-                Time(datetime = post.publishedAt.toString(), TypeLabelStyle.toAttrs()) {
+                Time(datetime = post.publishedAt.toString(), TextSmStyle.toAttrs()) {
                     Text(post.publishedAt.formatDate())
                 }
             }
             H3(
-                TypeTitleStyle
+                Text2XlStyle
                     .toModifier()
                     .margin(0.px)
                     .toAttrs(),

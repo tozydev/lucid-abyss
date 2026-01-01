@@ -3,195 +3,127 @@ package vn.id.tozydev.lucidabyss.components.sections
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.BackgroundClip
 import com.varabyte.kobweb.compose.css.BoxShadow
-import com.varabyte.kobweb.compose.css.CSSPosition
 import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.ObjectFit
-import com.varabyte.kobweb.compose.css.TransitionProperty
-import com.varabyte.kobweb.compose.css.TransitionTimingFunction
-import com.varabyte.kobweb.compose.css.functions.RadialGradient
-import com.varabyte.kobweb.compose.css.functions.radialGradient
+import com.varabyte.kobweb.compose.css.JustifyContent
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
-import com.varabyte.kobweb.silk.components.forms.ButtonSize
 import com.varabyte.kobweb.silk.components.graphics.Image
-import com.varabyte.kobweb.silk.components.graphics.ImageDecoding
-import com.varabyte.kobweb.silk.components.graphics.ImageLoading
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.extendedByBase
+import com.varabyte.kobweb.silk.style.addVariantBase
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.extendedBy
+import com.varabyte.kobweb.silk.style.selectors.children
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.ColumnIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.Island
+import vn.id.tozydev.lucidabyss.components.widgets.IslandStyle
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
-import vn.id.tozydev.lucidabyss.styles.ContainerStyle
-import vn.id.tozydev.lucidabyss.styles.TypeDisplayStyle
-import vn.id.tozydev.lucidabyss.styles.TypeTitleStyle
-import vn.id.tozydev.lucidabyss.theme.colorScheme
-import vn.id.tozydev.lucidabyss.theme.toColorScheme
+import vn.id.tozydev.lucidabyss.styles.Text2XlStyle
+import vn.id.tozydev.lucidabyss.styles.Text3XlModifier
+import vn.id.tozydev.lucidabyss.styles.TextLgModifier
 import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
+import vn.id.tozydev.lucidabyss.utils.kotlinGradient
+import vn.id.tozydev.lucidabyss.utils.navigateToAbout
+import vn.id.tozydev.lucidabyss.utils.navigateToBlog
 
-val HeroStyle =
-    ContainerStyle.extendedByBase {
+val HeroIslandVariant =
+    IslandStyle.addVariantBase {
         Modifier
-            .display(DisplayStyle.Grid)
-            .gridTemplateColumns {
-                size(1.fr)
-                size(auto)
-            }.gap(2.cssRem)
+            .justifyContent(JustifyContent.SpaceBetween)
     }
 
-val HeroDisplayStyle =
-    TypeDisplayStyle.extendedByBase {
-        Modifier
-            .fontWeight(FontWeight.Bold)
-            .margin(bottom = 1.cssRem)
+val HeroHeadlineStyle =
+    Text2XlStyle.extendedBy {
+        base {
+            Modifier
+                .fontWeight(FontWeight.Bold)
+                .margin(bottom = 0.75.cssRem)
+        }
+        children("span") {
+            Text3XlModifier
+                .fontWeight(FontWeight.ExtraBold)
+        }
+    }
+
+val HeroDescriptionStyle =
+    CssStyle {
+        base {
+            Modifier
+                .margin(bottom = 2.cssRem)
+        }
+
+        Breakpoint.MD {
+            TextLgModifier
+        }
+
+        cssRule(" .kotlin") {
+            Modifier
+                .backgroundImage(kotlinGradient())
+                .background { clip(BackgroundClip.Text) }
+                .color(Colors.Transparent)
+                .fontWeight(FontWeight.SemiBold)
+        }
     }
 
 @Composable
 fun Hero(modifier: Modifier = Modifier) {
     Island(
         modifier = modifier,
-        variant = ColumnIslandVariant,
+        variant = ColumnIslandVariant.then(HeroIslandVariant),
     ) {
-        Image(
-            src = getGravatarUrl(EMAIL_HASH, 80),
-            alt = "tozydev's avatar",
-            modifier =
-                Modifier
-                    .width(5.cssRem)
-                    .height(5.cssRem)
-                    .borderRadius(1.cssRem)
-                    .border(2.px, LineStyle.Solid, Colors.White), // todo: use theme color
-        )
+        HeroAvatar()
 
-        H1 {
-            Text("Xin chào, tôi là")
-            Br()
-            SpanText("Thanh Tân")
-        }
-        P {
-            Text("Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với ")
-            SpanText(
-                "Kotlin",
-                modifier =
-                    Modifier
-                        .backgroundImage(
-                            radialGradient(
-                                shape = RadialGradient.Shape.Circle(RadialGradient.Extent.FarthestSide),
-                                position = CSSPosition.TopRight,
-                            ) {
-                                add(Color.rgb(0xE44857))
-                                add(Color.rgb(0xC711E1), 50.4494.percent)
-                                add(Color.rgb(0x7F52FF), 100.percent)
-                            }, // todo: add Kotlin gradient
-                        ).background { clip(BackgroundClip.Text) }
-                        .color(Colors.Transparent)
-                        .fontWeight(FontWeight.Bold),
-            )
-            Text(". Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...")
-        }
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(1.cssRem),
-        ) {
-            Button(
-                onClick = {},
-            ) {
-                FaUser(modifier = Modifier.margin(right = 0.5.cssRem))
-                Text("Tìm hiểu thêm")
+        Div {
+            H1(HeroHeadlineStyle.toAttrs()) {
+                Text("Xin chào, tôi là")
+                Br()
+                SpanText("Thanh Tân")
             }
-
-            Button(
-                onClick = {},
-            ) {
-                Text("Xem bài viết")
+            P(HeroDescriptionStyle.toAttrs()) {
+                Text("Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với ")
+                SpanText(
+                    "Kotlin",
+                    modifier = Modifier.classNames("kotlin"),
+                )
+                Text(". Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...")
             }
         }
+
+        HeroActions()
     }
 }
 
 @Composable
-fun OldHero(modifier: Modifier = Modifier) {
+private fun HeroActions() {
     val ctx = rememberPageContext()
-    val colorScheme = ColorMode.current.toColorScheme()
-    Section(
-        HeroStyle
-            .toModifier()
-            .then(modifier)
-            .toAttrs(),
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(1.cssRem),
     ) {
-        Column(Modifier.fillMaxSize()) {
-            P(
-                TypeTitleStyle
-                    .toModifier()
-                    .margin(bottom = 1.cssRem)
-                    .toAttrs(),
-            ) {
-                Text("Hi there 👋 Tôi là")
-            }
-            H1(
-                attrs = HeroDisplayStyle.toAttrs(),
-            ) {
-                SpanText("Thanh Tân", Modifier.color(colorScheme.primary))
-            }
-            P(
-                Modifier
-                    .flex(1)
-                    .margin(bottom = 1.5.cssRem)
-                    .toAttrs(),
-            ) {
-                Text(
-                    "Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với ",
-                )
-                SpanText(
-                    "Kotlin",
-                    modifier =
-                        Modifier
-                            .backgroundImage(
-                                radialGradient(
-                                    shape = RadialGradient.Shape.Circle(RadialGradient.Extent.FarthestSide),
-                                    position = CSSPosition.TopRight,
-                                ) {
-                                    add(Color.rgb(0xE44857))
-                                    add(Color.rgb(0xC711E1), 50.4494.percent)
-                                    add(Color.rgb(0x7F52FF), 100.percent)
-                                },
-                            ).background { clip(BackgroundClip.Text) }
-                            .color(Colors.Transparent)
-                            .fontWeight(FontWeight.Bold),
-                )
-                Text(". Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...")
-            }
-            Button(
-                onClick = { ctx.router.navigateTo("/about") },
-                size = ButtonSize.LG,
-                modifier =
-                    Modifier
-                        .borderRadius(1.cssRem)
-                        .backgroundColor(colorScheme.primaryContainer)
-                        .color(colorScheme.onPrimaryContainer),
-            ) {
-                Text("Tìm hiểu thêm về tôi")
-            }
+        Button(
+            onClick = { ctx.router.navigateToAbout() },
+        ) {
+            FaUser(modifier = Modifier.margin(right = 0.5.cssRem))
+            Text("Tìm hiểu thêm")
         }
-        Column(Modifier.fillMaxSize()) {
-            HeroAvatar()
+
+        Button(
+            onClick = { ctx.router.navigateToBlog() },
+        ) {
+            Text("Xem bài viết")
         }
     }
 }
@@ -200,19 +132,12 @@ val HeroAvatarStyle =
     CssStyle {
         base {
             Modifier
-                .size(16.cssRem)
-                .borderRadius(50.percent)
-                .objectFit(ObjectFit.Cover)
-                .border(3.px, LineStyle.Solid, colorScheme.outlineVariant)
-                .transition {
-                    property(TransitionProperty.All)
-                    duration(0.3.s)
-                    timingFunction(TransitionTimingFunction.cubicBezier(0.25, 0.8, 0.25, 1.0))
-                }
+                .size(6.cssRem)
+                .borderRadius(1.cssRem)
+                .border(2.px, LineStyle.Solid, Colors.White) // todo: use theme color
         }
         hover {
             Modifier
-                .border(3.px, LineStyle.Solid, colorScheme.primary)
                 .scale(1.05f)
                 .boxShadow(
                     BoxShadow.of(0.px, 4.px, 8.px, 3.px, Color.rgba(0, 0, 0, 0.15f)),
@@ -223,10 +148,8 @@ val HeroAvatarStyle =
 @Composable
 private fun HeroAvatar() {
     Image(
-        src = getGravatarUrl(EMAIL_HASH, size = 256),
-        alt = "tozydev's avatar",
-        loading = ImageLoading.Lazy,
-        decoding = ImageDecoding.Auto,
+        src = getGravatarUrl(EMAIL_HASH, 96),
+        alt = "Avatar",
         modifier = HeroAvatarStyle.toModifier(),
     )
 }

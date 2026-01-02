@@ -18,6 +18,7 @@ import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.widgets.SoftLiftingIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.ColumnIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.IslandStyle
 
@@ -82,7 +83,7 @@ fun SocialLink(
         path = path,
         modifier =
             IslandStyle
-                .toModifier(ColumnIslandVariant)
+                .toModifier(ColumnIslandVariant then SoftLiftingIslandVariant)
                 .then(SocialLinkStyle.toModifier())
                 .then(modifier),
         variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),

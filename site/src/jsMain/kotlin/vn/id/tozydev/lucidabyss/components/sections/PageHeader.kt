@@ -3,7 +3,10 @@ package vn.id.tozydev.lucidabyss.components.sections
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
+import com.varabyte.kobweb.compose.css.TransitionProperty
+import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.autoLength
+import com.varabyte.kobweb.compose.css.functions.blur
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -15,22 +18,34 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
-import com.varabyte.kobweb.silk.components.icons.fa.FaBlog
 import com.varabyte.kobweb.silk.components.icons.fa.FaHouse
 import com.varabyte.kobweb.silk.components.icons.fa.FaMagnifyingGlass
-import com.varabyte.kobweb.silk.components.icons.fa.FaSun
+import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
+import com.varabyte.kobweb.silk.components.layout.VerticalDivider
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
+import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
+import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
+import com.varabyte.kobweb.silk.style.selectors.active
+import com.varabyte.kobweb.silk.style.selectors.focusVisible
+import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.vars.animation.TransitionDurationVars
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.widgets.ThemeButton
+import vn.id.tozydev.lucidabyss.styles.ColorVars
+import vn.id.tozydev.lucidabyss.styles.IconButtonVariant
 import vn.id.tozydev.lucidabyss.styles.TextSmStyle
+import vn.id.tozydev.lucidabyss.utils.rgb
 
 fun Modifier.zIndexHeader() = this.zIndex(1000)
 
@@ -44,6 +59,11 @@ val PageHeaderStyle =
                 .right(0.px)
                 .zIndexHeader()
                 .padding(topBottom = 1.5.cssRem, leftRight = 1.cssRem)
+                .transition {
+                    property("translate")
+                    duration(TransitionDurationVars.Slow.value())
+                    timingFunction(TransitionTimingFunction.cubicBezier(0.25, 0.8, 0.25, 1.0))
+                }
         }
 
         Breakpoint.MD {
@@ -66,16 +86,18 @@ val PageHeaderContainerStyle =
                 .alignItems(AlignItems.Center)
                 .justifyContent(JustifyContent.SpaceBetween)
                 .padding(1.cssRem)
-                .backgroundColor(Colors.White) // todo: use theme color
+                .backgroundColor(rgb(ColorVars.BgSurface, alpha = 0.9f))
                 .borderRadius(9999.px)
-                .border(1.px, LineStyle.Solid, Colors.LightGray) // todo: use theme color
+                .border(1.px, LineStyle.Solid, ColorVars.Outline.value())
                 .padding(topBottom = 0.75.cssRem, leftRight = 1.25.cssRem)
+                .backdropFilter(blur(40.px))
+            // todo drop shadow
         }
 
         Breakpoint.MD {
             Modifier
                 .justifyContent(JustifyContent.Center)
-                .gap(1.cssRem)
+                .gap(0.5.cssRem)
         }
     }
 
@@ -85,6 +107,7 @@ fun PageHeader(modifier: Modifier = Modifier) {
         Div(PageHeaderContainerStyle.toAttrs()) {
             HeaderLogo()
             HeaderNav()
+            VerticalDivider(Modifier.height(1.5.cssRem).displayIfAtLeast(Breakpoint.MD))
             HeaderActions()
         }
     }
@@ -92,7 +115,11 @@ fun PageHeader(modifier: Modifier = Modifier) {
 
 @Composable
 private fun HeaderLogo() {
-    Link("/") {
+    Link(
+        "/",
+        modifier = Modifier.margin(right = 1.cssRem),
+        variant = UndecoratedLinkVariant then UncoloredLinkVariant,
+    ) {
         SpanText(
             "T",
             modifier =
@@ -100,10 +127,10 @@ private fun HeaderLogo() {
                     .fontSize(1.5.cssRem)
                     .fontWeight(FontWeight.Bold)
                     .textAlign(TextAlign.Center)
-                    .color(Colors.Black)
+                    .color(ColorVars.Primary.value())
                     .size(2.5.cssRem)
                     .borderRadius(50.percent)
-                    .border(2.px, LineStyle.Solid, Colors.Black)
+                    .border(2.px, LineStyle.Solid, ColorVars.Primary.value())
                     .padding(0.25.cssRem)
                     .margin(right = 0.5.cssRem),
         ) // todo: use actual logo
@@ -115,20 +142,18 @@ private fun HeaderLogo() {
 private fun HeaderActions() {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(0.5.cssRem),
+        horizontalArrangement = Arrangement.spacedBy(0.25.cssRem),
     ) {
         Button(
             {
+                window.alert("Search not yet implemented")
             },
+            modifier = TextSmStyle.toModifier().size(2.5.cssRem),
+            variant = IconButtonVariant,
         ) {
             FaMagnifyingGlass()
         }
-        Button(
-            {
-            },
-        ) {
-            FaSun()
-        }
+        ThemeButton(modifier = TextSmStyle.toModifier().size(2.5.cssRem))
     }
 }
 
@@ -152,18 +177,18 @@ private fun HeaderNav() {
         Nav(HeaderNavStyle.toModifier().toAttrs()) {
             NavItem(
                 path = "/",
-                label = "Home",
+                label = "Trang chủ",
                 icon = { FaHouse() },
             )
             NavItem(
                 path = "/about",
-                label = "About",
+                label = "Giới thiệu",
                 icon = { FaUser() },
             )
             NavItem(
                 path = "/blog",
                 label = "Blog",
-                icon = { FaBlog() },
+                icon = { FaRss() },
             )
         }
     }
@@ -173,6 +198,7 @@ val NavItemVariant =
     LinkStyle.addVariant({ TextSmStyle.toModifier() }) {
         base {
             Modifier
+                .color(ColorVars.TextBody.value())
                 .display(DisplayStyle.Flex)
                 .flexDirection(FlexDirection.Row)
                 .alignItems(AlignItems.Center)
@@ -180,12 +206,35 @@ val NavItemVariant =
                 .padding(0.625.cssRem, 1.cssRem)
                 .borderRadius(9999.px)
                 .fontWeight(FontWeight.Medium)
+                .transition {
+                    property(TransitionProperty.All)
+                    duration(TransitionDurationVars.Fast.value())
+                    timingFunction(TransitionTimingFunction.cubicBezier(0.25, 0.8, 0.25, 1.0))
+                }
+        }
+
+        hover {
+            Modifier
+                .scale(1.05f)
+                .backgroundColor(ColorVars.StateHover.value())
+        }
+
+        active {
+            Modifier
+                .scale(1.05f)
+                .backgroundColor(ColorVars.StatePressed.value())
+        }
+
+        focusVisible {
+            Modifier
+                .outline(2.px, LineStyle.Solid, Colors.Transparent)
+                .boxShadow(spreadRadius = 0.1875.cssRem, color = ColorVars.FocusRing.value())
         }
 
         cssRule("[data-active='true']") {
             Modifier
-                .color(Colors.White) // todo: use theme color
-                .backgroundColor(Colors.Gray) // todo: use theme color
+                .color(ColorVars.TextInverse.value())
+                .backgroundColor(ColorVars.Primary.value())
         }
     }
 
@@ -211,7 +260,7 @@ private fun NavItem(
                     attr("data-active", "true")
                 }
             },
-        variant = NavItemVariant,
+        variant = UndecoratedLinkVariant then NavItemVariant,
     ) {
         icon()
         SpanText(label)

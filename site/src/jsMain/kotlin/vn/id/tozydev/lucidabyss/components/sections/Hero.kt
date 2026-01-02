@@ -5,6 +5,8 @@ import com.varabyte.kobweb.compose.css.BackgroundClip
 import com.varabyte.kobweb.compose.css.BoxShadow
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.JustifyContent
+import com.varabyte.kobweb.compose.css.TransitionProperty
+import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -14,6 +16,7 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
+import com.varabyte.kobweb.silk.components.forms.ButtonSize
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import com.varabyte.kobweb.silk.components.text.SpanText
@@ -25,12 +28,16 @@ import com.varabyte.kobweb.silk.style.selectors.children
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.style.vars.animation.TransitionDurationVars
+import com.varabyte.kobweb.silk.style.vars.size.BorderRadiusVars
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.ColumnIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.Island
 import vn.id.tozydev.lucidabyss.components.widgets.IslandStyle
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
+import vn.id.tozydev.lucidabyss.styles.ColorVars
+import vn.id.tozydev.lucidabyss.styles.PrimaryButtonVariant
 import vn.id.tozydev.lucidabyss.styles.Text2XlStyle
 import vn.id.tozydev.lucidabyss.styles.Text3XlModifier
 import vn.id.tozydev.lucidabyss.styles.TextLgModifier
@@ -49,11 +56,13 @@ val HeroHeadlineStyle =
     Text2XlStyle.extendedBy {
         base {
             Modifier
+                .color(ColorVars.TextHeading.value())
                 .fontWeight(FontWeight.Bold)
                 .margin(bottom = 0.75.cssRem)
         }
         children("span") {
             Text3XlModifier
+                .color(ColorVars.Primary.value())
                 .fontWeight(FontWeight.ExtraBold)
         }
     }
@@ -106,6 +115,22 @@ fun Hero(modifier: Modifier = Modifier) {
     }
 }
 
+val HeroPrimaryButtonVariant =
+    PrimaryButtonVariant.extendedBy {
+        base {
+            Modifier
+                .transition {
+                    property(TransitionProperty.All)
+                    duration(TransitionDurationVars.Fast.value())
+                    timingFunction(TransitionTimingFunction.cubicBezier(0.4, 0.0, 0.2, 1.0))
+                }
+        }
+        hover {
+            Modifier
+                .scale(1.05f)
+        }
+    }
+
 @Composable
 private fun HeroActions() {
     val ctx = rememberPageContext()
@@ -114,14 +139,19 @@ private fun HeroActions() {
         horizontalArrangement = Arrangement.spacedBy(1.cssRem),
     ) {
         Button(
+            modifier = Modifier.fontSize(1.cssRem),
             onClick = { ctx.router.navigateToAbout() },
+            variant = PrimaryButtonVariant then HeroPrimaryButtonVariant,
+            size = ButtonSize.LG,
         ) {
-            FaUser(modifier = Modifier.margin(right = 0.5.cssRem))
+            FaUser(Modifier.margin(right = 0.5.cssRem))
             Text("Tìm hiểu thêm")
         }
 
         Button(
+            modifier = Modifier.fontSize(1.cssRem),
             onClick = { ctx.router.navigateToBlog() },
+            size = ButtonSize.LG,
         ) {
             Text("Xem bài viết")
         }
@@ -133,8 +163,12 @@ val HeroAvatarStyle =
         base {
             Modifier
                 .size(6.cssRem)
-                .borderRadius(1.cssRem)
-                .border(2.px, LineStyle.Solid, Colors.White) // todo: use theme color
+                .borderRadius(BorderRadiusVars.MD.value())
+                .transition {
+                    property(TransitionProperty.All)
+                    duration(TransitionDurationVars.Fast.value())
+                    timingFunction(TransitionTimingFunction.cubicBezier(0.25, 0.8, 0.25, 1.0))
+                }.border(2.px, LineStyle.Solid, ColorVars.OutlineVariant.value())
         }
         hover {
             Modifier

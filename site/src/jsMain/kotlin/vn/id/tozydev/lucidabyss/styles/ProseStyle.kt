@@ -31,6 +31,7 @@ object ProseVars {
     val ColorQuotesBordersVar by StyleVariable<Color>(Color.rgb(0xe5e7eb))
 }
 
+/** Prose style for the website. Inspired by https://github.com/tailwindlabs/tailwindcss-typography */
 val ProseStyle =
     CssStyle {
         base {

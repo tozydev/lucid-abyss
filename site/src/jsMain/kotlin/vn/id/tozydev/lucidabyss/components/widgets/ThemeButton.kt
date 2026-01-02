@@ -3,12 +3,12 @@ package vn.id.tozydev.lucidabyss.components.widgets
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.browser.dom.ElementTarget
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiAutoMode
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiDarkMode
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiLightMode
+import com.varabyte.kobweb.silk.components.icons.fa.FaDesktop
+import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
+import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.overlay.PopupPlacement
 import com.varabyte.kobweb.silk.components.overlay.Tooltip
-import vn.id.tozydev.lucidabyss.theme.ThemeMode
+import vn.id.tozydev.lucidabyss.styles.ThemeMode
 
 @Composable
 fun ThemeButton(modifier: Modifier = Modifier) {
@@ -18,9 +18,9 @@ fun ThemeButton(modifier: Modifier = Modifier) {
         onClick = { themeMode = themeMode.cycle },
     ) {
         when (themeMode.cycle) {
-            ThemeMode.Light -> MdiLightMode()
-            ThemeMode.Dark -> MdiDarkMode()
-            ThemeMode.System -> MdiAutoMode()
+            ThemeMode.Light -> FaSun()
+            ThemeMode.Dark -> FaMoon()
+            ThemeMode.System -> FaDesktop()
         }
     }
     val tooltipText =

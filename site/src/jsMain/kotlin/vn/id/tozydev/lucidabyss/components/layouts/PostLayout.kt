@@ -15,8 +15,7 @@ import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
-import com.varabyte.kobweb.silk.components.icons.mdi.IconStyle
-import com.varabyte.kobweb.silk.components.icons.mdi.MdiToc
+import com.varabyte.kobweb.silk.components.icons.fa.FaList
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
@@ -145,7 +144,7 @@ private fun PostContent(content: @Composable (() -> Unit)) {
                             .gap(0.5.cssRem)
                             .toAttrs(),
                     ) {
-                        MdiToc(style = IconStyle.ROUNDED)
+                        FaList()
                         SpanText(
                             "Mục lục",
                             modifier =

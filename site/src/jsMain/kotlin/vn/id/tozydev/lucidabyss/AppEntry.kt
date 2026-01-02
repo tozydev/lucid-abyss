@@ -10,8 +10,8 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.*
 import vn.id.tozydev.lucidabyss.styles.AppStyleSheet
-import vn.id.tozydev.lucidabyss.theme.ThemeMode
-import vn.id.tozydev.lucidabyss.theme.saveToLocalStorage
+import vn.id.tozydev.lucidabyss.styles.ThemeMode
+import vn.id.tozydev.lucidabyss.styles.saveToLocalStorage
 
 @Suppress("VariableNeverRead", "AssignedValueIsNeverRead")
 @App

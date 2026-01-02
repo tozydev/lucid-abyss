@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.theme
+package vn.id.tozydev.lucidabyss.styles
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.browser.storage.createStorageKey
@@ -9,7 +9,7 @@ import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import kotlinx.browser.window
-import vn.id.tozydev.lucidabyss.theme.ThemeMode.System
+import vn.id.tozydev.lucidabyss.styles.ThemeMode.System
 
 private val rootThemeModeState by lazy { mutableStateOf(ThemeMode.loadFromLocalStorage()) }
 private val LocalThemeMode = compositionLocalOf { rootThemeModeState }

@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.ListStyle
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -15,7 +16,6 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLHeadingElement
-import vn.id.tozydev.lucidabyss.theme.colorScheme
 import vn.id.tozydev.lucidabyss.utils.getHeadings
 import vn.id.tozydev.lucidabyss.utils.level
 
@@ -61,7 +61,7 @@ val TableOfContentsStyle =
             Modifier.border {
                 style(left = LineStyle.Solid)
                 width(1.px)
-                color(left = colorScheme.outlineVariant)
+                color(Colors.LightGray)
             }
         }
         descendants("ul") {

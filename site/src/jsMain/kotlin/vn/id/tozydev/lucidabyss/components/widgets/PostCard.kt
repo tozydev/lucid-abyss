@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.PointerEvents
+import com.varabyte.kobweb.compose.dom.GenericTag
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -26,11 +27,9 @@ import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.elements.Time
 import vn.id.tozydev.lucidabyss.models.Post
 import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.styles.Text2XlStyle
-import vn.id.tozydev.lucidabyss.styles.TextSmStyle
 import vn.id.tozydev.lucidabyss.utils.formatDate
 
 sealed interface PostCardKind : ComponentKind
@@ -109,7 +108,7 @@ fun PostCard(
             ) {
                 TopicBadge("Test")
                 SpanText("•")
-                Time(datetime = post.publishedAt.toString(), TextSmStyle.toAttrs()) {
+                GenericTag("time", attrsStr = "datetime=\"${post.publishedAt}\"") {
                     Text(post.publishedAt.formatDate())
                 }
             }

@@ -29,6 +29,7 @@ kobweb {
                 val author: String,
                 val publishedAt: Instant,
                 val modifiedAt: Instant?,
+                val topic: String,
                 val tags: Set<String>,
                 val coverImage: String?,
             )
@@ -39,6 +40,7 @@ kobweb {
                 val author = frontMatter["author"]?.singleOrNull() ?: return null
                 val publishedAt = frontMatter["publishedAt"]?.singleOrNull()?.let(Instant::parse) ?: return null
                 val modifiedAt = frontMatter["modifiedAt"]?.singleOrNull()?.let(Instant::parse)
+                val topic = frontMatter["topic"]?.singleOrNull() ?: return null
                 val tags = frontMatter["tags"]?.toSet() ?: emptySet()
                 val coverImage = frontMatter["coverImage"]?.singleOrNull()
 
@@ -50,6 +52,7 @@ kobweb {
                     description = description,
                     publishedAt = publishedAt,
                     modifiedAt = modifiedAt,
+                    topic = topic,
                     tags = tags,
                     coverImage = coverImage,
                 )
@@ -95,6 +98,7 @@ kobweb {
                                 description = "${post.description.replace("\"", "\\\"")}",
                                 publishedAt = Instant.parse("${post.publishedAt}"),
                                 modifiedAt = ${if (post.modifiedAt != null) "Instant.parse(\"${post.modifiedAt}\")" else "null"},
+                                topic = "${post.topic.replace("\"", "\\\"")}",
                                 tags = setOf(${post.tags.joinToString(", ") { "\"${it.replace("\"", "\\\"")}\"" }}),
                                 coverImage = ${
                             if (post.coverImage != null) {

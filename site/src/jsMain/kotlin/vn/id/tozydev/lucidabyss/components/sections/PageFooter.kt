@@ -7,6 +7,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.OpenLinkStrategy
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -64,9 +65,9 @@ fun PageFooter(modifier: Modifier = Modifier) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(1.cssRem),
             ) {
-                Link("#", "RSS")
-                Link("#", "GitHub")
-                Link("#", "Email")
+                Link(Constants.RSS_URL, "RSS", openInternalLinksStrategy = OpenLinkStrategy.IN_NEW_TAB)
+                Link(Constants.GITHUB_URL, "GitHub")
+                Link(Constants.EMAIL_URL, "Email")
             }
         }
     }

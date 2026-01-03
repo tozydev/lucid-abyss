@@ -22,6 +22,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.ColumnIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.IslandStyle
 import vn.id.tozydev.lucidabyss.components.widgets.SoftLiftingIslandVariant
+import vn.id.tozydev.lucidabyss.models.Constants
 import vn.id.tozydev.lucidabyss.styles.ColorVars
 import vn.id.tozydev.lucidabyss.styles.TextSmStyle
 import vn.id.tozydev.lucidabyss.styles.TextXlStyle
@@ -44,22 +45,22 @@ val SocialsStyle =
 fun Socials(modifier: Modifier = Modifier) {
     Div(SocialsStyle.toModifier().then(modifier).toAttrs()) {
         SocialLink(
-            path = "#",
+            path = Constants.GITHUB_URL,
             icon = { FaGithub() },
             label = "GitHub",
         )
         SocialLink(
-            path = "#",
+            path = Constants.LINKEDIN_URL,
             icon = { FaLinkedin() },
             label = "LinkedIn",
         )
         SocialLink(
-            path = "#",
+            path = Constants.DISCORD_URL,
             icon = { FaDiscord() },
             label = "Discord",
         )
         SocialLink(
-            path = "#",
+            path = Constants.EMAIL_URL,
             icon = { FaEnvelope() },
             label = "Email",
         )

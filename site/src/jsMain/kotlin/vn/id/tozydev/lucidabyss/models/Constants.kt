@@ -4,6 +4,10 @@ object Constants {
     const val GITHUB_URL = "https://github.com/tozydev"
     const val EMAIL = "me@tozydev.id.vn"
     const val EMAIL_URL = "mailto:$EMAIL"
+    const val LINKEDIN_URL = "https://www.linkedin.com/in/tozydev/"
+    const val DISCORD_URL = "https://discord.gg/25TsGqsrmw"
+
+    const val RSS_URL = "/rss.xml"
 
     const val KOBWEB_URL = "https://github.com/varabyte/kobweb"
 

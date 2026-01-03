@@ -20,6 +20,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.models.Constants
 import vn.id.tozydev.lucidabyss.styles.ColorVars
 import vn.id.tozydev.lucidabyss.styles.TextLgStyle
+import vn.id.tozydev.lucidabyss.styles.TextXsStyle
 import vn.id.tozydev.lucidabyss.utils.kotlinGradient
 
 @Composable
@@ -30,7 +31,7 @@ fun FeaturedProject(modifier: Modifier = Modifier) {
     ) {
         Div(Modifier.flex(1).toAttrs())
         Row(
-            modifier = Modifier.margin(bottom = 0.75.cssRem),
+            modifier = TextXsStyle.toModifier().margin(bottom = 0.75.cssRem),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(0.5.cssRem),
         ) {

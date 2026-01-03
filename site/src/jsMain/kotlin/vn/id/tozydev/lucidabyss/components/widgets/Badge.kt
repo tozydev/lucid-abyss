@@ -18,7 +18,6 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.style.vars.size.BorderRadiusVars
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.styles.TextXsStyle
 
 object BadgeVars {
     val Color by StyleVariable<CSSColorValue>()
@@ -29,7 +28,7 @@ object BadgeVars {
 sealed interface BadgeKind : ComponentKind
 
 val BadgeStyle =
-    CssStyle<BadgeKind>({ TextXsStyle.toModifier() }) {
+    CssStyle<BadgeKind> {
         base {
             Modifier
                 .fontWeight(FontWeight.SemiBold)

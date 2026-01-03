@@ -14,7 +14,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
-import vn.id.tozydev.lucidabyss.components.sections.FeaturedProject
+import vn.id.tozydev.lucidabyss.components.widgets.FeaturedProject
 import vn.id.tozydev.lucidabyss.components.sections.Hero
 import vn.id.tozydev.lucidabyss.components.sections.Location
 import vn.id.tozydev.lucidabyss.components.sections.Quote

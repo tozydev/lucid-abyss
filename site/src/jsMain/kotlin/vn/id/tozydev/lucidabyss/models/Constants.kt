@@ -7,6 +7,8 @@ object Constants {
 
     const val KOBWEB_URL = "https://github.com/varabyte/kobweb"
 
+    const val LUCID_ABYSS_GITHUB_URL = "$GITHUB_URL/lucid-abyss"
+
     const val DEFAULT_COVER_IMAGE = "/post-cover.webp"
 
     // https://gravatar.com/tozydev

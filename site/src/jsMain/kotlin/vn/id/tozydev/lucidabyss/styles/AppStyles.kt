@@ -50,9 +50,11 @@ import com.varabyte.kobweb.silk.theme.MutableSilkTheme
 import com.varabyte.kobweb.silk.theme.modifyStyle
 import com.varabyte.kobweb.silk.theme.modifyStyleBase
 import org.jetbrains.compose.web.css.*
+import vn.id.tozydev.lucidabyss.components.widgets.BadgeVars
 import vn.id.tozydev.lucidabyss.components.widgets.IslandVars
 import vn.id.tozydev.lucidabyss.styles.ColorVars.BgCanvas
 import vn.id.tozydev.lucidabyss.styles.ColorVars.BgContainer
+import vn.id.tozydev.lucidabyss.styles.ColorVars.BgHighlight
 import vn.id.tozydev.lucidabyss.styles.ColorVars.BgSurface
 import vn.id.tozydev.lucidabyss.styles.ColorVars.FocusRing
 import vn.id.tozydev.lucidabyss.styles.ColorVars.Outline
@@ -98,13 +100,13 @@ private fun MutableSilkTheme.customizeWidgetStyles() {
             .fillMaxWidth()
     }
     modifyStyle(LinkStyle) {
-        val colorModifier = Modifier.color(ColorVars.Primary.value())
+        val colorModifier = Modifier.color(Primary.value())
         base {
             colorModifier
         }
         hover {
             Modifier
-                .color(rgb(ColorVars.Primary, alpha = 0.8f))
+                .color(rgb(Primary, alpha = 0.8f))
                 .textDecorationLine(TextDecorationLine.Underline)
         }
         link {
@@ -194,6 +196,9 @@ private fun initWidgetColors() {
                     spreadRadius = 0.px,
                     color = Colors.Black.copyf(alpha = .15f),
                 )
+
+            BadgeVars.Color set TextLabel.value()
+            BadgeVars.BackgroundColor set BgHighlight.value()
 
             BorderRadiusVars.XS set 0.25.cssRem
             BorderRadiusVars.SM set 0.5.cssRem

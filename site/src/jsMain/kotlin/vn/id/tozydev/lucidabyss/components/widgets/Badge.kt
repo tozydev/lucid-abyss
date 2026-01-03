@@ -12,6 +12,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.ComponentKind
 import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.style.CssStyleVariant
 import com.varabyte.kobweb.silk.style.addVariantBase
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.style.vars.size.BorderRadiusVars
@@ -52,9 +53,10 @@ val NoneTransformBadgeVariant =
 @Composable
 fun Badge(
     modifier: Modifier = Modifier,
+    variant: CssStyleVariant<BadgeKind>? = null,
     content: @Composable () -> Unit,
 ) {
-    Span(BadgeStyle.toModifier().then(modifier).toAttrs()) {
+    Span(BadgeStyle.toModifier(variant).then(modifier).toAttrs()) {
         content()
     }
 }

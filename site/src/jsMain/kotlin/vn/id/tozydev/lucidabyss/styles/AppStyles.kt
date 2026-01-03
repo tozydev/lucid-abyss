@@ -226,6 +226,7 @@ object AppStyleSheet : StyleSheet() {
                 margin(0.px)
                 padding(0.px)
                 border(0.px, LineStyle.Solid)
+                property("-webkit-tap-highlight-color", Colors.Transparent)
             }
 
             "h1, h2, h3, h4, h5, h6" {

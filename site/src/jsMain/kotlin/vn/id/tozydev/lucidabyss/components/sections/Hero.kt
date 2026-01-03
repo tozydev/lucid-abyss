@@ -71,7 +71,7 @@ val HeroDescriptionStyle =
     CssStyle {
         base {
             Modifier
-                .margin(bottom = 2.cssRem)
+                .margin(bottom = 1.5.cssRem)
         }
 
         Breakpoint.MD {

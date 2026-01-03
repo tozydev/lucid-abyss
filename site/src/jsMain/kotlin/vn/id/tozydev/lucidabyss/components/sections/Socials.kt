@@ -1,7 +1,8 @@
 package vn.id.tozydev.lucidabyss.components.sections
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.TextDecorationLine
+import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -10,17 +11,20 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaEnvelope
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.FaLinkedin
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.widgets.SoftLiftingIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.ColumnIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.IslandStyle
+import vn.id.tozydev.lucidabyss.components.widgets.SoftLiftingIslandVariant
+import vn.id.tozydev.lucidabyss.styles.ColorVars
+import vn.id.tozydev.lucidabyss.styles.TextSmStyle
+import vn.id.tozydev.lucidabyss.styles.TextXlStyle
 
 val SocialsStyle =
     CssStyle {
@@ -63,12 +67,16 @@ fun Socials(modifier: Modifier = Modifier) {
 }
 
 val SocialLinkStyle =
-    CssStyle {
+    CssStyle({ TextXlStyle.toModifier() }) {
         base {
             Modifier
                 .alignItems(AlignItems.Center)
                 .justifyContent(JustifyContent.Center)
-                .textDecorationLine(TextDecorationLine.None)
+                .gap(0.5.cssRem)
+        }
+        hover {
+            Modifier
+                .backgroundImage(linearGradient(ColorVars.StateHover.value(), ColorVars.StateHover.value()))
         }
     }
 
@@ -86,9 +94,9 @@ fun SocialLink(
                 .toModifier(ColumnIslandVariant then SoftLiftingIslandVariant)
                 .then(SocialLinkStyle.toModifier())
                 .then(modifier),
-        variant = UndecoratedLinkVariant.then(UncoloredLinkVariant),
+        variant = UndecoratedLinkVariant,
     ) {
         icon()
-        SpanText(label)
+        SpanText(label, TextSmStyle.toModifier().fontWeight(FontWeight.Medium))
     }
 }

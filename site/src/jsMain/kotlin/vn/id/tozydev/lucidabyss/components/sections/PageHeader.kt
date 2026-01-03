@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TransitionProperty
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
+import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.css.autoLength
 import com.varabyte.kobweb.compose.css.functions.blur
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -22,6 +23,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaHouse
 import com.varabyte.kobweb.silk.components.icons.fa.FaMagnifyingGlass
 import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
+import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
 import com.varabyte.kobweb.silk.components.layout.VerticalDivider
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
@@ -183,7 +185,7 @@ private fun HeaderNav() {
             NavItem(
                 path = "/about",
                 label = "Giới thiệu",
-                icon = { FaUser() },
+                icon = { if (it) FaUser(style = IconStyle.FILLED) else FaUser() },
             )
             NavItem(
                 path = "/blog",
@@ -210,7 +212,7 @@ val NavItemVariant =
                     property(TransitionProperty.All)
                     duration(TransitionDurationVars.Fast.value())
                     timingFunction(TransitionTimingFunction.cubicBezier(0.25, 0.8, 0.25, 1.0))
-                }
+                }.whiteSpace(WhiteSpace.NoWrap)
         }
 
         hover {
@@ -235,6 +237,7 @@ val NavItemVariant =
             Modifier
                 .color(ColorVars.TextInverse.value())
                 .backgroundColor(ColorVars.Primary.value())
+                .fontWeight(FontWeight.SemiBold)
         }
     }
 
@@ -243,7 +246,7 @@ context(ctx: PageContext)
 private fun NavItem(
     path: String,
     label: String,
-    icon: @Composable () -> Unit,
+    icon: @Composable (isActive: Boolean) -> Unit,
 ) {
     val isActive =
         if (path == "/") {
@@ -262,7 +265,7 @@ private fun NavItem(
             },
         variant = UndecoratedLinkVariant then NavItemVariant,
     ) {
-        icon()
+        icon(isActive)
         SpanText(label)
     }
 }

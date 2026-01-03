@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.TransitionProperty
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
@@ -15,6 +16,7 @@ import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.fa.FaHouse
 import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
+import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
@@ -29,7 +31,7 @@ import com.varabyte.kobweb.silk.style.vars.animation.TransitionDurationVars
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.styles.ColorVars
-import vn.id.tozydev.lucidabyss.styles.TextSmStyle
+import vn.id.tozydev.lucidabyss.styles.TextXsStyle
 import vn.id.tozydev.lucidabyss.utils.rgb
 
 fun Modifier.zIndexBottomNav() = this.zIndex(1000)
@@ -43,17 +45,16 @@ val BottomNavigationStyle =
                 .alignItems(AlignItems.Center)
                 .justifyContent(JustifyContent.SpaceBetween)
                 .position(Position.Fixed)
-                .bottom(1.cssRem)
-                .left(1.cssRem)
-                .right(1.cssRem)
-                .maxWidth(24.cssRem)
+                .bottom(0.375.cssRem)
+                .left(0.375.cssRem)
+                .right(0.375.cssRem)
                 .margin(leftRight = autoLength)
                 .zIndexBottomNav()
                 .borderRadius(9999.px)
                 .padding(0.375.cssRem)
                 .border(1.px, LineStyle.Solid, ColorVars.Outline.value())
                 .color(ColorVars.TextBody.value())
-                .backgroundColor(rgb(ColorVars.BgSurface, alpha = 0.9f))
+                .backgroundColor(rgb(ColorVars.BgContainer, alpha = 0.9f))
                 .transition {
                     property(TransitionProperty.All)
                     duration(TransitionDurationVars.Fast.value())
@@ -61,15 +62,8 @@ val BottomNavigationStyle =
                 }.backdropFilter(blur(40.px))
         }
 
-        cssRule(CSSMediaQuery.MediaFeature("max-width", 400.px)) {
-            Modifier
-                .left(0.5.cssRem)
-                .right(0.5.cssRem)
-        }
-
         Breakpoint.MD {
-            Modifier
-                .display(DisplayStyle.None)
+            Modifier.display(DisplayStyle.None)
         }
     }
 
@@ -92,7 +86,7 @@ fun BottomNavigation(modifier: Modifier = Modifier) {
                 path = "/about",
                 label = "Giới thiệu",
             ) {
-                FaUser()
+                if (it) FaUser(style = IconStyle.FILLED) else FaUser()
             }
             NavItem(
                 path = "/blog",
@@ -105,7 +99,7 @@ fun BottomNavigation(modifier: Modifier = Modifier) {
 }
 
 val BottomNavItemLinkVariant =
-    LinkStyle.addVariant({ TextSmStyle.toModifier() }) {
+    LinkStyle.addVariant({ TextXsStyle.toModifier() }) {
         base {
             Modifier
                 .display(DisplayStyle.Flex)
@@ -113,9 +107,10 @@ val BottomNavItemLinkVariant =
                 .alignItems(AlignItems.Center)
                 .justifyContent(JustifyContent.Center)
                 .fillMaxWidth()
-                .padding(leftRight = 0.px, topBottom = 0.5.cssRem)
+                .fontWeight(FontWeight.Medium)
+                .padding(leftRight = 0.px, topBottom = 0.375.cssRem)
                 .textDecorationLine(TextDecorationLine.None)
-                .gap(0.25.cssRem)
+                .gap(0.125.cssRem)
                 .borderRadius(9999.px)
                 .transition {
                     property(TransitionProperty.All)
@@ -140,6 +135,7 @@ val BottomNavItemLinkVariant =
             Modifier
                 .color(ColorVars.TextInverse.value())
                 .backgroundColor(ColorVars.Primary.value())
+                .fontWeight(FontWeight.SemiBold)
         }
     }
 
@@ -148,7 +144,7 @@ context(ctx: PageContext)
 private fun NavItem(
     path: String,
     label: String,
-    icon: @Composable () -> Unit,
+    icon: @Composable (isActive: Boolean) -> Unit,
 ) {
     val isActive =
         if (path == "/") {
@@ -167,7 +163,7 @@ private fun NavItem(
             },
         variant = UndecoratedLinkVariant.then(UncoloredLinkVariant).then(BottomNavItemLinkVariant),
     ) {
-        icon()
+        icon(isActive)
         Text(label)
     }
 }

@@ -136,7 +136,7 @@ private fun HeroActions() {
     val ctx = rememberPageContext()
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(1.cssRem),
+        horizontalArrangement = Arrangement.spacedBy(0.75.cssRem),
     ) {
         Button(
             modifier = Modifier.fontSize(1.cssRem),
@@ -169,6 +169,7 @@ val HeroAvatarStyle =
                     duration(TransitionDurationVars.Fast.value())
                     timingFunction(TransitionTimingFunction.cubicBezier(0.25, 0.8, 0.25, 1.0))
                 }.border(2.px, LineStyle.Solid, ColorVars.OutlineVariant.value())
+                .margin(bottom = 1.cssRem)
         }
         hover {
             Modifier

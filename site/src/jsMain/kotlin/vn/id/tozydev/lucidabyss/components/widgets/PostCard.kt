@@ -2,26 +2,31 @@ package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.Cursor
+import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.dom.GenericTag
+import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.graphics.ImageDecoding
 import com.varabyte.kobweb.silk.components.graphics.ImageLoading
+import com.varabyte.kobweb.silk.components.icons.fa.FaCalendar
+import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.ComponentKind
 import com.varabyte.kobweb.silk.style.CssLayer
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.CssStyleVariant
 import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.extendedBy
 import com.varabyte.kobweb.silk.style.selectors.hover
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
@@ -29,7 +34,10 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.models.Post
 import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
-import vn.id.tozydev.lucidabyss.styles.Text2XlStyle
+import vn.id.tozydev.lucidabyss.styles.ColorVars
+import vn.id.tozydev.lucidabyss.styles.TextSmStyle
+import vn.id.tozydev.lucidabyss.styles.TextXlStyle
+import vn.id.tozydev.lucidabyss.styles.TextXsStyle
 import vn.id.tozydev.lucidabyss.utils.formatDate
 
 sealed interface PostCardKind : ComponentKind
@@ -37,7 +45,11 @@ sealed interface PostCardKind : ComponentKind
 val PostCardStyle =
     CssStyle<PostCardKind>(
         {
-            IslandStyle.toModifier(ColumnIslandVariant then NoPaddingIslandVariant)
+            IslandStyle.toModifier(
+                ColumnIslandVariant,
+                NoPaddingIslandVariant,
+                SoftLiftingIslandVariant,
+            )
         },
     ) {
         base {
@@ -47,6 +59,13 @@ val PostCardStyle =
             Modifier
                 .pointerEvents(PointerEvents.Auto)
                 .cursor(Cursor.Pointer)
+        }
+    }
+
+val PostCardLinkVariant =
+    UndecoratedLinkVariant.extendedBy {
+        base {
+            Modifier.color(ColorVars.TextBody.value())
         }
     }
 
@@ -66,14 +85,10 @@ fun PostCard(
     modifier: Modifier = Modifier,
     variant: CssStyleVariant<PostCardKind>? = null,
 ) {
-    val pageCtx = rememberPageContext()
-    Div(
-        PostCardStyle
-            .toModifier(variant)
-            .onClick {
-                pageCtx.router.navigateTo(post.route)
-            }.then(modifier)
-            .toAttrs(),
+    Link(
+        path = post.route,
+        modifier = PostCardStyle.toModifier(variant).then(modifier),
+        variant = PostCardLinkVariant,
     ) {
         Div(PostCardCoverContainerStyle.toAttrs()) {
             Image(
@@ -100,55 +115,39 @@ fun PostCard(
         ) {
             Row(
                 modifier =
-                    Modifier
+                    TextSmStyle
+                        .toModifier()
+                        .color(ColorVars.TextLabel.value())
                         .fillMaxWidth()
-                        .gap(0.25.cssRem)
                         .margin(bottom = 0.5.cssRem),
                 verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(0.5.cssRem),
             ) {
-                TopicBadge("Test")
+                Badge(TextXsStyle.toModifier(), variant = NoneTransformBadgeVariant) {
+                    Text(post.topic)
+                }
                 SpanText("•")
                 GenericTag("time", attrsStr = "datetime=\"${post.publishedAt}\"") {
-                    Text(post.publishedAt.formatDate())
+                    FaCalendar()
+                    Text(" ${post.publishedAt.formatDate()}")
                 }
             }
             H3(
-                Text2XlStyle
+                TextXlStyle
                     .toModifier()
-                    .margin(0.px)
+                    .fontWeight(FontWeight.SemiBold)
+                    .color(ColorVars.TextHeading.value())
                     .toAttrs(),
             ) {
                 Text(post.title)
             }
-            P(Modifier.margin(0.px).flex(1).toAttrs()) {
+            P(Modifier.flex(1).toAttrs()) {
                 Text(post.description)
             }
 
-            Div {
-                Text("Read more ")
+            Div(TextSmStyle.toModifier().color(ColorVars.TextLabel.value()).toAttrs()) {
+                Text("Đọc thêm")
             }
         }
-    }
-}
-
-val TopicBadgeStyle =
-    CssStyle {
-        base {
-            Modifier
-                .backgroundColor(Color.lightgray)
-                .color(Color.white)
-                .padding(0.25.cssRem, 0.5.cssRem)
-                .borderRadius(0.5.cssRem)
-                .fontSize(0.75.cssRem)
-        }
-    }
-
-@Composable
-private fun TopicBadge(
-    label: String,
-    modifier: Modifier = Modifier,
-) {
-    Span(TopicBadgeStyle.toModifier().then(modifier).toAttrs()) {
-        Text(label)
     }
 }

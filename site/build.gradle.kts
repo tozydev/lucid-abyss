@@ -120,6 +120,12 @@ kobweb {
                 """.trimIndent(),
             )
         }
+        val silkComponents = "com.varabyte.kobweb.silk.components"
+        handlers {
+            a = { link ->
+                "$silkComponents.navigation.Link(\"${link.destination}\", variant = $silkComponents.navigation.AlwaysUnderlinedLinkVariant)"
+            }
+        }
     }
 }
 

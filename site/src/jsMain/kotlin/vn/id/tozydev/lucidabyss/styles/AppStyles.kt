@@ -63,6 +63,7 @@ import vn.id.tozydev.lucidabyss.styles.ColorVars.Primary
 import vn.id.tozydev.lucidabyss.styles.ColorVars.StateHover
 import vn.id.tozydev.lucidabyss.styles.ColorVars.StatePressed
 import vn.id.tozydev.lucidabyss.styles.ColorVars.TextBody
+import vn.id.tozydev.lucidabyss.styles.ColorVars.TextHeading
 import vn.id.tozydev.lucidabyss.styles.ColorVars.TextLabel
 import vn.id.tozydev.lucidabyss.utils.rgb
 import vn.id.tozydev.lucidabyss.utils.set
@@ -213,6 +214,15 @@ private fun initWidgetColors() {
             ButtonVars.ColorTransitionDuration set TransitionDurationVars.Fast.value()
 
             DividerVars.Color set OutlineVariant.value()
+
+            ProseVars.ColorBodyVar set TextBody.value()
+            ProseVars.ColorHeadingsVar set TextHeading.value()
+            ProseVars.ColorCodeVar set TextHeading.value()
+            ProseVars.ColorPreCodeVar set TextBody.value()
+            ProseVars.ColorPreBgVar set BgContainer.value()
+            ProseVars.ColorBVar set TextBody.value()
+            ProseVars.ColorQuotesVar set TextBody.value()
+            ProseVars.ColorQuotesBordersVar set OutlineVariant.value()
         }
     }
 }

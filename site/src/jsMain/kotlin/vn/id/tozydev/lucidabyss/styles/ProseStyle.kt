@@ -8,7 +8,6 @@ import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.LineHeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.StyleVariable
-import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
@@ -22,7 +21,8 @@ import org.jetbrains.compose.web.css.*
 object ProseVars {
     val ColorBodyVar by StyleVariable<CSSColorValue>(Color.rgb(0x364153))
     val ColorHeadingsVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
-    val ColorLinkVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
+
+    // val ColorLinkVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
     val ColorCodeVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
     val ColorPreCodeVar by StyleVariable<CSSColorValue>(Color.rgb(0xe5e7eb))
     val ColorPreBgVar by StyleVariable<CSSColorValue>(Color.rgb(0x1e2939))
@@ -161,12 +161,12 @@ val ProseStyle =
 
         // Links
 
-        cssRule(" a") {
+        /* cssRule(" a") {
             Modifier
                 .color(ProseVars.ColorLinkVar.value())
                 .fontWeight(FontWeight.Medium)
                 .textDecorationLine(TextDecorationLine.Underline)
-        }
+        } */
         val inheritColorModifier =
             Modifier
                 .color("inherit".unsafeCast<CSSColor>())

@@ -5,7 +5,7 @@ object Constants {
     const val EMAIL = "me@tozydev.id.vn"
     const val EMAIL_URL = "mailto:$EMAIL"
     const val LINKEDIN_URL = "https://www.linkedin.com/in/tozydev/"
-    const val DISCORD_URL = "https://discord.gg/25TsGqsrmw"
+    const val BLUESKY_URL = "https://bsky.app/profile/tozydev.id.vn"
 
     const val RSS_URL = "/rss.xml"
 

@@ -6,7 +6,7 @@ import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.icons.fa.FaDiscord
+import com.varabyte.kobweb.silk.components.icons.fa.FaBluesky
 import com.varabyte.kobweb.silk.components.icons.fa.FaEnvelope
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.FaLinkedin
@@ -55,9 +55,9 @@ fun Socials(modifier: Modifier = Modifier) {
             label = "LinkedIn",
         )
         SocialLink(
-            path = Constants.DISCORD_URL,
-            icon = { FaDiscord() },
-            label = "Discord",
+            path = Constants.BLUESKY_URL,
+            icon = { FaBluesky() },
+            label = "Bluesky",
         )
         SocialLink(
             path = Constants.EMAIL_URL,

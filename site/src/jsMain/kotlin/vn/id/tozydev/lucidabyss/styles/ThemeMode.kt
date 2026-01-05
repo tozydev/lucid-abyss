@@ -72,14 +72,14 @@ fun initThemeMode(ctx: InitSilkContext) {
             textContent =
                 """
                 const themeMode = localStorage.getItem("${storageKey.name}")
-                const colorClass = themeMode === ${ThemeMode.Light.name}
-                    ? ${ColorMode.LIGHT.cssClass}
-                    : (themeMode === ${ThemeMode.Dark.name}
-                        ? ${ColorMode.DARK.cssClass}
-                        : ${ColorMode.systemPreference.cssClass})
-                const oppositeColorClass = colorClass === ${ColorMode.LIGHT.cssClass}
-                    ? ${ColorMode.DARK.cssClass}
-                    : ${ColorMode.LIGHT.cssClass}
+                const colorClass = themeMode === "${ThemeMode.Light.name}"
+                    ? "${ColorMode.LIGHT.cssClass}"
+                    : (themeMode === "${ThemeMode.Dark.name}"
+                        ? "${ColorMode.DARK.cssClass}"
+                        : "${ColorMode.systemPreference.cssClass}")
+                const oppositeColorClass = colorClass === "${ColorMode.LIGHT.cssClass}"
+                    ? "${ColorMode.DARK.cssClass}"
+                    : "${ColorMode.LIGHT.cssClass}"
                 document.documentElement.classList.replace(oppositeColorClass, colorClass)
                 """.trimIndent()
         },

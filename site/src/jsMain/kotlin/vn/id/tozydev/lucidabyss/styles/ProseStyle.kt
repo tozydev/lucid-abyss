@@ -20,15 +20,15 @@ import com.varabyte.kobweb.silk.style.cssRule
 import org.jetbrains.compose.web.css.*
 
 object ProseVars {
-    val ColorBodyVar by StyleVariable<Color>(Color.rgb(0x364153))
-    val ColorHeadingsVar by StyleVariable<Color>(Color.rgb(0x101828))
-    val ColorLinkVar by StyleVariable<Color>(Color.rgb(0x101828))
-    val ColorCodeVar by StyleVariable<Color>(Color.rgb(0x101828))
-    val ColorPreCodeVar by StyleVariable<Color>(Color.rgb(0xe5e7eb))
-    val ColorPreBgVar by StyleVariable<Color>(Color.rgb(0x1e2939))
-    val ColorBVar by StyleVariable<Color>(Color.rgb(0x101828))
-    val ColorQuotesVar by StyleVariable<Color>(Color.rgb(0x101828))
-    val ColorQuotesBordersVar by StyleVariable<Color>(Color.rgb(0xe5e7eb))
+    val ColorBodyVar by StyleVariable<CSSColorValue>(Color.rgb(0x364153))
+    val ColorHeadingsVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
+    val ColorLinkVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
+    val ColorCodeVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
+    val ColorPreCodeVar by StyleVariable<CSSColorValue>(Color.rgb(0xe5e7eb))
+    val ColorPreBgVar by StyleVariable<CSSColorValue>(Color.rgb(0x1e2939))
+    val ColorBVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
+    val ColorQuotesVar by StyleVariable<CSSColorValue>(Color.rgb(0x101828))
+    val ColorQuotesBordersVar by StyleVariable<CSSColorValue>(Color.rgb(0xe5e7eb))
 }
 
 /** Prose style for the website. Inspired by https://github.com/tailwindlabs/tailwindcss-typography */

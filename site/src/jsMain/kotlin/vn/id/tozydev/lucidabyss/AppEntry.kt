@@ -9,7 +9,6 @@ import com.varabyte.kobweb.silk.style.common.SmoothColorStyle
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.css.*
-import vn.id.tozydev.lucidabyss.styles.AppStyleSheet
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
 import vn.id.tozydev.lucidabyss.styles.saveToLocalStorage
 
@@ -17,7 +16,6 @@ import vn.id.tozydev.lucidabyss.styles.saveToLocalStorage
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
-    Style(AppStyleSheet)
     SilkApp {
         val themeMode by ThemeMode.currentState
         var colorMode by ColorMode.currentState

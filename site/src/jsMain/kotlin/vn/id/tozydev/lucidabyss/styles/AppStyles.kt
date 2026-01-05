@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.styles
 
 import com.varabyte.kobweb.compose.css.BoxShadow
+import com.varabyte.kobweb.compose.css.BoxSizing
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontSize
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -13,11 +14,7 @@ import com.varabyte.kobweb.compose.css.UserSelect
 import com.varabyte.kobweb.compose.css.VerticalAlign
 import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.css.autoLength
-import com.varabyte.kobweb.compose.css.fontSize
-import com.varabyte.kobweb.compose.css.fontWeight
 import com.varabyte.kobweb.compose.css.functions.linearGradient
-import com.varabyte.kobweb.compose.css.layer
-import com.varabyte.kobweb.compose.css.verticalAlign
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -30,6 +27,7 @@ import com.varabyte.kobweb.silk.components.navigation.LinkStyle
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.SilkStylesheet
+import com.varabyte.kobweb.silk.init.layer
 import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.layer.SilkLayer
 import com.varabyte.kobweb.silk.style.selectors.active
@@ -85,13 +83,71 @@ private fun SilkStylesheet.customizeGlobalStyles() {
     }
     registerStyleBase("body") {
         Modifier
-            .fontFamily("Inter", "sans-serif")
-            .fontSize(16.px)
+            .fontFamily(
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "Segoe UI",
+                "Roboto",
+                "Oxygen",
+                "Ubuntu",
+                "Cantarell",
+                "Fira Sans",
+                "Droid Sans",
+                "Helvetica Neue",
+                "sans-serif",
+            ).fontSize(16.px)
             .lineHeight(1.5.cssRem)
             .overflowWrap(OverflowWrap.BreakWord)
             .styleModifier {
                 property("-webkit-font-smoothing", "antialiased")
             }
+    }
+
+    registerStyleBase("code, pre") {
+        Modifier.fontFamily(
+            "SFMono-Regular",
+            "Menlo",
+            "Monaco",
+            "Consolas",
+            "Courier New",
+            "monospace",
+        )
+    }
+
+    // CSS Rules taken from https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/preflight.css
+    layer(SilkLayer.BASE) {
+        registerStyleBase("*, ::before, ::after") {
+            Modifier
+                .boxSizing(BoxSizing.BorderBox)
+                .margin(0.px)
+                .padding(0.px)
+                .border(0.px, LineStyle.Solid)
+                .styleModifier {
+                    property("-webkit-tap-highlight-color", Colors.Transparent)
+                }
+        }
+        registerStyleBase("h1, h2, h3, h4, h5, h6") {
+            Modifier
+                .fontSize(FontSize.Inherit)
+                .fontWeight(FontWeight.Inherit)
+        }
+
+        registerStyleBase("img, svg, video, canvas, audio, iframe, embed, object") {
+            Modifier
+                .display(DisplayStyle.Block)
+                .verticalAlign(VerticalAlign.Middle)
+        }
+
+        registerStyleBase("img, video") {
+            Modifier
+                .maxWidth(100.percent)
+                .height(autoLength)
+        }
+
+        registerStyleBase("[hidden]:where(:not([hidden='until-found']))") {
+            Modifier
+                .display(DisplayStyle.None)
+        }
     }
 }
 
@@ -223,38 +279,6 @@ private fun initWidgetColors() {
             ProseVars.ColorBVar set TextBody.value()
             ProseVars.ColorQuotesVar set TextBody.value()
             ProseVars.ColorQuotesBordersVar set OutlineVariant.value()
-        }
-    }
-}
-
-object AppStyleSheet : StyleSheet() {
-    init {
-        // CSS Rules taken from https://github.com/tailwindlabs/tailwindcss/blob/main/packages/tailwindcss/preflight.css
-        layer(SilkLayer.BASE.layerName) {
-            "*, ::before, ::after" {
-                boxSizing("border-box")
-                margin(0.px)
-                padding(0.px)
-                border(0.px, LineStyle.Solid)
-                property("-webkit-tap-highlight-color", Colors.Transparent)
-            }
-
-            "h1, h2, h3, h4, h5, h6" {
-                fontSize(FontSize.Inherit)
-                fontWeight(FontWeight.Inherit)
-            }
-
-            "img, svg, video, canvas, audio, iframe, embed, object" {
-                display(DisplayStyle.Block)
-                verticalAlign(VerticalAlign.Middle)
-            }
-
-            "img, video" {
-                maxWidth(100.percent)
-                height(autoLength)
-            }
-
-            "[hidden]:where(:not([hidden='until-found']))" { display(DisplayStyle.None) }
         }
     }
 }

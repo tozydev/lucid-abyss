@@ -1,21 +1,27 @@
 package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.TextDecorationLine
+import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.TextTransform
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.components.navigation.LinkStyle
-import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.addVariant
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
+import com.varabyte.kobweb.silk.style.cssRule
+import com.varabyte.kobweb.silk.style.extendedBy
+import com.varabyte.kobweb.silk.style.selectors.children
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.models.Post
+import vn.id.tozydev.lucidabyss.models.nextPost
+import vn.id.tozydev.lucidabyss.models.previousPost
+import vn.id.tozydev.lucidabyss.styles.ColorVars
+import vn.id.tozydev.lucidabyss.styles.TextXsModifier
 
 val NextPrevPostsStyle =
     CssStyle {
@@ -28,38 +34,67 @@ val NextPrevPostsStyle =
         Breakpoint.MD {
             Modifier
                 .gridTemplateColumns { repeat(2) { minmax(0.px, 1.fr) } }
+                .gridTemplateAreas("prev next")
         }
     }
 
 val NextPrevPostLinkVariant =
-    LinkStyle.addVariant({ IslandStyle.toModifier(ColumnIslandVariant) }) {
+    UndecoratedLinkVariant.extendedBy({ IslandStyle.toModifier(ColumnIslandVariant, SoftLiftingIslandVariant) }) {
         base {
-            Modifier
-                .textDecorationLine(TextDecorationLine.None)
-                .padding(1.5.cssRem)
+            Modifier.padding(1.5.cssRem)
+        }
+
+        children("span") {
+            TextXsModifier
+                .fontWeight(FontWeight.Medium)
+                .color(ColorVars.TextLabel.value())
+                .textTransform(TextTransform.Uppercase)
+                .margin(bottom = 0.25.cssRem)
+                .letterSpacing(0.05.cssRem)
+        }
+
+        children("h4") {
+            Modifier.fontWeight(FontWeight.SemiBold).color(ColorVars.TextHeading.value())
+        }
+
+        cssRule(Breakpoint.MD, ".prev") {
+            Modifier.gridArea("prev")
+        }
+        cssRule(Breakpoint.MD, ".next") {
+            Modifier.gridArea("next")
         }
     }
 
 @Composable
-fun NextPrevPosts(modifier: Modifier = Modifier) {
+fun NextPrevPosts(
+    post: Post,
+    modifier: Modifier = Modifier,
+) {
+    val previousPost = post.previousPost
+    val nextPost = post.nextPost
     Div(NextPrevPostsStyle.toModifier().then(modifier).toAttrs()) {
-        Link(
-            path = "",
-            variant = UndecoratedLinkVariant.then(UncoloredLinkVariant).then(NextPrevPostLinkVariant),
-        ) {
-            SpanText("Bài trước")
-            H4 {
-                Text("Tiêu đề bài viết trước")
+        if (previousPost != null) {
+            Link(
+                path = previousPost.route,
+                modifier = Modifier.classNames("prev"),
+                variant = NextPrevPostLinkVariant,
+            ) {
+                SpanText("Bài trước")
+                H4 {
+                    Text(previousPost.title)
+                }
             }
         }
-        Link(
-            path = "",
-            modifier = Modifier.alignItems(AlignItems.FlexEnd),
-            variant = UndecoratedLinkVariant.then(UncoloredLinkVariant).then(NextPrevPostLinkVariant),
-        ) {
-            SpanText("Bài sau")
-            H4 {
-                Text("Tiêu đề bài viết sau")
+        if (nextPost != null) {
+            Link(
+                path = nextPost.route,
+                modifier = Modifier.alignItems(AlignItems.FlexEnd).classNames("next"),
+                variant = NextPrevPostLinkVariant,
+            ) {
+                SpanText("Bài sau")
+                H4 {
+                    Text(nextPost.title)
+                }
             }
         }
     }

@@ -68,7 +68,7 @@ fun PostLayout(
         PostHeader(post, Modifier.fillMaxWidth())
 
         context(ctx) {
-            PostContent(content)
+            PostContent(post, content)
         }
     }
 }
@@ -115,7 +115,10 @@ val BlogArticleStyle =
 
 @Composable
 context(ctx: PageContext)
-private fun PostContent(content: @Composable (() -> Unit)) {
+private fun PostContent(
+    post: Post,
+    content: @Composable (() -> Unit),
+) {
     Div(PostLayoutContentStyle.toAttrs()) {
         var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
         Aside(PostLayoutTocStyle.toAttrs()) {
@@ -176,7 +179,7 @@ private fun PostContent(content: @Composable (() -> Unit)) {
                 content()
             }
 
-            NextPrevPosts(Modifier.margin(top = 2.cssRem))
+            NextPrevPosts(post, Modifier.margin(top = 2.cssRem))
 
             Discussion(Modifier.margin(top = 2.cssRem))
         }

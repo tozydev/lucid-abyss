@@ -132,6 +132,16 @@ kobweb {
 kotlin {
     configAsKobwebApplication("lucid-abyss")
 
+    js {
+        browser {
+            commonWebpackConfig {
+                cssSupport {
+                    enabled = true
+                }
+            }
+        }
+    }
+
     compilerOptions {
         optIn.addAll(
             "kotlin.time.ExperimentalTime",
@@ -150,6 +160,13 @@ kotlin {
             implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
             implementation(libs.kotlinx.datetime)
+
+            // todo version catalog?
+            implementation(devNpm("tailwindcss", "4.1.18"))
+            implementation(devNpm("@tailwindcss/postcss", "4.1.18"))
+            implementation(devNpm("@tailwindcss/typography", "0.5.19"))
+            implementation(devNpm("postcss", "8.5.6"))
+            implementation(devNpm("postcss-loader", "8.2.0"))
         }
     }
 }

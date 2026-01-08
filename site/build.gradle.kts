@@ -162,6 +162,7 @@ kotlin {
             implementation(libs.kotlinx.datetime)
 
             // todo version catalog?
+            implementation(devNpm("daisyui", "5.5.14"))
             implementation(devNpm("tailwindcss", "4.1.18"))
             implementation(devNpm("@tailwindcss/postcss", "4.1.18"))
             implementation(devNpm("@tailwindcss/typography", "0.5.19"))

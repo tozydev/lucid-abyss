@@ -30,6 +30,7 @@ import com.varabyte.kobweb.silk.init.SilkStylesheet
 import com.varabyte.kobweb.silk.init.layer
 import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.layer.SilkLayer
+import com.varabyte.kobweb.silk.style.layer.add
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.ariaDisabled
 import com.varabyte.kobweb.silk.style.selectors.focusVisible
@@ -66,13 +67,24 @@ import vn.id.tozydev.lucidabyss.styles.ColorVars.TextLabel
 import vn.id.tozydev.lucidabyss.utils.rgb
 import vn.id.tozydev.lucidabyss.utils.set
 
+private const val STYLES_FILE = "./styles.css"
+
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
+    ctx.stylesheet.initTailwindCss()
+
     ctx.theme.customizeWidgetStyles()
     ctx.stylesheet.customizeGlobalStyles()
     context(ctx) {
         initWidgetColors()
     }
+}
+
+private fun SilkStylesheet.initTailwindCss() {
+    js("""require("$STYLES_FILE")""")
+    cssLayers.add("properties", "theme", after = SilkLayer.RESET)
+    cssLayers.add("components", after = SilkLayer.BASE)
+    cssLayers.add("utilities")
 }
 
 private fun SilkStylesheet.customizeGlobalStyles() {

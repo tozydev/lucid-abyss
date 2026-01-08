@@ -7,8 +7,6 @@ import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.registerStyleBase
-import com.varabyte.kobweb.silk.style.layer.SilkLayer
-import com.varabyte.kobweb.silk.style.layer.add
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.cssClass
 import org.jetbrains.compose.web.css.*
@@ -59,7 +57,6 @@ const val THEME_LAYER = "theme"
 @InitSilk
 fun initThemeColors(ctx: InitSilkContext) {
     ctx.stylesheet.apply {
-        cssLayers.add(THEME_LAYER, after = SilkLayer.RESTRICTED_STYLES)
         layer(THEME_LAYER) {
             registerStyleBase(":root") {
                 Modifier.styleModifier { initLightModeColors() }

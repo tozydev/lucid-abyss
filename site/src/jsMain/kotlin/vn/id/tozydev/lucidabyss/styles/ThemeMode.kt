@@ -9,7 +9,6 @@ import com.varabyte.kobweb.core.isExporting
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.cssClass
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -23,6 +22,14 @@ enum class ThemeMode {
     Dark,
     System,
     ;
+
+    /** Returns Light or Dark, depending on the current system preference */
+    val actualMode: ThemeMode
+        get() =
+            when (this) {
+                Light, Dark -> this
+                System -> if (window.matchMedia("(prefers-color-scheme: dark)").matches) Dark else Light
+            }
 
     val colorMode: ColorMode
         get() =
@@ -42,16 +49,10 @@ enum class ThemeMode {
 
     companion object {
         val currentState: MutableState<ThemeMode> @Composable get() = LocalThemeMode.current
-
-        val current: ThemeMode
-            @Composable @ReadOnlyComposable
-            get() = LocalThemeMode.current.value
     }
 }
 
-private val storageKey =
-    ThemeMode.entries
-        .createStorageKey("lucid-abyss:themeMode")
+private val storageKey = ThemeMode.entries.createStorageKey("lucid-abyss:themeMode")
 
 fun ThemeMode.Companion.loadFromLocalStorage(): ThemeMode = window.localStorage.getItem(storageKey) ?: System
 
@@ -69,18 +70,17 @@ fun initThemeMode(ctx: InitSilkContext) {
     // Prevent flickering on the initial load because the main script is executed after HTML is rendered
     document.head?.appendChild(
         document.createElement("script").apply {
+            // language="JavaScript"
             textContent =
                 """
                 const themeMode = localStorage.getItem("${storageKey.name}")
-                const colorClass = themeMode === "${ThemeMode.Light.name}"
-                    ? "${ColorMode.LIGHT.cssClass}"
-                    : (themeMode === "${ThemeMode.Dark.name}"
-                        ? "${ColorMode.DARK.cssClass}"
-                        : "${ColorMode.systemPreference.cssClass}")
-                const oppositeColorClass = colorClass === "${ColorMode.LIGHT.cssClass}"
-                    ? "${ColorMode.DARK.cssClass}"
-                    : "${ColorMode.LIGHT.cssClass}"
-                document.documentElement.classList.replace(oppositeColorClass, colorClass)
+                let actualTheme = themeMode.toLowerCase()
+                if (actualTheme !== "light" || actualTheme !== "dark") {
+                    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+                    actualTheme = prefersDark ? "dark" : "light"
+                }
+
+                document.documentElement.setAttribute("data-theme", actualTheme)
                 """.trimIndent()
         },
     )

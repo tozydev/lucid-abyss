@@ -18,3 +18,7 @@ kotlin-js-store/
 ### Kobweb
 */.kobweb/*
 !*/.kobweb/conf.yaml
+
+### Node.js
+node_modules/
+dist/

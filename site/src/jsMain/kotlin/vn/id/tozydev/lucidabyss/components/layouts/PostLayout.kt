@@ -19,7 +19,6 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaList
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.extendedBy
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobwebx.markdown.markdown
@@ -38,8 +37,8 @@ import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
 import vn.id.tozydev.lucidabyss.components.widgets.getHeadingHierarchy
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 import vn.id.tozydev.lucidabyss.models.Post
-import vn.id.tozydev.lucidabyss.styles.ProseStyle
 import vn.id.tozydev.lucidabyss.styles.TextSmStyle
+import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
 fun initPostLayout(ctx: InitRouteContext) {
@@ -107,7 +106,7 @@ val ArticleContainerStyle =
     }
 
 val BlogArticleStyle =
-    ProseStyle.extendedBy({ IslandStyle.toModifier() }) {
+    CssStyle({ IslandStyle.toModifier() }) {
         base {
             Modifier.padding(3.cssRem)
         }
@@ -169,12 +168,15 @@ private fun PostContent(
         }
         Div(ArticleContainerStyle.toAttrs()) {
             Article(
-                BlogArticleStyle.toAttrs {
-                    ref {
-                        contentRef = it
-                        onDispose { }
-                    }
-                },
+                BlogArticleStyle
+                    .toModifier()
+                    .tw("prose dark:prose-invert lg:prose-xl max-w-none")
+                    .toAttrs {
+                        ref {
+                            contentRef = it
+                            onDispose { }
+                        }
+                    },
             ) {
                 content()
             }

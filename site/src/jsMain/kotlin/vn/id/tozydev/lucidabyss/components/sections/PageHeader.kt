@@ -2,12 +2,13 @@ package vn.id.tozydev.lucidabyss.components.sections
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.css.TransitionProperty
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.css.autoLength
 import com.varabyte.kobweb.compose.css.functions.blur
+import com.varabyte.kobweb.compose.dom.svg.Path
+import com.varabyte.kobweb.compose.dom.svg.Svg
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -18,6 +19,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.navigation.Anchor
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.icons.fa.FaHouse
 import com.varabyte.kobweb.silk.components.icons.fa.FaMagnifyingGlass
@@ -27,7 +29,6 @@ import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
 import com.varabyte.kobweb.silk.components.layout.VerticalDivider
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.navigation.LinkStyle
-import com.varabyte.kobweb.silk.components.navigation.UncoloredLinkVariant
 import com.varabyte.kobweb.silk.components.navigation.UndecoratedLinkVariant
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -37,7 +38,6 @@ import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.selectors.active
 import com.varabyte.kobweb.silk.style.selectors.focusVisible
 import com.varabyte.kobweb.silk.style.selectors.hover
-import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.style.vars.animation.TransitionDurationVars
 import kotlinx.browser.window
@@ -48,6 +48,7 @@ import vn.id.tozydev.lucidabyss.styles.ColorVars
 import vn.id.tozydev.lucidabyss.styles.IconButtonVariant
 import vn.id.tozydev.lucidabyss.styles.TextSmStyle
 import vn.id.tozydev.lucidabyss.utils.rgb
+import vn.id.tozydev.lucidabyss.utils.tw
 
 fun Modifier.zIndexHeader() = this.zIndex(1000)
 
@@ -105,8 +106,17 @@ val PageHeaderContainerStyle =
 
 @Composable
 fun PageHeader(modifier: Modifier = Modifier) {
-    Header(PageHeaderStyle.toModifier().then(modifier).toAttrs()) {
-        Div(PageHeaderContainerStyle.toAttrs()) {
+    Header(
+        Modifier
+            .tw(
+                "fixed top-0 left-0 right-0 md:left-1/2 md:right-auto",
+                "px-4 py-6 md:w-auto",
+                "transition-transform duration-300 md:-translate-x-1/2",
+            ).zIndexHeader()
+            .then(modifier)
+            .toAttrs(),
+    ) {
+        Div(PageHeaderContainerStyle.toModifier().tw("nav").toAttrs()) {
             HeaderLogo()
             HeaderNav()
             VerticalDivider(Modifier.height(1.5.cssRem).displayIfAtLeast(Breakpoint.MD))
@@ -117,26 +127,26 @@ fun PageHeader(modifier: Modifier = Modifier) {
 
 @Composable
 private fun HeaderLogo() {
-    Link(
-        "/",
-        modifier = Modifier.margin(right = 1.cssRem),
-        variant = UndecoratedLinkVariant then UncoloredLinkVariant,
+    Anchor(
+        href = "/",
+        attrs = Modifier.tw("mr-4").toAttrs(),
     ) {
-        SpanText(
-            "T",
-            modifier =
-                Modifier
-                    .fontSize(1.5.cssRem)
-                    .fontWeight(FontWeight.Bold)
-                    .textAlign(TextAlign.Center)
-                    .color(ColorVars.Primary.value())
-                    .size(2.5.cssRem)
-                    .borderRadius(50.percent)
-                    .border(2.px, LineStyle.Solid, ColorVars.Primary.value())
-                    .padding(0.25.cssRem)
-                    .margin(right = 0.5.cssRem),
-        ) // todo: use actual logo
-        SpanText("tozydev", modifier = TextSmStyle.toModifier().fontWeight(FontWeight.SemiBold))
+        Svg(
+            Modifier
+                .attr("viewBox", "0 0 576 512")
+                .tw("inline size-6 mr-1")
+                .toAttrs(),
+        ) {
+            // Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.
+            Path {
+                d(
+                    "M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 150.6 182.6c12.5-12.5 12.5-32.8 0-45.3z",
+                )
+            }
+        }
+        Span(Modifier.tw("text-sm font-bold").toAttrs()) {
+            Text("tozydev")
+        }
     }
 }
 

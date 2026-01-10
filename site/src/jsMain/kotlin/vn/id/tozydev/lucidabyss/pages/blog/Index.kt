@@ -54,14 +54,14 @@ fun initBlogPage(ctx: InitRouteContext) {
 @Layout(".components.layouts.PageLayout")
 @Composable
 fun BlogPage() {
-    Div {
+    /* Div {
         BlogHeader(Modifier.margin(bottom = 2.cssRem))
         Div(BlogListStyle.toModifier().toAttrs()) {
             filePathToPost.values.forEach {
                 PostCard(it)
             }
         }
-    }
+    } */
 }
 
 @Composable

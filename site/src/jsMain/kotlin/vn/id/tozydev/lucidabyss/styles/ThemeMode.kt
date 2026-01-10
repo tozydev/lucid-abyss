@@ -5,11 +5,8 @@ import com.varabyte.kobweb.browser.storage.createStorageKey
 import com.varabyte.kobweb.browser.storage.getItem
 import com.varabyte.kobweb.browser.storage.setItem
 import com.varabyte.kobweb.core.AppGlobals
+import com.varabyte.kobweb.core.init.InitKobweb
 import com.varabyte.kobweb.core.isExporting
-import com.varabyte.kobweb.silk.init.InitSilk
-import com.varabyte.kobweb.silk.init.InitSilkContext
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.systemPreference
 import kotlinx.browser.document
 import kotlinx.browser.window
 import vn.id.tozydev.lucidabyss.styles.ThemeMode.System
@@ -29,14 +26,6 @@ enum class ThemeMode {
             when (this) {
                 Light, Dark -> this
                 System -> if (window.matchMedia("(prefers-color-scheme: dark)").matches) Dark else Light
-            }
-
-    val colorMode: ColorMode
-        get() =
-            when (this) {
-                Light -> ColorMode.LIGHT
-                Dark -> ColorMode.DARK
-                System -> ColorMode.systemPreference
             }
 
     val cycle: ThemeMode
@@ -60,9 +49,8 @@ fun ThemeMode.saveToLocalStorage() {
     window.localStorage.setItem(storageKey, this)
 }
 
-@InitSilk
-fun initThemeMode(ctx: InitSilkContext) {
-    ctx.config.initialColorMode = ThemeMode.loadFromLocalStorage().colorMode
+@InitKobweb
+fun initThemeMode() {
     if (!AppGlobals.isExporting) {
         return
     }

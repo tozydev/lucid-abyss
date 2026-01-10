@@ -14,12 +14,12 @@ import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
-import vn.id.tozydev.lucidabyss.components.widgets.FeaturedProject
 import vn.id.tozydev.lucidabyss.components.sections.Hero
 import vn.id.tozydev.lucidabyss.components.sections.Location
 import vn.id.tozydev.lucidabyss.components.sections.Quote
 import vn.id.tozydev.lucidabyss.components.sections.Socials
 import vn.id.tozydev.lucidabyss.components.sections.TechStack
+import vn.id.tozydev.lucidabyss.components.widgets.FeaturedProject
 import vn.id.tozydev.lucidabyss.components.widgets.LatestPost
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 
@@ -73,7 +73,7 @@ fun initHomePage(ctx: InitRouteContext) {
 @Page
 @Composable
 fun HomePage() {
-    Div(HomePageStyle.toModifier().toAttrs()) {
+    /* Div(HomePageStyle.toModifier().toAttrs()) {
         Hero(Modifier.gridArea("hero"))
 
         Quote(Modifier.gridArea("quote"))
@@ -90,5 +90,5 @@ fun HomePage() {
         TechStack(Modifier.gridArea("tech-stack"))
 
         Socials(Modifier.gridArea("socials"))
-    }
+    } */
 }

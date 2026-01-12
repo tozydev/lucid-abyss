@@ -13,8 +13,10 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
+import vn.id.tozydev.lucidabyss.components.widgets.LatestPost
 import vn.id.tozydev.lucidabyss.components.widgets.Location
 import vn.id.tozydev.lucidabyss.components.widgets.Quote
+import vn.id.tozydev.lucidabyss.generated.filePathToPost
 
 val HomePageStyle =
     CssStyle {
@@ -72,14 +74,10 @@ fun HomePage() {
         Quote()
 
         Location()
+
+        LatestPost(filePathToPost.values.first())
     }
     /* Div(HomePageStyle.toModifier().toAttrs()) {
-        Hero(Modifier.gridArea("hero"))
-
-        Quote(Modifier.gridArea("quote"))
-
-        Location(Modifier.gridArea("location"))
-
         LatestPost(
             filePathToPost.values.first(),
             Modifier.gridArea("latest-post"),

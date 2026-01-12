@@ -13,6 +13,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
+import vn.id.tozydev.lucidabyss.components.widgets.Quote
 
 val HomePageStyle =
     CssStyle {
@@ -66,6 +67,8 @@ fun initHomePage(ctx: InitRouteContext) {
 fun HomePage() {
     Div({}) {
         Hero()
+
+        Quote()
     }
     /* Div(HomePageStyle.toModifier().toAttrs()) {
         Hero(Modifier.gridArea("hero"))

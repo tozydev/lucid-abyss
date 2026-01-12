@@ -3,25 +3,16 @@ package vn.id.tozydev.lucidabyss.pages
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
-import vn.id.tozydev.lucidabyss.components.sections.Location
-import vn.id.tozydev.lucidabyss.components.sections.Quote
-import vn.id.tozydev.lucidabyss.components.sections.Socials
-import vn.id.tozydev.lucidabyss.components.sections.TechStack
-import vn.id.tozydev.lucidabyss.components.widgets.FeaturedProject
-import vn.id.tozydev.lucidabyss.components.widgets.LatestPost
-import vn.id.tozydev.lucidabyss.generated.filePathToPost
 
 val HomePageStyle =
     CssStyle {
@@ -73,6 +64,9 @@ fun initHomePage(ctx: InitRouteContext) {
 @Page
 @Composable
 fun HomePage() {
+    Div({}) {
+        Hero()
+    }
     /* Div(HomePageStyle.toModifier().toAttrs()) {
         Hero(Modifier.gridArea("hero"))
 

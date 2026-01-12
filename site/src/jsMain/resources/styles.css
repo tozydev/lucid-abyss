@@ -11,3 +11,7 @@
     name: "dark";
     --root-bg: oklch(0.001 0.001 0.001);
 }
+
+@theme {
+    --color-kotlin: radial-gradient(circle at 100% 0%, #E44857 0%, #C711E1 50.45%, #7F52FF 100%);
+}

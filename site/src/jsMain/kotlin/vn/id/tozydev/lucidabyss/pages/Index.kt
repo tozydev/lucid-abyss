@@ -13,6 +13,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
+import vn.id.tozydev.lucidabyss.components.widgets.FeaturedProject
 import vn.id.tozydev.lucidabyss.components.widgets.LatestPost
 import vn.id.tozydev.lucidabyss.components.widgets.Location
 import vn.id.tozydev.lucidabyss.components.widgets.Quote
@@ -76,6 +77,8 @@ fun HomePage() {
         Location()
 
         LatestPost(filePathToPost.values.first())
+
+        FeaturedProject()
     }
     /* Div(HomePageStyle.toModifier().toAttrs()) {
         LatestPost(

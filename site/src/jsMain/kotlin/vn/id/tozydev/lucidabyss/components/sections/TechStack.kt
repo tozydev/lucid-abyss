@@ -21,13 +21,13 @@ fun TechStack(modifier: Modifier = Modifier) {
                 Text("Tech Stack")
             }
             Div({ tw("flex flex-wrap gap-2") }) {
-                Div({ tw("badge badge-neutral badge-outline badge-lg") }) {
+                Div({ tw("badge badge-outline badge-lg") }) {
                     Text("Java")
                 }
-                Div({ tw("badge badge-neutral badge-outline badge-lg") }) {
+                Div({ tw("badge badge-outline badge-lg") }) {
                     Text("Kotlin")
                 }
-                Div({ tw("badge badge-neutral badge-outline badge-lg") }) {
+                Div({ tw("badge badge-outline badge-lg") }) {
                     Text("Kobweb")
                 }
             }

@@ -17,6 +17,9 @@ kobweb {
         index {
             description.set("Powered by Kobweb")
         }
+        export {
+            enableTraces()
+        }
     }
     markdown {
         defaultLayout = ".components.layouts.PostLayout"

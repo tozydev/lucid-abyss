@@ -31,9 +31,9 @@ fun PageLayout(
 
     BottonNavbar()
 
-    Main({ tw("px-4 pt-20 pb-6 max-w-6xl mx-auto") }) {
+    Main({ tw("px-4 pt-26 pb-4 max-w-6xl mx-auto") }) {
         content()
     }
 
-    SiteFooter(Modifier.tw("max-w-6xl mx-auto p-4"))
+    SiteFooter(Modifier.tw("max-w-6xl mx-auto mb-12 p-4"))
 }

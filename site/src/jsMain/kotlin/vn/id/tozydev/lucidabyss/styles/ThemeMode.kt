@@ -61,9 +61,9 @@ fun initThemeMode() {
             // language="JavaScript"
             textContent =
                 """
-                const themeMode = localStorage.getItem("${storageKey.name}")
+                const themeMode = localStorage.getItem("${storageKey.name}") ?? "system"
                 let actualTheme = themeMode.toLowerCase()
-                if (actualTheme !== "light" || actualTheme !== "dark") {
+                if (actualTheme !== "light" && actualTheme !== "dark") {
                     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
                     actualTheme = prefersDark ? "dark" : "light"
                 }

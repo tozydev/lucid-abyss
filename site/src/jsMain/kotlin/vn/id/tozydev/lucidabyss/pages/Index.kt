@@ -13,6 +13,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
+import vn.id.tozydev.lucidabyss.components.sections.TechStack
 import vn.id.tozydev.lucidabyss.components.widgets.FeaturedProject
 import vn.id.tozydev.lucidabyss.components.widgets.LatestPost
 import vn.id.tozydev.lucidabyss.components.widgets.Location
@@ -79,15 +80,10 @@ fun HomePage() {
         LatestPost(filePathToPost.values.first())
 
         FeaturedProject()
+
+        TechStack()
     }
     /* Div(HomePageStyle.toModifier().toAttrs()) {
-        LatestPost(
-            filePathToPost.values.first(),
-            Modifier.gridArea("latest-post"),
-        )
-
-        FeaturedProject(Modifier.gridArea("featured-project"))
-
         TechStack(Modifier.gridArea("tech-stack"))
 
         Socials(Modifier.gridArea("socials"))

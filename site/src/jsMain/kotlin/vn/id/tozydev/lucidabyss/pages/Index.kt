@@ -13,6 +13,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
+import vn.id.tozydev.lucidabyss.components.sections.Socials
 import vn.id.tozydev.lucidabyss.components.sections.TechStack
 import vn.id.tozydev.lucidabyss.components.widgets.FeaturedProject
 import vn.id.tozydev.lucidabyss.components.widgets.LatestPost
@@ -82,10 +83,7 @@ fun HomePage() {
         FeaturedProject()
 
         TechStack()
-    }
-    /* Div(HomePageStyle.toModifier().toAttrs()) {
-        TechStack(Modifier.gridArea("tech-stack"))
 
-        Socials(Modifier.gridArea("socials"))
-    } */
+        Socials()
+    }
 }

@@ -2,7 +2,9 @@
 
 @plugin "@tailwindcss/typography";
 
-@plugin "daisyui";
+@plugin "daisyui" {
+    exclude: fab
+}
 @plugin "daisyui/theme" {
     name: "light";
     --root-bg: oklch(98.462% 0.001 247.838);

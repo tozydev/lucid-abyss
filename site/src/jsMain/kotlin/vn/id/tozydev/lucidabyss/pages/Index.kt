@@ -2,14 +2,10 @@ package vn.id.tozydev.lucidabyss.pages
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
-import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PageLayoutData
 import vn.id.tozydev.lucidabyss.components.sections.Hero
@@ -20,48 +16,7 @@ import vn.id.tozydev.lucidabyss.components.widgets.LatestPost
 import vn.id.tozydev.lucidabyss.components.widgets.Location
 import vn.id.tozydev.lucidabyss.components.widgets.Quote
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
-
-val HomePageStyle =
-    CssStyle {
-        base {
-            Modifier
-                .display(DisplayStyle.Grid)
-                .gridTemplateColumns { repeat(1) { minmax(0.px, 1.fr) } }
-                .gridAutoRows { size(minContent) }
-                .gridTemplateAreas(
-                    "hero",
-                    "quote",
-                    "location",
-                    "latest-post",
-                    "featured-project",
-                    "tech-stack",
-                    "socials",
-                ).gap(1.cssRem)
-        }
-
-        Breakpoint.MD {
-            Modifier
-                .gridTemplateColumns { repeat(2) { minmax(0.px, 1.fr) } }
-                .gridTemplateAreas(
-                    "hero hero",
-                    "quote location",
-                    "latest-post latest-post",
-                    "featured-project featured-project",
-                    "tech-stack tech-stack",
-                    "socials socials",
-                )
-        }
-        Breakpoint.LG {
-            Modifier
-                .gridTemplateColumns { repeat(4) { minmax(0.px, 1.fr) } }
-                .gridTemplateAreas(
-                    "hero hero quote location",
-                    "hero hero latest-post latest-post",
-                    "featured-project featured-project tech-stack tech-stack",
-                    "featured-project featured-project socials socials",
-                )
-        }
-    }
+import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
@@ -71,19 +26,22 @@ fun initHomePage(ctx: InitRouteContext) {
 @Page
 @Composable
 fun HomePage() {
-    Div({}) {
-        Hero()
+    Div({ tw("grid auto-rows-min grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5") }) {
+        Hero(Modifier.tw("col-span-1 row-span-2 md:col-span-2"))
 
         Quote()
 
         Location()
 
-        LatestPost(filePathToPost.values.first())
+        LatestPost(
+            post = filePathToPost.values.first(),
+            modifier = Modifier.tw("md:col-span-2"),
+        )
 
-        FeaturedProject()
+        FeaturedProject(Modifier.tw("row-span-2 md:col-span-2"))
 
-        TechStack()
+        TechStack(Modifier.tw("md:col-span-2"))
 
-        Socials()
+        Socials(Modifier.tw("md:col-span-2"))
     }
 }

@@ -65,11 +65,20 @@ fun PostLayout(
             .gap(2.cssRem),
     ) {
         PostHeader(post, Modifier.fillMaxWidth())
+        content()
+    }
+
+    /* Column(
+        Modifier
+            .fillMaxWidth()
+            .gap(2.cssRem),
+    ) {
+        PostHeader(post, Modifier.fillMaxWidth())
 
         context(ctx) {
             PostContent(post, content)
         }
-    }
+    } */
 }
 
 val PostLayoutContentStyle =

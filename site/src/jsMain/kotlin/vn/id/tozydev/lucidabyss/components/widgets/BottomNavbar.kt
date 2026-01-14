@@ -17,7 +17,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun BottonNavbar(modifier: Modifier = Modifier) {
+fun BottomNavbar(modifier: Modifier = Modifier) {
     val ctx = rememberPageContext()
 
     @Composable

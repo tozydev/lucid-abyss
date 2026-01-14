@@ -10,7 +10,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.sections.SiteFooter
 import vn.id.tozydev.lucidabyss.components.sections.SiteHeader
 import vn.id.tozydev.lucidabyss.components.widgets.BackToTopButton
-import vn.id.tozydev.lucidabyss.components.widgets.BottonNavbar
+import vn.id.tozydev.lucidabyss.components.widgets.BottomNavbar
 import vn.id.tozydev.lucidabyss.utils.tw
 
 data class PageLayoutData(
@@ -30,7 +30,7 @@ fun PageLayout(
 
     SiteHeader()
 
-    BottonNavbar()
+    BottomNavbar()
 
     Main({ tw("px-4 pt-26 pb-4 max-w-6xl mx-auto") }) {
         content()

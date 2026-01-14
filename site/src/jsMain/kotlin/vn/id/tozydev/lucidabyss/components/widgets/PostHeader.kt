@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.GenericTag

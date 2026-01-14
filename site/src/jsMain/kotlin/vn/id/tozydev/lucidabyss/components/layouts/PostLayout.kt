@@ -26,12 +26,12 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import vn.id.tozydev.lucidabyss.components.sections.Discussion
-import vn.id.tozydev.lucidabyss.components.sections.PostHeader
 import vn.id.tozydev.lucidabyss.components.widgets.ColumnIslandVariant
 import vn.id.tozydev.lucidabyss.components.widgets.HeadingItem
 import vn.id.tozydev.lucidabyss.components.widgets.Island
 import vn.id.tozydev.lucidabyss.components.widgets.IslandStyle
 import vn.id.tozydev.lucidabyss.components.widgets.NextPrevPosts
+import vn.id.tozydev.lucidabyss.components.widgets.PostHeader
 import vn.id.tozydev.lucidabyss.components.widgets.SharePost
 import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
 import vn.id.tozydev.lucidabyss.components.widgets.getHeadingHierarchy

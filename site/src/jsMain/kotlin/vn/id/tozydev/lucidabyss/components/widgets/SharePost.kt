@@ -1,51 +1,54 @@
 package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.css.FontWeight
-import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Row
-import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.Anchor
 import com.varabyte.kobweb.silk.components.icons.fa.FaBluesky
 import com.varabyte.kobweb.silk.components.icons.fa.FaFacebook
 import com.varabyte.kobweb.silk.components.icons.fa.FaLink
 import com.varabyte.kobweb.silk.components.icons.fa.FaLinkedin
-import com.varabyte.kobweb.silk.components.navigation.Link
-import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.styles.TextSmStyle
+import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
 fun SharePost(modifier: Modifier = Modifier) {
-    Island(modifier = Modifier.padding(1.5.cssRem) then modifier) {
-        H3(
-            TextSmStyle
-                .toModifier()
-                .fontWeight(FontWeight.Bold)
-                .margin(bottom = 0.5.cssRem)
-                .toAttrs(),
-        ) {
-            Text("Chia sẻ bài viết")
-        }
-        // todo update share links later
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(1.cssRem),
-        ) {
-            Link("") {
-                FaFacebook()
+    Div(
+        Modifier
+            .tw("card card-border bg-base-100")
+            .then(modifier)
+            .toAttrs(),
+    ) {
+        Div({ tw("card-body items-center text-center lg:text-start lg:items-start") }) {
+            H3({ tw("card-title text-base mb-2") }) {
+                Text("Chia sẻ bài viết")
             }
-            Link("") {
-                FaBluesky()
-            }
-            Link("") {
-                FaLinkedin()
-            }
-            Link("") {
-                FaLink()
+
+            Div({ tw("flex items-center gap-4 lg:gap-2") }) {
+                Anchor(
+                    href = "",
+                    attrs = { tw("btn btn-circle") },
+                ) {
+                    FaFacebook()
+                }
+                Anchor(
+                    href = "",
+                    attrs = { tw("btn btn-circle") },
+                ) {
+                    FaLinkedin()
+                }
+                Anchor(
+                    href = "",
+                    attrs = { tw("btn btn-circle") },
+                ) {
+                    FaBluesky()
+                }
+                Anchor(
+                    href = "",
+                    attrs = { tw("btn btn-circle") },
+                ) {
+                    FaLink()
+                }
             }
         }
     }

@@ -7,17 +7,17 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.navigation.Link
+import com.varabyte.kobweb.navigation.Anchor
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.selectors.children
 import com.varabyte.kobweb.silk.style.selectors.descendants
-import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLHeadingElement
 import vn.id.tozydev.lucidabyss.utils.getHeadings
 import vn.id.tozydev.lucidabyss.utils.level
+import vn.id.tozydev.lucidabyss.utils.tw
 
 data class HeadingItem(
     val heading: HTMLHeadingElement,
@@ -26,7 +26,7 @@ data class HeadingItem(
 
 fun HTMLElement.getHeadingHierarchy(
     minHeaderLevel: Int = 2,
-    maxHeaderLevel: Int = 3,
+    maxHeaderLevel: Int = 2,
 ): List<HeadingItem> {
     val headings = getHeadings(minHeaderLevel, maxHeaderLevel)
     val rootItems = mutableListOf<HeadingItem>()
@@ -82,12 +82,11 @@ fun TableOfContents(
     modifier: Modifier = Modifier,
 ) {
     Nav(
-        TableOfContentsStyle
-            .toModifier()
+        Modifier
             .then(modifier)
             .toAttrs(),
     ) {
-        Ul {
+        Ul({ tw("menu p-0 w-full") }) {
             hierarchy.forEach { item ->
                 TocItem(item)
             }
@@ -98,15 +97,11 @@ fun TableOfContents(
 @Composable
 private fun TocItem(item: HeadingItem) {
     Li {
-        Link("#${item.heading.id}") {
+        Anchor(
+            href = "#${item.heading.id}",
+            attrs = { },
+        ) {
             Text(item.heading.textContent.toString())
-        }
-        if (item.children.isNotEmpty()) {
-            Ul {
-                item.children.forEach { child ->
-                    TocItem(child)
-                }
-            }
         }
     }
 }

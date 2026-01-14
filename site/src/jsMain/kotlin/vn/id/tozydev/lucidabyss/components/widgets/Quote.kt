@@ -15,7 +15,7 @@ fun Quote(modifier: Modifier = Modifier) {
             .then(modifier)
             .toAttrs(),
     ) {
-        Div({ tw("card-body text-sm text-center items-center") }) {
+        Div({ tw("card-body text-sm text-center items-center justify-center") }) {
             FaQuoteLeft(Modifier.tw("text-gray-700 text-4xl absolute top-4 left-4 opacity-30"))
             Blockquote({ tw("font-medium italic") }) {
                 Text("“I know that I know nothing”")

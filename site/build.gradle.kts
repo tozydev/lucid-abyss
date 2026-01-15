@@ -2,6 +2,7 @@
 
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import com.varabyte.kobwebx.gradle.markdown.MarkdownEntry
+import kotlinx.html.link
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
@@ -16,6 +17,9 @@ kobweb {
     app {
         index {
             description.set("Powered by Kobweb")
+            head.add {
+                link("/lucid-abyss.css", rel = "stylesheet")
+            }
         }
         export {
             enableTraces()
@@ -132,16 +136,6 @@ kobweb {
 kotlin {
     configAsKobwebApplication("lucid-abyss")
 
-    js {
-        browser {
-            commonWebpackConfig {
-                cssSupport {
-                    enabled = true
-                }
-            }
-        }
-    }
-
     compilerOptions {
         optIn.addAll(
             "kotlin.time.ExperimentalTime",
@@ -168,6 +162,22 @@ kotlin {
             implementation(devNpm("@tailwindcss/typography", "0.5.19"))
             implementation(devNpm("postcss", "8.5.6"))
             implementation(devNpm("postcss-loader", "8.2.0"))
+            implementation(devNpm("css-loader", "7.1.2"))
+            implementation(devNpm("mini-css-extract-plugin", "2.9.4"))
+            implementation(devNpm("css-minimizer-webpack-plugin", "7.0.4"))
         }
+    }
+}
+
+tasks {
+    val copyProductionStylesheet by registering(Copy::class) {
+        from(layout.buildDirectory.dir("kotlin-webpack/js/productionExecutable")) {
+            include("*.css")
+            include("*.css.map")
+        }
+        into(layout.projectDirectory.dir(".kobweb/site"))
+    }
+    kobwebExport {
+        finalizedBy(copyProductionStylesheet)
     }
 }

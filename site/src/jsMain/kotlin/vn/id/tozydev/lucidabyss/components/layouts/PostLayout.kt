@@ -18,15 +18,15 @@ import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
+import org.w3c.dom.HTMLHeadingElement
 import vn.id.tozydev.lucidabyss.components.widgets.Discussion
-import vn.id.tozydev.lucidabyss.components.widgets.HeadingItem
 import vn.id.tozydev.lucidabyss.components.widgets.NextPrevPosts
 import vn.id.tozydev.lucidabyss.components.widgets.PostHeader
 import vn.id.tozydev.lucidabyss.components.widgets.SharePost
 import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
-import vn.id.tozydev.lucidabyss.components.widgets.getHeadingHierarchy
 import vn.id.tozydev.lucidabyss.generated.filePathToPost
 import vn.id.tozydev.lucidabyss.models.Post
+import vn.id.tozydev.lucidabyss.utils.getHeadings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
@@ -72,11 +72,11 @@ private fun PostContent(
             Div({ tw("sticky top-16") }) {
                 Div({ tw("card card-border bg-base-100 lg:mb-8") }) {
                     Div({ tw("card-body") }) {
-                        var hierarchy by remember(ctx.route.path) { mutableStateOf(emptyList<HeadingItem>()) }
+                        var hierarchy by remember(ctx.route.path) { mutableStateOf(emptyList<HTMLHeadingElement>()) }
                         // Fetch headings only once elements are added to the DOM
                         registerRefScope(
                             ref(contentRef, ctx.route.path) {
-                                hierarchy = contentRef?.getHeadingHierarchy().orEmpty()
+                                hierarchy = contentRef?.getHeadings().orEmpty()
                             },
                         )
 
@@ -86,7 +86,7 @@ private fun PostContent(
                         }
 
                         TableOfContents(
-                            hierarchy = hierarchy,
+                            headings = hierarchy,
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }

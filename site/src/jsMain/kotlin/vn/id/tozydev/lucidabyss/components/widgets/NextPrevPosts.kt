@@ -46,10 +46,10 @@ fun NextPrevPosts(
                 href = nextPost.route,
                 attrs = { tw("card card-border bg-base-100 md:col-start-2") },
             ) {
-                Div({ tw("card-body") }) {
+                Div({ tw("card-body items-end") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
-                        FaArrowRight()
                         Text("Bài sau")
+                        FaArrowRight()
                     }
                     H4({ tw("font-semibold text-lg") }) {
                         Text(nextPost.title)

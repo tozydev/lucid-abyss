@@ -2,6 +2,8 @@
 .DS_Store
 build/
 out/
+!**/src/**/build/
+!**/src/**/out/
 
 ### IntelliJ
 *.iml

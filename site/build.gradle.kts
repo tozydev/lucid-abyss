@@ -79,4 +79,14 @@ tasks {
     kobwebExport {
         finalizedBy(copyProductionStylesheet)
     }
+
+    val copyDevStylesheet by registering(Copy::class) {
+        from(layout.buildDirectory.dir("kotlin-webpack/js/developmentExecutable")) {
+            include("*.css")
+        }
+        into(layout.buildDirectory.dir("processedResources/js/main/public"))
+    }
+    named("jsBrowserDevelopmentWebpack") {
+        finalizedBy(copyDevStylesheet)
+    }
 }

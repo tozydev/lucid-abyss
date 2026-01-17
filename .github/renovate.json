@@ -13,10 +13,11 @@
       "matchFileNames": [
         "gradle/npm.versions.toml"
       ],
-      "overridePackageName": "{{replace 'dev:' '' packageName}}",
+      "versioning": "npm",
       "overrideDatasource": "npm",
-      "matchPackageNames": [
-        "dev:{/,}**"
+      "overridePackageName": "{{ lookup (split packageName ':') 1 }}",
+      "registryUrls": [
+        "https://registry.npmjs.org"
       ]
     }
   ]

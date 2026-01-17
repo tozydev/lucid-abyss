@@ -55,16 +55,15 @@ kotlin {
 
             implementation("vn.id.tozydev.lucidabyss:lucid-abyss-core")
 
-            // todo version catalog?
-            implementation(devNpm("daisyui", "5.5.14"))
-            implementation(devNpm("tailwindcss", "4.1.18"))
-            implementation(devNpm("@tailwindcss/postcss", "4.1.18"))
-            implementation(devNpm("@tailwindcss/typography", "0.5.19"))
-            implementation(devNpm("postcss", "8.5.6"))
-            implementation(devNpm("postcss-loader", "8.2.0"))
-            implementation(devNpm("css-loader", "7.1.2"))
-            implementation(devNpm("mini-css-extract-plugin", "2.9.4"))
-            implementation(devNpm("css-minimizer-webpack-plugin", "7.0.4"))
+            implementation(npm(npm.daisyui))
+            implementation(npm(npm.tailwindcss.asProvider()))
+            implementation(npm(npm.tailwindcss.typography))
+            implementation(npm(npm.tailwindcss.postcss))
+            implementation(npm(npm.postcss))
+            implementation(npm(npm.webpack.loader.css))
+            implementation(npm(npm.webpack.loader.postcss))
+            implementation(npm(npm.webpack.plugin.miniCssExtract))
+            implementation(npm(npm.webpack.plugin.cssMinimizer))
         }
     }
 }

@@ -12,6 +12,12 @@ dependencyResolutionManagement {
         mavenCentral()
         google()
     }
+
+    versionCatalogs {
+        create("npm") {
+            from(files("gradle/npm.versions.toml"))
+        }
+    }
 }
 
 rootProject.name = "lucid-abyss"

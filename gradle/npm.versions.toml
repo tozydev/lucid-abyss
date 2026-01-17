@@ -1,0 +1,23 @@
+[versions]
+daisyui = "5.5.14"
+tailwindcss = "4.1.18"
+tailwindcss-typography = "0.5.19"
+postcss = "8.5.6"
+postcss-loader = "8.2.0"
+css-loader = "7.1.2"
+mini-css-extract-plugin = "2.9.4"
+css-minimizer-webpack-plugin = "7.0.4"
+
+[libraries]
+daisyui = { group = "dev", name = "daisyui", version.ref = "daisyui" }
+
+tailwindcss = { group = "dev", name = "tailwindcss", version.ref = "tailwindcss" }
+tailwindcss-typography = { group = "dev", name = "@tailwindcss/typography", version.ref = "tailwindcss-typography" }
+tailwindcss-postcss = { group = "dev", name = "@tailwindcss/postcss", version.ref = "tailwindcss" }
+
+postcss = { group = "dev", name = "postcss", version.ref = "postcss" }
+webpack-loader-postcss = { group = "dev", name = "postcss-loader", version.ref = "postcss-loader" }
+
+webpack-loader-css = { group = "dev", name = "css-loader", version.ref = "css-loader" }
+webpack-plugin-cssMinimizer = { group = "dev", name = "css-minimizer-webpack-plugin", version.ref = "css-minimizer-webpack-plugin" }
+webpack-plugin-miniCssExtract = { group = "dev", name = "mini-css-extract-plugin", version.ref = "mini-css-extract-plugin" }

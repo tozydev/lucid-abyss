@@ -7,5 +7,17 @@
   "timezone": "Asia/Ho_Chi_Minh",
   "schedule": [
     "* 0-6 * * 0,6"
+  ],
+  "packageRules": [
+    {
+      "matchFileNames": [
+        "gradle/npm.versions.toml"
+      ],
+      "overridePackageName": "{{replace 'dev:' '' packageName}}",
+      "overrideDatasource": "npm",
+      "matchPackageNames": [
+        "dev:{/,}**"
+      ]
+    }
   ]
 }

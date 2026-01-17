@@ -69,7 +69,7 @@ kotlin {
 }
 
 tasks {
-    val copyProductionStylesheet by registering(Copy::class) {
+    val copyProductionStylesheets by registering(Copy::class) {
         from(layout.buildDirectory.dir("kotlin-webpack/js/productionExecutable")) {
             include("*.css")
             include("*.css.map")
@@ -77,16 +77,16 @@ tasks {
         into(layout.projectDirectory.dir(".kobweb/site"))
     }
     kobwebExport {
-        finalizedBy(copyProductionStylesheet)
+        finalizedBy(copyProductionStylesheets)
     }
 
-    val copyDevStylesheet by registering(Copy::class) {
+    val copyDevStylesheets by registering(Copy::class) {
         from(layout.buildDirectory.dir("kotlin-webpack/js/developmentExecutable")) {
             include("*.css")
         }
         into(layout.buildDirectory.dir("processedResources/js/main/public"))
     }
     named("jsBrowserDevelopmentWebpack") {
-        finalizedBy(copyDevStylesheet)
+        finalizedBy(copyDevStylesheets)
     }
 }

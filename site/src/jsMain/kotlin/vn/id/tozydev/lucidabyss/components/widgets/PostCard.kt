@@ -6,14 +6,16 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaCalendar
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.models.Post
-import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
+import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
+import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(strings: SiteStrings)
 fun PostCard(
-    post: Post,
+    post: BlogPost,
     modifier: Modifier = Modifier,
 ) {
     A(
@@ -27,7 +29,7 @@ fun PostCard(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = "Cover image for ${post.title}",
+                alt = strings.widget_post_cover_alt(post.title),
             )
             Div({ tw("absolute top-4 right-4") }) {
                 Div({ tw("badge") }) {

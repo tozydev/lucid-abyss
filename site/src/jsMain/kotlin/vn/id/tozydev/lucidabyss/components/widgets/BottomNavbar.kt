@@ -10,9 +10,13 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaHouse
 import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
+import vn.id.tozydev.lucidabyss.utils.SitePaths
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(strings: SiteStrings, language: SiteLanguage)
 fun BottomNavbar(modifier: Modifier = Modifier) {
     val ctx = rememberPageContext()
 
@@ -23,10 +27,13 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
         icon: @Composable () -> Unit,
     ) {
         val isActive =
-            if (path == "/") {
-                ctx.route.path == "/"
-            } else {
-                ctx.route.path.startsWith(path)
+            run {
+                val homeRoute = SitePaths.home
+                if (path == homeRoute) {
+                    ctx.route.path == homeRoute
+                } else {
+                    ctx.route.path.startsWith(path)
+                }
             }
 
         Button(
@@ -54,16 +61,16 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
             .then(modifier)
             .toAttrs(),
     ) {
-        DockItem("/", "Trang chủ") {
+        DockItem(SitePaths.home, strings.widget_bottom_navbar_home) {
             FaHouse()
         }
-        DockItem("/me", "Về tôi") {
+        DockItem(SitePaths.about, strings.widget_bottom_navbar_me) {
             FaUser()
         }
-        DockItem("/blog/", "Blog") {
+        DockItem(SitePaths.blog, strings.widget_bottom_navbar_blog) {
             FaRss()
         }
-        DockItem("/san-pham", "Sản phẩm") {
+        DockItem(SitePaths.products, strings.widget_bottom_navbar_products) {
             FaCubes()
         }
     }

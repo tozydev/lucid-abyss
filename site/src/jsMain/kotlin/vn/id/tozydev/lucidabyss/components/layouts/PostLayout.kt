@@ -24,19 +24,38 @@ import vn.id.tozydev.lucidabyss.components.widgets.NextPrevPosts
 import vn.id.tozydev.lucidabyss.components.widgets.PostHeader
 import vn.id.tozydev.lucidabyss.components.widgets.SharePost
 import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
-import vn.id.tozydev.lucidabyss.generated.filePathToPost
-import vn.id.tozydev.lucidabyss.models.Post
+import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.generated.BlogPosts
+import vn.id.tozydev.lucidabyss.pages.Page
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
+import vn.id.tozydev.lucidabyss.strings.strings
 import vn.id.tozydev.lucidabyss.utils.getHeadings
+import vn.id.tozydev.lucidabyss.utils.language
+import vn.id.tozydev.lucidabyss.utils.postId
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
 fun initPostLayout(ctx: InitRouteContext) {
+    val postId =
+        requireNotNull(ctx.markdown?.postId) {
+            "No post ID found for path: ${ctx.markdown?.path}"
+        }
+    val language =
+        requireNotNull(ctx.markdown?.language) {
+            "No post language found for path: ${ctx.markdown?.path}"
+        }
     val post =
-        requireNotNull(filePathToPost[ctx.markdown?.path]) {
-            "No post metadata found for path: ${ctx.markdown?.path}"
+        requireNotNull(BlogPosts[language]?.find { it.id == postId }) {
+            "No post found for post $postId and language $language"
         }
 
-    ctx.data.add(PageLayoutData(post.title))
+    ctx.data.add(
+        Page.Properties(
+            title = post.title,
+            description = post.description,
+        ),
+    )
+    ctx.data.add(language)
     ctx.data.add(post)
 }
 
@@ -46,24 +65,25 @@ fun PostLayout(
     ctx: PageContext,
     content: @Composable () -> Unit,
 ) {
-    val post = ctx.data.getValue<Post>()
+    val post = ctx.data.getValue<BlogPost>()
+    val language = ctx.data.getValue<vn.id.tozydev.lucidabyss.core.SiteLanguage>()
 
     Column(
         Modifier
             .fillMaxWidth()
             .gap(2.cssRem),
     ) {
-        PostHeader(post, Modifier.fillMaxWidth())
-        context(ctx) {
+        context(ctx, language.strings()) {
+            PostHeader(post, Modifier.fillMaxWidth())
             PostContent(post, content)
         }
     }
 }
 
 @Composable
-context(ctx: PageContext)
+context(ctx: PageContext, strings: SiteStrings)
 private fun PostContent(
-    post: Post,
+    post: BlogPost,
     content: @Composable (() -> Unit),
 ) {
     Div({ tw("grid grid-cols-1 gap-8 lg:grid-cols-12 w-full") }) {
@@ -82,7 +102,7 @@ private fun PostContent(
 
                         H3({ tw("card-title text-sm uppercase") }) {
                             FaList()
-                            Text("Mục lục")
+                            Text(strings.widget_table_of_contents_title)
                         }
 
                         TableOfContents(

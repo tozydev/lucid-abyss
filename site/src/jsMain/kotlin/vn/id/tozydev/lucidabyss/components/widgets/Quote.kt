@@ -5,9 +5,11 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaQuoteLeft
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(strings: SiteStrings)
 fun Quote(modifier: Modifier = Modifier) {
     Div(
         Modifier
@@ -18,10 +20,10 @@ fun Quote(modifier: Modifier = Modifier) {
         Div({ tw("card-body text-sm text-center items-center justify-center") }) {
             FaQuoteLeft(Modifier.tw("text-gray-700 text-4xl absolute top-4 left-4 opacity-30"))
             Blockquote({ tw("font-medium italic") }) {
-                Text("“I know that I know nothing”")
+                Text(strings.widget_quote_text)
             }
             Span({ tw("font-bold uppercase text-gray-400") }) {
-                Text("— Socrates")
+                Text(strings.widget_quote_author)
             }
         }
     }

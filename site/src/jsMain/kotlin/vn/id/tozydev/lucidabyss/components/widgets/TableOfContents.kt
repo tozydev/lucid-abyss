@@ -6,9 +6,11 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLHeadingElement
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(strings: SiteStrings)
 fun TableOfContents(
     headings: List<HTMLHeadingElement>,
     modifier: Modifier = Modifier,
@@ -18,6 +20,9 @@ fun TableOfContents(
             .then(modifier)
             .toAttrs(),
     ) {
+        Div({ tw("mb-2 font-bold uppercase text-xs opacity-50") }) {
+            Text(strings.widget_table_of_contents_title)
+        }
         Ul({ tw("menu p-0 w-full") }) {
             headings.forEach { item ->
                 TocItem(item)

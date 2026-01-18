@@ -14,10 +14,14 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
+import vn.id.tozydev.lucidabyss.utils.SitePaths
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(_: SiteStrings, language: SiteLanguage)
 fun SiteHeader(modifier: Modifier = Modifier) {
     Header(
         Modifier
@@ -34,10 +38,11 @@ fun SiteHeader(modifier: Modifier = Modifier) {
 }
 
 @Composable
+context(language: SiteLanguage)
 private fun HeaderLogo() {
     Div({ }) {
         Anchor(
-            href = "/",
+            href = SitePaths.home,
             { tw("btn btn-ghost btn-sm rounded-full") },
         ) {
             Text("tozydev")
@@ -46,6 +51,7 @@ private fun HeaderLogo() {
 }
 
 @Composable
+context(strings: SiteStrings, language: SiteLanguage)
 private fun HeaderMenu() {
     val ctx = rememberPageContext()
 
@@ -56,10 +62,13 @@ private fun HeaderMenu() {
         icon: @Composable () -> Unit,
     ) {
         val isActive =
-            if (path == "/") {
-                ctx.route.path == "/"
-            } else {
-                ctx.route.path.startsWith(path)
+            run {
+                val homeRoute = SitePaths.home
+                if (path == homeRoute) {
+                    ctx.route.path == homeRoute
+                } else {
+                    ctx.route.path.startsWith(path)
+                }
             }
 
         Li(
@@ -80,16 +89,16 @@ private fun HeaderMenu() {
 
     Div({ tw("hidden items-center md:flex") }) {
         Ul({ tw("menu menu-horizontal font-medium gap-2") }) {
-            MenuItem("/", "Trang chủ") {
+            MenuItem(SitePaths.home, strings.section_header_menu_home) {
                 FaHouse()
             }
-            MenuItem("/me", "Về tôi") {
+            MenuItem(SitePaths.about, strings.section_header_menu_me) {
                 FaUser()
             }
-            MenuItem("/blog/", "Blog") {
+            MenuItem(SitePaths.blog, strings.section_header_menu_blog) {
                 FaRss()
             }
-            MenuItem("/san-pham", "Sản phẩm") {
+            MenuItem(SitePaths.products, strings.section_header_menu_products) {
                 FaCubes()
             }
         }

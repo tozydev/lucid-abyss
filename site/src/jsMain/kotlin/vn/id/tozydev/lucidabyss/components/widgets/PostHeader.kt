@@ -7,14 +7,16 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaCalendar
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
-import vn.id.tozydev.lucidabyss.models.Post
-import vn.id.tozydev.lucidabyss.models.coverImagePathOrDefault
+import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
+import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(strings: SiteStrings)
 fun PostHeader(
-    post: Post,
+    post: BlogPost,
     modifier: Modifier = Modifier,
 ) {
     Header(
@@ -51,7 +53,7 @@ fun PostHeader(
         ) {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = "Cover image for ${post.title}",
+                alt = strings.widget_post_cover_alt(post.title),
                 attrs = { tw("rounded-box object-cover") },
             )
         }

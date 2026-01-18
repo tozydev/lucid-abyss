@@ -9,9 +9,11 @@ import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.SMOOTH
 import org.w3c.dom.ScrollBehavior
 import org.w3c.dom.ScrollToOptions
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(strings: SiteStrings)
 fun BackToTopButton(modifier: Modifier = Modifier) {
     Div(
         Modifier
@@ -22,6 +24,7 @@ fun BackToTopButton(modifier: Modifier = Modifier) {
         Button(
             {
                 tw("btn btn-primary btn-circle")
+                attr("aria-label", strings.widget_back_to_top_button_label)
                 onClick {
                     window.scrollTo(ScrollToOptions(top = 0.0, behavior = ScrollBehavior.SMOOTH))
                 }

@@ -6,13 +6,15 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
+import vn.id.tozydev.lucidabyss.strings.SiteStrings
+import vn.id.tozydev.lucidabyss.utils.SitePaths
 import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
-import vn.id.tozydev.lucidabyss.utils.navigateToBlog
-import vn.id.tozydev.lucidabyss.utils.navigateToMe
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(strings: SiteStrings, _: SiteLanguage)
 fun Hero(modifier: Modifier = Modifier) {
     Div(
         Modifier
@@ -24,18 +26,18 @@ fun Hero(modifier: Modifier = Modifier) {
             HeroAvatar()
             Div({ tw("mt-4 mb-6") }) {
                 H1({ tw("font-bold text-3xl md:text-4xl mb-3") }) {
-                    Text("Xin chào, tôi là")
+                    Text(strings.section_hero_title_first)
                     Br()
                     Span({ tw("text-4xl md:text-5xl text-primary") }) {
-                        Text("Thanh Tân")
+                        Text(strings.section_hero_title_second)
                     }
                 }
                 P({ tw("text-base md:text-lg") }) {
-                    Text("Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với ")
+                    Text(strings.section_hero_description_first)
                     Span({ tw("font-semibold text-transparent bg-clip-text bg-(image:--color-kotlin)") }) {
                         Text("Kotlin")
                     }
-                    Text(". Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...")
+                    Text(strings.section_hero_description_second)
                 }
             }
             HeroActions()
@@ -44,36 +46,36 @@ fun Hero(modifier: Modifier = Modifier) {
 }
 
 @Composable
+context(strings: SiteStrings, _: SiteLanguage)
 private fun HeroActions() {
     val ctx = rememberPageContext()
     Div({ tw("card-actions") }) {
         Button(
             {
                 tw("btn btn-primary hover:scale-105 transition-transform")
-                onClick {
-                    ctx.router.navigateToMe()
-                }
+                onClick { ctx.router.navigateTo(SitePaths.about) }
             },
         ) {
             FaUser(Modifier.tw("mr-2"))
-            Text("Tìm hiểu thêm")
+            Text(strings.section_hero_learn_more)
         }
         Button(
             {
                 tw("btn")
-                onClick { ctx.router.navigateToBlog() }
+                onClick { ctx.router.navigateTo(SitePaths.blog) }
             },
         ) {
-            Text("Xem blog")
+            Text(strings.section_hero_view_blog)
         }
     }
 }
 
 @Composable
+context(strings: SiteStrings)
 private fun HeroAvatar() {
     Img(
         src = getGravatarUrl(EMAIL_HASH, 96),
-        alt = "Avatar",
+        alt = strings.section_hero_image_alt,
         { tw("size-24 border-2 border-base-300 rounded-field transition hover:scale-105 hover:drop-shadow-md") },
     )
 }

@@ -6,22 +6,22 @@ import com.varabyte.kobwebx.frontmatter.FrontMatterElement
 import com.varabyte.kobwebx.gradle.markdown.MarkdownEntry
 import vn.id.tozydev.lucidabyss.core.BlogPost
 import vn.id.tozydev.lucidabyss.core.PostId
-import vn.id.tozydev.lucidabyss.core.PostMetadata
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
-internal fun generateBlogPosts(entries: List<MarkdownEntry>): Map<PostId, BlogPost> =
+internal fun generateBlogPosts(entries: List<MarkdownEntry>): Map<SiteLanguage, List<BlogPost>> =
     entries
         .filter { it.route.contains("/blog/") }
-        .groupBy { it.postId }
-        .mapValues { (id, posts) ->
-            BlogPost(id, posts.map { it.metadata }.associateBy { it.language })
+        .groupBy { it.language }
+        .mapValues { (_, entries) ->
+            entries.map { it.metadata }.sortedByDescending { it.publishedAt }
         }
 
-private val MarkdownEntry.metadata: PostMetadata
+private val MarkdownEntry.metadata: BlogPost
     get() =
-        PostMetadata(
+        BlogPost(
+            id = postId,
             language = language,
             route = route,
             title = frontMatter.getString("title"),

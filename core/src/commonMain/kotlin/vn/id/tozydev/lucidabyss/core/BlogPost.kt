@@ -10,10 +10,6 @@ value class PostId(
 
 data class BlogPost(
     val id: PostId,
-    val metadata: Map<SiteLanguage, PostMetadata>,
-)
-
-data class PostMetadata(
     val language: SiteLanguage,
     val route: String,
     val title: String,

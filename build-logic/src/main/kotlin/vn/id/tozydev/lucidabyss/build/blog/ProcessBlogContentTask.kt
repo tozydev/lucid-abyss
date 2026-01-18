@@ -13,6 +13,7 @@ import org.gradle.work.ChangeType
 import org.gradle.work.Incremental
 import org.gradle.work.InputChanges
 import vn.id.tozydev.lucidabyss.core.PostId
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import java.io.File
 import kotlin.io.path.createParentDirectories
 import kotlin.io.path.deleteIfExists
@@ -64,6 +65,8 @@ abstract class ProcessBlogContentTask : DefaultTask() {
 
     private val File.postSlug get() = nameWithoutExtension.substringAfter(".")
 
+    private val File.language get() = SiteLanguage.fromCode(parentFile.name)
+
     private fun File.processFrontmatter(
         routeOverride: String,
         funName: String,
@@ -95,6 +98,7 @@ abstract class ProcessBlogContentTask : DefaultTask() {
             }
 
         frontmatter.apply {
+            setFrontmatterProperty("language", language.code)
             setFrontmatterProperty("id", postId.value)
             setFrontmatterProperty("routeOverride", routeOverride)
             setFrontmatterProperty("funName", funName)

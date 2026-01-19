@@ -66,13 +66,19 @@ jobs:
         working-directory: site
         run: ../kobweb-cli/bin/kobweb export --notty --layout static
 
-      - name: Upload artifact
+      - name: Upload site artifact
         uses: actions/upload-artifact@v6
         with:
           name: site
           path: |
             ./wrangler.jsonc
             ./site/.kobweb/site
+
+      - name: Upload export traces
+        uses: actions/upload-artifact@v6
+        with:
+          name: export-traces
+          path: ./site/.kobweb/export-traces
 
   deploy:
     environment:

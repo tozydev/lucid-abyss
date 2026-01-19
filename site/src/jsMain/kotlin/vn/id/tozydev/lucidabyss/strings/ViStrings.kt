@@ -5,6 +5,15 @@ object ViStrings : SiteStrings {
     override val page_home_title = "Trang chủ"
     override val page_home_description = "Trang chủ của blog cá nhân của tôi"
 
+    override val page_blog_title = "Blog"
+    override val page_blog_description = "Blog cá nhân của tôi nơi tôi chia sẻ kiến thức và kinh nghiệm."
+
+    override val page_about_title = "Về tôi"
+    override val page_about_description = "Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang làm."
+
+    override val page_products_title = "Sản phẩm"
+    override val page_products_description = "Nơi trưng bày các sản phẩm và dự án của tôi."
+
     override val section_hero_title_first = "Xin chào, tôi là"
     override val section_hero_title_second = "Thanh Tân"
     override val section_hero_description_first =

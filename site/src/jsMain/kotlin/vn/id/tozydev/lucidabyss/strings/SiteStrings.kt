@@ -7,6 +7,15 @@ interface SiteStrings {
     val page_home_title: String
     val page_home_description: String
 
+    val page_blog_title: String
+    val page_blog_description: String
+
+    val page_about_title: String
+    val page_about_description: String
+
+    val page_products_title: String
+    val page_products_description: String
+
     val section_hero_title_first: String
     val section_hero_title_second: String
     val section_hero_description_first: String

@@ -10,18 +10,15 @@ plugins {
     alias(libs.plugins.kobweb.application)
     alias(libs.plugins.kobwebx.markdown)
     id("blog.lucid-abyss")
+    id("site-export.lucid-abyss")
 }
 
 kobweb {
     app {
         index {
-            description.set("Powered by Kobweb")
             head.add {
                 link("/lucid-abyss.css", rel = "stylesheet")
             }
-        }
-        export {
-            enableTraces()
         }
     }
     markdown {

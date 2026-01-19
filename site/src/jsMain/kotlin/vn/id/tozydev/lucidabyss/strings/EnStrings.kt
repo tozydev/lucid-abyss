@@ -5,6 +5,15 @@ object EnStrings : SiteStrings {
     override val page_home_title = "Home"
     override val page_home_description = "Home page of my personal blog"
 
+    override val page_blog_title = "Blog"
+    override val page_blog_description = "My personal blog where I share my knowledge and experiences."
+
+    override val page_about_title = "About Me"
+    override val page_about_description = "A bit about myself, my journey and what I'm doing."
+
+    override val page_products_title = "Products"
+    override val page_products_description = "Showcase of my products and projects."
+
     override val section_hero_title_first = "Hello, I'm"
     override val section_hero_title_second = "Thanh Tan"
     override val section_hero_description_first =

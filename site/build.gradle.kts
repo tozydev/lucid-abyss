@@ -89,4 +89,7 @@ tasks {
     named("jsBrowserDevelopmentWebpack") {
         finalizedBy(copyDevStylesheets)
     }
+    named("kobwebStart") {
+        mustRunAfter(copyDevStylesheets)
+    }
 }

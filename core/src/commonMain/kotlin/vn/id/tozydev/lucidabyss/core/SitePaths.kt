@@ -1,7 +1,4 @@
-package vn.id.tozydev.lucidabyss.utils
-
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SiteLanguage.Companion.Default
+package vn.id.tozydev.lucidabyss.core
 
 object SitePaths {
     const val HOME_PATH = "/"

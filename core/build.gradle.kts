@@ -11,6 +11,7 @@ kotlin {
     }
 
     compilerOptions {
+        freeCompilerArgs.addAll("-Xcontext-parameters", "-Xcontext-sensitive-resolution")
         optIn.addAll("kotlin.time.ExperimentalTime")
     }
 }

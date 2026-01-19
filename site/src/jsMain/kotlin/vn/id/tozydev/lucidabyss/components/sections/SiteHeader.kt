@@ -17,7 +17,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
-import vn.id.tozydev.lucidabyss.utils.SitePaths
+import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable

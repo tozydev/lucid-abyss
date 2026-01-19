@@ -7,9 +7,9 @@ import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
 import vn.id.tozydev.lucidabyss.strings.SiteStrings
-import vn.id.tozydev.lucidabyss.utils.SitePaths
 import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 import vn.id.tozydev.lucidabyss.utils.tw
 

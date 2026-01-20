@@ -1,15 +1,14 @@
 package vn.id.tozydev.lucidabyss.components.sections
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(strings: SiteStrings)
 fun SiteFooter(modifier: Modifier = Modifier) {
     Footer(modifier.toAttrs()) {
         Div(
@@ -21,11 +20,11 @@ fun SiteFooter(modifier: Modifier = Modifier) {
         ) {
             Aside {
                 P {
-                    Text(strings.section_footer_copyright)
-                    Text(strings.section_footer_built_with)
+                    Text(Res.string.section_footer_copyright)
+                    Text(Res.string.section_footer_built_with)
                 }
                 P {
-                    Text(strings.section_footer_rights)
+                    Text(Res.string.section_footer_rights)
                 }
             }
             Nav({ tw("grid grid-flow-col gap-4") }) {
@@ -33,25 +32,25 @@ fun SiteFooter(modifier: Modifier = Modifier) {
                     href = "",
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(strings.section_footer_link_github)
+                    Text(Res.string.section_footer_link_github)
                 }
                 Anchor(
                     href = "",
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(strings.section_footer_link_bluesky)
+                    Text(Res.string.section_footer_link_bluesky)
                 }
                 Anchor(
                     href = "",
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(strings.section_footer_link_email)
+                    Text(Res.string.section_footer_link_email)
                 }
                 Anchor(
                     href = "",
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(strings.section_footer_link_rss)
+                    Text(Res.string.section_footer_link_rss)
                 }
             }
         }

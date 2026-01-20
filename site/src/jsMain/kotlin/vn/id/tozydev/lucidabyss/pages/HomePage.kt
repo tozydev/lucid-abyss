@@ -4,6 +4,8 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
+import strings.StringsEn
+import strings.StringsVi
 import vn.id.tozydev.lucidabyss.components.sections.Hero
 import vn.id.tozydev.lucidabyss.components.sections.Socials
 import vn.id.tozydev.lucidabyss.components.sections.TechStack
@@ -20,16 +22,27 @@ class HomePage(
     language: SiteLanguage,
 ) : Page(language) {
     override val properties =
-        Properties(
-            title = strings.page_home_title,
-            description = strings.page_home_description,
-        )
+        when (language) {
+            SiteLanguage.En -> {
+                Properties(
+                    title = StringsEn.page_home_title,
+                    description = StringsEn.page_home_description,
+                )
+            }
+
+            else -> {
+                Properties(
+                    title = StringsVi.page_home_title,
+                    description = StringsVi.page_home_description,
+                )
+            }
+        }
 
     override val route = SitePaths.HOME_PATH
 
     @Composable
     override fun content(ctx: PageContext) {
-        context(language, strings) {
+        context(language) {
             Div({ tw("grid auto-rows-min grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5") }) {
                 Hero(
                     Modifier.tw("col-span-1 row-span-2 md:col-span-2"),

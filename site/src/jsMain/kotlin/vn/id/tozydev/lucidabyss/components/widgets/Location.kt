@@ -1,15 +1,14 @@
 package vn.id.tozydev.lucidabyss.components.widgets
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaLocationDot
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(strings: SiteStrings)
 fun Location(modifier: Modifier = Modifier) {
     Div(Modifier.tw("card card-border bg-base-100").then(modifier).toAttrs()) {
         Div({ tw("card-body text-center justify-center items-center") }) {
@@ -17,10 +16,10 @@ fun Location(modifier: Modifier = Modifier) {
                 FaLocationDot()
             }
             H4({ tw("font-bold") }) {
-                Text(strings.widget_location_title)
+                Text(Res.string.widget_location_title)
             }
             P({ tw("text-sm font-medium") }) {
-                Text(strings.widget_location_description)
+                Text(Res.string.widget_location_description)
             }
         }
     }

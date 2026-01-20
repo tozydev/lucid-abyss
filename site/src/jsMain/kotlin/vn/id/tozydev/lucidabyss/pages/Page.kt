@@ -8,13 +8,10 @@ import com.varabyte.kobweb.core.init.InitKobwebContext
 import com.varabyte.kobweb.core.init.InitRouteContext
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.pages.blog.BlogPage
-import vn.id.tozydev.lucidabyss.strings.strings
 
 abstract class Page(
     val language: SiteLanguage,
 ) {
-    protected val strings = language.strings()
-
     open val layout = "vn.id.tozydev.lucidabyss.components.layouts.PageLayout"
 
     abstract val route: String

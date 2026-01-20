@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="page_home_title">Home</string>
+    <string name="page_home_description">Home page of my personal blog</string>
+
+    <string name="page_blog_title">Blog</string>
+    <string name="page_blog_description">My personal blog where I share my knowledge and experiences.</string>
+
+    <string name="page_about_title">About Me</string>
+    <string name="page_about_description">A bit about myself, my journey and what I'm doing.</string>
+
+    <string name="page_products_title">Products</string>
+    <string name="page_products_description">Showcase of my products and projects.</string>
+
+    <string name="section_hero_title_first">Hello, I'm</string>
+    <string name="section_hero_title_second">Thanh Tan</string>
+    <string name="section_hero_description_first">Also known as tozydev, a developer. For me, coding is a passion, it's even better when I code with</string>
+    <string name="section_hero_description_second">. And this blog, where I share my stories...</string>
+    <string name="section_hero_image_alt">Profile picture</string>
+    <string name="section_hero_learn_more">Learn more</string>
+    <string name="section_hero_view_blog">View blog</string>
+
+    <string name="section_techstack_title">Tech Stack</string>
+    <string name="section_techstack_badge_java">Java</string>
+    <string name="section_techstack_badge_kotlin">Kotlin</string>
+    <string name="section_techstack_badge_kobweb">Kobweb</string>
+
+    <string name="section_socials_label_github">GitHub</string>
+    <string name="section_socials_label_linkedin">LinkedIn</string>
+    <string name="section_socials_label_bluesky">Bluesky</string>
+    <string name="section_socials_label_email">Email</string>
+
+    <string name="section_footer_copyright">© 2026 tozydev.</string>
+    <string name="section_footer_built_with">Built with Kobweb.</string>
+    <string name="section_footer_rights">All rights reserved</string>
+    <string name="section_footer_link_github">GitHub</string>
+    <string name="section_footer_link_bluesky">Bluesky</string>
+    <string name="section_footer_link_email">Email</string>
+    <string name="section_footer_link_rss">RSS</string>
+
+    <string name="section_header_menu_home">Home</string>
+    <string name="section_header_menu_me">About Me</string>
+    <string name="section_header_menu_blog">Blog</string>
+    <string name="section_header_menu_products">Products</string>
+
+    <string name="widget_bottom_navbar_home">Home</string>
+    <string name="widget_bottom_navbar_me">About Me</string>
+    <string name="widget_bottom_navbar_blog">Blog</string>
+    <string name="widget_bottom_navbar_products">Products</string>
+
+    <string name="widget_discussion_title">Discussion</string>
+    <string name="widget_discussion_description">Discussion feature is coming soon!</string>
+
+    <string name="widget_featured_project_badge">Featured</string>
+    <string name="widget_featured_project_description">My personal website, built with Kotlin/JS and Kobweb.</string>
+    <string name="widget_featured_project_view_details">View details</string>
+    <string name="widget_featured_project_author_avatar_alt">Project author avatar</string>
+
+    <string name="widget_latest_post_badge">Latest</string>
+    <string name="widget_latest_post_read_more">Read more</string>
+
+    <string name="widget_location_title">Ho Chi Minh, Vietnam</string>
+    <string name="widget_location_description">Studying at UTH</string>
+
+    <string name="widget_quote_text">“I know that I know nothing”</string>
+    <string name="widget_quote_author">— Socrates</string>
+
+    <string name="widget_share_post_title">Share this post</string>
+
+    <string name="widget_table_of_contents_title">Table of Contents</string>
+
+    <string name="widget_back_to_top_button_label">Back to top</string>
+
+    <string name="widget_next_prev_posts_next">Next post</string>
+    <string name="widget_next_prev_posts_prev">Previous post</string>
+
+    <string name="page_blog_header_title_first">Sharing knowledge</string>
+    <string name="page_blog_header_title_second">Programming and life</string>
+    <string name="page_blog_header_description">Where I save lessons, experiences and interesting things in my self-development journey to become better.</string>
+
+    <string name="widget_post_cover_alt">Cover image for ${title}</string>
+</resources>

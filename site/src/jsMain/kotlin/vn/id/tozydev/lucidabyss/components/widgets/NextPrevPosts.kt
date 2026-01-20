@@ -1,5 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.widgets
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -8,13 +9,11 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaArrowLeft
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRight
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.BlogPost
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.nextPost
 import vn.id.tozydev.lucidabyss.utils.previousPost
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(strings: SiteStrings)
 fun NextPrevPosts(
     post: BlogPost,
     modifier: Modifier = Modifier,
@@ -35,7 +34,7 @@ fun NextPrevPosts(
                 Div({ tw("card-body") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
                         FaArrowLeft()
-                        Text(strings.widget_next_prev_posts_prev)
+                        Text(Res.string.widget_next_prev_posts_prev)
                     }
                     H4({ tw("font-semibold text-lg") }) {
                         Text(previousPost.title)
@@ -50,7 +49,7 @@ fun NextPrevPosts(
             ) {
                 Div({ tw("card-body items-end") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
-                        Text(strings.widget_next_prev_posts_next)
+                        Text(Res.string.widget_next_prev_posts_next)
                         FaArrowRight()
                     }
                     H4({ tw("font-semibold text-lg") }) {

@@ -11,12 +11,11 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(strings: SiteStrings, language: SiteLanguage)
+context(language: SiteLanguage)
 fun BottomNavbar(modifier: Modifier = Modifier) {
     val ctx = rememberPageContext()
 
@@ -61,16 +60,16 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
             .then(modifier)
             .toAttrs(),
     ) {
-        DockItem(SitePaths.home, strings.widget_bottom_navbar_home) {
+        DockItem(SitePaths.home, Res.string.widget_bottom_navbar_home) {
             FaHouse()
         }
-        DockItem(SitePaths.about, strings.widget_bottom_navbar_me) {
+        DockItem(SitePaths.about, Res.string.widget_bottom_navbar_me) {
             FaUser()
         }
-        DockItem(SitePaths.blog, strings.widget_bottom_navbar_blog) {
+        DockItem(SitePaths.blog, Res.string.widget_bottom_navbar_blog) {
             FaRss()
         }
-        DockItem(SitePaths.products, strings.widget_bottom_navbar_products) {
+        DockItem(SitePaths.products, Res.string.widget_bottom_navbar_products) {
             FaCubes()
         }
     }

@@ -1,5 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.layouts
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.dom.registerRefScope
@@ -27,8 +28,6 @@ import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
 import vn.id.tozydev.lucidabyss.core.BlogPost
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
-import vn.id.tozydev.lucidabyss.strings.strings
 import vn.id.tozydev.lucidabyss.utils.getHeadings
 import vn.id.tozydev.lucidabyss.utils.language
 import vn.id.tozydev.lucidabyss.utils.postId
@@ -55,7 +54,6 @@ fun initPostLayout(ctx: InitRouteContext) {
             description = post.description,
         ),
     )
-    ctx.data.add(language)
     ctx.data.add(post)
 }
 
@@ -66,14 +64,13 @@ fun PostLayout(
     content: @Composable () -> Unit,
 ) {
     val post = ctx.data.getValue<BlogPost>()
-    val language = ctx.data.getValue<vn.id.tozydev.lucidabyss.core.SiteLanguage>()
 
     Column(
         Modifier
             .fillMaxWidth()
             .gap(2.cssRem),
     ) {
-        context(ctx, language.strings()) {
+        context(ctx) {
             PostHeader(post, Modifier.fillMaxWidth())
             PostContent(post, content)
         }
@@ -81,7 +78,7 @@ fun PostLayout(
 }
 
 @Composable
-context(ctx: PageContext, strings: SiteStrings)
+context(ctx: PageContext)
 private fun PostContent(
     post: BlogPost,
     content: @Composable (() -> Unit),
@@ -102,7 +99,7 @@ private fun PostContent(
 
                         H3({ tw("card-title text-sm uppercase") }) {
                             FaList()
-                            Text(strings.widget_table_of_contents_title)
+                            Text(Res.string.widget_table_of_contents_title)
                         }
 
                         TableOfContents(

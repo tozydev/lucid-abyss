@@ -1,5 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.sections
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -9,12 +10,11 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(strings: SiteStrings, _: SiteLanguage)
+context(_: SiteLanguage)
 fun Hero(modifier: Modifier = Modifier) {
     Div(
         Modifier
@@ -26,18 +26,18 @@ fun Hero(modifier: Modifier = Modifier) {
             HeroAvatar()
             Div({ tw("mt-4 mb-6") }) {
                 H1({ tw("font-bold text-3xl md:text-4xl mb-3") }) {
-                    Text(strings.section_hero_title_first)
+                    Text(Res.string.section_hero_title_first)
                     Br()
                     Span({ tw("text-4xl md:text-5xl text-primary") }) {
-                        Text(strings.section_hero_title_second)
+                        Text(Res.string.section_hero_title_second)
                     }
                 }
                 P({ tw("text-base md:text-lg") }) {
-                    Text(strings.section_hero_description_first)
+                    Text(Res.string.section_hero_description_first)
                     Span({ tw("font-semibold text-transparent bg-clip-text bg-(image:--color-kotlin)") }) {
                         Text("Kotlin")
                     }
-                    Text(strings.section_hero_description_second)
+                    Text(Res.string.section_hero_description_second)
                 }
             }
             HeroActions()
@@ -46,7 +46,7 @@ fun Hero(modifier: Modifier = Modifier) {
 }
 
 @Composable
-context(strings: SiteStrings, _: SiteLanguage)
+context(_: SiteLanguage)
 private fun HeroActions() {
     val ctx = rememberPageContext()
     Div({ tw("card-actions") }) {
@@ -57,7 +57,7 @@ private fun HeroActions() {
             },
         ) {
             FaUser(Modifier.tw("mr-2"))
-            Text(strings.section_hero_learn_more)
+            Text(Res.string.section_hero_learn_more)
         }
         Button(
             {
@@ -65,17 +65,16 @@ private fun HeroActions() {
                 onClick { ctx.router.navigateTo(SitePaths.blog) }
             },
         ) {
-            Text(strings.section_hero_view_blog)
+            Text(Res.string.section_hero_view_blog)
         }
     }
 }
 
 @Composable
-context(strings: SiteStrings)
 private fun HeroAvatar() {
     Img(
         src = getGravatarUrl(EMAIL_HASH, 96),
-        alt = strings.section_hero_image_alt,
+        alt = Res.string.section_hero_image_alt,
         { tw("size-24 border-2 border-base-300 rounded-field transition hover:scale-105 hover:drop-shadow-md") },
     )
 }

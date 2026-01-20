@@ -3,8 +3,12 @@ package vn.id.tozydev.lucidabyss.components.layouts
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.PageContext
+import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.data.getValue
+import com.varabyte.kobweb.core.init.InitRoute
+import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
+import io.github.skeptick.libres.LibresSettings
 import kotlinx.browser.document
 import kotlinx.dom.appendElement
 import org.jetbrains.compose.web.dom.*
@@ -15,8 +19,19 @@ import vn.id.tozydev.lucidabyss.components.widgets.BackToTopButton
 import vn.id.tozydev.lucidabyss.components.widgets.BottomNavbar
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.pages.Page
-import vn.id.tozydev.lucidabyss.strings.strings
 import vn.id.tozydev.lucidabyss.utils.tw
+
+@InitRoute
+fun initPageLayout(ctx: InitRouteContext) {
+    val language =
+        SiteLanguage.fromCode(
+            ctx.route.path
+                .removePrefix("/")
+                .substringBefore('/'),
+        )
+    ctx.data.add(language)
+    LibresSettings.languageCode = language.code
+}
 
 @Composable
 @Layout
@@ -38,7 +53,7 @@ fun PageLayout(
         }
     }
 
-    context(language, language.strings()) {
+    context(language) {
         SiteHeader()
 
         BottomNavbar()

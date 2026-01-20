@@ -1,5 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.sections
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -15,13 +16,12 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
-import vn.id.tozydev.lucidabyss.styles.ThemeMode
 import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.styles.ThemeMode
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(_: SiteStrings, language: SiteLanguage)
+context(language: SiteLanguage)
 fun SiteHeader(modifier: Modifier = Modifier) {
     Header(
         Modifier
@@ -51,7 +51,7 @@ private fun HeaderLogo() {
 }
 
 @Composable
-context(strings: SiteStrings, language: SiteLanguage)
+context(language: SiteLanguage)
 private fun HeaderMenu() {
     val ctx = rememberPageContext()
 
@@ -89,16 +89,16 @@ private fun HeaderMenu() {
 
     Div({ tw("hidden items-center md:flex") }) {
         Ul({ tw("menu menu-horizontal font-medium gap-2") }) {
-            MenuItem(SitePaths.home, strings.section_header_menu_home) {
+            MenuItem(SitePaths.home, Res.string.section_header_menu_home) {
                 FaHouse()
             }
-            MenuItem(SitePaths.about, strings.section_header_menu_me) {
+            MenuItem(SitePaths.about, Res.string.section_header_menu_me) {
                 FaUser()
             }
-            MenuItem(SitePaths.blog, strings.section_header_menu_blog) {
+            MenuItem(SitePaths.blog, Res.string.section_header_menu_blog) {
                 FaRss()
             }
-            MenuItem(SitePaths.products, strings.section_header_menu_products) {
+            MenuItem(SitePaths.products, Res.string.section_header_menu_products) {
                 FaCubes()
             }
         }

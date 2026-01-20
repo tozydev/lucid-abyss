@@ -2,6 +2,8 @@ package vn.id.tozydev.lucidabyss.pages
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.core.PageContext
+import strings.StringsEn
+import strings.StringsVi
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 
@@ -14,14 +16,25 @@ class ProductPage(
             else -> SitePaths.PRODUCTS_VI_PATH
         }
     override val properties =
-        Properties(
-            title = strings.page_products_title,
-            description = strings.page_products_description,
-        )
+        when (language) {
+            SiteLanguage.En -> {
+                Properties(
+                    title = StringsEn.page_products_title,
+                    description = StringsEn.page_products_description,
+                )
+            }
+
+            else -> {
+                Properties(
+                    title = StringsVi.page_products_title,
+                    description = StringsVi.page_products_description,
+                )
+            }
+        }
 
     @Composable
     override fun content(ctx: PageContext) {
-        context(language, strings) {
+        context(language) {
         }
     }
 }

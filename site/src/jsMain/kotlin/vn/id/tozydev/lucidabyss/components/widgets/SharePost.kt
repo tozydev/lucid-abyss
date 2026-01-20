@@ -9,11 +9,9 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaFacebook
 import com.varabyte.kobweb.silk.components.icons.fa.FaLink
 import com.varabyte.kobweb.silk.components.icons.fa.FaLinkedin
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(strings: SiteStrings)
 fun SharePost(modifier: Modifier = Modifier) {
     Div(
         Modifier
@@ -23,7 +21,7 @@ fun SharePost(modifier: Modifier = Modifier) {
     ) {
         Div({ tw("card-body items-center text-center lg:text-start lg:items-start") }) {
             H3({ tw("card-title text-base mb-2") }) {
-                Text(strings.widget_share_post_title)
+                Text(Res.string.widget_share_post_title)
             }
 
             Div({ tw("flex items-center gap-4 lg:gap-2") }) {

@@ -1,5 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.widgets
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.GenericTag
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -7,13 +8,11 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaCalendar
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.BlogPost
-import vn.id.tozydev.lucidabyss.strings.SiteStrings
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-context(strings: SiteStrings)
 fun PostCard(
     post: BlogPost,
     modifier: Modifier = Modifier,
@@ -29,7 +28,7 @@ fun PostCard(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = strings.widget_post_cover_alt(post.title),
+                alt = Res.string.widget_post_cover_alt.format(post.title),
             )
             Div({ tw("absolute top-4 right-4") }) {
                 Div({ tw("badge") }) {

@@ -3,6 +3,8 @@ package vn.id.tozydev.lucidabyss.components.sections
 import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.*
+import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.navigation.Anchor
@@ -14,7 +16,9 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
 import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
+import kotlinx.browser.document
 import org.jetbrains.compose.web.dom.*
+import org.w3c.dom.HTMLElement
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
@@ -106,6 +110,7 @@ private fun HeaderMenu() {
 }
 
 @Composable
+context(language: SiteLanguage)
 private fun HeaderActions() {
     @Composable
     fun ThemeModeButton() {
@@ -124,10 +129,82 @@ private fun HeaderActions() {
         }
     }
 
+    @Composable
+    fun LanguageDropdown() {
+        val ctx = rememberPageContext()
+        Div({ tw("dropdown dropdown-end md:dropdown-center") }) {
+            Div(
+                {
+                    tw("btn btn-sm btn-ghost btn-circle")
+                    attr("tabindex", "0")
+                    attr("role", "button")
+                },
+            ) {
+                Span({ tw("text-xs font-bold") }) {
+                    Text(language.code.uppercase())
+                }
+            }
+            Ul(
+                {
+                    tw("dropdown-content menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow")
+                    attr("tabindex", "0")
+                },
+            ) {
+                SiteLanguage.entries.forEach { lang ->
+                    Li {
+                        val isCurrent = lang == language
+                        val targetPath =
+                            if (isCurrent) {
+                                ctx.route.path
+                            } else {
+                                getLanguageCounterpartPath(ctx.route.path, language)
+                            }
+
+                        Anchor(
+                            href = targetPath,
+                            attrs =
+                                Modifier
+                                    .thenIf(isCurrent, Modifier.tw("menu-active"))
+                                    .onClick { document.activeElement?.unsafeCast<HTMLElement>()?.blur() }
+                                    .toAttrs(),
+                        ) {
+                            Text(lang.label)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     Div({ tw("flex justify-center gap-2") }) {
         Button({ tw("btn btn-sm btn-ghost btn-circle") }) {
             FaMagnifyingGlass()
         }
+        LanguageDropdown()
         ThemeModeButton()
+    }
+}
+
+private fun getLanguageCounterpartPath(
+    path: String,
+    language: SiteLanguage,
+): String {
+    val enPrefix = "/${SiteLanguage.En.code}"
+    return if (language == SiteLanguage.Vi) {
+        when (path) {
+            SitePaths.HOME_PATH -> enPrefix
+            SitePaths.ABOUT_PATH -> "$enPrefix${SitePaths.ABOUT_PATH}"
+            SitePaths.BLOG_PATH -> "$enPrefix${SitePaths.BLOG_PATH}"
+            SitePaths.PRODUCTS_VI_PATH -> "$enPrefix${SitePaths.PRODUCTS_EN_PATH}"
+            else -> "$enPrefix$path"
+        }
+    } else {
+        val pathWithoutEn = path.removePrefix(enPrefix).takeIf { it.isNotEmpty() } ?: "/"
+        when (pathWithoutEn) {
+            SitePaths.ABOUT_PATH -> SitePaths.ABOUT_PATH
+            SitePaths.BLOG_PATH -> SitePaths.BLOG_PATH
+            SitePaths.PRODUCTS_EN_PATH -> SitePaths.PRODUCTS_VI_PATH
+            else -> pathWithoutEn
+        }
     }
 }

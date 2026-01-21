@@ -100,4 +100,5 @@ tasks {
 
 libres {
     baseLocaleLanguageCode = "vi"
+    generateNamedArguments = true
 }

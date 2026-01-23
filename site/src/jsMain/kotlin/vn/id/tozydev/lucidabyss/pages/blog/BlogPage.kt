@@ -6,7 +6,7 @@ import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
 import strings.StringsEn
 import strings.StringsVi
-import vn.id.tozydev.lucidabyss.components.widgets.PostCard
+import vn.id.tozydev.lucidabyss.components.PostCard
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts

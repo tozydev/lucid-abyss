@@ -17,7 +17,7 @@ plugins.withType<KobwebxMarkdownPlugin> {
     }
 
     kobwebBlock.extensions.configure<MarkdownBlock> {
-        defaultLayout = ".components.layouts.PostLayout"
+        defaultLayout = ".layouts.PostLayout"
         process = { entries -> processBlogMarkdowns(entries) }
 
         SiteLanguage.entries.forEach { language ->

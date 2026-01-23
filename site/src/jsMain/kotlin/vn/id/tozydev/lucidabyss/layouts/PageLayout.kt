@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.layouts
+package vn.id.tozydev.lucidabyss.layouts
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -13,10 +13,10 @@ import kotlinx.browser.document
 import kotlinx.dom.appendElement
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLMetaElement
-import vn.id.tozydev.lucidabyss.components.sections.SiteFooter
-import vn.id.tozydev.lucidabyss.components.sections.SiteHeader
-import vn.id.tozydev.lucidabyss.components.widgets.BackToTopButton
-import vn.id.tozydev.lucidabyss.components.widgets.BottomNavbar
+import vn.id.tozydev.lucidabyss.components.BackToTopButton
+import vn.id.tozydev.lucidabyss.components.BottomNavbar
+import vn.id.tozydev.lucidabyss.components.SiteFooter
+import vn.id.tozydev.lucidabyss.components.SiteHeader
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.pages.Page
 import vn.id.tozydev.lucidabyss.utils.tw

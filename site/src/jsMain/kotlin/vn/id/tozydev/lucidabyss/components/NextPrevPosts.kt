@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.widgets
+package vn.id.tozydev.lucidabyss.components
 
 import Res
 import androidx.compose.runtime.*

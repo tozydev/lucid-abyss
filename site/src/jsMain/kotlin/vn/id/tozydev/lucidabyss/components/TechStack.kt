@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier

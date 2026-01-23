@@ -12,7 +12,7 @@ import vn.id.tozydev.lucidabyss.pages.blog.BlogPage
 abstract class Page(
     val language: SiteLanguage,
 ) {
-    open val layout = "vn.id.tozydev.lucidabyss.components.layouts.PageLayout"
+    open val layout = "vn.id.tozydev.lucidabyss.layouts.PageLayout"
 
     abstract val route: String
 

@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.layouts
+package vn.id.tozydev.lucidabyss.layouts
 
 import Res
 import androidx.compose.runtime.*
@@ -20,11 +20,11 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLHeadingElement
-import vn.id.tozydev.lucidabyss.components.widgets.Discussion
-import vn.id.tozydev.lucidabyss.components.widgets.NextPrevPosts
-import vn.id.tozydev.lucidabyss.components.widgets.PostHeader
-import vn.id.tozydev.lucidabyss.components.widgets.SharePost
-import vn.id.tozydev.lucidabyss.components.widgets.TableOfContents
+import vn.id.tozydev.lucidabyss.components.Discussion
+import vn.id.tozydev.lucidabyss.components.NextPrevPosts
+import vn.id.tozydev.lucidabyss.components.PostHeader
+import vn.id.tozydev.lucidabyss.components.SharePost
+import vn.id.tozydev.lucidabyss.components.TableOfContents
 import vn.id.tozydev.lucidabyss.core.BlogPost
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
@@ -58,7 +58,7 @@ fun initPostLayout(ctx: InitRouteContext) {
 }
 
 @Composable
-@Layout(".components.layouts.PageLayout")
+@Layout(".layouts.PageLayout")
 fun PostLayout(
     ctx: PageContext,
     content: @Composable () -> Unit,

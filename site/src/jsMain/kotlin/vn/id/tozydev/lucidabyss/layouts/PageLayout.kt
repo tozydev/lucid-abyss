@@ -10,10 +10,9 @@ import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import io.github.skeptick.libres.LibresSettings
 import kotlinx.browser.document
-import kotlinx.dom.appendElement
 import org.jetbrains.compose.web.dom.*
-import org.w3c.dom.HTMLMetaElement
 import vn.id.tozydev.lucidabyss.components.BackToTopButton
+import vn.id.tozydev.lucidabyss.components.MetaTag
 import vn.id.tozydev.lucidabyss.components.BottomNavbar
 import vn.id.tozydev.lucidabyss.components.SiteFooter
 import vn.id.tozydev.lucidabyss.components.SiteHeader
@@ -44,14 +43,9 @@ fun PageLayout(
 
     LaunchedEffect(pageProperties.title) {
         document.title = "${pageProperties.title} | tozydev"
-        document.head!!.apply {
-            appendElement("meta") {
-                this as HTMLMetaElement
-                this.name = "description"
-                this.content = pageProperties.description
-            }
-        }
     }
+
+    MetaTag("description", pageProperties.description)
 
     context(language) {
         SiteHeader()

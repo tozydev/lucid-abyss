@@ -39,8 +39,10 @@ class BlogPage(
         Div({ tw("flex flex-col gap-8") }) {
             BlogHeader()
             Div({ tw("grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3") }) {
-                BlogPosts[language]?.forEach {
-                    PostCard(it)
+                BlogPosts[language]?.forEach { post ->
+                    key(post.id.value) {
+                        PostCard(post)
+                    }
                 }
             }
         }

@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
-    alias(libs.plugins.kobwebx.markdown)
     alias(libs.plugins.libres)
     id("blog.lucid-abyss")
     id("site-export.lucid-abyss")

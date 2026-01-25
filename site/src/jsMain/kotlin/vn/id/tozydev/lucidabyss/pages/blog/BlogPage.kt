@@ -2,11 +2,12 @@ package vn.id.tozydev.lucidabyss.pages.blog
 
 import Res
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
 import strings.StringsEn
 import strings.StringsVi
-import vn.id.tozydev.lucidabyss.components.PostCard
+import vn.id.tozydev.lucidabyss.components.blog.BlogPostCard
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
@@ -41,7 +42,7 @@ class BlogPage(
             Div({ tw("grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3") }) {
                 BlogPosts[language]?.forEach { post ->
                     key(post.id.value) {
-                        PostCard(post)
+                        BlogPostCard(post)
                     }
                 }
             }

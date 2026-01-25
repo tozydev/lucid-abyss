@@ -1,5 +1,6 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.home
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -12,7 +13,7 @@ import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun FeaturedProject(modifier: Modifier = Modifier) {
+fun HomeFeaturedProject(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw("card bg-base-100 card-border card-lg")

@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.scaffold
 
 import Res
 import androidx.compose.runtime.*

@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.blog
 
 import Res
 import androidx.compose.runtime.*

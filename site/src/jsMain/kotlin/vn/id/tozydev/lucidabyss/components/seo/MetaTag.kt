@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.seo
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect

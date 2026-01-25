@@ -1,5 +1,6 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.blog
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -12,7 +13,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun SharePost(modifier: Modifier = Modifier) {
+fun PostShare(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw("card card-border bg-base-100")

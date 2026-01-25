@@ -1,5 +1,6 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.home
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -13,7 +14,7 @@ import vn.id.tozydev.lucidabyss.models.Constants
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun Socials(modifier: Modifier = Modifier) {
+fun HomeSocials(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw("grid grid-cols-2 gap-4 md:grid-cols-4")

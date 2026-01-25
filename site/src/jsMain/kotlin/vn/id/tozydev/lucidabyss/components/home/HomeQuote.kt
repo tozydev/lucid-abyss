@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.home
 
 import Res
 import androidx.compose.runtime.*
@@ -9,7 +9,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun Quote(modifier: Modifier = Modifier) {
+fun HomeQuote(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw("card bg-gray-900 text-gray-100")

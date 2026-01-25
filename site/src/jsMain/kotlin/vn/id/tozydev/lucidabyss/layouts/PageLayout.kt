@@ -11,11 +11,11 @@ import com.varabyte.kobweb.core.layout.Layout
 import io.github.skeptick.libres.LibresSettings
 import kotlinx.browser.document
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.BackToTopButton
-import vn.id.tozydev.lucidabyss.components.MetaTag
-import vn.id.tozydev.lucidabyss.components.BottomNavbar
-import vn.id.tozydev.lucidabyss.components.SiteFooter
-import vn.id.tozydev.lucidabyss.components.SiteHeader
+import vn.id.tozydev.lucidabyss.components.scaffold.BottomNavbar
+import vn.id.tozydev.lucidabyss.components.scaffold.SiteFooter
+import vn.id.tozydev.lucidabyss.components.scaffold.SiteHeader
+import vn.id.tozydev.lucidabyss.components.seo.MetaTag
+import vn.id.tozydev.lucidabyss.components.ui.BackToTopButton
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.pages.Page
 import vn.id.tozydev.lucidabyss.utils.tw

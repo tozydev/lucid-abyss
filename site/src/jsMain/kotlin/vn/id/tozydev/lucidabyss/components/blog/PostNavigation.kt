@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.blog
 
 import Res
 import androidx.compose.runtime.*
@@ -14,7 +14,7 @@ import vn.id.tozydev.lucidabyss.utils.previousPost
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun NextPrevPosts(
+fun PostNavigation(
     post: BlogPost,
     modifier: Modifier = Modifier,
 ) {

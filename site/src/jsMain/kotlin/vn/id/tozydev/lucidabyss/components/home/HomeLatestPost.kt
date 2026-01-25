@@ -1,5 +1,6 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.home
 
+import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.GenericTag
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -14,7 +15,7 @@ import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun LatestPost(
+fun HomeLatestPost(
     post: BlogPost,
     modifier: Modifier = Modifier,
 ) {

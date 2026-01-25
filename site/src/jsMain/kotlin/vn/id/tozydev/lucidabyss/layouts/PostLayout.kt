@@ -20,11 +20,11 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLHeadingElement
-import vn.id.tozydev.lucidabyss.components.Discussion
-import vn.id.tozydev.lucidabyss.components.NextPrevPosts
-import vn.id.tozydev.lucidabyss.components.PostHeader
-import vn.id.tozydev.lucidabyss.components.SharePost
-import vn.id.tozydev.lucidabyss.components.TableOfContents
+import vn.id.tozydev.lucidabyss.components.blog.PostDiscussion
+import vn.id.tozydev.lucidabyss.components.blog.PostHeader
+import vn.id.tozydev.lucidabyss.components.blog.PostNavigation
+import vn.id.tozydev.lucidabyss.components.blog.PostShare
+import vn.id.tozydev.lucidabyss.components.blog.PostTableOfContents
 import vn.id.tozydev.lucidabyss.core.BlogPost
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
@@ -102,14 +102,14 @@ private fun PostContent(
                             Text(Res.string.widget_table_of_contents_title)
                         }
 
-                        TableOfContents(
+                        PostTableOfContents(
                             headings = hierarchy,
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }
                 }
 
-                SharePost(Modifier.tw("hidden lg:block"))
+                PostShare(Modifier.tw("hidden lg:block"))
             }
         }
         Div({ tw("lg:col-span-9 flex flex-col gap-8") }) {
@@ -128,11 +128,11 @@ private fun PostContent(
                 }
             }
 
-            SharePost()
+            PostShare()
 
-            NextPrevPosts(post)
+            PostNavigation(post)
 
-            Discussion()
+            PostDiscussion()
         }
     }
 }

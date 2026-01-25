@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components
+package vn.id.tozydev.lucidabyss.components.home
 
 import Res
 import androidx.compose.runtime.*
@@ -15,7 +15,7 @@ import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
 context(_: SiteLanguage)
-fun Hero(modifier: Modifier = Modifier) {
+fun HomeHero(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw("card card-lg card-border bg-base-100")

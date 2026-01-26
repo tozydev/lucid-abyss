@@ -41,7 +41,7 @@ class HomePage(
     override val route = SitePaths.HOME_PATH
 
     @Composable
-    override fun content(ctx: PageContext) {
+    override fun Content(ctx: PageContext) {
         context(language) {
             Div({ tw("grid auto-rows-min grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5") }) {
                 HomeHero(

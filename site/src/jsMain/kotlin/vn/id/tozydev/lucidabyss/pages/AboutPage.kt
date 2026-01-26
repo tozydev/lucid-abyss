@@ -29,7 +29,7 @@ class AboutPage(
         }
 
     @Composable
-    override fun content(ctx: PageContext) {
+    override fun Content(ctx: PageContext) {
         context(language) {
         }
     }

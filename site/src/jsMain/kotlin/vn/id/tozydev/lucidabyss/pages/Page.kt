@@ -27,7 +27,7 @@ abstract class Page(
     protected open fun additionalInit(ctx: InitRouteContext) = Unit
 
     @Composable
-    abstract fun content(ctx: PageContext)
+    abstract fun Content(ctx: PageContext)
 
     data class Properties(
         val title: String,
@@ -51,7 +51,7 @@ fun registerPages(ctx: InitKobwebContext) {
                 layoutId = page.layout,
                 initRouteMethod = page::init,
             ) { ctx ->
-                page.content(ctx)
+                page.Content(ctx)
             }
         }
 }

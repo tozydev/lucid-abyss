@@ -2,7 +2,6 @@ package vn.id.tozydev.lucidabyss.pages.blog
 
 import Res
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
 import strings.StringsEn
@@ -36,7 +35,7 @@ class BlogPage(
         }
 
     @Composable
-    override fun content(ctx: PageContext) {
+    override fun Content(ctx: PageContext) {
         Div({ tw("flex flex-col gap-8") }) {
             BlogHeader()
             Div({ tw("grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3") }) {

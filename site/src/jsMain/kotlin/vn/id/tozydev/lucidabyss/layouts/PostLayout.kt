@@ -25,6 +25,7 @@ import vn.id.tozydev.lucidabyss.components.blog.PostHeader
 import vn.id.tozydev.lucidabyss.components.blog.PostNavigation
 import vn.id.tozydev.lucidabyss.components.blog.PostShare
 import vn.id.tozydev.lucidabyss.components.blog.PostTableOfContents
+import vn.id.tozydev.lucidabyss.components.blog.PostTags
 import vn.id.tozydev.lucidabyss.core.BlogPost
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
@@ -127,6 +128,8 @@ private fun PostContent(
                     content()
                 }
             }
+
+            PostTags(post.tags)
 
             PostShare()
 

@@ -6,12 +6,12 @@ import org.jetbrains.compose.web.attributes.AttrsScope
 import org.w3c.dom.Element
 
 /** Alias for `Modifier.classNames` with tailwind classes IDE completion support. */
-fun Modifier.tw(vararg classes: String): Modifier =
+fun Modifier.tw(classes: String): Modifier =
     attrsModifier {
-        tw(*classes)
+        tw(classes)
     }
 
 /** Alias for [AttrsScope.classes] with tailwind classes IDE completion support. */
-fun <T : Element> AttrsScope<T>.tw(vararg classes: String) {
-    classes(classes.flatMap { it.split(' ') })
+fun <T : Element> AttrsScope<T>.tw(classes: String) {
+    classes(classes.split(' '))
 }

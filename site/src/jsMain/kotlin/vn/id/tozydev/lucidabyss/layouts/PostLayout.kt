@@ -131,7 +131,7 @@ private fun PostContent(
 
             PostTags(post.tags)
 
-            PostShare()
+            PostShare(Modifier.tw("block lg:hidden"))
 
             PostNavigation(post)
 

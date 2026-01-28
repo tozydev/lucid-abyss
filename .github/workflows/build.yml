@@ -1,0 +1,15 @@
+name: Build
+on:
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  call-export:
+    uses: ./.github/workflows/export-site.shared.yml
+    with:
+      upload-site: false
+      upload-traces: false
+      upload-full: true

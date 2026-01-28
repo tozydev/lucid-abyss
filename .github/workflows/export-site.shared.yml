@@ -1,4 +1,4 @@
-name: export-site.shared.yml
+name: Shared Export Workflow
 on:
   workflow_call:
     inputs:

@@ -1,0 +1,95 @@
+name: export-site.shared.yml
+on:
+  workflow_dispatch:
+    inputs:
+      upload-site:
+        description: Whether to upload the site artifact (distribution)
+        type: boolean
+        default: true
+        required: false
+
+      upload-traces:
+        description: Whether to upload export traces
+        type: boolean
+        default: false
+        required: false
+
+      upload-full:
+        description: Whether to upload the full export artifact (including site, server & traces)
+        type: boolean
+        default: false
+        required: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: jetbrains
+          java-version: 21
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Query Browser Cache ID
+        id: browser-cache-id
+        run: echo "value=$(./gradlew -q :site:kobwebBrowserCacheId)" >> $GITHUB_OUTPUT
+
+      - name: Cache Browser Dependencies
+        uses: actions/cache@v5
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.browser-cache-id.outputs.value }}
+
+      - name: Fetch kobweb
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: varabyte/kobweb-cli
+          latest: true
+          fileName: "kobweb-*.zip"
+          extract: true
+          out-file-path: kobweb-cli
+
+      - name: Move kobweb binary
+        working-directory: kobweb-cli
+        run: |
+          mv kobweb-*/* .
+          chmod +x bin/kobweb
+
+      - name: Run export
+        working-directory: site
+        run: ../kobweb-cli/bin/kobweb export --notty --layout static
+
+      - if: inputs.upload-site
+        name: Upload site artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: site
+          path: |
+            ./wrangler.jsonc
+            ./site/.kobweb/site
+
+      - if: inputs.upload-traces
+        name: Upload export traces
+        uses: actions/upload-artifact@v6
+        with:
+          name: export-traces
+          path: ./site/.kobweb/export-traces
+
+      - if: inputs.upload-full
+        name: Upload full export artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: full-export
+          path: |
+            ./wrangler.jsonc
+            ./site/.kobweb

@@ -1,6 +1,6 @@
 name: export-site.shared.yml
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       upload-site:
         description: Whether to upload the site artifact (distribution)

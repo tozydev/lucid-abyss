@@ -4,6 +4,7 @@ kobweb = "0.23.3"
 kotlin = "2.3.0"
 kotlinx-datetime = "0.7.1"
 libres = "1.2.4"
+ksp = "2.3.4"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "jetbrains-compose" }
@@ -21,3 +22,4 @@ kobweb-application = { id = "com.varabyte.kobweb.application", version.ref = "ko
 kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

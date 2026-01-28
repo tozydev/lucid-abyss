@@ -7,12 +7,19 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 
 ## Tech Stack
 
-- **Language:** Kotlin 2.2.20 (JVM & JS targets).
+- **Language:** Kotlin 2.3.0 (JVM & JS targets).
 - **Framework:** Kobweb 0.23.3 (based on JetBrains Compose HTML).
 - **Styling:** Tailwind CSS 4.x (configured via PostCSS) and DaisyUI 5.x (Component library).
-- **Build Tool:** Gradle 9.3.0 (Kotlin DSL).
+- **Build Tool:** Gradle (Kotlin DSL).
 - **Internationalization:** Libres (Android-like strings resources).
 - **Deployment:** Cloudflare Workers (Static layout export).
+
+## Git Commits & Branches
+
+- **Commits:**
+    - Use **Conventional Commits** (e.g., `feat: add navbar`, `fix: styling bug`, `chore: update dependencies`).
+    - Commit messages should be short and descriptive.
+- **Branches:** Use descriptive names like `feature/new-page` or `fix/nav-issue`.
 
 ## Key Files & Directories
 
@@ -33,6 +40,8 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 - Compile the project (quick check): `./gradlew site:jsDevelopmentExecutableCompileSync`
 - Full project build: `./gradlew build`
 - Export static site to `site/.kobweb/site/`: `kobweb export -p site -l static --notty`
+- Start development server: `kobweb run -p site --notty`
+  _*This command listens on port 8080 by default, is a blocking command, and requires about 1–2 minutes to start._
 
 ## Boundaries & Rules
 

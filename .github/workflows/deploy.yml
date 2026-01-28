@@ -16,7 +16,7 @@ env:
 
 jobs:
   call-export:
-    uses: .github/workflows/export-site.shared.yml
+    uses: ./.github/workflows/export-site.shared.yml
     with:
       upload-traces: true
       upload-site: true

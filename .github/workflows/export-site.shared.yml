@@ -76,14 +76,14 @@ jobs:
           name: site
           path: |
             ./wrangler.jsonc
-            ./site/.kobweb/site
+            ./site/.kobweb/site/
 
       - if: inputs.upload-traces
         name: Upload export traces
         uses: actions/upload-artifact@v6
         with:
           name: export-traces
-          path: ./site/.kobweb/export-traces
+          path: ./site/.kobweb/export-traces/
 
       - if: inputs.upload-full
         name: Upload full export artifact
@@ -92,4 +92,4 @@ jobs:
           name: full-export
           path: |
             ./wrangler.jsonc
-            ./site/.kobweb
+            ./site/.kobweb/

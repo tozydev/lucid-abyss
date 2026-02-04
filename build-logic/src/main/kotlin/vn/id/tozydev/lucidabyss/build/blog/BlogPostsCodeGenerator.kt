@@ -78,11 +78,12 @@ private inline fun StringBuilder.appendLine(
     block: StringBuilder.() -> Unit,
 ) {
     val content = StringBuilder().apply(block).toString()
-    if (content.isNotEmpty()) {
-        content.lines().forEach { line ->
-            if (line.isNotEmpty()) {
-                appendLine(" ".repeat(indent) + line)
-            }
+    if (content.isEmpty()) return
+    val indentStr = " ".repeat(indent)
+    content.lines().forEach { line ->
+        if (line.isNotEmpty()) {
+            append(indentStr)
+            appendLine(line)
         }
     }
 }

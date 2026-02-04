@@ -5,12 +5,11 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
-import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
-import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -73,7 +72,7 @@ private fun HeroActions() {
 @Composable
 private fun HeroAvatar() {
     Img(
-        src = getGravatarUrl(EMAIL_HASH, 96),
+        src = BasePath.prependTo("/images/avatar_96x.webp"),
         alt = Res.string.section_hero_image_alt,
         { tw("size-24 border-2 border-base-300 rounded-field transition hover:scale-105 hover:drop-shadow-md") },
     )

@@ -5,11 +5,10 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
+import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRightLong
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.models.Constants
-import vn.id.tozydev.lucidabyss.models.Constants.EMAIL_HASH
-import vn.id.tozydev.lucidabyss.utils.getGravatarUrl
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -29,7 +28,7 @@ fun HomeFeaturedProject(modifier: Modifier = Modifier) {
                 Div({ tw("avatar") }) {
                     Div({ tw("w-8 rounded-full") }) {
                         Img(
-                            src = getGravatarUrl(EMAIL_HASH, 32),
+                            src = BasePath.prependTo("/images/avatar_32x.webp"),
                             alt = Res.string.widget_featured_project_author_avatar_alt,
                         )
                     }

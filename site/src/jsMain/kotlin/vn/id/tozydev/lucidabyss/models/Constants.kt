@@ -14,7 +14,4 @@ object Constants {
     const val LUCID_ABYSS_GITHUB_URL = "$GITHUB_URL/lucid-abyss"
 
     const val DEFAULT_COVER_IMAGE = "/post-cover.webp"
-
-    // https://gravatar.com/tozydev
-    const val EMAIL_HASH = "5431a9c845a67ac30b962268b9dfc0cb433ca7225e39b6aacac1612c22e6e0a2"
 }

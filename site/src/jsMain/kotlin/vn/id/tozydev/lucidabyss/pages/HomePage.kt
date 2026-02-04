@@ -4,8 +4,6 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
-import strings.StringsEn
-import strings.StringsVi
 import vn.id.tozydev.lucidabyss.components.home.HomeFeaturedProject
 import vn.id.tozydev.lucidabyss.components.home.HomeHero
 import vn.id.tozydev.lucidabyss.components.home.HomeLatestPost
@@ -16,26 +14,18 @@ import vn.id.tozydev.lucidabyss.components.home.HomeTechStack
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
+import vn.id.tozydev.lucidabyss.utils.strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class HomePage(
     language: SiteLanguage,
 ) : Page(language) {
     override val properties =
-        when (language) {
-            SiteLanguage.En -> {
-                Properties(
-                    title = StringsEn.page_home_title,
-                    description = StringsEn.page_home_description,
-                )
-            }
-
-            else -> {
-                Properties(
-                    title = StringsVi.page_home_title,
-                    description = StringsVi.page_home_description,
-                )
-            }
+        language.strings.let { strings ->
+            Properties(
+                title = strings.page_home_title!!,
+                description = strings.page_home_description!!,
+            )
         }
 
     override val route = SitePaths.HOME_PATH

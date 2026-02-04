@@ -4,13 +4,12 @@ import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
-import strings.StringsEn
-import strings.StringsVi
 import vn.id.tozydev.lucidabyss.components.blog.BlogPostCard
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
+import vn.id.tozydev.lucidabyss.utils.strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class BlogPage(
@@ -18,20 +17,11 @@ class BlogPage(
 ) : Page(language) {
     override val route = SitePaths.BLOG_PATH
     override val properties =
-        when (language) {
-            SiteLanguage.En -> {
-                Properties(
-                    title = StringsEn.page_blog_title,
-                    description = StringsEn.page_blog_description,
-                )
-            }
-
-            else -> {
-                Properties(
-                    title = StringsVi.page_blog_title,
-                    description = StringsVi.page_blog_description,
-                )
-            }
+        language.strings.let { strings ->
+            Properties(
+                title = strings.page_blog_title!!,
+                description = strings.page_blog_description!!,
+            )
         }
 
     @Composable

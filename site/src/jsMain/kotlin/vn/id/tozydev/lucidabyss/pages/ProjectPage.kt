@@ -6,19 +6,19 @@ import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.utils.strings
 
-class ProductPage(
+class ProjectPage(
     language: SiteLanguage,
 ) : Page(language) {
     override val route =
         when (language) {
-            SiteLanguage.En -> SitePaths.PRODUCTS_EN_PATH
-            else -> SitePaths.PRODUCTS_VI_PATH
+            SiteLanguage.En -> SitePaths.PROJECTS_EN_PATH
+            else -> SitePaths.PROJECTS_VI_PATH
         }
     override val properties =
         language.strings.let { strings ->
             Properties(
-                title = strings.page_products_title!!,
-                description = strings.page_products_description!!,
+                title = strings.page_projects_title!!,
+                description = strings.page_projects_description!!,
             )
         }
 

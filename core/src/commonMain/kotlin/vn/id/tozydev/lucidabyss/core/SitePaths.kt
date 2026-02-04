@@ -3,8 +3,8 @@ package vn.id.tozydev.lucidabyss.core
 object SitePaths {
     const val HOME_PATH = "/"
     const val ABOUT_PATH = "/me"
-    const val PRODUCTS_EN_PATH = "/products"
-    const val PRODUCTS_VI_PATH = "/san-pham"
+    const val PROJECTS_EN_PATH = "/projects"
+    const val PROJECTS_VI_PATH = "/du-an"
     const val BLOG_PATH = "/blog"
 
     context(language: SiteLanguage)
@@ -32,10 +32,10 @@ object SitePaths {
             }
 
     context(language: SiteLanguage)
-    val products
+    val projects
         get() =
             when (language) {
-                SiteLanguage.Vi -> PRODUCTS_VI_PATH
-                SiteLanguage.En -> "/${language.code}$PRODUCTS_EN_PATH"
+                SiteLanguage.Vi -> PROJECTS_VI_PATH
+                SiteLanguage.En -> "/${language.code}$PROJECTS_EN_PATH"
             }
 }

@@ -15,7 +15,7 @@ plugins.withType<KobwebApplicationPlugin> {
                 addExtraRoute(SitePaths.home)
                 addExtraRoute(SitePaths.about)
                 addExtraRoute(SitePaths.blog)
-                addExtraRoute(SitePaths.products)
+                addExtraRoute(SitePaths.projects)
             }
         }
     }

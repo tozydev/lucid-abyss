@@ -42,7 +42,7 @@ fun registerPages(ctx: InitKobwebContext) {
             listOf(
                 HomePage(it),
                 AboutPage(it),
-                ProductPage(it),
+                ProjectPage(it),
                 BlogPage(it),
             )
         }.forEach { page ->

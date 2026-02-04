@@ -102,7 +102,7 @@ private fun HeaderMenu() {
             MenuItem(SitePaths.blog, Res.string.section_header_menu_blog) {
                 FaRss()
             }
-            MenuItem(SitePaths.products, Res.string.section_header_menu_products) {
+            MenuItem(SitePaths.projects, Res.string.section_header_menu_projects) {
                 FaCubes()
             }
         }
@@ -195,7 +195,7 @@ private fun getLanguageCounterpartPath(
             SitePaths.HOME_PATH -> enPrefix
             SitePaths.ABOUT_PATH -> "$enPrefix${SitePaths.ABOUT_PATH}"
             SitePaths.BLOG_PATH -> "$enPrefix${SitePaths.BLOG_PATH}"
-            SitePaths.PRODUCTS_VI_PATH -> "$enPrefix${SitePaths.PRODUCTS_EN_PATH}"
+            SitePaths.PROJECTS_VI_PATH -> "$enPrefix${SitePaths.PROJECTS_EN_PATH}"
             else -> "$enPrefix$path"
         }
     } else {
@@ -203,7 +203,7 @@ private fun getLanguageCounterpartPath(
         when (pathWithoutEn) {
             SitePaths.ABOUT_PATH -> SitePaths.ABOUT_PATH
             SitePaths.BLOG_PATH -> SitePaths.BLOG_PATH
-            SitePaths.PRODUCTS_EN_PATH -> SitePaths.PRODUCTS_VI_PATH
+            SitePaths.PROJECTS_EN_PATH -> SitePaths.PROJECTS_VI_PATH
             else -> pathWithoutEn
         }
     }

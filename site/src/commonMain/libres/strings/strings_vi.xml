@@ -9,8 +9,8 @@
     <string name="page_about_title">Về tôi</string>
     <string name="page_about_description">Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang làm.</string>
 
-    <string name="page_products_title">Sản phẩm</string>
-    <string name="page_products_description">Nơi trưng bày các sản phẩm và dự án của tôi.</string>
+    <string name="page_projects_title">Dự án</string>
+    <string name="page_projects_description">Nơi trưng bày các sản phẩm và dự án của tôi.</string>
 
     <string name="section_hero_title_first">Xin chào, tôi là</string>
     <string name="section_hero_title_second">Thanh Tân</string>
@@ -41,12 +41,12 @@
     <string name="section_header_menu_home">Trang chủ</string>
     <string name="section_header_menu_me">Về tôi</string>
     <string name="section_header_menu_blog">Blog</string>
-    <string name="section_header_menu_products">Sản phẩm</string>
+    <string name="section_header_menu_projects">Dự án</string>
 
     <string name="widget_bottom_navbar_home">Trang chủ</string>
     <string name="widget_bottom_navbar_me">Về tôi</string>
     <string name="widget_bottom_navbar_blog">Blog</string>
-    <string name="widget_bottom_navbar_products">Sản phẩm</string>
+    <string name="widget_bottom_navbar_projects">Dự án</string>
 
     <string name="widget_discussion_title">Thảo luận</string>
     <string name="widget_discussion_description">Chức năng thảo luận sẽ sớm được ra mắt!</string>

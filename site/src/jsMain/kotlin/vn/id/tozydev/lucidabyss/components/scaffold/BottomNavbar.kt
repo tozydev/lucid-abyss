@@ -70,7 +70,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
         DockItem(SitePaths.blog, Res.string.widget_bottom_navbar_blog) {
             FaRss()
         }
-        DockItem(SitePaths.products, Res.string.widget_bottom_navbar_products) {
+        DockItem(SitePaths.projects, Res.string.widget_bottom_navbar_projects) {
             FaCubes()
         }
     }

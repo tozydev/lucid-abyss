@@ -9,8 +9,8 @@
     <string name="page_about_title">About Me</string>
     <string name="page_about_description">A bit about myself, my journey and what I'm doing.</string>
 
-    <string name="page_products_title">Products</string>
-    <string name="page_products_description">Showcase of my products and projects.</string>
+    <string name="page_projects_title">Projects</string>
+    <string name="page_projects_description">Showcase of my products and projects.</string>
 
     <string name="section_hero_title_first">Hello, I'm</string>
     <string name="section_hero_title_second">Thanh Tan</string>
@@ -41,12 +41,12 @@
     <string name="section_header_menu_home">Home</string>
     <string name="section_header_menu_me">About Me</string>
     <string name="section_header_menu_blog">Blog</string>
-    <string name="section_header_menu_products">Products</string>
+    <string name="section_header_menu_projects">Projects</string>
 
     <string name="widget_bottom_navbar_home">Home</string>
     <string name="widget_bottom_navbar_me">About Me</string>
     <string name="widget_bottom_navbar_blog">Blog</string>
-    <string name="widget_bottom_navbar_products">Products</string>
+    <string name="widget_bottom_navbar_projects">Projects</string>
 
     <string name="widget_discussion_title">Discussion</string>
     <string name="widget_discussion_description">Discussion feature is coming soon!</string>

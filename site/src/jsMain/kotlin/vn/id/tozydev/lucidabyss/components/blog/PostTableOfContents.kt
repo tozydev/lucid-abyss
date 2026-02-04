@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.blog
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -19,9 +18,6 @@ fun PostTableOfContents(
             .then(modifier)
             .toAttrs(),
     ) {
-        Div({ tw("mb-2 font-bold uppercase text-xs opacity-50") }) {
-            Text(Res.string.widget_table_of_contents_title)
-        }
         Ul({ tw("menu p-0 w-full") }) {
             headings.forEach { item ->
                 TocItem(item)

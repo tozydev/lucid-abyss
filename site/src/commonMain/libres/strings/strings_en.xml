@@ -14,7 +14,7 @@
 
     <string name="section_hero_title_first">Hello, I'm</string>
     <string name="section_hero_title_second">Thanh Tan</string>
-    <string name="section_hero_description_first">Also known as tozydev, a developer. For me, coding is a passion, it's even better when I code with</string>
+    <string name="section_hero_description_first">Also known as tozydev, a developer. For me, coding is a passion, it's even better when I code with </string>
     <string name="section_hero_description_second">. And this blog, where I share my stories...</string>
     <string name="section_hero_image_alt">Profile picture</string>
     <string name="section_hero_learn_more">Learn more</string>

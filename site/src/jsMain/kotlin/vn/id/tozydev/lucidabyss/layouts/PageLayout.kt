@@ -47,6 +47,7 @@ fun PageLayout(
     val scrollingState = rememberScrollingState()
 
     val shouldHideHeaderAndNav = scrollingState.isScrollingDown && scrollingState.currentScrollY > 50
+    val shouldHideBackToTop = !scrollingState.isScrollingDown || scrollingState.currentScrollY <= 300
 
     LaunchedEffect(pageProperties.title) {
         document.title = "${pageProperties.title} | tozydev"
@@ -69,6 +70,10 @@ fun PageLayout(
 
         SiteFooter(Modifier.tw("max-w-6xl mx-auto mb-12 p-4"))
 
-        BackToTopButton()
+        BackToTopButton(
+            Modifier.thenIf(shouldHideBackToTop) {
+                Modifier.opacity(0.0)
+            },
+        )
     }
 }

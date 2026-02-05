@@ -8,10 +8,32 @@
 @plugin "daisyui/theme" {
     name: "light";
     --root-bg: oklch(98.462% 0.001 247.838);
+
+    --color-base-100: oklch(100% 0 360);
+
+    --radius-box: 2rem;
+    --radius-field: 1.5rem;
+    --radius-selector: 0.75rem;
+    --size-field: 0.25rem;
+    --size-selector: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 1;
 }
 @plugin "daisyui/theme" {
     name: "dark";
     --root-bg: oklch(0.001 0.001 0.001);
+
+    --color-base-100: oklch(23.26% 0.014 253.1);
+
+    --radius-box: 2rem;
+    --radius-field: 1.5rem;
+    --radius-selector: 0.75rem;
+    --size-field: 0.25rem;
+    --size-selector: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 1;
 }
 
 @theme {

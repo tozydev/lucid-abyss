@@ -2,6 +2,7 @@ package vn.id.tozydev.lucidabyss.layouts
 
 import Res
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.browser.dom.observers.IntersectionObserver
 import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.dom.registerRefScope
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -89,13 +90,20 @@ private fun PostContent(
             Div({ tw("sticky top-16") }) {
                 Div({ tw("card card-border bg-base-100 lg:mb-6") }) {
                     Div({ tw("card-body") }) {
-                        var hierarchy by remember(ctx.route.path) { mutableStateOf(emptyList<HTMLHeadingElement>()) }
+                        var headings by remember(ctx.route.path) { mutableStateOf(emptyList<HTMLHeadingElement>()) }
                         // Fetch headings only once elements are added to the DOM
                         registerRefScope(
                             ref(contentRef, ctx.route.path) {
-                                hierarchy = contentRef?.getHeadings().orEmpty()
+                                headings = contentRef?.getHeadings().orEmpty()
                             },
                         )
+                        val options =
+                            remember {
+                                IntersectionObserver.Options(
+                                    rootMargin = "0px 0% -77%",
+                                    thresholds = listOf(1.0),
+                                )
+                            }
 
                         H3({ tw("card-title text-sm uppercase") }) {
                             FaList()
@@ -103,7 +111,8 @@ private fun PostContent(
                         }
 
                         PostTableOfContents(
-                            headings = hierarchy,
+                            headings = headings,
+                            intersectionObserverOptions = options,
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }

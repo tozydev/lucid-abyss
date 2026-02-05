@@ -8,7 +8,7 @@ import com.varabyte.kobweb.navigation.Anchor
 import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRightLong
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.models.Constants
+import vn.id.tozydev.lucidabyss.core.Links
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -40,7 +40,7 @@ fun HomeFeaturedProject(modifier: Modifier = Modifier) {
             }
             Div({ tw("card-actions") }) {
                 Anchor(
-                    href = Constants.LUCID_ABYSS_GITHUB_URL,
+                    href = Links.LUCID_ABYSS_GITHUB_URL,
                 ) {
                     Text(Res.string.widget_featured_project_view_details)
                     FaArrowRightLong(Modifier.tw("ml-2"))

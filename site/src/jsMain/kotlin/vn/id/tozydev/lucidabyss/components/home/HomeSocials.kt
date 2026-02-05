@@ -10,7 +10,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaEnvelope
 import com.varabyte.kobweb.silk.components.icons.fa.FaGithub
 import com.varabyte.kobweb.silk.components.icons.fa.FaLinkedin
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.models.Constants
+import vn.id.tozydev.lucidabyss.core.Links
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -22,22 +22,22 @@ fun HomeSocials(modifier: Modifier = Modifier) {
             .toAttrs(),
     ) {
         SocialLink(
-            path = Constants.GITHUB_URL,
+            path = Links.GITHUB_URL,
             icon = { FaGithub() },
             label = Res.string.section_socials_label_github,
         )
         SocialLink(
-            path = Constants.LINKEDIN_URL,
+            path = Links.LINKEDIN_URL,
             icon = { FaLinkedin() },
             label = Res.string.section_socials_label_linkedin,
         )
         SocialLink(
-            path = Constants.BLUESKY_URL,
+            path = Links.BLUESKY_URL,
             icon = { FaBluesky() },
             label = Res.string.section_socials_label_bluesky,
         )
         SocialLink(
-            path = Constants.EMAIL_URL,
+            path = Links.EMAIL_URL,
             icon = { FaEnvelope() },
             label = Res.string.section_socials_label_email,
         )

@@ -24,3 +24,4 @@ ktlint_function_naming_ignore_when_annotated_with = Composable
 
 compose_modifier_missing_ignore_annotated = Page, App, Layout
 compose_check_modifiers_for_visibility = only_public
+compose_allowed_composition_locals = LocalThemeMode

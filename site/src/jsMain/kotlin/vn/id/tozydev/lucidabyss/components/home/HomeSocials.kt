@@ -52,7 +52,7 @@ private fun SocialLink(
 ) {
     Anchor(
         href = path,
-        attrs = { tw("card card-border bg-base-100 card-lg") },
+        attrs = { tw("card card-border bg-base-100 card-lg hover:shadow-lg hover:-translate-y-1 transition") },
     ) {
         Div({ tw("card-body items-center text-center") }) {
             Div({ tw("text-3xl") }) {

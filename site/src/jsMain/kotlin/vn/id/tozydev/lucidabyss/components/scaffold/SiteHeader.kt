@@ -30,6 +30,7 @@ fun SiteHeader(modifier: Modifier = Modifier) {
     Header(
         Modifier
             .tw("fixed top-0 left-0 right-0 z-50 p-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-auto")
+            .tw("transition-transform duration-300")
             .then(modifier)
             .toAttrs(),
     ) {
@@ -78,7 +79,7 @@ private fun HeaderMenu() {
         Li(
             Modifier.toAttrs {
                 if (isActive) {
-                    tw("menu-active")
+                    tw("menu-active rounded-field")
                 }
             },
         ) {
@@ -92,7 +93,7 @@ private fun HeaderMenu() {
     }
 
     Div({ tw("hidden items-center md:flex") }) {
-        Ul({ tw("menu menu-horizontal font-medium gap-2") }) {
+        Ul({ tw("menu menu-horizontal font-medium gap-1") }) {
             MenuItem(SitePaths.home, Res.string.section_header_menu_home) {
                 FaHouse()
             }
@@ -146,7 +147,7 @@ private fun HeaderActions() {
             }
             Ul(
                 {
-                    tw("dropdown-content menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow")
+                    tw("dropdown-content menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow rounded-xl")
                     attr("tabindex", "0")
                 },
             ) {

@@ -12,7 +12,6 @@ import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import io.github.skeptick.libres.LibresSettings
 import kotlinx.browser.document
-import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.scaffold.BottomNavbar
 import vn.id.tozydev.lucidabyss.components.scaffold.SiteFooter
@@ -58,7 +57,7 @@ fun PageLayout(
     context(language) {
         SiteHeader(
             Modifier.thenIf(shouldHideHeaderAndNav) {
-                Modifier.translateY((-8).cssRem)
+                Modifier.tw("-translate-y-32")
             },
         )
 

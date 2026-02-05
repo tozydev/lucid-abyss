@@ -20,7 +20,6 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLHeadingElement
-import vn.id.tozydev.lucidabyss.components.blog.PostDiscussion
 import vn.id.tozydev.lucidabyss.components.blog.PostHeader
 import vn.id.tozydev.lucidabyss.components.blog.PostNavigation
 import vn.id.tozydev.lucidabyss.components.blog.PostShare
@@ -134,8 +133,6 @@ private fun PostContent(
             PostShare(Modifier.tw("block lg:hidden"))
 
             PostNavigation(post)
-
-            PostDiscussion()
         }
     }
 }

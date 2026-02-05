@@ -24,3 +24,5 @@ kotlin-js-store/
 ### Node.js
 node_modules/
 dist/
+/package.json
+/bun.lock

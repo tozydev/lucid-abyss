@@ -87,7 +87,7 @@ private fun PostContent(
         var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
         Aside({ tw("lg:col-span-3 lg:order-last") }) {
             Div({ tw("sticky top-16") }) {
-                Div({ tw("card card-border bg-base-100 lg:mb-8") }) {
+                Div({ tw("card card-border bg-base-100 lg:mb-6") }) {
                     Div({ tw("card-body") }) {
                         var hierarchy by remember(ctx.route.path) { mutableStateOf(emptyList<HTMLHeadingElement>()) }
                         // Fetch headings only once elements are added to the DOM
@@ -112,7 +112,7 @@ private fun PostContent(
                 PostShare(Modifier.tw("hidden lg:block"))
             }
         }
-        Div({ tw("lg:col-span-9 flex flex-col gap-8") }) {
+        Div({ tw("lg:col-span-9 flex flex-col gap-6") }) {
             Div({ tw("rounded-box bg-base-100 p-10") }) {
                 Article(
                     Modifier

@@ -16,7 +16,7 @@ import vn.id.tozydev.lucidabyss.utils.tw
 fun BackToTopButton(modifier: Modifier = Modifier) {
     Div(
         Modifier
-            .tw("fixed bottom-24 right-6 z-50 transition md:bottom-8 md:right-8")
+            .tw("fixed bottom-24 right-6 z-50 transition duration-300 md:bottom-8 md:right-8")
             .then(modifier)
             .toAttrs(),
     ) {

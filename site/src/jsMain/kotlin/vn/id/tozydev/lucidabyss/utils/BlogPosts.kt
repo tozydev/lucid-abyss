@@ -22,16 +22,28 @@ val MarkdownContext.language: SiteLanguage
 val BlogPost.coverImagePathOrDefault: String
     get() = BasePath.prependTo(coverImage ?: "/images/default-cover.webp")
 
+private val postIndices: Map<SiteLanguage, Map<PostId, Int>> by lazy {
+    BlogPosts.mapValues { (_, posts) ->
+        posts.withIndex().associate { it.value.id to it.index }
+    }
+}
+
+fun getBlogPost(
+    language: SiteLanguage,
+    id: PostId,
+): BlogPost? =
+    postIndices[language]?.get(id)?.let { index ->
+        BlogPosts[language]?.getOrNull(index)
+    }
+
 val BlogPost.nextPost: BlogPost?
     get() =
-        BlogPosts[language]?.let { posts ->
-            val index = posts.indexOfFirst { it.id == id }
-            if (index > 0) posts[index - 1] else null
+        postIndices[language]?.get(id)?.let { index ->
+            BlogPosts[language]?.getOrNull(index - 1)
         }
 
 val BlogPost.previousPost: BlogPost?
     get() =
-        BlogPosts[language]?.let { posts ->
-            val index = posts.indexOfFirst { it.id == id }
-            if (index != -1 && index < posts.size - 1) posts[index + 1] else null
+        postIndices[language]?.get(id)?.let { index ->
+            BlogPosts[language]?.getOrNull(index + 1)
         }

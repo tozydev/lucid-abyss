@@ -29,6 +29,7 @@ import vn.id.tozydev.lucidabyss.components.blog.PostTags
 import vn.id.tozydev.lucidabyss.core.BlogPost
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
+import vn.id.tozydev.lucidabyss.utils.getBlogPost
 import vn.id.tozydev.lucidabyss.utils.getHeadings
 import vn.id.tozydev.lucidabyss.utils.language
 import vn.id.tozydev.lucidabyss.utils.postId
@@ -45,7 +46,7 @@ fun initPostLayout(ctx: InitRouteContext) {
             "No post language found for path: ${ctx.markdown?.path}"
         }
     val post =
-        requireNotNull(BlogPosts[language]?.find { it.id == postId }) {
+        requireNotNull(getBlogPost(language, postId)) {
             "No post found for post $postId and language $language"
         }
 

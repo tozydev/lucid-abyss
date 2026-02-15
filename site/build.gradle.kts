@@ -49,6 +49,7 @@ kotlin {
             implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
             implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlin.wrappers.browser)
 
             implementation("vn.id.tozydev.lucidabyss:lucid-abyss-core")
 

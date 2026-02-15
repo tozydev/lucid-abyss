@@ -89,7 +89,7 @@ private fun PostContent(
         var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
         Aside({ tw("lg:col-span-3 lg:order-last") }) {
             Div({ tw("sticky top-16") }) {
-                Div({ tw("card card-border bg-base-100 lg:mb-6") }) {
+                Div({ tw("card card-border bg-base-100 lg:mb-6 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300") }) {
                     Div({ tw("card-body") }) {
                         var headings by remember(ctx.route.path) { mutableStateOf(emptyList<HTMLHeadingElement>()) }
                         // Fetch headings only once elements are added to the DOM

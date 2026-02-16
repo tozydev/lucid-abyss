@@ -92,4 +92,6 @@ jobs:
           name: full-export
           path: |
             ./wrangler.jsonc
-            ./site/.kobweb/
+            ./site/.kobweb/site/
+            ./site/.kobweb/export-traces/
+            ./site/.kobweb/server/

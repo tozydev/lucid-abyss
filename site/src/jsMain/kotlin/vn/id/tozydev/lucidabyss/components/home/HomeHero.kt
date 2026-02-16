@@ -17,7 +17,7 @@ context(_: SiteLanguage)
 fun HomeHero(modifier: Modifier = Modifier) {
     Div(
         Modifier
-            .tw("card card-lg card-border bg-base-100")
+            .tw("card card-lg card-border bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300")
             .then(modifier)
             .toAttrs(),
     ) {

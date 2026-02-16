@@ -2,6 +2,12 @@ package vn.id.tozydev.lucidabyss.utils
 
 import androidx.compose.runtime.*
 import kotlinx.browser.window
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.sample
+import org.w3c.dom.events.Event
+import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.FlowPreview
 
 data class ScrollingState(
     val isScrollingDown: Boolean,
@@ -9,24 +15,34 @@ data class ScrollingState(
     val lastScrollY: Double,
 )
 
+@OptIn(FlowPreview::class)
 @Composable
 fun rememberScrollingState(): ScrollingState {
     var state by remember { mutableStateOf(ScrollingState(false, 0.0, 0.0)) }
-    DisposableEffect(Unit) {
-        val handleScroll = {
-            val scrollY = window.scrollY
-            state =
-                state.copy(
-                    currentScrollY = scrollY,
-                    lastScrollY = scrollY,
-                    isScrollingDown = scrollY > state.lastScrollY,
-                )
+
+    LaunchedEffect(Unit) {
+        callbackFlow {
+            val handleScroll = { _: Event ->
+                trySend(window.scrollY)
+                Unit
+            }
+
+            // Initial value
+            trySend(window.scrollY)
+
+            window.addEventListener("scroll", handleScroll)
+
+            awaitClose {
+                window.removeEventListener("scroll", handleScroll)
+            }
         }
-
-        window.addEventListener("scroll", { handleScroll() })
-
-        onDispose {
-            window.removeEventListener("scroll", { handleScroll() })
+        .sample(100.milliseconds) // Throttle updates to ~10fps, sufficient for UI visibility toggles
+        .collect { scrollY ->
+            state = state.copy(
+                currentScrollY = scrollY,
+                lastScrollY = scrollY,
+                isScrollingDown = scrollY > state.lastScrollY,
+            )
         }
     }
     return state

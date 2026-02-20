@@ -1,6 +1,6 @@
 [versions]
 jetbrains-compose = "1.10.1"
-kobweb = "0.23.3"
+kobweb = "0.24.0"
 kotlin = "2.3.10"
 kotlinx-datetime = "0.7.1"
 libres = "1.2.4"

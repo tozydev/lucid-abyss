@@ -4,7 +4,7 @@ kobweb = "0.23.3"
 kotlin = "2.3.10"
 kotlinx-datetime = "0.7.1"
 libres = "1.2.4"
-ksp = "2.3.5"
+ksp = "2.3.6"
 kotlin-wrappers = "2026.2.11"
 
 [libraries]

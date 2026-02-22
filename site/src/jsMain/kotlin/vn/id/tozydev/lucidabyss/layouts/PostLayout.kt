@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.layouts
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.browser.dom.observers.IntersectionObserver
 import com.varabyte.kobweb.compose.dom.ref
@@ -108,7 +109,7 @@ private fun PostContent(
 
                         H3({ tw("card-title text-sm uppercase") }) {
                             FaList()
-                            Text(Res.string.widget_table_of_contents_title)
+                            Text(Strings.widget.table.of.contents.title)
                         }
 
                         PostTableOfContents(

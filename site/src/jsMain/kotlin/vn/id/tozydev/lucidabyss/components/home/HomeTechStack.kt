@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -19,17 +20,17 @@ fun HomeTechStack(modifier: Modifier = Modifier) {
         Div({ tw("card-body") }) {
             H2({ tw("card-title text-base") }) {
                 FaLayerGroup()
-                Text(Res.string.section_techstack_title)
+                Text(Strings.section.techstack.title)
             }
             Div({ tw("flex flex-wrap gap-2") }) {
                 Div({ tw("badge badge-outline badge-lg") }) {
-                    Text(Res.string.section_techstack_badge_java)
+                    Text(Strings.section.techstack.badge.java)
                 }
                 Div({ tw("badge badge-outline badge-lg") }) {
-                    Text(Res.string.section_techstack_badge_kotlin)
+                    Text(Strings.section.techstack.badge.kotlin)
                 }
                 Div({ tw("badge badge-outline badge-lg") }) {
-                    Text(Res.string.section_techstack_badge_kobweb)
+                    Text(Strings.section.techstack.badge.kobweb)
                 }
             }
         }

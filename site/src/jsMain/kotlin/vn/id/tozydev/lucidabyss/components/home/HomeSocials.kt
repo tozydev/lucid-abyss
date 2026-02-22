@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -24,22 +25,22 @@ fun HomeSocials(modifier: Modifier = Modifier) {
         SocialLink(
             path = Links.GITHUB_URL,
             icon = { FaGithub() },
-            label = Res.string.section_socials_label_github,
+            label = Strings.section.socials.label.github,
         )
         SocialLink(
             path = Links.LINKEDIN_URL,
             icon = { FaLinkedin() },
-            label = Res.string.section_socials_label_linkedin,
+            label = Strings.section.socials.label.linkedin,
         )
         SocialLink(
             path = Links.BLUESKY_URL,
             icon = { FaBluesky() },
-            label = Res.string.section_socials_label_bluesky,
+            label = Strings.section.socials.label.bluesky,
         )
         SocialLink(
             path = Links.EMAIL_URL,
             icon = { FaEnvelope() },
-            label = Res.string.section_socials_label_email,
+            label = Strings.section.socials.label.email,
         )
     }
 }

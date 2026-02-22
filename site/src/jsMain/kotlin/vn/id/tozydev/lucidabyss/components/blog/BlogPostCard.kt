@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.blog
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.GenericTag
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -29,7 +30,7 @@ fun BlogPostCard(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = Res.string.widget_post_cover_alt.format(post.title),
+                alt = Strings.widget.post.cover.alt(post.title),
             )
             Div({ tw("absolute top-4 right-4") }) {
                 Div({ tw("badge") }) {

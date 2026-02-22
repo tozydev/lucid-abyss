@@ -10,6 +10,7 @@ kotlin {
 }
 
 dependencies {
+    implementation("org.yaml:snakeyaml:2.2")
     implementation(plugin(libs.plugins.kotlin.multiplatform))
     implementation(plugin(libs.plugins.compose.compiler))
     implementation(plugin(libs.plugins.kobweb.application))

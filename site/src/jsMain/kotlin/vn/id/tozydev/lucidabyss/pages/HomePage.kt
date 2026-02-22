@@ -1,5 +1,7 @@
 package vn.id.tozydev.lucidabyss.pages
 
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.PageContext
@@ -14,17 +16,16 @@ import vn.id.tozydev.lucidabyss.components.home.HomeTechStack
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
-import vn.id.tozydev.lucidabyss.utils.strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class HomePage(
     language: SiteLanguage,
 ) : Page(language) {
     override val properties =
-        language.strings.let { strings ->
+        Strings.withLanguage(language) {
             Properties(
-                title = strings.page_home_title!!,
-                description = strings.page_home_description!!,
+                title = Strings.page.home.title,
+                description = Strings.page.home.description,
             )
         }
 

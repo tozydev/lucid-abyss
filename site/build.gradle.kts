@@ -1,7 +1,6 @@
 @file:OptIn(ExperimentalTime::class)
 
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
-import io.github.skeptick.libres.plugin.ResourcesPlugin
 import kotlinx.html.link
 import kotlin.time.ExperimentalTime
 
@@ -9,9 +8,9 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
-    alias(libs.plugins.libres)
     id("blog.lucid-abyss")
     id("site-export.lucid-abyss")
+    id("strings.lucid-abyss")
 }
 
 kobweb {
@@ -90,14 +89,4 @@ tasks {
     named("kobwebStart") {
         mustRunAfter(copyDevStylesheets)
     }
-    afterEvaluate {
-        named("kspKotlinJs") {
-            mustRunAfter(ResourcesPlugin.GENERATE_RESOURCES_TASK_NAME)
-        }
-    }
-}
-
-libres {
-    baseLocaleLanguageCode = "vi"
-    generateNamedArguments = true
 }

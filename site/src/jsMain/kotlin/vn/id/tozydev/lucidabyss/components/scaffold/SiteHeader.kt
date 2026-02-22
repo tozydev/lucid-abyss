@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.scaffold
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -94,16 +95,16 @@ private fun HeaderMenu() {
 
     Div({ tw("hidden items-center md:flex") }) {
         Ul({ tw("menu menu-horizontal font-medium gap-1") }) {
-            MenuItem(SitePaths.home, Res.string.section_header_menu_home) {
+            MenuItem(SitePaths.home, Strings.section.header.menu.home) {
                 FaHouse()
             }
-            MenuItem(SitePaths.about, Res.string.section_header_menu_me) {
+            MenuItem(SitePaths.about, Strings.section.header.menu.me) {
                 FaUser()
             }
-            MenuItem(SitePaths.blog, Res.string.section_header_menu_blog) {
+            MenuItem(SitePaths.blog, Strings.section.header.menu.blog) {
                 FaRss()
             }
-            MenuItem(SitePaths.projects, Res.string.section_header_menu_projects) {
+            MenuItem(SitePaths.projects, Strings.section.header.menu.projects) {
                 FaCubes()
             }
         }

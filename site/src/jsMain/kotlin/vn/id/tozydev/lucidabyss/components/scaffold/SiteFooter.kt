@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.scaffold
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -21,11 +22,11 @@ fun SiteFooter(modifier: Modifier = Modifier) {
         ) {
             Aside {
                 P {
-                    Text(Res.string.section_footer_copyright)
-                    Text(Res.string.section_footer_built_with)
+                    Text(Strings.section.footer.copyright)
+                    Text(Strings.section.footer.built.with)
                 }
                 P {
-                    Text(Res.string.section_footer_rights)
+                    Text(Strings.section.footer.rights)
                 }
             }
             Nav({ tw("grid grid-flow-col gap-4") }) {
@@ -33,25 +34,25 @@ fun SiteFooter(modifier: Modifier = Modifier) {
                     href = Links.GITHUB_URL,
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(Res.string.section_footer_link_github)
+                    Text(Strings.section.footer.link.github)
                 }
                 Anchor(
                     href = Links.BLUESKY_URL,
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(Res.string.section_footer_link_bluesky)
+                    Text(Strings.section.footer.link.bluesky)
                 }
                 Anchor(
                     href = Links.EMAIL_URL,
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(Res.string.section_footer_link_email)
+                    Text(Strings.section.footer.link.email)
                 }
                 Anchor(
                     href = Links.RSS_URL,
                     attrs = { tw("link link-hover") },
                 ) {
-                    Text(Res.string.section_footer_link_rss)
+                    Text(Strings.section.footer.link.rss)
                 }
             }
         }

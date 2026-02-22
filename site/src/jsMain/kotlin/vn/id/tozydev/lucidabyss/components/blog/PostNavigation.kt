@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.blog
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -34,7 +35,7 @@ fun PostNavigation(
                 Div({ tw("card-body") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
                         FaArrowLeft()
-                        Text(Res.string.widget_next_prev_posts_prev)
+                        Text(Strings.widget.next.prev.posts.prev)
                     }
                     H4({ tw("font-semibold text-lg") }) {
                         Text(previousPost.title)
@@ -49,7 +50,7 @@ fun PostNavigation(
             ) {
                 Div({ tw("card-body items-end") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
-                        Text(Res.string.widget_next_prev_posts_next)
+                        Text(Strings.widget.next.prev.posts.next)
                         FaArrowRight()
                     }
                     H4({ tw("font-semibold text-lg") }) {

@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import Res
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -19,10 +20,10 @@ fun HomeQuote(modifier: Modifier = Modifier) {
         Div({ tw("card-body text-sm text-center items-center justify-center") }) {
             FaQuoteLeft(Modifier.tw("text-gray-700 text-4xl absolute top-4 left-4 opacity-30"))
             Blockquote({ tw("font-medium italic") }) {
-                Text(Res.string.widget_quote_text)
+                Text(Strings.widget.quote.text)
             }
             Span({ tw("font-bold uppercase text-gray-400") }) {
-                Text(Res.string.widget_quote_author)
+                Text(Strings.widget.quote.author)
             }
         }
     }

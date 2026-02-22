@@ -1,10 +1,11 @@
 package vn.id.tozydev.lucidabyss.pages
 
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.core.PageContext
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
-import vn.id.tozydev.lucidabyss.utils.strings
 
 class ProjectPage(
     language: SiteLanguage,
@@ -15,10 +16,10 @@ class ProjectPage(
             else -> SitePaths.PROJECTS_VI_PATH
         }
     override val properties =
-        language.strings.let { strings ->
+        Strings.withLanguage(language) {
             Properties(
-                title = strings.page_projects_title!!,
-                description = strings.page_projects_description!!,
+                title = Strings.page.projects.title,
+                description = Strings.page.projects.description,
             )
         }
 

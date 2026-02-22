@@ -3,7 +3,7 @@ package vn.id.tozydev.lucidabyss.build.strings
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import java.util.Locale
 
-internal fun generateStringsCode(packageName: String, structure: GenerateStringsTask.Node.Object): String {
+internal fun generateStringsCode(packageName: String, structure: Node.Object): String {
     val sb = StringBuilder()
     sb.appendLine("package $packageName")
     sb.appendLine()
@@ -66,14 +66,14 @@ internal fun generateStringsCode(packageName: String, structure: GenerateStrings
     return sb.toString()
 }
 
-private fun generateInterfaceMember(node: GenerateStringsTask.Node, sb: StringBuilder, indent: String) {
+private fun generateInterfaceMember(node: Node, sb: StringBuilder, indent: String) {
     val kotlinName = toCamelCase(node.name)
     when (node) {
-        is GenerateStringsTask.Node.Object -> {
+        is Node.Object -> {
             val typeName = node.fullPath()
             sb.appendLine("${indent}val $kotlinName: $typeName")
         }
-        is GenerateStringsTask.Node.SimpleString -> {
+        is Node.SimpleString -> {
             val args = extractArgs(node.values)
             if (args.isEmpty()) {
                 sb.appendLine("${indent}val $kotlinName: String")
@@ -82,7 +82,7 @@ private fun generateInterfaceMember(node: GenerateStringsTask.Node, sb: StringBu
                 sb.appendLine("${indent}fun $kotlinName($argsDecl): String")
             }
         }
-        is GenerateStringsTask.Node.MultiPartString -> {
+        is Node.MultiPartString -> {
             val defaultList = node.values[SiteLanguage.Default] ?: emptyList()
             val size = defaultList.size
             if (size > 0) {
@@ -93,8 +93,8 @@ private fun generateInterfaceMember(node: GenerateStringsTask.Node, sb: StringBu
     }
 }
 
-private fun generateNestedInterfaces(node: GenerateStringsTask.Node.Object, sb: StringBuilder) {
-    node.children.filterIsInstance<GenerateStringsTask.Node.Object>().forEach { child ->
+private fun generateNestedInterfaces(node: Node.Object, sb: StringBuilder) {
+    node.children.filterIsInstance<Node.Object>().forEach { child ->
         val typeName = child.fullPath()
         sb.appendLine("interface $typeName {")
         child.children.forEach { grandChild ->
@@ -106,10 +106,10 @@ private fun generateNestedInterfaces(node: GenerateStringsTask.Node.Object, sb: 
     }
 }
 
-private fun generateImplementationMember(node: GenerateStringsTask.Node, language: SiteLanguage, sb: StringBuilder, indent: String) {
+private fun generateImplementationMember(node: Node, language: SiteLanguage, sb: StringBuilder, indent: String) {
     val kotlinName = toCamelCase(node.name)
     when (node) {
-        is GenerateStringsTask.Node.Object -> {
+        is Node.Object -> {
             val typeName = node.fullPath()
             sb.appendLine("${indent}override val $kotlinName: $typeName = object : $typeName {")
             node.children.forEach { child ->
@@ -117,7 +117,7 @@ private fun generateImplementationMember(node: GenerateStringsTask.Node, languag
             }
             sb.appendLine("${indent}}")
         }
-        is GenerateStringsTask.Node.SimpleString -> {
+        is Node.SimpleString -> {
             val value = (node.values[language] ?: "").escape()
             val args = extractArgs(node.values)
             if (args.isEmpty()) {
@@ -133,19 +133,19 @@ private fun generateImplementationMember(node: GenerateStringsTask.Node, languag
                 sb.appendLine("${indent}}")
             }
         }
-        is GenerateStringsTask.Node.MultiPartString -> {
+        is Node.MultiPartString -> {
              val defaultList = node.values[SiteLanguage.Default] ?: emptyList()
              val size = defaultList.size
              if (size > 0) {
                 val lambdaArgs = (1..size).joinToString(", ") { "String" }
-                val valueArgs = (0 until size).joinToString(", ") { "parts[$it]" }
+                val valueArgs = (0 until size).joinToString(", ") { "${kotlinName}Parts[$it]" }
 
                 val list = node.values[language] ?: emptyList()
                 val paddedList = list + List(size - list.size) { "" }
                 val listString = paddedList.take(size).joinToString(", ") { "\"${it.escape()}\"" }
 
+                sb.appendLine("${indent}private val ${kotlinName}Parts = listOf($listString)")
                 sb.appendLine("${indent}override fun <T> $kotlinName(render: ($lambdaArgs) -> T): T {")
-                sb.appendLine("${indent}    val parts = listOf($listString)")
                 sb.appendLine("${indent}    return render($valueArgs)")
                 sb.appendLine("${indent}}")
              }
@@ -153,15 +153,15 @@ private fun generateImplementationMember(node: GenerateStringsTask.Node, languag
     }
 }
 
-private fun generateDelegateMember(node: GenerateStringsTask.Node, sb: StringBuilder, indent: String) {
+private fun generateDelegateMember(node: Node, sb: StringBuilder, indent: String) {
     val kotlinName = toCamelCase(node.name)
     when (node) {
-        is GenerateStringsTask.Node.Object -> {
+        is Node.Object -> {
             val typeName = node.fullPath()
              sb.appendLine("${indent}override val $kotlinName: $typeName")
              sb.appendLine("${indent}    get() = current.$kotlinName")
         }
-        is GenerateStringsTask.Node.SimpleString -> {
+        is Node.SimpleString -> {
             val args = extractArgs(node.values)
             if (args.isEmpty()) {
                 sb.appendLine("${indent}override val $kotlinName: String")
@@ -174,7 +174,7 @@ private fun generateDelegateMember(node: GenerateStringsTask.Node, sb: StringBui
                  sb.appendLine("${indent}}")
             }
         }
-        is GenerateStringsTask.Node.MultiPartString -> {
+        is Node.MultiPartString -> {
             val defaultList = node.values[SiteLanguage.Default] ?: emptyList()
             val size = defaultList.size
             if (size > 0) {
@@ -187,8 +187,8 @@ private fun generateDelegateMember(node: GenerateStringsTask.Node, sb: StringBui
     }
 }
 
-private fun GenerateStringsTask.Node.Object.fullPath(): String {
-    val parentObj = parent as? GenerateStringsTask.Node.Object
+private fun Node.Object.fullPath(): String {
+    val parentObj = parent as? Node.Object
     val parentPath = if (parentObj != null && parentObj.name != "Strings") parentObj.fullPath() else ""
 
     val myName = toPascalCase(name)

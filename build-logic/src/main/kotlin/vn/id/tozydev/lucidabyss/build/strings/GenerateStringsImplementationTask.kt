@@ -7,10 +7,9 @@ import org.gradle.api.tasks.*
 import org.yaml.snakeyaml.Yaml
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import java.io.File
-import java.util.Locale
 
 @CacheableTask
-abstract class GenerateStringsTask : DefaultTask() {
+abstract class GenerateStringsImplementationTask : DefaultTask() {
 
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
@@ -22,29 +21,40 @@ abstract class GenerateStringsTask : DefaultTask() {
     @get:Input
     abstract val packageName: Property<String>
 
+    @get:Input
+    abstract val languageCode: Property<String>
+
     @TaskAction
     fun generate() {
         val stringsMap = mutableMapOf<SiteLanguage, Map<String, Any>>()
         val yaml = Yaml()
+        val langCode = languageCode.get()
+        val siteLanguage = SiteLanguage.fromCode(langCode)
+
+        // We need all languages structure to build the tree consistently,
+        // OR we assume the single YAML file has full structure?
+        // No, structure is union of all keys.
+        // So we must read all files to build structure, then generate only for one language.
 
         SiteLanguage.entries.forEach { language ->
             val file = stringsDir.file("${language.code}.yaml").get().asFile
             if (file.exists()) {
                 val map: Map<String, Any> = yaml.load(file.inputStream()) ?: emptyMap()
                 stringsMap[language] = map
-            } else {
-                 logger.warn("Strings file for ${language.code} not found at ${file.path}")
-                 stringsMap[language] = emptyMap()
             }
         }
 
         val structure = buildStructure(stringsMap)
-        val kotlinCode = generateStringsCode(packageName.get(), structure)
+        val implCode = generateImplementationCode(packageName.get(), structure, siteLanguage)
 
-        val outputFile = outputDir.file("${packageName.get().replace('.', '/')}/Strings.kt").get().asFile
+        val outputFile = outputDir.file("${packageName.get().replace('.', '/')}/Strings${siteLanguage.name}.kt").get().asFile
         outputFile.parentFile.mkdirs()
-        outputFile.writeText(kotlinCode)
+        outputFile.writeText(implCode)
     }
+
+    // Duplicated buildStructure logic?
+    // Ideally we share it. But logic is small.
+    // We can move it to a helper or base class.
 
     private fun buildStructure(stringsMap: Map<SiteLanguage, Map<String, Any>>): Node.Object {
         val root = Node.Object("Strings")
@@ -87,9 +97,6 @@ abstract class GenerateStringsTask : DefaultTask() {
                 val node = Node.SimpleString(key, values as Map<SiteLanguage, String?>)
                 node.parent = parent
                 parent.children.add(node)
-            }
-            else -> {
-                logger.warn("Unsupported type for key $key: ${firstValue::class}")
             }
         }
     }

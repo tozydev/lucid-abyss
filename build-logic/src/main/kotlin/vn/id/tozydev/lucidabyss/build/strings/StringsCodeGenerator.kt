@@ -3,7 +3,42 @@ package vn.id.tozydev.lucidabyss.build.strings
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import java.util.Locale
 
-internal fun generateStringsCode(packageName: String, structure: Node.Object): String {
+internal fun generateInterfaceCode(packageName: String, structure: Node.Object): String {
+    val sb = StringBuilder()
+    sb.appendLine("package $packageName")
+    sb.appendLine()
+    sb.appendLine("import vn.id.tozydev.lucidabyss.core.SiteLanguage")
+    sb.appendLine()
+
+    sb.appendLine("interface Strings {")
+    structure.children.forEach { child ->
+        generateInterfaceMember(child, sb, "    ")
+    }
+    sb.appendLine("}")
+    sb.appendLine()
+
+    generateNestedInterfaces(structure, sb)
+
+    return sb.toString()
+}
+
+internal fun generateImplementationCode(packageName: String, structure: Node.Object, language: SiteLanguage): String {
+    val sb = StringBuilder()
+    sb.appendLine("package $packageName")
+    sb.appendLine()
+    sb.appendLine("import vn.id.tozydev.lucidabyss.core.SiteLanguage")
+    sb.appendLine()
+
+    sb.appendLine("object Strings${language.name} : Strings {")
+    structure.children.forEach { child ->
+         generateImplementationMember(child, language, sb, "    ")
+    }
+    sb.appendLine("}")
+
+    return sb.toString()
+}
+
+internal fun generateAccessorCode(packageName: String, structure: Node.Object): String {
     val sb = StringBuilder()
     sb.appendLine("package $packageName")
     sb.appendLine()
@@ -14,28 +49,6 @@ internal fun generateStringsCode(packageName: String, structure: Node.Object): S
     sb.appendLine("import vn.id.tozydev.lucidabyss.core.SiteLanguage")
     sb.appendLine()
 
-    // Generate interface
-    sb.appendLine("interface Strings {")
-    structure.children.forEach { child ->
-        generateInterfaceMember(child, sb, "    ")
-    }
-    sb.appendLine("}")
-    sb.appendLine()
-
-    // Generate nested interfaces
-    generateNestedInterfaces(structure, sb)
-
-    // Generate implementations
-    SiteLanguage.entries.forEach { language ->
-        sb.appendLine("object Strings${language.name} : Strings {")
-        structure.children.forEach { child ->
-             generateImplementationMember(child, language, sb, "    ")
-        }
-        sb.appendLine("}")
-        sb.appendLine()
-    }
-
-    // Generate Strings object accessor
     sb.appendLine("object Strings : Strings {")
     sb.appendLine("    var language by mutableStateOf(SiteLanguage.Default)")
     sb.appendLine()

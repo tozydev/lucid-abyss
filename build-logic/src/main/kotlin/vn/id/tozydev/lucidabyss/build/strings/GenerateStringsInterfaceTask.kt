@@ -6,6 +6,8 @@ import org.gradle.api.provider.Property
 import org.gradle.api.tasks.*
 import org.yaml.snakeyaml.Yaml
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import vn.id.tozydev.lucidabyss.build.strings.generator.generateInterfaceCode
+import vn.id.tozydev.lucidabyss.build.strings.generator.generateAccessorCode
 import java.io.File
 
 @CacheableTask

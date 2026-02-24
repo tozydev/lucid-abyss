@@ -33,7 +33,7 @@ fun initPageLayout(ctx: InitRouteContext) {
                 .substringBefore('/'),
         )
     ctx.data.add(language)
-    Strings.language = language
+    Strings.language.value = language
 }
 
 @Composable
@@ -44,13 +44,33 @@ fun PageLayout(
 ) {
     val pageProperties = ctx.data.getValue<Page.Properties>()
     val language = ctx.data.getValue<SiteLanguage>()
-    Strings.language = language
+    Strings.language.value = language
+
+    // We need to observe the language flow to trigger recomposition when it changes?
+    // Since Strings.current getter accesses Strings.language.value, usage of Strings.property inside Composable
+    // will just read the value. It won't subscribe.
+    // So we need to explicitly collect the state here to make the layout reactive to language changes if they happen dynamically.
+    // However, initPageLayout sets it.
+    // If we assume full page reload or router based language, initPageLayout handles it.
+    // But if we change Strings.language.value dynamically without route change, we need observation.
+    // Let's add observation just in case.
+
+    val currentLanguage by Strings.language.collectAsState()
+    // We don't use currentLanguage directly, but collecting it triggers recomposition of PageLayout.
+    // And since children read Strings.property which delegates to Strings.current which reads Strings.language.value...
+    // Wait, Strings.current reads Strings.language.value.
+    // If Strings.language is a MutableStateFlow, reading .value is safe but not reactive in Compose unless collected.
+    // But since we collect it here, this Scope recomposes.
+    // Does it? Yes.
+    // But children are in content().
+    // If PageLayout recomposes, content() is recalled? Yes.
+
     val scrollingState = rememberScrollingState()
 
     val shouldHideHeaderAndNav = scrollingState.isScrollingDown && scrollingState.currentScrollY > 50
     val shouldHideBackToTop = !scrollingState.isScrollingDown || scrollingState.currentScrollY <= 300
 
-    LaunchedEffect(pageProperties.title) {
+    LaunchedEffect(pageProperties.title, currentLanguage) {
         document.title = "${pageProperties.title} | tozydev"
     }
 

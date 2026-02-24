@@ -10,8 +10,8 @@ kotlin {
 }
 
 dependencies {
-    implementation("com.squareup:kotlinpoet:2.0.0")
-    implementation("org.yaml:snakeyaml:2.2")
+    implementation(libs.kotlinpoet)
+    implementation(libs.snakeyaml)
     implementation(plugin(libs.plugins.kotlin.multiplatform))
     implementation(plugin(libs.plugins.compose.compiler))
     implementation(plugin(libs.plugins.kobweb.application))

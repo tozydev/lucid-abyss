@@ -35,21 +35,9 @@ abstract class GenerateStringsInterfaceTask : DefaultTask() {
         }
 
         val structure = buildStructure(stringsMap)
-        val interfaceCode = generateInterfaceCode(packageName.get(), structure)
-        val accessorCode = generateAccessorCode(packageName.get(), structure)
 
-        val interfaceFile = outputDir.file("${packageName.get().replace('.', '/')}/Strings.kt").get().asFile
-        interfaceFile.parentFile.mkdirs()
-        interfaceFile.writeText(interfaceCode)
-
-        // We can put Accessor in same file or separate. User said "each task will procedure each file".
-        // But Interface and Accessor are closely related.
-        // Let's keep them in separate files for cleanliness if requested "each task procedure each file" implies strict separation.
-        // But generating multiple files from one task is fine.
-        // Or should I separate Accessor generation to another task? Maybe not needed.
-
-        val accessorFile = outputDir.file("${packageName.get().replace('.', '/')}/StringsAccessor.kt").get().asFile
-        accessorFile.writeText(accessorCode)
+        generateInterfaceCode(packageName.get(), structure).writeTo(outputDir.get().asFile)
+        generateAccessorCode(packageName.get(), structure).writeTo(outputDir.get().asFile)
     }
 
     private fun buildStructure(stringsMap: Map<SiteLanguage, Map<String, Any>>): Node.Object {

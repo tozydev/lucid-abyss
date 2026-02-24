@@ -31,11 +31,6 @@ abstract class GenerateStringsImplementationTask : DefaultTask() {
         val langCode = languageCode.get()
         val siteLanguage = SiteLanguage.fromCode(langCode)
 
-        // We need all languages structure to build the tree consistently,
-        // OR we assume the single YAML file has full structure?
-        // No, structure is union of all keys.
-        // So we must read all files to build structure, then generate only for one language.
-
         SiteLanguage.entries.forEach { language ->
             val file = stringsDir.file("${language.code}.yaml").get().asFile
             if (file.exists()) {
@@ -45,16 +40,8 @@ abstract class GenerateStringsImplementationTask : DefaultTask() {
         }
 
         val structure = buildStructure(stringsMap)
-        val implCode = generateImplementationCode(packageName.get(), structure, siteLanguage)
-
-        val outputFile = outputDir.file("${packageName.get().replace('.', '/')}/Strings${siteLanguage.name}.kt").get().asFile
-        outputFile.parentFile.mkdirs()
-        outputFile.writeText(implCode)
+        generateImplementationCode(packageName.get(), structure, siteLanguage).writeTo(outputDir.get().asFile)
     }
-
-    // Duplicated buildStructure logic?
-    // Ideally we share it. But logic is small.
-    // We can move it to a helper or base class.
 
     private fun buildStructure(stringsMap: Map<SiteLanguage, Map<String, Any>>): Node.Object {
         val root = Node.Object("Strings")

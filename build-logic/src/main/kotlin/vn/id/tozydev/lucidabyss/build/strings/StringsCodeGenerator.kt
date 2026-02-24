@@ -10,7 +10,8 @@ internal fun generateInterfaceCode(packageName: String, structure: Node.Object):
     sb.appendLine("import vn.id.tozydev.lucidabyss.core.SiteLanguage")
     sb.appendLine()
 
-    sb.appendLine("interface Strings {")
+    // Rename interface to LocalizedStrings to avoid conflict with object Strings
+    sb.appendLine("interface LocalizedStrings {")
     structure.children.forEach { child ->
         generateInterfaceMember(child, sb, "    ")
     }
@@ -29,7 +30,7 @@ internal fun generateImplementationCode(packageName: String, structure: Node.Obj
     sb.appendLine("import vn.id.tozydev.lucidabyss.core.SiteLanguage")
     sb.appendLine()
 
-    sb.appendLine("object Strings${language.name} : Strings {")
+    sb.appendLine("object Strings${language.name} : LocalizedStrings {")
     structure.children.forEach { child ->
          generateImplementationMember(child, language, sb, "    ")
     }
@@ -49,10 +50,10 @@ internal fun generateAccessorCode(packageName: String, structure: Node.Object): 
     sb.appendLine("import vn.id.tozydev.lucidabyss.core.SiteLanguage")
     sb.appendLine()
 
-    sb.appendLine("object Strings : Strings {")
+    sb.appendLine("object Strings : LocalizedStrings {")
     sb.appendLine("    var language by mutableStateOf(SiteLanguage.Default)")
     sb.appendLine()
-    sb.appendLine("    val current: Strings")
+    sb.appendLine("    val current: LocalizedStrings")
     sb.appendLine("        get() = when(language) {")
     SiteLanguage.entries.forEach { language ->
         sb.appendLine("            SiteLanguage.${language.name} -> Strings${language.name}")

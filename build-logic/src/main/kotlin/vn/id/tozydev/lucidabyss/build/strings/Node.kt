@@ -6,6 +6,29 @@ import org.yaml.snakeyaml.nodes.ScalarNode
 import org.yaml.snakeyaml.nodes.SequenceNode
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import java.io.File
+import org.yaml.snakeyaml.nodes.Node as YamlNode
+
+sealed class Node(
+    val name: String,
+) {
+    var parent: Node? = null
+
+    class Object(
+        name: String,
+    ) : Node(name) {
+        val children = mutableListOf<Node>()
+    }
+
+    class SimpleString(
+        name: String,
+        val values: Map<SiteLanguage, String?>,
+    ) : Node(name)
+
+    class MultiPartString(
+        name: String,
+        val values: Map<SiteLanguage, List<String>?>,
+    ) : Node(name)
+}
 
 internal fun buildStringNodeTree(files: Map<SiteLanguage, File>): Node.Object {
     val root = Node.Object("Strings")
@@ -25,7 +48,7 @@ internal fun buildStringNodeTree(files: Map<SiteLanguage, File>): Node.Object {
     // Roots should be MappingNodes.
 
     // Helper to get keys from a set of nodes
-    fun getKeys(nodes: Map<SiteLanguage, org.yaml.snakeyaml.nodes.Node?>): Set<String> {
+    fun getKeys(nodes: Map<SiteLanguage, YamlNode?>): Set<String> {
         val keys = mutableSetOf<String>()
         nodes.values.filterIsInstance<MappingNode>().forEach { mappingNode ->
             mappingNode.value.forEach { tuple ->
@@ -41,7 +64,7 @@ internal fun buildStringNodeTree(files: Map<SiteLanguage, File>): Node.Object {
     // Recursive processing
     fun process(
         parent: Node.Object,
-        currentNodes: Map<SiteLanguage, org.yaml.snakeyaml.nodes.Node?>,
+        currentNodes: Map<SiteLanguage, YamlNode?>,
     ) {
         val keys = getKeys(currentNodes)
 

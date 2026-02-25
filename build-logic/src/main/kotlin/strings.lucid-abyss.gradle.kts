@@ -1,42 +1,43 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinMultiplatformPluginWrapper
 import vn.id.tozydev.lucidabyss.build.strings.GenerateStringsImplementationTask
 import vn.id.tozydev.lucidabyss.build.strings.GenerateStringsInterfaceTask
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
-plugins {
-    id("org.jetbrains.kotlin.multiplatform")
-}
+plugins.withType<KotlinMultiplatformPluginWrapper> {
+    val stringsProjectDir = layout.projectDirectory.dir("src/jsMain/resources/strings")
+    val generatedStringsDir = layout.buildDirectory.dir("generated/strings/src/jsMain/kotlin")
+    val generatedPackageName = "vn.id.tozydev.lucidabyss.strings"
 
-val generateStringsInterface =
-    tasks.register<GenerateStringsInterfaceTask>("generateStringsInterface") {
-        stringsDir.set(layout.projectDirectory.dir("src/jsMain/resources/strings"))
-        outputDir.set(layout.buildDirectory.dir("generated/strings/src/jsMain/kotlin"))
-        packageName.set("vn.id.tozydev.lucidabyss.strings")
+    val generateStringsInterface by tasks.registering(GenerateStringsInterfaceTask::class) {
+        stringsDir = stringsProjectDir
+        outputDir = generatedStringsDir
+        packageName.set(generatedPackageName)
     }
 
-// Register tasks for each language
-val languageTasks =
-    SiteLanguage.entries.map { language ->
-        tasks.register<GenerateStringsImplementationTask>("generateStrings${language.name}") {
-            stringsDir.set(layout.projectDirectory.dir("src/jsMain/resources/strings"))
-            outputDir.set(layout.buildDirectory.dir("generated/strings/src/jsMain/kotlin"))
-            packageName.set("vn.id.tozydev.lucidabyss.strings")
-            languageCode.set(language.code)
+    val languageTasks =
+        SiteLanguage.entries.map { language ->
+            tasks.register<GenerateStringsImplementationTask>("generateStrings${language.name}") {
+                stringsDir = stringsProjectDir
+                outputDir = generatedStringsDir
+                packageName = generatedPackageName
+                languageCode = language.code
+            }
         }
-    }
 
-val generateStrings =
-    tasks.register("generateStrings") {
+    @Suppress("unused")
+    val generateStrings by tasks.registering {
         dependsOn(generateStringsInterface)
         dependsOn(languageTasks)
     }
 
-configure<KotlinMultiplatformExtension> {
-    sourceSets.configureEach {
-        if (name == "jsMain") {
-            kotlin.srcDir(generateStringsInterface.map { it.outputDir })
-            languageTasks.forEach { task ->
-                kotlin.srcDir(task.map { it.outputDir })
+    configure<KotlinMultiplatformExtension> {
+        sourceSets {
+            jsMain {
+                kotlin.srcDir(generateStringsInterface.map { it.outputDir })
+                languageTasks.forEach { task ->
+                    kotlin.srcDir(task.map { it.outputDir })
+                }
             }
         }
     }

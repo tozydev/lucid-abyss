@@ -3,7 +3,6 @@ jetbrains-compose = "1.10.1"
 kobweb = "0.24.0"
 kotlin = "2.3.10"
 kotlinx-datetime = "0.7.1"
-libres = "1.2.4"
 ksp = "2.3.6"
 kotlin-wrappers = "2026.2.17"
 spotless = "8.2.1"
@@ -34,6 +33,5 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kobweb-application = { id = "com.varabyte.kobweb.application", version.ref = "kobweb" }
 kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

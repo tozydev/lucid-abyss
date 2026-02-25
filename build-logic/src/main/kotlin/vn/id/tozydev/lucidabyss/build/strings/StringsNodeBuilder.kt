@@ -12,13 +12,14 @@ internal fun buildStringNodeTree(files: Map<SiteLanguage, File>): Node.Object {
     val yaml = Yaml()
 
     // Parse all files to Yaml Nodes
-    val roots = files.mapValues { (_, file) ->
-        if (file.exists()) {
-            file.reader().use { yaml.compose(it) }
-        } else {
-            null
+    val roots =
+        files.mapValues { (_, file) ->
+            if (file.exists()) {
+                file.reader().use { yaml.compose(it) }
+            } else {
+                null
+            }
         }
-    }
 
     // We need to merge keys from all roots.
     // Roots should be MappingNodes.
@@ -38,18 +39,22 @@ internal fun buildStringNodeTree(files: Map<SiteLanguage, File>): Node.Object {
     }
 
     // Recursive processing
-    fun process(parent: Node.Object, currentNodes: Map<SiteLanguage, org.yaml.snakeyaml.nodes.Node?>) {
+    fun process(
+        parent: Node.Object,
+        currentNodes: Map<SiteLanguage, org.yaml.snakeyaml.nodes.Node?>,
+    ) {
         val keys = getKeys(currentNodes)
 
         keys.forEach { key ->
             // Get value node for this key for each language
-            val valueNodes = currentNodes.mapValues { (_, node) ->
-                if (node is MappingNode) {
-                    node.value.find { (it.keyNode as? ScalarNode)?.value == key }?.valueNode
-                } else {
-                    null
+            val valueNodes =
+                currentNodes.mapValues { (_, node) ->
+                    if (node is MappingNode) {
+                        node.value.find { (it.keyNode as? ScalarNode)?.value == key }?.valueNode
+                    } else {
+                        null
+                    }
                 }
-            }
 
             // Determine type from first non-null node
             val firstNonNull = valueNodes.values.filterNotNull().firstOrNull() ?: return@forEach
@@ -61,20 +66,24 @@ internal fun buildStringNodeTree(files: Map<SiteLanguage, File>): Node.Object {
                     parent.children.add(childObj)
                     process(childObj, valueNodes)
                 }
+
                 is SequenceNode -> {
                     // List of strings
-                    val values = valueNodes.mapValues { (_, node) ->
-                        (node as? SequenceNode)?.value?.mapNotNull { (it as? ScalarNode)?.value }
-                    }
+                    val values =
+                        valueNodes.mapValues { (_, node) ->
+                            (node as? SequenceNode)?.value?.mapNotNull { (it as? ScalarNode)?.value }
+                        }
                     val childNode = Node.MultiPartString(key, values)
                     childNode.parent = parent
                     parent.children.add(childNode)
                 }
+
                 is ScalarNode -> {
                     // Simple string
-                    val values = valueNodes.mapValues { (_, node) ->
-                        (node as? ScalarNode)?.value
-                    }
+                    val values =
+                        valueNodes.mapValues { (_, node) ->
+                            (node as? ScalarNode)?.value
+                        }
                     val childNode = Node.SimpleString(key, values)
                     childNode.parent = parent
                     parent.children.add(childNode)

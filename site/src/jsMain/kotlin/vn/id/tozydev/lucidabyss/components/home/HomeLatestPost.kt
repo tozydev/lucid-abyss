@@ -29,7 +29,9 @@ fun HomeLatestPost(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = Strings.widget.post.cover.alt(post.title),
+                alt =
+                    Strings.widget.post.cover
+                        .alt(post.title),
             )
         }
 

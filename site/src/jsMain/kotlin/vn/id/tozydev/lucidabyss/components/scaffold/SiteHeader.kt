@@ -1,7 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.scaffold
 
-import vn.id.tozydev.lucidabyss.strings.Strings
-
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -22,6 +20,7 @@ import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
 import vn.id.tozydev.lucidabyss.utils.tw
 

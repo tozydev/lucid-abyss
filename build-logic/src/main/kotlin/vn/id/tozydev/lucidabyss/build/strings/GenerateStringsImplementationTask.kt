@@ -3,14 +3,18 @@ package vn.id.tozydev.lucidabyss.build.strings
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.Property
-import org.gradle.api.tasks.*
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import org.gradle.api.tasks.CacheableTask
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.PathSensitive
+import org.gradle.api.tasks.PathSensitivity
+import org.gradle.api.tasks.TaskAction
 import vn.id.tozydev.lucidabyss.build.strings.generator.generateImplementationCode
-import java.io.File
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
 @CacheableTask
 abstract class GenerateStringsImplementationTask : DefaultTask() {
-
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val stringsDir: DirectoryProperty
@@ -26,9 +30,10 @@ abstract class GenerateStringsImplementationTask : DefaultTask() {
 
     @TaskAction
     fun generate() {
-        val files = SiteLanguage.entries.associateWith { language ->
-            stringsDir.file("${language.code}.yaml").get().asFile
-        }
+        val files =
+            SiteLanguage.entries.associateWith { language ->
+                stringsDir.file("${language.code}.yaml").get().asFile
+            }
 
         val langCode = languageCode.get()
         val siteLanguage = SiteLanguage.fromCode(langCode)

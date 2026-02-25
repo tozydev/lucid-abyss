@@ -30,7 +30,9 @@ fun BlogPostCard(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = Strings.widget.post.cover.alt(post.title),
+                alt =
+                    Strings.widget.post.cover
+                        .alt(post.title),
             )
             Div({ tw("absolute top-4 right-4") }) {
                 Div({ tw("badge") }) {

@@ -3,15 +3,19 @@ package vn.id.tozydev.lucidabyss.build.strings
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.Property
-import org.gradle.api.tasks.*
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.build.strings.generator.generateInterfaceCode
+import org.gradle.api.tasks.CacheableTask
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.PathSensitive
+import org.gradle.api.tasks.PathSensitivity
+import org.gradle.api.tasks.TaskAction
 import vn.id.tozydev.lucidabyss.build.strings.generator.generateAccessorCode
-import java.io.File
+import vn.id.tozydev.lucidabyss.build.strings.generator.generateInterfaceCode
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
 @CacheableTask
 abstract class GenerateStringsInterfaceTask : DefaultTask() {
-
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val stringsDir: DirectoryProperty
@@ -24,9 +28,10 @@ abstract class GenerateStringsInterfaceTask : DefaultTask() {
 
     @TaskAction
     fun generate() {
-        val files = SiteLanguage.entries.associateWith { language ->
-            stringsDir.file("${language.code}.yaml").get().asFile
-        }
+        val files =
+            SiteLanguage.entries.associateWith { language ->
+                stringsDir.file("${language.code}.yaml").get().asFile
+            }
 
         val structure = buildStringNodeTree(files)
 

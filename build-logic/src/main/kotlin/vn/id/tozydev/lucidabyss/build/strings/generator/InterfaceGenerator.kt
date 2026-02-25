@@ -12,11 +12,16 @@ import com.squareup.kotlinpoet.asTypeName
 import vn.id.tozydev.lucidabyss.build.strings.Node
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
-internal fun generateInterfaceCode(packageName: String, structure: Node.Object): FileSpec {
+internal fun generateInterfaceCode(
+    packageName: String,
+    structure: Node.Object,
+): FileSpec {
     val fileSpec = FileSpec.builder(packageName, "LocalizedStrings")
 
-    val interfaceType = TypeSpec.interfaceBuilder("LocalizedStrings")
-        .addModifiers(KModifier.PUBLIC)
+    val interfaceType =
+        TypeSpec
+            .interfaceBuilder("LocalizedStrings")
+            .addModifiers(KModifier.PUBLIC)
 
     structure.children.forEach { child ->
         addInterfaceMember(interfaceType, child, packageName)
@@ -28,7 +33,11 @@ internal fun generateInterfaceCode(packageName: String, structure: Node.Object):
     return fileSpec.build()
 }
 
-private fun addInterfaceMember(typeSpec: TypeSpec.Builder, node: Node, packageName: String) {
+private fun addInterfaceMember(
+    typeSpec: TypeSpec.Builder,
+    node: Node,
+    packageName: String,
+) {
     val kotlinName = toCamelCase(node.name)
     when (node) {
         is Node.Object -> addInterfaceObjectProperty(typeSpec, kotlinName, node, packageName)
@@ -37,19 +46,30 @@ private fun addInterfaceMember(typeSpec: TypeSpec.Builder, node: Node, packageNa
     }
 }
 
-private fun addInterfaceObjectProperty(typeSpec: TypeSpec.Builder, name: String, node: Node.Object, packageName: String) {
+private fun addInterfaceObjectProperty(
+    typeSpec: TypeSpec.Builder,
+    name: String,
+    node: Node.Object,
+    packageName: String,
+) {
     val typeName = ClassName(packageName, node.fullPath())
     typeSpec.addProperty(PropertySpec.builder(name, typeName).build())
 }
 
-private fun addInterfaceStringProperty(typeSpec: TypeSpec.Builder, name: String, node: Node.SimpleString) {
+private fun addInterfaceStringProperty(
+    typeSpec: TypeSpec.Builder,
+    name: String,
+    node: Node.SimpleString,
+) {
     val args = extractArgs(node.values)
     if (args.isEmpty()) {
         typeSpec.addProperty(PropertySpec.builder(name, String::class).build())
     } else {
-        val funSpec = FunSpec.builder(name)
-            .addModifiers(KModifier.ABSTRACT)
-            .returns(String::class)
+        val funSpec =
+            FunSpec
+                .builder(name)
+                .addModifiers(KModifier.ABSTRACT)
+                .returns(String::class)
         args.forEach { arg ->
             funSpec.addParameter(arg, String::class)
         }
@@ -57,7 +77,11 @@ private fun addInterfaceStringProperty(typeSpec: TypeSpec.Builder, name: String,
     }
 }
 
-private fun addInterfaceMultipartFunction(typeSpec: TypeSpec.Builder, name: String, node: Node.MultiPartString) {
+private fun addInterfaceMultipartFunction(
+    typeSpec: TypeSpec.Builder,
+    name: String,
+    node: Node.MultiPartString,
+) {
     val defaultList = node.values[SiteLanguage.Default] ?: emptyList()
     val size = defaultList.size
     if (size > 0) {
@@ -66,23 +90,29 @@ private fun addInterfaceMultipartFunction(typeSpec: TypeSpec.Builder, name: Stri
         val lambdaType = LambdaTypeName.get(parameters = lambdaParams.toTypedArray(), returnType = typeT)
 
         typeSpec.addFunction(
-            FunSpec.builder(name)
+            FunSpec
+                .builder(name)
                 .addModifiers(KModifier.ABSTRACT)
                 .addTypeVariable(typeT)
                 .addParameter("render", lambdaType)
                 .returns(typeT)
-                .build()
+                .build(),
         )
     }
 }
 
-private fun addNestedInterfaces(fileSpec: FileSpec.Builder, node: Node.Object) {
+private fun addNestedInterfaces(
+    fileSpec: FileSpec.Builder,
+    node: Node.Object,
+) {
     val packageName = fileSpec.packageName
 
     node.children.filterIsInstance<Node.Object>().forEach { child ->
         val interfaceName = child.fullPath()
-        val interfaceType = TypeSpec.interfaceBuilder(interfaceName)
-            .addModifiers(KModifier.PUBLIC)
+        val interfaceType =
+            TypeSpec
+                .interfaceBuilder(interfaceName)
+                .addModifiers(KModifier.PUBLIC)
 
         child.children.forEach { grandChild ->
             addInterfaceMember(interfaceType, grandChild, packageName)

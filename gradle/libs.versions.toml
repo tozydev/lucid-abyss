@@ -8,6 +8,7 @@ ksp = "2.3.6"
 kotlin-wrappers = "2026.2.17"
 kotlinpoet = "2.0.0"
 snakeyaml = "2.2"
+kotlinx-coroutines = "1.10.2"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "jetbrains-compose" }
@@ -19,6 +20,7 @@ silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlin-wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 
 kotlinpoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }

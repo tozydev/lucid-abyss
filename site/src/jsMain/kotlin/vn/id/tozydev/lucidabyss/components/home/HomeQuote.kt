@@ -1,20 +1,20 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import vn.id.tozydev.lucidabyss.strings.Strings
-
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaQuoteLeft
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
 fun HomeQuote(modifier: Modifier = Modifier) {
     Div(
         Modifier
-            .tw("card bg-gray-900 text-gray-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300")
-            .then(modifier)
+            .tw(
+                "card bg-gray-900 text-gray-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+            ).then(modifier)
             .toAttrs(),
     ) {
         Div({ tw("card-body text-sm text-center items-center justify-center") }) {

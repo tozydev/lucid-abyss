@@ -1,7 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import vn.id.tozydev.lucidabyss.strings.Strings
-
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -11,6 +9,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -18,8 +17,9 @@ context(_: SiteLanguage)
 fun HomeHero(modifier: Modifier = Modifier) {
     Div(
         Modifier
-            .tw("card card-lg card-border bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300")
-            .then(modifier)
+            .tw(
+                "card card-lg card-border bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+            ).then(modifier)
             .toAttrs(),
     ) {
         Div({ tw("card-body") }) {

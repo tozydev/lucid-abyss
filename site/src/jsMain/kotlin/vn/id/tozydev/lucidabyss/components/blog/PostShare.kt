@@ -1,7 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.blog
 
-import vn.id.tozydev.lucidabyss.strings.Strings
-
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -17,6 +15,7 @@ import js.promise.await
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 import web.navigator.navigator
 import web.window.window
@@ -25,8 +24,9 @@ import web.window.window
 fun PostShare(modifier: Modifier = Modifier) {
     Div(
         Modifier
-            .tw("card card-border bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300")
-            .then(modifier)
+            .tw(
+                "card card-border bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+            ).then(modifier)
             .toAttrs(),
     ) {
         Div({ tw("card-body items-center text-center lg:text-start lg:items-start") }) {

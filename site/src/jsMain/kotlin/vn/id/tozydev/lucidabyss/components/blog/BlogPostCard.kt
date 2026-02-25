@@ -1,7 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.blog
 
-import vn.id.tozydev.lucidabyss.strings.Strings
-
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.GenericTag
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -10,6 +8,7 @@ import com.varabyte.kobweb.navigation.Anchor
 import com.varabyte.kobweb.silk.components.icons.fa.FaCalendar
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -23,8 +22,9 @@ fun BlogPostCard(
         href = post.route,
         attrs =
             Modifier
-                .tw("card card-border card-lg bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300")
-                .then(modifier)
+                .tw(
+                    "card card-border card-lg bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300",
+                ).then(modifier)
                 .toAttrs(),
     ) {
         GenericTag("figure") {

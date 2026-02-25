@@ -2,12 +2,12 @@ package vn.id.tozydev.lucidabyss.utils
 
 import androidx.compose.runtime.*
 import kotlinx.browser.window
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.sample
 import org.w3c.dom.events.Event
 import kotlin.time.Duration.Companion.milliseconds
-import kotlinx.coroutines.FlowPreview
 
 data class ScrollingState(
     val isScrollingDown: Boolean,
@@ -35,15 +35,15 @@ fun rememberScrollingState(): ScrollingState {
             awaitClose {
                 window.removeEventListener("scroll", handleScroll)
             }
-        }
-        .sample(100.milliseconds) // Throttle updates to ~10fps, sufficient for UI visibility toggles
-        .collect { scrollY ->
-            state = state.copy(
-                currentScrollY = scrollY,
-                lastScrollY = scrollY,
-                isScrollingDown = scrollY > state.lastScrollY,
-            )
-        }
+        }.sample(100.milliseconds) // Throttle updates to ~10fps, sufficient for UI visibility toggles
+            .collect { scrollY ->
+                state =
+                    state.copy(
+                        currentScrollY = scrollY,
+                        lastScrollY = scrollY,
+                        isScrollingDown = scrollY > state.lastScrollY,
+                    )
+            }
     }
     return state
 }

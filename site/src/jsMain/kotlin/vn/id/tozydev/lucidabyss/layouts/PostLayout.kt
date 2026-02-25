@@ -1,7 +1,5 @@
 package vn.id.tozydev.lucidabyss.layouts
 
-import vn.id.tozydev.lucidabyss.strings.Strings
-
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.browser.dom.observers.IntersectionObserver
 import com.varabyte.kobweb.compose.dom.ref
@@ -28,8 +26,8 @@ import vn.id.tozydev.lucidabyss.components.blog.PostShare
 import vn.id.tozydev.lucidabyss.components.blog.PostTableOfContents
 import vn.id.tozydev.lucidabyss.components.blog.PostTags
 import vn.id.tozydev.lucidabyss.core.BlogPost
-import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.getBlogPost
 import vn.id.tozydev.lucidabyss.utils.getHeadings
 import vn.id.tozydev.lucidabyss.utils.language
@@ -90,7 +88,11 @@ private fun PostContent(
         var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
         Aside({ tw("lg:col-span-3 lg:order-last") }) {
             Div({ tw("sticky top-16") }) {
-                Div({ tw("card card-border bg-base-100 lg:mb-6 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300") }) {
+                Div({
+                    tw(
+                        "card card-border bg-base-100 lg:mb-6 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                    )
+                }) {
                     Div({ tw("card-body") }) {
                         var headings by remember(ctx.route.path) { mutableStateOf(emptyList<HTMLHeadingElement>()) }
                         // Fetch headings only once elements are added to the DOM

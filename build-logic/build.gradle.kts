@@ -16,6 +16,7 @@ dependencies {
     implementation(plugin(libs.plugins.compose.compiler))
     implementation(plugin(libs.plugins.kobweb.application))
     implementation(plugin(libs.plugins.kobwebx.markdown))
+    implementation(plugin(libs.plugins.spotless))
 
     implementation("vn.id.tozydev.lucidabyss:lucid-abyss-core")
 

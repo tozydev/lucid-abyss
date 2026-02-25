@@ -1,11 +1,19 @@
 package vn.id.tozydev.lucidabyss.build.strings.generator
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.LambdaTypeName
+import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.TypeVariableName
+import com.squareup.kotlinpoet.asTypeName
 import vn.id.tozydev.lucidabyss.build.strings.Node
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
 internal fun generateInterfaceCode(packageName: String, structure: Node.Object): FileSpec {
-    val fileSpec = FileSpec.builder(packageName, "Strings")
+    val fileSpec = FileSpec.builder(packageName, "LocalizedStrings")
 
     val interfaceType = TypeSpec.interfaceBuilder("LocalizedStrings")
         .addModifiers(KModifier.PUBLIC)

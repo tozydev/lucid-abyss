@@ -14,10 +14,4 @@ kotlin {
         freeCompilerArgs.addAll("-Xcontext-parameters", "-Xcontext-sensitive-resolution")
         optIn.addAll("kotlin.time.ExperimentalTime")
     }
-
-    sourceSets {
-        commonMain.dependencies {
-            api(libs.kotlinx.coroutines.core)
-        }
-    }
 }

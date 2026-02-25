@@ -1,5 +1,7 @@
 package vn.id.tozydev.lucidabyss.pages.blog
 
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
@@ -8,8 +10,6 @@ import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
-import vn.id.tozydev.lucidabyss.pages.strings
-import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class BlogPage(
@@ -17,10 +17,10 @@ class BlogPage(
 ) : Page(language) {
     override val route = SitePaths.BLOG_PATH
     override val properties =
-        strings.let {
+        Strings.withLanguage(language) {
             Properties(
-                title = it.page.blog.title,
-                description = it.page.blog.description,
+                title = Strings.page.blog.title,
+                description = Strings.page.blog.description,
             )
         }
 

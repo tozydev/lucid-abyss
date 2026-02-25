@@ -31,59 +31,19 @@ abstract class GenerateStringsInterfaceTask : DefaultTask() {
         SiteLanguage.entries.forEach { language ->
             val file = stringsDir.file("${language.code}.yaml").get().asFile
             if (file.exists()) {
-                val map: Map<String, Any> = yaml.load(file.inputStream()) ?: emptyMap()
+                // Using unchecked cast here is unavoidable at the boundary,
+                // but we suppress it or accept it.
+                // Yaml.load returns Object.
+                @Suppress("UNCHECKED_CAST")
+                val map = (yaml.load(file.inputStream()) as? Map<String, Any>) ?: emptyMap()
                 stringsMap[language] = map
             }
         }
 
-        val structure = buildStructure(stringsMap)
+        // Use the new builder
+        val structure = buildStringNodeTree(stringsMap)
 
         generateInterfaceCode(packageName.get(), structure).writeTo(outputDir.get().asFile)
         generateAccessorCode(packageName.get(), structure).writeTo(outputDir.get().asFile)
-    }
-
-    private fun buildStructure(stringsMap: Map<SiteLanguage, Map<String, Any>>): Node.Object {
-        val root = Node.Object("Strings")
-        val allKeys = stringsMap.values.flatMap { it.keys }.toSet()
-
-        allKeys.forEach { key ->
-            processKey(root, key, stringsMap)
-        }
-
-        return root
-    }
-
-    private fun processKey(parent: Node.Object, key: String, data: Map<SiteLanguage, Map<String, Any>>) {
-        val values = data.mapValues { it.value[key] }
-        val nonNullValues = values.values.filterNotNull()
-
-        if (nonNullValues.isEmpty()) return
-
-        val firstValue = nonNullValues.first()
-
-        when (firstValue) {
-            is Map<*, *> -> {
-                val node = Node.Object(key)
-                node.parent = parent
-                parent.children.add(node)
-                val childData = data.mapValues {
-                    (it.value[key] as? Map<String, Any>) ?: emptyMap()
-                }
-                val allChildKeys = childData.values.flatMap { it.keys }.toSet()
-                allChildKeys.forEach { childKey ->
-                    processKey(node, childKey, childData)
-                }
-            }
-            is List<*> -> {
-                val node = Node.MultiPartString(key, values as Map<SiteLanguage, List<String>?>)
-                node.parent = parent
-                parent.children.add(node)
-            }
-            is String -> {
-                val node = Node.SimpleString(key, values as Map<SiteLanguage, String?>)
-                node.parent = parent
-                parent.children.add(node)
-            }
-        }
     }
 }

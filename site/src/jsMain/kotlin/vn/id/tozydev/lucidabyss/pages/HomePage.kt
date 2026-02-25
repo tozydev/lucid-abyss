@@ -1,5 +1,7 @@
 package vn.id.tozydev.lucidabyss.pages
 
+import vn.id.tozydev.lucidabyss.strings.Strings
+
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.PageContext
@@ -20,10 +22,10 @@ class HomePage(
     language: SiteLanguage,
 ) : Page(language) {
     override val properties =
-        strings.let {
+        Strings.withLanguage(language) {
             Properties(
-                title = it.page.home.title,
-                description = it.page.home.description,
+                title = Strings.page.home.title,
+                description = Strings.page.home.description,
             )
         }
 

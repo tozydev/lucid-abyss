@@ -1,20 +1,12 @@
 package vn.id.tozydev.lucidabyss.build.strings.generator
 
-import com.squareup.kotlinpoet.ClassName
-import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.LambdaTypeName
-import com.squareup.kotlinpoet.PropertySpec
-import com.squareup.kotlinpoet.TypeSpec
-import com.squareup.kotlinpoet.TypeVariableName
-import com.squareup.kotlinpoet.asClassName
-import com.squareup.kotlinpoet.asTypeName
+import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import vn.id.tozydev.lucidabyss.build.strings.Node
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
 internal fun generateAccessorCode(packageName: String, structure: Node.Object): FileSpec {
-    val fileSpec = FileSpec.builder(packageName, "Strings")
+    val fileSpec = FileSpec.builder(packageName, "StringsAccessor")
 
     val localizedStringsClass = ClassName(packageName, "LocalizedStrings")
     val siteLanguageClass = SiteLanguage::class.asClassName()
@@ -23,8 +15,17 @@ internal fun generateAccessorCode(packageName: String, structure: Node.Object): 
         .addSuperinterface(localizedStringsClass)
         .addModifiers(KModifier.PUBLIC)
 
+    val mutableStateFlowClass = ClassName("kotlinx.coroutines.flow", "MutableStateFlow")
+
+    // val language = MutableStateFlow(SiteLanguage.Default)
+    objectType.addProperty(
+        PropertySpec.builder("language", mutableStateFlowClass.parameterizedBy(siteLanguageClass))
+            .initializer("%T(%T.Default)", mutableStateFlowClass, siteLanguageClass)
+            .build()
+    )
+
     val currentGetter = FunSpec.getterBuilder()
-        .beginControlFlow("return when(%T.current)", siteLanguageClass)
+        .beginControlFlow("return when(language.value)")
 
     SiteLanguage.entries.forEach { lang ->
         currentGetter.addStatement("%T.${lang.name} -> %T", siteLanguageClass, ClassName(packageName, "Strings${lang.name}"))
@@ -35,6 +36,24 @@ internal fun generateAccessorCode(packageName: String, structure: Node.Object): 
     objectType.addProperty(
         PropertySpec.builder("current", localizedStringsClass)
             .getter(currentGetter.build())
+            .build()
+    )
+
+    val typeT = TypeVariableName("T")
+    objectType.addFunction(
+        FunSpec.builder("withLanguage")
+            .addModifiers(KModifier.INLINE)
+            .addTypeVariable(typeT)
+            .addParameter("lang", siteLanguageClass)
+            .addParameter("block", LambdaTypeName.get(returnType = typeT))
+            .returns(typeT)
+            .addStatement("val old = language.value")
+            .addStatement("language.value = lang")
+            .beginControlFlow("try")
+            .addStatement("return block()")
+            .nextControlFlow("finally")
+            .addStatement("language.value = old")
+            .endControlFlow()
             .build()
     )
 

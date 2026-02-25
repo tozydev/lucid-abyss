@@ -42,12 +42,14 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 - Export static site to `site/.kobweb/site/`: `kobweb export -p site -l static --notty`
 - Start development server: `kobweb run -p site --notty`
   _*This command listens on port 8080 by default, is a blocking command, and requires about 1–2 minutes to start._
+- Format code (`*.kt`, `*.kts`): `./gradlew spotlessApply`
 
 ## Boundaries & Rules
 
 - **NEVER** modify `blog` content except for mocking up new posts.
 - **ALWAYS** update `strings_en.xml` and `strings_vi.xml` when adding new text.
 - **ALWAYS** run `./gradlew build` after making significant changes.
+- **ALWAYS** run `./gradlew spotlessApply` after finalizing code changes.
 - **ASK FIRST** before creating new Gradle modules or changing `build-logic`.
 - **ASK FIRST** before adding new dependencies.
     - **ALWAYS** define dependencies in `gradle/libs.versions.toml` or `gradle/npm.versions.toml`.

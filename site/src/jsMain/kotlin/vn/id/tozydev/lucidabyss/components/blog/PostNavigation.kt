@@ -29,7 +29,11 @@ fun PostNavigation(
         if (previousPost != null) {
             Anchor(
                 href = previousPost.route,
-                attrs = { tw("card card-border bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300") },
+                attrs = {
+                    tw(
+                        "card card-border bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300",
+                    )
+                },
             ) {
                 Div({ tw("card-body") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
@@ -45,7 +49,11 @@ fun PostNavigation(
         if (nextPost != null) {
             Anchor(
                 href = nextPost.route,
-                attrs = { tw("card card-border bg-base-100 md:col-start-2 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300") },
+                attrs = {
+                    tw(
+                        "card card-border bg-base-100 md:col-start-2 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300",
+                    )
+                },
             ) {
                 Div({ tw("card-body items-end") }) {
                     Div({ tw("card-title text-xs uppercase") }) {

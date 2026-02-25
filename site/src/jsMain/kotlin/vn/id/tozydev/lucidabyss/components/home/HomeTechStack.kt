@@ -12,8 +12,9 @@ import vn.id.tozydev.lucidabyss.utils.tw
 fun HomeTechStack(modifier: Modifier = Modifier) {
     Div(
         Modifier
-            .tw("card card-border bg-base-100 card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300")
-            .then(modifier)
+            .tw(
+                "card card-border bg-base-100 card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+            ).then(modifier)
             .toAttrs(),
     ) {
         Div({ tw("card-body") }) {

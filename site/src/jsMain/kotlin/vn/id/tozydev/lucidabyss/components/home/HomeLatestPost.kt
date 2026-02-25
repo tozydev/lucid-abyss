@@ -21,8 +21,9 @@ fun HomeLatestPost(
 ) {
     Div(
         Modifier
-            .tw("card image-full card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300")
-            .then(modifier)
+            .tw(
+                "card image-full card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+            ).then(modifier)
             .toAttrs(),
     ) {
         GenericTag("figure") {

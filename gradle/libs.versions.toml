@@ -6,6 +6,8 @@ kotlinx-datetime = "0.7.1"
 libres = "1.2.4"
 ksp = "2.3.6"
 kotlin-wrappers = "2026.2.17"
+spotless = "8.2.1"
+compose-rules = "0.5.6"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "jetbrains-compose" }
@@ -17,6 +19,8 @@ silk-icons-fa = { module = "com.varabyte.kobwebx:silk-icons-fa", version.ref = "
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlin-wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
+#noinspection UnusedVersionCatalogEntry
+compose-rules-ktlint = { module = "io.nlopez.compose.rules:ktlint", version.ref = "compose-rules" }
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
@@ -25,3 +29,4 @@ kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 libres = { id = "io.github.skeptick.libres", version.ref = "libres" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

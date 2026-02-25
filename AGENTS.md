@@ -11,7 +11,7 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 - **Framework:** Kobweb 0.23.3 (based on JetBrains Compose HTML).
 - **Styling:** Tailwind CSS 4.x (configured via PostCSS) and DaisyUI 5.x (Component library).
 - **Build Tool:** Gradle (Kotlin DSL).
-- **Internationalization:** Libres (Android-like strings resources).
+- **Internationalization:** YAML localization files (default: Vietnamese `vi`)
 - **Deployment:** Cloudflare Workers (Static layout export).
 
 ## Git Commits & Branches
@@ -29,7 +29,7 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
     - `src/jsMain/kotlin/.../layouts/`: Layouts for pages.
     - `src/jsMain/resources/public/`: Static assets (Images, Fonts, etc).
     - `src/jsMain/resources/styles.css`: Tailwind CSS configuration.
-    - `src/commonMain/libres/strings/`: Localization files (`strings_en.xml`, `strings_vi.xml`).
+    - `src/jsMain/resources/strings/`: Localization files (`en.yaml`, `vi.yaml`).
 
 - `blog/`: Raw Markdown content for blog posts (DO NOT TOUCH).
 - `build-logic/`: Gradle convention plugins (e.g blog post processing).
@@ -47,7 +47,7 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 ## Boundaries & Rules
 
 - **NEVER** modify `blog` content except for mocking up new posts.
-- **ALWAYS** update `strings_en.xml` and `strings_vi.xml` when adding new text.
+- **ALWAYS** update `en.yaml` and `vi.yaml` when adding new text.
 - **ALWAYS** run `./gradlew build` after making significant changes.
 - **ALWAYS** run `./gradlew spotlessApply` after finalizing code changes.
 - **ASK FIRST** before creating new Gradle modules or changing `build-logic`.

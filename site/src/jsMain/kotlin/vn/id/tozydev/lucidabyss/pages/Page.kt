@@ -8,6 +8,8 @@ import com.varabyte.kobweb.core.init.InitKobwebContext
 import com.varabyte.kobweb.core.init.InitRouteContext
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.pages.blog.BlogPage
+import vn.id.tozydev.lucidabyss.strings.StringsEn
+import vn.id.tozydev.lucidabyss.strings.StringsVi
 
 abstract class Page(
     val language: SiteLanguage,
@@ -61,4 +63,11 @@ private val Page.actualRoute
         when (language) {
             SiteLanguage.Default -> route
             else -> "/${language.code}$route"
+        }
+
+internal val Page.strings
+    get() =
+        when (language) {
+            SiteLanguage.En -> StringsEn
+            else -> StringsVi
         }

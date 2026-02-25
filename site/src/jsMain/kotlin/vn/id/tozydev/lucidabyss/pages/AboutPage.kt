@@ -1,7 +1,5 @@
 package vn.id.tozydev.lucidabyss.pages
 
-import vn.id.tozydev.lucidabyss.strings.Strings
-
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.core.PageContext
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
@@ -12,10 +10,10 @@ class AboutPage(
 ) : Page(language) {
     override val route = SitePaths.ABOUT_PATH
     override val properties =
-        Strings.withLanguage(language) {
+        strings.let {
             Properties(
-                title = Strings.page.about.title,
-                description = Strings.page.about.description,
+                title = it.page.about.title,
+                description = it.page.about.description,
             )
         }
 

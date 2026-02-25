@@ -1,59 +1,88 @@
 package vn.id.tozydev.lucidabyss.build.strings
 
+import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.nodes.MappingNode
+import org.yaml.snakeyaml.nodes.ScalarNode
+import org.yaml.snakeyaml.nodes.SequenceNode
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import java.io.File
 
-internal fun buildStringNodeTree(data: Map<SiteLanguage, Map<String, Any>>): Node.Object {
+internal fun buildStringNodeTree(files: Map<SiteLanguage, File>): Node.Object {
     val root = Node.Object("Strings")
-    val allKeys = data.values.flatMap { it.keys }.toSet()
+    val yaml = Yaml()
 
-    allKeys.forEach { key ->
-        processKey(root, key, data)
+    // Parse all files to Yaml Nodes
+    val roots = files.mapValues { (_, file) ->
+        if (file.exists()) {
+            file.reader().use { yaml.compose(it) }
+        } else {
+            null
+        }
     }
 
+    // We need to merge keys from all roots.
+    // Roots should be MappingNodes.
+
+    // Helper to get keys from a set of nodes
+    fun getKeys(nodes: Map<SiteLanguage, org.yaml.snakeyaml.nodes.Node?>): Set<String> {
+        val keys = mutableSetOf<String>()
+        nodes.values.filterIsInstance<MappingNode>().forEach { mappingNode ->
+            mappingNode.value.forEach { tuple ->
+                val keyNode = tuple.keyNode
+                if (keyNode is ScalarNode) {
+                    keys.add(keyNode.value)
+                }
+            }
+        }
+        return keys
+    }
+
+    // Recursive processing
+    fun process(parent: Node.Object, currentNodes: Map<SiteLanguage, org.yaml.snakeyaml.nodes.Node?>) {
+        val keys = getKeys(currentNodes)
+
+        keys.forEach { key ->
+            // Get value node for this key for each language
+            val valueNodes = currentNodes.mapValues { (_, node) ->
+                if (node is MappingNode) {
+                    node.value.find { (it.keyNode as? ScalarNode)?.value == key }?.valueNode
+                } else {
+                    null
+                }
+            }
+
+            // Determine type from first non-null node
+            val firstNonNull = valueNodes.values.filterNotNull().firstOrNull() ?: return@forEach
+
+            when (firstNonNull) {
+                is MappingNode -> {
+                    val childObj = Node.Object(key)
+                    childObj.parent = parent
+                    parent.children.add(childObj)
+                    process(childObj, valueNodes)
+                }
+                is SequenceNode -> {
+                    // List of strings
+                    val values = valueNodes.mapValues { (_, node) ->
+                        (node as? SequenceNode)?.value?.mapNotNull { (it as? ScalarNode)?.value }
+                    }
+                    val childNode = Node.MultiPartString(key, values)
+                    childNode.parent = parent
+                    parent.children.add(childNode)
+                }
+                is ScalarNode -> {
+                    // Simple string
+                    val values = valueNodes.mapValues { (_, node) ->
+                        (node as? ScalarNode)?.value
+                    }
+                    val childNode = Node.SimpleString(key, values)
+                    childNode.parent = parent
+                    parent.children.add(childNode)
+                }
+            }
+        }
+    }
+
+    process(root, roots)
     return root
-}
-
-private fun processKey(parent: Node.Object, key: String, data: Map<SiteLanguage, Map<String, Any>>) {
-    // Collect values for this key across all languages
-    val values: Map<SiteLanguage, Any?> = data.mapValues { it.value[key] }
-
-    // Find the first non-null value to determine the type
-    val firstNonNullValue = values.values.filterNotNull().firstOrNull() ?: return
-
-    when (firstNonNullValue) {
-        is Map<*, *> -> {
-            val node = Node.Object(key)
-            node.parent = parent
-            parent.children.add(node)
-
-            // Safe cast and recursion
-            // We create a new data map for the next level: Map<SiteLanguage, Map<String, Any>>
-            val childData = values.mapValues { (_, value) ->
-                @Suppress("UNCHECKED_CAST")
-                value as? Map<String, Any> ?: emptyMap()
-            }
-
-            val allChildKeys = childData.values.flatMap { it.keys }.toSet()
-            allChildKeys.forEach { childKey ->
-                processKey(node, childKey, childData)
-            }
-        }
-        is List<*> -> {
-            // Safe conversion to List<String>
-            val listValues = values.mapValues { (_, value) ->
-                (value as? List<*>)?.map { it.toString() }
-            }
-            val node = Node.MultiPartString(key, listValues)
-            node.parent = parent
-            parent.children.add(node)
-        }
-        else -> { // String or other primitives treated as String
-            val stringValues = values.mapValues { (_, value) ->
-                value?.toString()
-            }
-            val node = Node.SimpleString(key, stringValues)
-            node.parent = parent
-            parent.children.add(node)
-        }
-    }
 }

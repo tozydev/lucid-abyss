@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.ui
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -10,6 +9,7 @@ import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.SMOOTH
 import org.w3c.dom.ScrollBehavior
 import org.w3c.dom.ScrollToOptions
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -23,7 +23,7 @@ fun BackToTopButton(modifier: Modifier = Modifier) {
         Button(
             {
                 tw("btn btn-primary btn-circle")
-                attr("aria-label", Res.string.widget_back_to_top_button_label)
+                attr("aria-label", Strings.widget.back.to.top.button.label)
                 onClick {
                     window.scrollTo(ScrollToOptions(top = 0.0, behavior = ScrollBehavior.SMOOTH))
                 }

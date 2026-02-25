@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.blog
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -16,6 +15,7 @@ import js.promise.await
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 import web.navigator.navigator
 import web.window.window
@@ -31,7 +31,7 @@ fun PostShare(modifier: Modifier = Modifier) {
     ) {
         Div({ tw("card-body items-center text-center lg:text-start lg:items-start") }) {
             H3({ tw("card-title text-base mb-2") }) {
-                Text(Res.string.widget_share_post_title)
+                Text(Strings.widget.share.post.title)
             }
 
             Div({ tw("flex items-center gap-4 lg:gap-2") }) {
@@ -69,9 +69,9 @@ private fun CopyLinkButton() {
             .thenIf(isClicked) {
                 Modifier
                     .tw("tooltip-open")
-                    .attr("data-tip", Res.string.widget_share_post_link_copied)
+                    .attr("data-tip", Strings.widget.share.post.linkCopied)
             }.thenUnless(isClicked) {
-                Modifier.attr("data-tip", Res.string.widget_share_post_link)
+                Modifier.attr("data-tip", Strings.widget.share.post.link)
             }.toAttrs(),
     ) {
         Anchor(

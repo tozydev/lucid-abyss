@@ -10,6 +10,8 @@ kotlin {
 }
 
 dependencies {
+    implementation(libs.kotlinpoet)
+    implementation(libs.snakeyaml)
     implementation(plugin(libs.plugins.kotlin.multiplatform))
     implementation(plugin(libs.plugins.compose.compiler))
     implementation(plugin(libs.plugins.kobweb.application))

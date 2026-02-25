@@ -1,0 +1,114 @@
+page:
+  about:
+    description: A bit about myself, my journey and what I'm doing.
+    title: About Me
+  blog:
+    description: My personal blog where I share my knowledge and experiences.
+    header:
+      description: Where I save lessons, experiences and interesting things in my
+        self-development journey to become better.
+      title:
+        first: Sharing knowledge
+        second: Programming and life
+    title: Blog
+  home:
+    description: Home page of my personal blog
+    title: Home
+  projects:
+    description: Showcase of my products and projects.
+    title: Projects
+section:
+  footer:
+    built:
+      with: Built with Kobweb.
+    copyright: © 2026 tozydev.
+    link:
+      bluesky: Bluesky
+      email: Email
+      github: GitHub
+      rss: RSS
+    rights: All rights reserved
+  header:
+    menu:
+      blog: Blog
+      home: Home
+      me: About Me
+      projects: Projects
+  hero:
+    description:
+      first: Also known as tozydev, a developer. For me, coding is a passion, it's
+        even better when I code with
+      second: . And this blog, where I share my stories...
+    image:
+      alt: Profile picture
+    learn:
+      more: Learn more
+    title:
+      first: Hello, I'm
+      second: Thanh Tan
+    view:
+      blog: View blog
+  socials:
+    label:
+      bluesky: Bluesky
+      email: Email
+      github: GitHub
+      linkedin: LinkedIn
+  techstack:
+    badge:
+      java: Java
+      kobweb: Kobweb
+      kotlin: Kotlin
+    title: Tech Stack
+widget:
+  back:
+    to:
+      top:
+        button:
+          label: Back to top
+  bottom:
+    navbar:
+      blog: Blog
+      home: Home
+      me: About Me
+      projects: Projects
+  discussion:
+    description: Discussion feature is coming soon!
+    title: Discussion
+  featured:
+    project:
+      author:
+        avatar:
+          alt: Project author avatar
+      badge: Featured
+      description: My personal website, built with Kotlin/JS and Kobweb.
+      view:
+        details: View details
+  latest:
+    post:
+      badge: Latest
+      read:
+        more: Read more
+  location:
+    description: Studying at UTH
+    title: Ho Chi Minh, Vietnam
+  next:
+    prev:
+      posts:
+        next: Next post
+        prev: Previous post
+  post:
+    cover:
+      alt: Cover image for ${title}
+  quote:
+    author: — Socrates
+    text: “I know that I know nothing”
+  share:
+    post:
+      link: Copy link
+      link_copied: Link copied!
+      title: Share this post
+  table:
+    of:
+      contents:
+        title: Table of Contents

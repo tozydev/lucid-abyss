@@ -14,17 +14,16 @@ import vn.id.tozydev.lucidabyss.components.home.HomeTechStack
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
-import vn.id.tozydev.lucidabyss.utils.strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class HomePage(
     language: SiteLanguage,
 ) : Page(language) {
     override val properties =
-        language.strings.let { strings ->
+        strings.let {
             Properties(
-                title = strings.page_home_title!!,
-                description = strings.page_home_description!!,
+                title = it.page.home.title,
+                description = it.page.home.description,
             )
         }
 

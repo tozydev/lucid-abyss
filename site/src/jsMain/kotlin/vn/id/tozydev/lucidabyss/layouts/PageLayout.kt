@@ -10,7 +10,6 @@ import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
-import io.github.skeptick.libres.LibresSettings
 import kotlinx.browser.document
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.scaffold.BottomNavbar
@@ -32,7 +31,7 @@ fun initPageLayout(ctx: InitRouteContext) {
                 .substringBefore('/'),
         )
     ctx.data.add(language)
-    LibresSettings.languageCode = language.code
+    SiteLanguage.current = language
 }
 
 @Composable
@@ -43,6 +42,7 @@ fun PageLayout(
 ) {
     val pageProperties = ctx.data.getValue<Page.Properties>()
     val language = ctx.data.getValue<SiteLanguage>()
+
     val scrollingState = rememberScrollingState()
 
     val shouldHideHeaderAndNav = scrollingState.isScrollingDown && scrollingState.currentScrollY > 50

@@ -1,11 +1,11 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaLocationDot
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -22,10 +22,10 @@ fun HomeLocation(modifier: Modifier = Modifier) {
                 FaLocationDot()
             }
             H4({ tw("font-bold") }) {
-                Text(Res.string.widget_location_title)
+                Text(Strings.widget.location.title)
             }
             P({ tw("text-sm font-medium") }) {
-                Text(Res.string.widget_location_description)
+                Text(Strings.widget.location.description)
             }
         }
     }

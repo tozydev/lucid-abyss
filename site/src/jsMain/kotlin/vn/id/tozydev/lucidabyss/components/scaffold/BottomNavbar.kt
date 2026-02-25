@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.scaffold
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
@@ -13,6 +12,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -61,16 +61,16 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
             .then(modifier)
             .toAttrs(),
     ) {
-        DockItem(SitePaths.home, Res.string.widget_bottom_navbar_home) {
+        DockItem(SitePaths.home, Strings.widget.bottom.navbar.home) {
             FaHouse()
         }
-        DockItem(SitePaths.about, Res.string.widget_bottom_navbar_me) {
+        DockItem(SitePaths.about, Strings.widget.bottom.navbar.me) {
             FaUser()
         }
-        DockItem(SitePaths.blog, Res.string.widget_bottom_navbar_blog) {
+        DockItem(SitePaths.blog, Strings.widget.bottom.navbar.blog) {
             FaRss()
         }
-        DockItem(SitePaths.projects, Res.string.widget_bottom_navbar_projects) {
+        DockItem(SitePaths.projects, Strings.widget.bottom.navbar.projects) {
             FaCubes()
         }
     }

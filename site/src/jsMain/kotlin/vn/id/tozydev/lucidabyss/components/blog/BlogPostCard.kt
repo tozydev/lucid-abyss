@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.blog
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.GenericTag
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -9,6 +8,7 @@ import com.varabyte.kobweb.navigation.Anchor
 import com.varabyte.kobweb.silk.components.icons.fa.FaCalendar
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -30,7 +30,9 @@ fun BlogPostCard(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = Res.string.widget_post_cover_alt.format(post.title),
+                alt =
+                    Strings.widget.post.cover
+                        .alt(post.title),
             )
             Div({ tw("absolute top-4 right-4") }) {
                 Div({ tw("badge") }) {

@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.pages.blog
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
@@ -9,7 +8,8 @@ import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.core.SitePaths
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
-import vn.id.tozydev.lucidabyss.utils.strings
+import vn.id.tozydev.lucidabyss.pages.strings
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class BlogPage(
@@ -17,10 +17,10 @@ class BlogPage(
 ) : Page(language) {
     override val route = SitePaths.BLOG_PATH
     override val properties =
-        language.strings.let { strings ->
+        strings.let {
             Properties(
-                title = strings.page_blog_title!!,
-                description = strings.page_blog_description!!,
+                title = it.page.blog.title,
+                description = it.page.blog.description,
             )
         }
 
@@ -43,14 +43,14 @@ class BlogPage(
         Div({ tw("card card-xl card-border bg-base-100") }) {
             Div({ tw("card-body gap-4") }) {
                 H1({ tw("text-3xl md:text-4xl font-bold") }) {
-                    Text(Res.string.page_blog_header_title_first)
+                    Text(Strings.page.blog.header.title.first)
                     Br()
                     Span({ tw("text-primary") }) {
-                        Text(Res.string.page_blog_header_title_second)
+                        Text(Strings.page.blog.header.title.second)
                     }
                 }
                 P {
-                    Text(Res.string.page_blog_header_description)
+                    Text(Strings.page.blog.header.description)
                 }
             }
         }

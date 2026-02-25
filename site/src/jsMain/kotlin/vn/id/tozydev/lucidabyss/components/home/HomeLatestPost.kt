@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.dom.GenericTag
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -10,6 +9,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRightLong
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -29,14 +29,16 @@ fun HomeLatestPost(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt = Res.string.widget_post_cover_alt.format(post.title),
+                alt =
+                    Strings.widget.post.cover
+                        .alt(post.title),
             )
         }
 
         Div({ tw("card-body") }) {
             Div({ tw("flex justify-between items-center") }) {
                 Div({ tw("badge badge-accent") }) {
-                    Text(Res.string.widget_latest_post_badge)
+                    Text(Strings.widget.latest.post.badge)
                 }
                 GenericTag<HTMLElement>(
                     name = "time",
@@ -55,7 +57,7 @@ fun HomeLatestPost(
                 Anchor(
                     href = post.route,
                 ) {
-                    Text(Res.string.widget_latest_post_read_more)
+                    Text(Strings.widget.latest.post.read.more)
                     FaArrowRightLong(Modifier.tw("ml-2"))
                 }
             }

@@ -1,6 +1,5 @@
 package vn.id.tozydev.lucidabyss.components.home
 
-import Res
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -9,6 +8,7 @@ import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.icons.fa.FaArrowRightLong
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.Links
+import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -23,27 +23,27 @@ fun HomeFeaturedProject(modifier: Modifier = Modifier) {
         Div({ tw("card-body") }) {
             Div({ tw("flex justify-between items-center") }) {
                 Div({ tw("badge badge-accent") }) {
-                    Text(Res.string.widget_featured_project_badge)
+                    Text(Strings.widget.featured.project.badge)
                 }
 
                 Div({ tw("avatar") }) {
                     Div({ tw("w-8 rounded-full") }) {
                         Img(
                             src = BasePath.prependTo("/images/avatar_32x.webp"),
-                            alt = Res.string.widget_featured_project_author_avatar_alt,
+                            alt = Strings.widget.featured.project.author.avatar.alt,
                         )
                     }
                 }
             }
             H3({ tw("card-title") }) { Text("lucid-abyss") }
             P {
-                Text(Res.string.widget_featured_project_description)
+                Text(Strings.widget.featured.project.description)
             }
             Div({ tw("card-actions") }) {
                 Anchor(
                     href = Links.LUCID_ABYSS_GITHUB_URL,
                 ) {
-                    Text(Res.string.widget_featured_project_view_details)
+                    Text(Strings.widget.featured.project.view.details)
                     FaArrowRightLong(Modifier.tw("ml-2"))
                 }
             }

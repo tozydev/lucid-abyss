@@ -4,12 +4,9 @@ import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.LambdaTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
-import com.squareup.kotlinpoet.TypeVariableName
-import com.squareup.kotlinpoet.asTypeName
 import vn.id.tozydev.lucidabyss.build.strings.Node
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
@@ -27,30 +24,32 @@ internal fun generateImplementationCode(
             .addSuperinterface(ClassName(packageName, "LocalizedStrings"))
             .addModifiers(KModifier.PUBLIC)
 
-    structure.children.forEach { child ->
-        addImplementationMember(objectType, child, language, packageName)
+    with(objectType) {
+        structure.children.forEach { child ->
+            addImplementationMember(child, language, packageName)
+        }
     }
 
     fileSpec.addType(objectType.build())
     return fileSpec.build()
 }
 
+context(typeSpec: TypeSpec.Builder)
 private fun addImplementationMember(
-    typeSpec: TypeSpec.Builder,
     node: Node,
     language: SiteLanguage,
     packageName: String,
 ) {
     val kotlinName = toCamelCase(node.name)
     when (node) {
-        is Node.Object -> addImplementationObjectProperty(typeSpec, kotlinName, node, language, packageName)
-        is Node.SimpleString -> addImplementationStringProperty(typeSpec, kotlinName, node, language)
-        is Node.MultiPartString -> addImplementationMultipartFunction(typeSpec, kotlinName, node, language)
+        is Node.Object -> addImplementationObjectProperty(kotlinName, node, language, packageName)
+        is Node.SimpleString -> addImplementationStringProperty(kotlinName, node, language)
+        is Node.MultiPartString -> addImplementationMultipartProperty(kotlinName, node, language)
     }
 }
 
+context(typeSpec: TypeSpec.Builder)
 private fun addImplementationObjectProperty(
-    typeSpec: TypeSpec.Builder,
     name: String,
     node: Node.Object,
     language: SiteLanguage,
@@ -62,8 +61,10 @@ private fun addImplementationObjectProperty(
             .anonymousClassBuilder()
             .addSuperinterface(typeName)
 
-    node.children.forEach { child ->
-        addImplementationMember(anonymousClass, child, language, packageName)
+    with(anonymousClass) {
+        node.children.forEach { child ->
+            addImplementationMember(child, language, packageName)
+        }
     }
 
     typeSpec.addProperty(
@@ -75,8 +76,8 @@ private fun addImplementationObjectProperty(
     )
 }
 
+context(typeSpec: TypeSpec.Builder)
 private fun addImplementationStringProperty(
-    typeSpec: TypeSpec.Builder,
     name: String,
     node: Node.SimpleString,
     language: SiteLanguage,
@@ -121,8 +122,8 @@ private fun addImplementationStringProperty(
     }
 }
 
-private fun addImplementationMultipartFunction(
-    typeSpec: TypeSpec.Builder,
+context(typeSpec: TypeSpec.Builder)
+private fun addImplementationMultipartProperty(
     name: String,
     node: Node.MultiPartString,
     language: SiteLanguage,
@@ -133,33 +134,15 @@ private fun addImplementationMultipartFunction(
         val list = node.values[language] ?: emptyList()
         val paddedList = list + List(size - list.size) { "" }
 
-        val partsName = "${name}Parts"
         val format = "arrayOf(" + paddedList.joinToString(", ") { "%S" } + ")"
         val args = paddedList.toTypedArray()
 
         typeSpec.addProperty(
             PropertySpec
-                .builder(partsName, Array::class.parameterizedBy(String::class))
-                .addModifiers(KModifier.PRIVATE)
+                .builder(name, Array::class.parameterizedBy(String::class))
+                .addModifiers(KModifier.OVERRIDE)
                 .initializer(format, *args)
                 .build(),
         )
-
-        val typeT = TypeVariableName("T")
-        val lambdaParams = (1..size).map { String::class.asTypeName() }
-        val lambdaType = LambdaTypeName.get(parameters = lambdaParams.toTypedArray(), returnType = typeT)
-
-        val funSpec =
-            FunSpec
-                .builder(name)
-                .addModifiers(KModifier.OVERRIDE)
-                .addTypeVariable(typeT)
-                .addParameter("render", lambdaType)
-                .returns(typeT)
-
-        val callArgs = (0 until size).joinToString(", ") { "$partsName[$it]" }
-        funSpec.addStatement("return render($callArgs)")
-
-        typeSpec.addFunction(funSpec.build())
     }
 }

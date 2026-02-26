@@ -23,27 +23,27 @@ fun HomeFeaturedProject(modifier: Modifier = Modifier) {
         Div({ tw("card-body") }) {
             Div({ tw("flex justify-between items-center") }) {
                 Div({ tw("badge badge-accent") }) {
-                    Text(Strings.widget.featured.project.badge)
+                    Text(Strings.widget.featuredProject.badge)
                 }
 
                 Div({ tw("avatar") }) {
                     Div({ tw("w-8 rounded-full") }) {
                         Img(
                             src = BasePath.prependTo("/images/avatar_32x.webp"),
-                            alt = Strings.widget.featured.project.author.avatar.alt,
+                            alt = Strings.widget.featuredProject.authorAvatarAlt,
                         )
                     }
                 }
             }
             H3({ tw("card-title") }) { Text("lucid-abyss") }
             P {
-                Text(Strings.widget.featured.project.description)
+                Text(Strings.widget.featuredProject.description)
             }
             Div({ tw("card-actions") }) {
                 Anchor(
                     href = Links.LUCID_ABYSS_GITHUB_URL,
                 ) {
-                    Text(Strings.widget.featured.project.view.details)
+                    Text(Strings.widget.featuredProject.viewDetails)
                     FaArrowRightLong(Modifier.tw("ml-2"))
                 }
             }

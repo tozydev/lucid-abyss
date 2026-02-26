@@ -23,7 +23,7 @@ fun BackToTopButton(modifier: Modifier = Modifier) {
         Button(
             {
                 tw("btn btn-primary btn-circle")
-                attr("aria-label", Strings.widget.back.to.top.button.label)
+                attr("aria-label", Strings.widget.backToTopButton.label)
                 onClick {
                     window.scrollTo(ScrollToOptions(top = 0.0, behavior = ScrollBehavior.SMOOTH))
                 }

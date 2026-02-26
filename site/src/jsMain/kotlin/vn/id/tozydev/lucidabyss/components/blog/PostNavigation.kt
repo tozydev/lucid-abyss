@@ -38,7 +38,7 @@ fun PostNavigation(
                 Div({ tw("card-body") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
                         FaArrowLeft()
-                        Text(Strings.widget.next.prev.posts.prev)
+                        Text(Strings.widget.nextPrevPosts.prev)
                     }
                     H4({ tw("font-semibold text-lg") }) {
                         Text(previousPost.title)
@@ -57,7 +57,7 @@ fun PostNavigation(
             ) {
                 Div({ tw("card-body items-end") }) {
                     Div({ tw("card-title text-xs uppercase") }) {
-                        Text(Strings.widget.next.prev.posts.next)
+                        Text(Strings.widget.nextPrevPosts.next)
                         FaArrowRight()
                     }
                     H4({ tw("font-semibold text-lg") }) {

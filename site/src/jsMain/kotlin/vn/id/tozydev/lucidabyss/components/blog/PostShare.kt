@@ -32,7 +32,7 @@ fun PostShare(modifier: Modifier = Modifier) {
     ) {
         Div({ tw("card-body items-center text-center lg:text-start lg:items-start") }) {
             H3({ tw("card-title text-base mb-2") }) {
-                Text(Strings.widget.share.post.title)
+                Text(Strings.widget.sharePost.title)
             }
 
             Div({ tw("flex items-center gap-4 lg:gap-2") }) {
@@ -70,9 +70,9 @@ private fun CopyLinkButton() {
             .thenIf(isClicked) {
                 Modifier
                     .tw("tooltip-open")
-                    .attr("data-tip", Strings.widget.share.post.linkCopied)
+                    .attr("data-tip", Strings.widget.sharePost.linkCopied)
             }.thenUnless(isClicked) {
-                Modifier.attr("data-tip", Strings.widget.share.post.link)
+                Modifier.attr("data-tip", Strings.widget.sharePost.link)
             }.toAttrs(),
     ) {
         Anchor(

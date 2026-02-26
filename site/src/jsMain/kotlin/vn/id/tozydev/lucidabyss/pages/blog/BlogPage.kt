@@ -10,6 +10,7 @@ import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
 import vn.id.tozydev.lucidabyss.pages.strings
 import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.strings.title
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class BlogPage(
@@ -43,10 +44,12 @@ class BlogPage(
         Div({ tw("card card-xl card-border bg-base-100") }) {
             Div({ tw("card-body gap-4") }) {
                 H1({ tw("text-3xl md:text-4xl font-bold") }) {
-                    Text(Strings.page.blog.header.title.first)
-                    Br()
-                    Span({ tw("text-primary") }) {
-                        Text(Strings.page.blog.header.title.second)
+                    Strings.page.blog.header.title { first, second ->
+                        Text(first)
+                        Br()
+                        Span({ tw("text-primary") }) {
+                            Text(second)
+                        }
                     }
                 }
                 P {

@@ -61,16 +61,16 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
             .then(modifier)
             .toAttrs(),
     ) {
-        DockItem(SitePaths.home, Strings.widget.bottom.navbar.home) {
+        DockItem(SitePaths.home, Strings.widget.bottomNavbar.home) {
             FaHouse()
         }
-        DockItem(SitePaths.about, Strings.widget.bottom.navbar.me) {
+        DockItem(SitePaths.about, Strings.widget.bottomNavbar.me) {
             FaUser()
         }
-        DockItem(SitePaths.blog, Strings.widget.bottom.navbar.blog) {
+        DockItem(SitePaths.blog, Strings.widget.bottomNavbar.blog) {
             FaRss()
         }
-        DockItem(SitePaths.projects, Strings.widget.bottom.navbar.projects) {
+        DockItem(SitePaths.projects, Strings.widget.bottomNavbar.projects) {
             FaCubes()
         }
     }

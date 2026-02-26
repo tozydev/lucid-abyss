@@ -1,34 +1,36 @@
 page:
   about:
-    description: Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang
-      làm.
     title: Về tôi
+    description: Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang làm.
   blog:
+    title: Blog
     description: Blog cá nhân của tôi nơi tôi chia sẻ kiến thức và kinh nghiệm.
     header:
+      title:
+        - Chia sẻ kiến thức
+        - Lập trình và cuộc sống
       description: Nơi lưu lại những bài học, kinh nghiệm và những điều thú vị trong
         hành trình phát triển bản thân để trở nên tốt hơn.
-      title:
-        first: Chia sẻ kiến thức
-        second: Lập trình và cuộc sống
-    title: Blog
   home:
-    description: Trang chủ của blog cá nhân của tôi
     title: Trang chủ
+    description: Trang chủ của blog cá nhân của tôi
   projects:
-    description: Nơi trưng bày các sản phẩm và dự án của tôi.
     title: Dự án
+    description: Nơi trưng bày các sản phẩm và dự án của tôi.
 section:
   footer:
-    built:
-      with: Xây dựng với Kobweb.
-    copyright: © 2026 tozydev.
+    copyright:
+      - © 2026 tozydev.
+      - "Xây dựng với "
+      - Kotlin
+      - " và "
+      - Kobweb
+      - .
     link:
       bluesky: Bluesky
       email: Email
       github: GitHub
       rss: RSS
-    rights: Mọi quyền được bảo lưu
   header:
     menu:
       blog: Blog
@@ -36,19 +38,16 @@ section:
       me: Về tôi
       projects: Dự án
   hero:
-    description:
-      first: Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam
-        mê, nó tuyệt vời hơn khi tôi code với
-      second: . Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...
-    image:
-      alt: Ảnh đại diện
-    learn:
-      more: Tìm hiểu thêm
     title:
-      first: Xin chào, tôi là
-      second: Thanh Tân
-    view:
-      blog: Xem blog
+      - Xin chào, tôi là
+      - Thanh Tân
+    description:
+      - "Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với "
+      - Kotlin
+      - . Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...
+    image-alt: Ảnh đại diện
+    learn-more: Tìm hiểu thêm
+    view-blog: Xem blog
   socials:
     label:
       bluesky: Bluesky
@@ -56,60 +55,41 @@ section:
       github: GitHub
       linkedin: LinkedIn
   techstack:
+    title: Tech Stack
     badge:
       java: Java
       kobweb: Kobweb
       kotlin: Kotlin
-    title: Tech Stack
 widget:
-  back:
-    to:
-      top:
-        button:
-          label: Về đầu trang
-  bottom:
-    navbar:
-      blog: Blog
-      home: Trang chủ
-      me: Về tôi
-      projects: Dự án
-  discussion:
-    description: Chức năng thảo luận sẽ sớm được ra mắt!
-    title: Thảo luận
-  featured:
-    project:
-      author:
-        avatar:
-          alt: Ảnh đại diện tác giả dự án
-      badge: Nổi bật
-      description: Website cá nhân của tôi, được xây dựng bằng Kotlin/JS và Kobweb.
-      view:
-        details: Xem chi tiết
-  latest:
-    post:
-      badge: Mới nhất
-      read:
-        more: Đọc thêm
+  back-to-top-button:
+    label: Về đầu trang
+  bottom-navbar:
+    blog: Blog
+    home: Trang chủ
+    me: Về tôi
+    projects: Dự án
+  featured-project:
+    author-avatar-alt: Ảnh đại diện tác giả dự án
+    badge: Nổi bật
+    description: Website cá nhân của tôi, được xây dựng bằng Kotlin/JS và Kobweb.
+    view-details: Xem chi tiết
+  latest-post:
+    badge: Mới nhất
+    read-more: Đọc thêm
   location:
-    description: Đang học tại UTH
     title: Hồ Chí Minh, Việt Nam
-  next:
-    prev:
-      posts:
-        next: Bài tiếp theo
-        prev: Bài trước đó
+    description: Đang học tại UTH
+  next-prev-posts:
+    next: Bài tiếp theo
+    prev: Bài trước đó
   post:
-    cover:
-      alt: Ảnh bìa bài viết ${title}
+    cover-alt: Ảnh bìa bài viết ${title}
   quote:
-    author: — Socrates
     text: “I know that I know nothing”
-  share:
-    post:
-      link: Sao chép liên kết
-      link_copied: Liên kết đã được sao chép!
-      title: Chia sẻ bài viết
-  table:
-    of:
-      contents:
-        title: Mục lục
+    author: — Socrates
+  share-post:
+    title: Chia sẻ bài viết
+    link: Sao chép liên kết
+    link-copied: Liên kết đã được sao chép!
+  table-of-contents:
+    title: Mục lục

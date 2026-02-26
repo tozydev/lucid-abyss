@@ -29,16 +29,14 @@ fun HomeLatestPost(
         GenericTag("figure") {
             Img(
                 src = post.coverImagePathOrDefault,
-                alt =
-                    Strings.widget.post.cover
-                        .alt(post.title),
+                alt = Strings.widget.post.coverAlt(post.title),
             )
         }
 
         Div({ tw("card-body") }) {
             Div({ tw("flex justify-between items-center") }) {
                 Div({ tw("badge badge-accent") }) {
-                    Text(Strings.widget.latest.post.badge)
+                    Text(Strings.widget.latestPost.badge)
                 }
                 GenericTag<HTMLElement>(
                     name = "time",
@@ -57,7 +55,7 @@ fun HomeLatestPost(
                 Anchor(
                     href = post.route,
                 ) {
-                    Text(Strings.widget.latest.post.read.more)
+                    Text(Strings.widget.latestPost.readMore)
                     FaArrowRightLong(Modifier.tw("ml-2"))
                 }
             }

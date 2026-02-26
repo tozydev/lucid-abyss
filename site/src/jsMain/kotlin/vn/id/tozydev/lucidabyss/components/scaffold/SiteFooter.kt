@@ -7,6 +7,7 @@ import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.Links
 import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.strings.copyright
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -20,12 +21,17 @@ fun SiteFooter(modifier: Modifier = Modifier) {
             },
         ) {
             Aside {
-                P {
-                    Text(Strings.section.footer.copyright)
-                    Text(Strings.section.footer.built.with)
-                }
-                P {
-                    Text(Strings.section.footer.rights)
+                Strings.section.footer.copyright { right, builtWith, kotlin, and, kobweb, dot ->
+                    P {
+                        Text(right)
+                    }
+                    P {
+                        Text(builtWith)
+                        Text(kotlin)
+                        Text(and)
+                        Text(kobweb)
+                        Text(dot)
+                    }
                 }
             }
             Nav({ tw("grid grid-flow-col gap-4") }) {

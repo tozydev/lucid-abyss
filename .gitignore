@@ -12,6 +12,7 @@ out/
 
 ### Gradle
 .gradle/
+*.hprof
 
 ### Kotlin
 .kotlin/

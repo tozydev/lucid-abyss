@@ -1,8 +1,3 @@
-import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.getByType
-import org.gradle.kotlin.dsl.kotlin
-
 plugins {
     id("com.diffplug.spotless")
 }

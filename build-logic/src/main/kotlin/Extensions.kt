@@ -12,7 +12,7 @@ fun KotlinDependencyHandler.npm(dependency: Provider<MinimalExternalModuleDepend
             objectFactory = project.objects,
             name = it.name,
             version = it.version!!,
-            scope = NpmDependency.Scope.valueOf(it.group!!.uppercase()),
+            scope = NpmDependency.Scope.valueOf(it.group.uppercase()),
         )
     }
 

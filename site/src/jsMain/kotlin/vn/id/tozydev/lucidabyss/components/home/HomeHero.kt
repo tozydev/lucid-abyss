@@ -75,6 +75,7 @@ private fun HeroAvatar() {
     Img(
         src = BasePath.prependTo("/images/avatar_96x.webp"),
         alt = Strings.section.hero.image.alt,
-        { tw("size-24 border-2 border-base-300 rounded-field transition hover:scale-105 hover:drop-shadow-md") },
-    )
+    ) {
+        tw("size-24 border-2 border-base-300 rounded-field transition hover:scale-105 hover:drop-shadow-md")
+    }
 }

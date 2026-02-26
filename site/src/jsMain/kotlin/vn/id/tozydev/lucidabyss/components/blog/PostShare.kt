@@ -19,6 +19,7 @@ import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 import web.navigator.navigator
 import web.window.window
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun PostShare(modifier: Modifier = Modifier) {
@@ -83,7 +84,7 @@ private fun CopyLinkButton() {
                         navigator.clipboard.writeTextAsync(window.location.href).await()
                         isClicked = true
                         launch {
-                            delay(500)
+                            delay(500.milliseconds)
                             isClicked = false
                         }
                     }

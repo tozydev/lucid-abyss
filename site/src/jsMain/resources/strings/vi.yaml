@@ -20,12 +20,12 @@ page:
 section:
   footer:
     copyright:
-      - © 2026 tozydev.
+      - "© 2026 tozydev. Mã nguồn ở "
+      - GitHub
       - "Xây dựng với "
       - Kotlin
       - " và "
       - Kobweb
-      - .
     link:
       bluesky: Bluesky
       email: Email

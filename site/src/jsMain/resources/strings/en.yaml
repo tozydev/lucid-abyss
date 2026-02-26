@@ -20,12 +20,12 @@ page:
 section:
   footer:
     copyright:
-      - © 2026 tozydev.
+      - "© 2026 tozydev. Source code available on "
+      - GitHub
       - "Built with "
       - Kotlin
       - " and "
       - Kobweb
-      - .
     link:
       bluesky: Bluesky
       email: Email

@@ -8,4 +8,7 @@ object Links {
     const val RSS_URL = "/rss.xml"
 
     const val LUCID_ABYSS_GITHUB_URL = "$GITHUB_URL/lucid-abyss"
+
+    const val KOTLIN_HOMEPAGE_URL = "https://kotlinlang.org/"
+    const val KOBWEB_HOMEPAGE_URL = "https://kobweb.varabyte.com/"
 }

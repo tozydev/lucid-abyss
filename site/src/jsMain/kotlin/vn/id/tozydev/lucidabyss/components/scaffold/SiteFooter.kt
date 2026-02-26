@@ -21,16 +21,33 @@ fun SiteFooter(modifier: Modifier = Modifier) {
             },
         ) {
             Aside {
-                Strings.section.footer.copyright { right, builtWith, kotlin, and, kobweb, dot ->
+                Strings.section.footer.copyright { right, github, builtWith, kotlin, and, kobweb ->
                     P {
                         Text(right)
+                        Anchor(
+                            href = Links.LUCID_ABYSS_GITHUB_URL,
+                            attrs = { tw("link link-hover text-primary") },
+                        ) {
+                            Text(github)
+                        }
+                        Text(".")
                     }
                     P {
                         Text(builtWith)
-                        Text(kotlin)
+                        Anchor(
+                            href = Links.KOTLIN_HOMEPAGE_URL,
+                            attrs = { tw("link link-hover text-primary") },
+                        ) {
+                            Text(kotlin)
+                        }
                         Text(and)
-                        Text(kobweb)
-                        Text(dot)
+                        Anchor(
+                            href = Links.KOBWEB_HOMEPAGE_URL,
+                            attrs = { tw("link link-hover text-primary") },
+                        ) {
+                            Text(kobweb)
+                        }
+                        Text(".")
                     }
                 }
             }

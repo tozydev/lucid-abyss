@@ -32,9 +32,6 @@ kotlin {
     configAsKobwebApplication("lucid-abyss")
 
     compilerOptions {
-        optIn.addAll(
-            "kotlin.time.ExperimentalTime",
-        )
         freeCompilerArgs.addAll(
             "-Xcontext-parameters",
         )

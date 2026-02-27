@@ -81,21 +81,4 @@
     <string name="page_blog_header_description">Nơi lưu lại những bài học, kinh nghiệm và những điều thú vị trong hành trình phát triển bản thân để trở nên tốt hơn.</string>
 
     <string name="widget_post_cover_alt">Ảnh bìa bài viết ${title}</string>
-    <!-- About Page -->
-    <string name="section_about_story_title">My Story</string>
-    <string name="section_about_story_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-
-    <string name="section_about_skills_languages_title">Languages</string>
-    <string name="section_about_skills_libs_title">Libraries &amp; Frameworks</string>
-    <string name="section_about_skills_tools_title">Tools</string>
-
-    <string name="section_about_experience_title">Experiences</string>
-    <string name="section_about_experience_item_role">Software Engineer</string>
-    <string name="section_about_experience_item_company">Tech Company Inc.</string>
-    <string name="section_about_experience_item_date">2020 - Present</string>
-    <string name="section_about_experience_item_desc">Worked on various projects using Kotlin and Java.</string>
-
-    <string name="section_about_contact_title">Contact Me</string>
-    <string name="section_about_contact_content">Feel free to reach out to me via email or social media.</string>
-    <string name="section_about_contact_button">Send Message</string>
 </resources>

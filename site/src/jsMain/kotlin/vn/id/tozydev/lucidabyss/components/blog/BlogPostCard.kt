@@ -31,6 +31,10 @@ fun BlogPostCard(
             Img(
                 src = post.coverImagePathOrDefault,
                 alt = Strings.widget.post.coverAlt(post.title),
+                attrs = {
+                    attr("loading", "lazy")
+                    attr("decoding", "async")
+                },
             )
             Div({ tw("absolute top-4 right-4") }) {
                 Div({ tw("badge") }) {

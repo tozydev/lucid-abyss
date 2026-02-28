@@ -7,7 +7,7 @@ ksp = "2.3.6"
 kotlin-wrappers = "2026.2.22"
 spotless = "8.2.1"
 compose-rules = "0.5.6"
-kotlinpoet = "2.0.0"
+kotlinpoet = "2.2.0"
 snakeyaml = "2.2"
 kotlinx-coroutines = "1.10.2"
 

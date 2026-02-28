@@ -23,7 +23,7 @@ fun PostTableOfContents(
         modifier = modifier,
     )
     DisposableEffect(headings, intersectionObserverOptions) {
-        val headingsInRange = mutableListOf<String>()
+        val headingsInRange = mutableSetOf<String>()
 
         val observer =
             IntersectionObserver(intersectionObserverOptions) { entries ->

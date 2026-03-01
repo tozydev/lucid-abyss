@@ -71,7 +71,7 @@ jobs:
 
       - if: inputs.upload-site
         name: Upload site artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: site
           path: |
@@ -80,14 +80,14 @@ jobs:
 
       - if: inputs.upload-traces
         name: Upload export traces
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: export-traces
           path: ./site/.kobweb/export-traces/
 
       - if: inputs.upload-full
         name: Upload full export artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: full-export
           path: |

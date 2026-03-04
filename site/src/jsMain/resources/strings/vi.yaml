@@ -93,3 +93,44 @@ widget:
     link-copied: Liên kết đã được sao chép!
   table-of-contents:
     title: Mục lục
+  about:
+    mystory:
+      title: Câu chuyện của tôi
+      description: Xin chào, tôi là một kỹ sư phần mềm đam mê với trọng tâm mạnh mẽ vào phát triển ứng dụng di động và web. Tôi thích xây dựng những thứ mang lại tác động tích cực. Hành trình của tôi bắt đầu khi tôi bị cuốn hút bởi những khả năng vô tận của công nghệ. Trong những năm qua, tôi đã trau dồi kỹ năng của mình trong nhiều ngôn ngữ và khuôn khổ khác nhau, luôn háo hức học hỏi và thích ứng với những thách thức mới.
+    techstack:
+      title: Công nghệ
+      languagesTitle: Ngôn ngữ
+      languages:
+        - Kotlin
+        - Java
+        - JavaScript
+        - TypeScript
+      librariesTitle: Thư viện & Framework
+      libraries:
+        - React
+        - Next.js
+        - Kobweb
+        - Jetpack Compose
+    tools:
+      title: Công cụ
+      items:
+        - IntelliJ IDEA
+        - Android Studio
+        - VS Code
+        - Git
+        - Docker
+        - Figma
+    experiences:
+      title: Kinh nghiệm
+      exp1:
+        title: Kỹ sư phần mềm cấp cao
+        company: Tech Corp
+        date: 2021 - Hiện tại
+        description: Dẫn dắt việc phát triển nền tảng thương mại điện tử hiệu suất cao, cải thiện thời gian tải 40% và tăng mức độ tương tác của người dùng.
+      exp2:
+        title: Nhà phát triển phần mềm
+        company: Web Solutions Inc
+        date: 2018 - 2021
+        description: Phát triển và duy trì nhiều ứng dụng web cho khách hàng trên nhiều ngành công nghiệp, sử dụng các framework frontend hiện đại.
+    gallery:
+      title: Thư viện ảnh

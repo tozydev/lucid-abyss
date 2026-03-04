@@ -93,3 +93,44 @@ widget:
     link-copied: Link copied!
   table-of-contents:
     title: Table of Contents
+  about:
+    mystory:
+      title: My Story
+      description: Hi, I'm a passionate software engineer with a strong focus on mobile and web development. I love building things that make an impact. My journey started when I was fascinated by the endless possibilities of technology. Over the years, I've honed my skills in various languages and frameworks, always eager to learn and adapt to new challenges.
+    techstack:
+      title: Tech Stack
+      languagesTitle: Languages
+      languages:
+        - Kotlin
+        - Java
+        - JavaScript
+        - TypeScript
+      librariesTitle: Libraries & Frameworks
+      libraries:
+        - React
+        - Next.js
+        - Kobweb
+        - Jetpack Compose
+    tools:
+      title: Tools
+      items:
+        - IntelliJ IDEA
+        - Android Studio
+        - VS Code
+        - Git
+        - Docker
+        - Figma
+    experiences:
+      title: Experiences
+      exp1:
+        title: Senior Software Engineer
+        company: Tech Corp
+        date: 2021 - Present
+        description: Led the development of a high-performance e-commerce platform, improving load times by 40% and increasing user engagement.
+      exp2:
+        title: Software Developer
+        company: Web Solutions Inc
+        date: 2018 - 2021
+        description: Developed and maintained multiple web applications for clients across various industries, utilizing modern frontend frameworks.
+    gallery:
+      title: Photo Gallery

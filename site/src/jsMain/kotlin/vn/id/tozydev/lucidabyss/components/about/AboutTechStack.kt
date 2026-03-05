@@ -1,6 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.about
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaLayerGroup
@@ -13,7 +13,7 @@ fun AboutTechStack(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw(
-                "card card-border bg-base-100 card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                "card card-border bg-base-100 card-lg hover-primary-glow",
             ).then(modifier)
             .toAttrs(),
     ) {

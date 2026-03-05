@@ -1,6 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.about
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaImages
@@ -33,19 +33,20 @@ fun AboutGallery(modifier: Modifier = Modifier) {
             .toAttrs(),
     ) {
         Div({ tw("card-body") }) {
-            H2({ tw("card-title text-base mb-4") }) {
+            H2({ tw("card-title text-base") }) {
                 FaImages()
                 Text(Strings.widget.about.gallery.title)
             }
 
-            // DaisyUI Carousel
             Div({ tw("carousel carousel-center rounded-box w-full space-x-4 p-4") }) {
                 images.forEachIndexed { index, url ->
                     val id = "slide${index + 1}"
-                    Div({
-                        tw("carousel-item relative w-full")
-                        id(id)
-                    }) {
+                    Div(
+                        {
+                            tw("carousel-item relative w-full")
+                            id(id)
+                        },
+                    ) {
                         Img(
                             src = url,
                             alt = "Gallery Image",
@@ -68,18 +69,6 @@ fun AboutGallery(modifier: Modifier = Modifier) {
                             ) { Text("❯") }
                         }
                     }
-                }
-            }
-            // Carousel pagination
-            Div({ tw("flex w-full justify-center gap-2 py-2") }) {
-                images.forEachIndexed { index, _ ->
-                    val id = "slide${index + 1}"
-                    Button(
-                        attrs = {
-                            tw("btn btn-xs btn-circle")
-                            onClick { scrollToSlide(id) }
-                        },
-                    ) { Text("${index + 1}") }
                 }
             }
         }

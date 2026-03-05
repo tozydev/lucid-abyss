@@ -13,7 +13,7 @@ fun HomeQuote(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw(
-                "card bg-gray-900 text-gray-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                "card bg-gray-900 text-gray-100 hover-primary-glow",
             ).then(modifier)
             .toAttrs(),
     ) {

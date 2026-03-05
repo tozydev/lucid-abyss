@@ -79,3 +79,11 @@
 @theme {
     --color-kotlin: radial-gradient(circle at 100% 0%, #E44857 0%, #C711E1 50.45%, #7F52FF 100%);
 }
+
+@utility hover-primary-glow {
+    @apply hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300;
+}
+
+@utility hover-primary-glow-translate {
+    @apply hover-primary-glow hover:-translate-y-1
+}

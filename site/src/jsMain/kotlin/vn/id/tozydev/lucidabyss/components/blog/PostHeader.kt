@@ -27,7 +27,7 @@ fun PostHeader(
         Div(
             {
                 tw(
-                    "card card-border card-xl bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                    "card card-border card-xl bg-base-100 hover-primary-glow",
                 )
             },
         ) {

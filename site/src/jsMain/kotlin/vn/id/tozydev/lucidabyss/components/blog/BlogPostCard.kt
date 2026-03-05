@@ -23,7 +23,7 @@ fun BlogPostCard(
         attrs =
             Modifier
                 .tw(
-                    "card card-border card-lg bg-base-100 hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300",
+                    "card card-border card-lg bg-base-100 hover-primary-glow-translate",
                 ).then(modifier)
                 .toAttrs(),
     ) {

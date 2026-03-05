@@ -22,7 +22,7 @@ fun HomeLatestPost(
     Div(
         Modifier
             .tw(
-                "card image-full card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                "card image-full card-lg hover-primary-glow",
             ).then(modifier)
             .toAttrs(),
     ) {

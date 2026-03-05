@@ -16,7 +16,7 @@ fun HomeFeaturedProject(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw(
-                "card bg-base-100 card-border card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                "card bg-base-100 card-border card-lg hover-primary-glow",
             ).then(modifier)
             .toAttrs(),
     ) {

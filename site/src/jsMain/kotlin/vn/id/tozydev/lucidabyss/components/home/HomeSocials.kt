@@ -54,7 +54,7 @@ private fun SocialLink(
         href = path,
         attrs = {
             tw(
-                "card card-border bg-base-100 card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] hover:-translate-y-1 transition-all duration-300",
+                "card card-border bg-base-100 card-lg hover-primary-glow-translate",
             )
         },
     ) {

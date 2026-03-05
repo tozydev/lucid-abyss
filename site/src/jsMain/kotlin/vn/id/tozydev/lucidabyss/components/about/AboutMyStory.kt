@@ -1,6 +1,6 @@
 package vn.id.tozydev.lucidabyss.components.about
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
@@ -13,7 +13,7 @@ fun AboutMyStory(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw(
-                "card card-border bg-base-100 card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                "card card-border bg-base-100 card-lg hover-primary-glow",
             ).then(modifier)
             .toAttrs(),
     ) {
@@ -21,7 +21,7 @@ fun AboutMyStory(modifier: Modifier = Modifier) {
             Img(
                 src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80",
                 alt = "Avatar",
-                attrs = { tw("rounded-full w-32 h-32 md:w-48 md:h-48 object-cover border-4 border-base-300 shadow-md flex-shrink-0") },
+                attrs = { tw("rounded-full w-32 h-32 md:w-48 md:h-48 object-cover border-4 border-base-300 shadow-md shrink-0") },
             )
             Div({ tw("flex flex-col gap-4 text-center md:text-left") }) {
                 H2({ tw("card-title text-2xl font-bold justify-center md:justify-start") }) {

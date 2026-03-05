@@ -28,7 +28,7 @@ fun AboutGallery(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw(
-                "card card-border bg-base-100 card-lg hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300",
+                "card card-border bg-base-100 card-lg hover-primary-glow",
             ).then(modifier)
             .toAttrs(),
     ) {

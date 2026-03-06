@@ -6,7 +6,7 @@ postcss = "8.5.6"
 postcss-loader = "8.2.1"
 css-loader = "7.1.4"
 mini-css-extract-plugin = "2.10.0"
-css-minimizer-webpack-plugin = "7.0.4"
+css-minimizer-webpack-plugin = "8.0.0"
 
 [libraries]
 daisyui = { group = "dev", name = "daisyui", version.ref = "daisyui" }

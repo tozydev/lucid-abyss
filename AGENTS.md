@@ -79,10 +79,10 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 ### 2\. Internationalization
 
 **NEVER** hardcode UI strings.
-**ALWAYS** use `Res.string`.
+**ALWAYS** use `Strings`.
 
 - **Bad:** `Text("Home Page")`
-- **Good:** `Text(Res.string.home_page)`
+- **Good:** `Text(Strings.home_page)`
 
 ### 3\. Navigation
 

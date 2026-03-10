@@ -39,23 +39,22 @@ abstract class Page(
 
 @InitKobweb
 fun registerPages(ctx: InitKobwebContext) {
-    SiteLanguage.entries
-        .flatMap {
-            listOf(
-                HomePage(it),
-                AboutPage(it),
-                ProjectPage(it),
-                BlogPage(it),
-            )
-        }.forEach { page ->
-            ctx.router.register(
-                route = page.actualRoute,
-                layoutId = page.layout,
-                initRouteMethod = page::init,
-            ) { ctx ->
-                page.Content(ctx)
-            }
+    fun register(page: Page) {
+        ctx.router.register(
+            route = page.actualRoute,
+            layoutId = page.layout,
+            initRouteMethod = page::init,
+        ) { pageContext ->
+            page.Content(pageContext)
         }
+    }
+
+    SiteLanguage.entries.forEach { language ->
+        register(HomePage(language))
+        register(AboutPage(language))
+        register(ProjectPage(language))
+        register(BlogPage(language))
+    }
 }
 
 private val Page.actualRoute

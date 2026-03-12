@@ -2,10 +2,10 @@ package vn.id.tozydev.lucidabyss.pages
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.core.PageContext
-import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.ui.UnderConstruction
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -13,9 +13,8 @@ class ProjectPage(
     language: SiteLanguage,
 ) : Page(language) {
     override val route =
-        when (language) {
-            SiteLanguage.En -> SitePaths.PROJECTS_EN_PATH
-            else -> SitePaths.PROJECTS_VI_PATH
+        context(language) {
+            SiteRoutes.projects
         }
     override val properties =
         strings.let {

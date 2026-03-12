@@ -11,7 +11,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaRss
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -28,7 +28,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
     ) {
         val isActive =
             run {
-                val homeRoute = SitePaths.home
+                val homeRoute = SiteRoutes.home
                 if (path == homeRoute) {
                     ctx.route.path == homeRoute
                 } else {
@@ -61,16 +61,16 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
             .then(modifier)
             .toAttrs(),
     ) {
-        DockItem(SitePaths.home, Strings.widget.bottomNavbar.home) {
+        DockItem(SiteRoutes.home, Strings.widget.bottomNavbar.home) {
             FaHouse()
         }
-        DockItem(SitePaths.about, Strings.widget.bottomNavbar.me) {
+        DockItem(SiteRoutes.about, Strings.widget.bottomNavbar.me) {
             FaUser()
         }
-        DockItem(SitePaths.blog, Strings.widget.bottomNavbar.blog) {
+        DockItem(SiteRoutes.blog, Strings.widget.bottomNavbar.blog) {
             FaRss()
         }
-        DockItem(SitePaths.projects, Strings.widget.bottomNavbar.projects) {
+        DockItem(SiteRoutes.projects, Strings.widget.bottomNavbar.projects) {
             FaCubes()
         }
     }

@@ -12,13 +12,18 @@ import vn.id.tozydev.lucidabyss.components.home.HomeQuote
 import vn.id.tozydev.lucidabyss.components.home.HomeSocials
 import vn.id.tozydev.lucidabyss.components.home.HomeTechStack
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.utils.tw
 
 class HomePage(
     language: SiteLanguage,
 ) : Page(language) {
+    override val route =
+        context(language) {
+            SiteRoutes.home
+        }
+
     override val properties =
         strings.let {
             Properties(
@@ -26,8 +31,6 @@ class HomePage(
                 description = it.page.home.description,
             )
         }
-
-    override val route = SitePaths.HOME_PATH
 
     @Composable
     override fun Content(ctx: PageContext) {

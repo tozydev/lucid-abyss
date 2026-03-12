@@ -8,7 +8,7 @@ import com.varabyte.kobweb.navigation.BasePath
 import com.varabyte.kobweb.silk.components.icons.fa.FaUser
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.strings.description
 import vn.id.tozydev.lucidabyss.strings.title
@@ -59,7 +59,7 @@ private fun HeroActions() {
         Button(
             {
                 tw("btn btn-primary hover:scale-105 transition-transform")
-                onClick { ctx.router.navigateTo(SitePaths.about) }
+                onClick { ctx.router.navigateTo(SiteRoutes.about) }
             },
         ) {
             FaUser(Modifier.tw("mr-2"))
@@ -68,7 +68,7 @@ private fun HeroActions() {
         Button(
             {
                 tw("btn")
-                onClick { ctx.router.navigateTo(SitePaths.blog) }
+                onClick { ctx.router.navigateTo(SiteRoutes.blog) }
             },
         ) {
             Text(Strings.section.hero.viewBlog)

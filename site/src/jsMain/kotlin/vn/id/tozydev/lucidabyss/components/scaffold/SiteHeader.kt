@@ -19,7 +19,7 @@ import kotlinx.browser.document
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -47,7 +47,7 @@ context(language: SiteLanguage)
 private fun HeaderLogo() {
     Div({ }) {
         Anchor(
-            href = SitePaths.home,
+            href = SiteRoutes.home,
             { tw("btn btn-ghost btn-sm rounded-full") },
         ) {
             Text("tozydev")
@@ -68,7 +68,7 @@ private fun HeaderMenu() {
     ) {
         val isActive =
             run {
-                val homeRoute = SitePaths.home
+                val homeRoute = SiteRoutes.home
                 if (path == homeRoute) {
                     ctx.route.path == homeRoute
                 } else {
@@ -94,16 +94,16 @@ private fun HeaderMenu() {
 
     Div({ tw("hidden items-center md:flex") }) {
         Ul({ tw("menu menu-horizontal font-medium gap-1") }) {
-            MenuItem(SitePaths.home, Strings.section.header.menu.home) {
+            MenuItem(SiteRoutes.home, Strings.section.header.menu.home) {
                 FaHouse()
             }
-            MenuItem(SitePaths.about, Strings.section.header.menu.me) {
+            MenuItem(SiteRoutes.about, Strings.section.header.menu.me) {
                 FaUser()
             }
-            MenuItem(SitePaths.blog, Strings.section.header.menu.blog) {
+            MenuItem(SiteRoutes.blog, Strings.section.header.menu.blog) {
                 FaRss()
             }
-            MenuItem(SitePaths.projects, Strings.section.header.menu.projects) {
+            MenuItem(SiteRoutes.projects, Strings.section.header.menu.projects) {
                 FaCubes()
             }
         }
@@ -151,14 +151,19 @@ private fun HeaderActions() {
                     attr("tabindex", "0")
                 },
             ) {
-                SiteLanguage.entries.forEach { lang ->
+                SiteLanguage.entries.forEach { targetLanguage ->
                     Li {
-                        val isCurrent = lang == language
+                        val isCurrent = targetLanguage == language
                         val targetPath =
-                            if (isCurrent) {
-                                ctx.route.path
-                            } else {
-                                getLanguageCounterpartPath(ctx.route.path, language)
+                            run {
+                                if (isCurrent) {
+                                    ctx.route.path
+                                } else {
+                                    getLanguageCounterpartPath(
+                                        currentPath = ctx.route.path,
+                                        targetLanguage = targetLanguage,
+                                    )
+                                }
                             }
 
                         Anchor(
@@ -169,7 +174,7 @@ private fun HeaderActions() {
                                     .onClick { document.activeElement?.unsafeCast<HTMLElement>()?.blur() }
                                     .toAttrs(),
                         ) {
-                            Text(lang.label)
+                            Text(targetLanguage.label)
                         }
                     }
                 }
@@ -186,26 +191,15 @@ private fun HeaderActions() {
     }
 }
 
+context(currentLanguage: SiteLanguage)
 private fun getLanguageCounterpartPath(
-    path: String,
-    language: SiteLanguage,
-): String {
-    val enPrefix = "/${SiteLanguage.En.code}"
-    return if (language == SiteLanguage.Vi) {
-        when (path) {
-            SitePaths.HOME_PATH -> enPrefix
-            SitePaths.ABOUT_PATH -> "$enPrefix${SitePaths.ABOUT_PATH}"
-            SitePaths.BLOG_PATH -> "$enPrefix${SitePaths.BLOG_PATH}"
-            SitePaths.PROJECTS_VI_PATH -> "$enPrefix${SitePaths.PROJECTS_EN_PATH}"
-            else -> "$enPrefix$path"
-        }
-    } else {
-        val pathWithoutEn = path.removePrefix(enPrefix).takeIf { it.isNotEmpty() } ?: "/"
-        when (pathWithoutEn) {
-            SitePaths.ABOUT_PATH -> SitePaths.ABOUT_PATH
-            SitePaths.BLOG_PATH -> SitePaths.BLOG_PATH
-            SitePaths.PROJECTS_EN_PATH -> SitePaths.PROJECTS_VI_PATH
-            else -> pathWithoutEn
-        }
+    currentPath: String,
+    targetLanguage: SiteLanguage,
+): String =
+    when (currentPath) {
+        SiteRoutes.home -> context(targetLanguage) { SiteRoutes.home }
+        SiteRoutes.about -> context(targetLanguage) { SiteRoutes.about }
+        SiteRoutes.blog -> context(targetLanguage) { SiteRoutes.blog }
+        SiteRoutes.projects -> context(targetLanguage) { SiteRoutes.projects }
+        else -> currentPath // todo support blog page routes
     }
-}

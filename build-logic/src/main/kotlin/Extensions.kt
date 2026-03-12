@@ -4,7 +4,7 @@ import org.gradle.api.provider.Provider
 import org.jetbrains.kotlin.gradle.plugin.KotlinDependencyHandler
 import org.jetbrains.kotlin.gradle.targets.js.npm.NpmDependency
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 
 fun KotlinDependencyHandler.npm(dependency: Provider<MinimalExternalModuleDependency>): Provider<NpmDependency> =
     dependency.map {
@@ -19,10 +19,10 @@ fun KotlinDependencyHandler.npm(dependency: Provider<MinimalExternalModuleDepend
 internal fun AppBlock.ExportBlock.configureRoutes() {
     SiteLanguage.entries.forEach { language ->
         context(language) {
-            addExtraRoute(SitePaths.home)
-            addExtraRoute(SitePaths.about)
-            addExtraRoute(SitePaths.blog)
-            addExtraRoute(SitePaths.projects)
+            addExtraRoute(SiteRoutes.home)
+            addExtraRoute(SiteRoutes.about)
+            addExtraRoute(SiteRoutes.blog)
+            addExtraRoute(SiteRoutes.projects)
         }
     }
 }

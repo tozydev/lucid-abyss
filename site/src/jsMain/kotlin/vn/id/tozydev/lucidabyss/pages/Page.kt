@@ -41,7 +41,7 @@ abstract class Page(
 fun registerPages(ctx: InitKobwebContext) {
     fun register(page: Page) {
         ctx.router.register(
-            route = page.actualRoute,
+            route = page.route,
             layoutId = page.layout,
             initRouteMethod = page::init,
         ) { pageContext ->
@@ -56,13 +56,6 @@ fun registerPages(ctx: InitKobwebContext) {
         register(BlogPage(language))
     }
 }
-
-private val Page.actualRoute
-    get() =
-        when (language) {
-            SiteLanguage.Default -> route
-            else -> "/${language.code}$route"
-        }
 
 internal val Page.strings
     get() =

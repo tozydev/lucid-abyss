@@ -5,7 +5,7 @@ import com.varabyte.kobweb.core.PageContext
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.blog.BlogPostCard
 import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.core.SitePaths
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.generated.BlogPosts
 import vn.id.tozydev.lucidabyss.pages.Page
 import vn.id.tozydev.lucidabyss.pages.strings
@@ -16,7 +16,10 @@ import vn.id.tozydev.lucidabyss.utils.tw
 class BlogPage(
     language: SiteLanguage,
 ) : Page(language) {
-    override val route = SitePaths.BLOG_PATH
+    override val route =
+        context(language) {
+            SiteRoutes.blog
+        }
     override val properties =
         strings.let {
             Properties(

@@ -6,11 +6,14 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.core.Links
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.strings.copyright
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
+context(_: SiteLanguage)
 fun SiteFooter(modifier: Modifier = Modifier) {
     Footer(modifier.toAttrs()) {
         Div(
@@ -71,7 +74,7 @@ fun SiteFooter(modifier: Modifier = Modifier) {
                     Text(Strings.section.footer.link.email)
                 }
                 Anchor(
-                    href = Links.RSS_URL,
+                    href = SiteRoutes.rss,
                     attrs = { tw("link link-hover") },
                 ) {
                     Text(Strings.section.footer.link.rss)

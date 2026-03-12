@@ -100,6 +100,7 @@ widget:
     mystory:
       title: My Story
       description: Hi, I'm a passionate software engineer with a strong focus on mobile and web development. I love building things that make an impact. My journey started when I was fascinated by the endless possibilities of technology. Over the years, I've honed my skills in various languages and frameworks, always eager to learn and adapt to new challenges.
+      avatar-alt: Avatar
     techstack:
       title: Tech Stack
       languagesTitle: Languages

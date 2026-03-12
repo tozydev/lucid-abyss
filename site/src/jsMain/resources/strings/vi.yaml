@@ -100,6 +100,7 @@ widget:
     mystory:
       title: Câu chuyện của tôi
       description: Xin chào, tôi là một kỹ sư phần mềm đam mê với trọng tâm mạnh mẽ vào phát triển ứng dụng di động và web. Tôi thích xây dựng những thứ mang lại tác động tích cực. Hành trình của tôi bắt đầu khi tôi bị cuốn hút bởi những khả năng vô tận của công nghệ. Trong những năm qua, tôi đã trau dồi kỹ năng của mình trong nhiều ngôn ngữ và khuôn khổ khác nhau, luôn háo hức học hỏi và thích ứng với những thách thức mới.
+      avatar-alt: Ảnh đại diện
     techstack:
       title: Công nghệ
       languagesTitle: Ngôn ngữ

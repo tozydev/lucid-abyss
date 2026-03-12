@@ -16,7 +16,7 @@ fun UnderConstruction(
 ) {
     Div(
         Modifier
-            .tw("card bg-base-100 card-border w-full max-w-lg mx-auto")
+            .tw("card bg-base-100 card-border w-full max-w-lg mx-auto hover-primary-glow")
             .then(modifier)
             .toAttrs(),
     ) {

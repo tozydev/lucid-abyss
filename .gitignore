@@ -4,6 +4,7 @@ build/
 out/
 !**/src/**/build/
 !**/src/**/out/
+*.log
 
 ### IntelliJ
 *.iml

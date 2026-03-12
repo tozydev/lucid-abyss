@@ -5,6 +5,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaBriefcase
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.core.Profile
+import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -16,22 +18,17 @@ data class Experience(
 )
 
 @Composable
+context(language: SiteLanguage)
 fun AboutExperiences(modifier: Modifier = Modifier) {
     val experiences =
-        listOf(
+        requireNotNull(Profile.workingExperiences[language]).map {
             Experience(
-                Strings.widget.about.experiences.exp1.title,
-                Strings.widget.about.experiences.exp1.company,
-                Strings.widget.about.experiences.exp1.date,
-                Strings.widget.about.experiences.exp1.description,
-            ),
-            Experience(
-                Strings.widget.about.experiences.exp2.title,
-                Strings.widget.about.experiences.exp2.company,
-                Strings.widget.about.experiences.exp2.date,
-                Strings.widget.about.experiences.exp2.description,
-            ),
-        )
+                it.position,
+                it.company,
+                "${it.startDate} - ${it.endDate}",
+                it.description,
+            )
+        }
 
     Div(
         Modifier

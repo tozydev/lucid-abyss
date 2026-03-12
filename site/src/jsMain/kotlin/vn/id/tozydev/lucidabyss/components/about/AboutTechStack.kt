@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.components.icons.fa.FaLayerGroup
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.core.Profile
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -28,7 +29,7 @@ fun AboutTechStack(modifier: Modifier = Modifier) {
                         Text(Strings.widget.about.techstack.languagesTitle)
                     }
                     Div({ tw("flex flex-wrap gap-2") }) {
-                        Strings.widget.about.techstack.languages.forEach { lang ->
+                        Profile.programmingLanguages.forEach { lang ->
                             Div({ tw("badge badge-outline badge-lg") }) {
                                 Text(lang)
                             }
@@ -40,7 +41,7 @@ fun AboutTechStack(modifier: Modifier = Modifier) {
                         Text(Strings.widget.about.techstack.librariesTitle)
                     }
                     Div({ tw("flex flex-wrap gap-2") }) {
-                        Strings.widget.about.techstack.libraries.forEach { lib ->
+                        Profile.libraries.forEach { lib ->
                             Div({ tw("badge badge-outline badge-lg") }) {
                                 Text(lib)
                             }

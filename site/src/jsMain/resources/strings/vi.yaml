@@ -61,6 +61,9 @@ section:
       kobweb: Kobweb
       kotlin: Kotlin
 widget:
+  under-construction:
+    title: Đang xây dựng
+    description: Trang này hiện đang được xây dựng. Vui lòng quay lại sau!
   back-to-top-button:
     label: Về đầu trang
   bottom-navbar:

@@ -61,6 +61,9 @@ section:
       kobweb: Kobweb
       kotlin: Kotlin
 widget:
+  under-construction:
+    title: Under Construction
+    description: This page is currently under construction. Please check back later!
   back-to-top-button:
     label: Back to top
   bottom-navbar:

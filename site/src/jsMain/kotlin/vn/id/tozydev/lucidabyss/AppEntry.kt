@@ -3,6 +3,7 @@ package vn.id.tozydev.lucidabyss
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.KobwebComposeStyles
 import com.varabyte.kobweb.core.App
+import com.varabyte.kobweb.silk.SilkFoundationStyles
 import kotlinx.browser.document
 import org.w3c.dom.HTMLElement
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
@@ -12,6 +13,7 @@ import vn.id.tozydev.lucidabyss.styles.saveToLocalStorage
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
     KobwebComposeStyles()
+    SilkFoundationStyles()
     ThemeModeAware()
     content()
 }

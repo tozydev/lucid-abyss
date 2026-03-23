@@ -10,9 +10,9 @@ interface StaticRoute {
 
 object ViStaticRoute : StaticRoute {
     override val home = "/"
-    override val about = "/me"
+    override val about = "/about"
     override val blog = "/blog"
-    override val projects = "/du-an"
+    override val projects = "/projects"
     override val rss = "/rss.xml"
 }
 

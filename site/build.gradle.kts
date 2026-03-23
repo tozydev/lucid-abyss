@@ -18,6 +18,7 @@ kobweb {
         index {
             head.add {
                 link("/lucid-abyss.css", rel = "stylesheet")
+                link(rel = "stylesheet", href = "/fonts/faces.css")
             }
         }
     }

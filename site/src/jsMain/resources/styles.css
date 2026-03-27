@@ -2,88 +2,173 @@
 
 @plugin "@tailwindcss/typography";
 
-@plugin "daisyui" {
-    exclude: fab
-}
-
-@plugin "daisyui/theme" {
-    name: "light";
-    prefersdark: false;
-    color-scheme: "light";
-    --root-bg: oklch(95% 0.02 155);
-    --color-base-100: oklch(100% 0 0);
-    --color-base-200: oklch(98% 0.01 155);
-    --color-base-300: oklch(92% 0.02 155);
-    --color-base-content: oklch(22% 0.03 155);
-    --color-primary: oklch(52% 0.14 155);
-    --color-primary-content: oklch(98% 0.01 155);
-    --color-secondary: oklch(82% 0.08 145);
-    --color-secondary-content: oklch(25% 0.04 155);
-    --color-accent: oklch(68% 0.16 45);
-    --color-accent-content: oklch(20% 0.05 45);
-    --color-neutral: oklch(28% 0.04 155);
-    --color-neutral-content: oklch(94% 0.02 155);
-    --color-info: oklch(75% 0.11 240);
-    --color-info-content: oklch(25% 0.05 240);
-    --color-success: oklch(72% 0.14 132);
-    --color-success-content: oklch(22% 0.05 132);
-    --color-warning: oklch(80% 0.14 85);
-    --color-warning-content: oklch(25% 0.05 85);
-    --color-error: oklch(70% 0.15 25);
-    --color-error-content: oklch(25% 0.05 25);
-    --radius-selector: 0.25rem;
-    --radius-field: 1rem;
-    --radius-box: 2rem;
-    --size-selector: 0.28125rem;
-    --size-field: 0.28125rem;
-    --border: 1px;
-    --depth: 0;
-    --noise: 0;
-}
-
-@plugin "daisyui/theme" {
-    name: "dark";
-    prefersdark: true;
-    color-scheme: "dark";
-    --root-bg: oklch(15% 0.02 155);
-    --color-base-100: oklch(25% 0.005 155);
-    --color-base-200: oklch(30% 0.005 155);
-    --color-base-300: oklch(40% 0.005 155);
-    --color-base-content: oklch(96% 0.002 155);
-    --color-primary: oklch(64% 0.16 155);
-    --color-primary-content: oklch(14% 0.05 155);
-    --color-secondary: oklch(78% 0.06 145);
-    --color-secondary-content: oklch(15% 0.04 145);
-    --color-accent: oklch(68% 0.18 45);
-    --color-accent-content: oklch(15% 0.05 45);
-    --color-neutral: oklch(85% 0.02 155);
-    --color-neutral-content: oklch(20% 0.04 155);
-    --color-info: oklch(65% 0.12 240);
-    --color-info-content: oklch(15% 0.05 240);
-    --color-success: oklch(62% 0.15 132);
-    --color-success-content: oklch(15% 0.05 132);
-    --color-warning: oklch(75% 0.16 85);
-    --color-warning-content: oklch(15% 0.05 85);
-    --color-error: oklch(65% 0.16 25);
-    --color-error-content: oklch(15% 0.05 25);
-    --radius-selector: 0.25rem;
-    --radius-field: 1rem;
-    --radius-box: 2rem;
-    --size-selector: 0.28125rem;
-    --size-field: 0.28125rem;
-    --border: 1px;
-    --depth: 0;
-    --noise: 0;
-}
-
 @theme {
-    --color-kotlin: radial-gradient(circle at 100% 0%, #E44857 0%, #C711E1 50.45%, #7F52FF 100%);
+    --color-tertiary-fixed-dim: #c4c9b1;
+    --color-on-surface-variant: #414941;
+    --color-surface-container: #f1eee7;
+    --color-error-container: #ffdad6;
+    --color-surface-container-low: #f6f3ec;
+    --color-on-error-container: #93000a;
+    --color-secondary-fixed-dim: #ffb694;
+    --color-on-primary: #ffffff;
+    --color-on-tertiary: #ffffff;
+    --color-error: #ba1a1a;
+    --color-on-primary-fixed-variant: #1e502f;
+    --color-on-tertiary-container: #c6cbb2;
+    --color-tertiary-container: #515643;
+    --color-on-secondary: #ffffff;
+    --color-on-secondary-container: #752d00;
+    --color-background: #fcf9f2;
+    --color-on-error: #ffffff;
+    --color-primary-fixed-dim: #9dd3a7;
+    --color-secondary-fixed: #ffdbcc;
+    --color-outline: #717971;
+    --color-inverse-primary: #9dd3a7;
+    --color-surface-dim: #dcdad3;
+    --color-on-primary-container: #9fd5a9;
+    --color-on-primary-fixed: #00210c;
+    --color-primary-container: #2c5e3b;
+    --color-on-surface: #1c1c18;
+    --color-primary-fixed: #b8f0c2;
+    --color-surface-bright: #fcf9f2;
+    --color-on-tertiary-fixed: #191d0e;
+    --color-outline-variant: #c1c9bf;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface: #fcf9f2;
+    --color-surface-container-high: #ebe8e1;
+    --color-primary: #124626;
+    --color-tertiary-fixed: #e0e5cc;
+    --color-surface-tint: #376945;
+    --color-inverse-on-surface: #f3f0e9;
+    --color-on-secondary-fixed: #351000;
+    --color-on-tertiary-fixed-variant: #444936;
+    --color-secondary: #98471a;
+    --color-surface-container-highest: #e5e2db;
+    --color-on-secondary-fixed-variant: #7a3003;
+    --color-surface-variant: #e5e2db;
+    --color-tertiary: #3a3f2d;
+    --color-inverse-surface: #31312c;
+    --color-on-background: #1c1c18;
+    --color-secondary-container: #fe9663;
+
+    --font-headline: "Quicksand", sans-serif;
+    --font-body: "Be Vietnam Pro", sans-serif;
+    --font-label: "Quicksand", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
 }
 
-@utility hover-primary-glow {
-    @apply hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300;
+:root.dark {
+    /* Material 3 custom theme overrides to dark */
+    --color-tertiary-fixed-dim: #c4c9b1;
+    --color-on-surface-variant: #c1c9bf;
+    --color-surface-container: #1e201d;
+    --color-error-container: #93000a;
+    --color-surface-container-low: #1a1c19;
+    --color-on-error-container: #ffdad6;
+    --color-secondary-fixed-dim: #ffb694;
+    --color-on-primary: #003918;
+    --color-on-tertiary: #2e3322;
+    --color-error: #ffb4ab;
+    --color-on-primary-fixed-variant: #1e502f;
+    --color-on-tertiary-container: #e0e5cc;
+    --color-tertiary-container: #444936;
+    --color-on-secondary: #552000;
+    --color-on-secondary-container: #ffdbcc;
+    --color-background: #121411;
+    --color-on-error: #690005;
+    --color-primary-fixed-dim: #9dd3a7;
+    --color-secondary-fixed: #ffdbcc;
+    --color-outline: #8b938a;
+    --color-inverse-primary: #376945;
+    --color-surface-dim: #121411;
+    --color-on-primary-container: #b8f0c2;
+    --color-on-primary-fixed: #00210c;
+    --color-primary-container: #1e502f;
+    --color-on-surface: #e2e3dd;
+    --color-primary-fixed: #b8f0c2;
+    --color-surface-bright: #383a36;
+    --color-on-tertiary-fixed: #191d0e;
+    --color-outline-variant: #414941;
+    --color-surface-container-lowest: #0c0f0c;
+    --color-surface: #121411;
+    --color-surface-container-high: #282a27;
+    --color-primary: #9dd3a7;
+    --color-tertiary-fixed: #e0e5cc;
+    --color-surface-tint: #9dd3a7;
+    --color-inverse-on-surface: #2e312e;
+    --color-on-secondary-fixed: #351000;
+    --color-on-tertiary-fixed-variant: #444936;
+    --color-secondary: #ffb694;
+    --color-surface-container-highest: #333532;
+    --color-on-secondary-fixed-variant: #7a3003;
+    --color-surface-variant: #414941;
+    --color-tertiary: #c4c9b1;
+    --color-inverse-surface: #e2e3dd;
+    --color-on-background: #e2e3dd;
+    --color-secondary-container: #7a3003;
+
+
 }
 
-@utility hover-primary-glow-translate {
-    @apply hover-primary-glow hover:-translate-y-1
+/* Hardcoded hex overrides for Dark Mode */
+:root.dark .skill-tag {
+    border: 1.5px solid #8b938a;
+}
+
+:root.dark .code-block {
+    background-color: #282a27;
+    border-left: 4px solid #9dd3a7;
+}
+
+:root.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #414941;
+}
+
+
+@layer base {
+    body {
+        background-color: var(--color-background);
+        color: var(--color-on-surface);
+        font-family: var(--font-body);
+    }
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+}
+
+.tonal-contrast-no-borders {
+    border: none !important;
+}
+
+.glass-effect {
+    backdrop-filter: blur(12px);
+}
+
+.skill-tag {
+    border: 1.5px solid #6B665E;
+}
+
+.tonal-shift-no-lines {
+    border: none !important;
+}
+
+.code-block {
+    background-color: #181B19;
+    border-left: 4px solid #2C5E3B;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c1c9bf;
+    border-radius: 10px;
 }

@@ -2,15 +2,75 @@ page:
   about:
     title: Về tôi
     description: Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang làm.
+    hero-image-alt: "Phòng họp sáng sủa"
+    profile-image-alt: "Nguyễn Thanh Tân"
+    name: "Nguyễn Thanh Tân"
+    role: "KOTLIN DEVELOPER"
+    intro-p1-1: "Xin chào! Tôi là một Kỹ sư Phần mềm đam mê việc xây dựng các sản phẩm công nghệ chất lượng cao. Với hơn "
+    intro-p1-highlight: "8 năm kinh nghiệm"
+    intro-p1-2: " trong lĩnh vực phát triển ứng dụng di động và hệ thống backend, tôi luôn khao khát mang lại giá trị thực tế thông qua những dòng mã nguồn sạch sẽ, dễ bảo trì và có tính mở rộng cao."
+    quote: "Mã nguồn xuất sắc không chỉ nằm ở việc máy tính có thể hiểu được, mà còn là nền tảng để những kỹ sư khác có thể dễ dàng tiếp nối và phát triển."
+    intro-p2-1: "Chuyên môn cốt lõi của tôi xoay quanh hệ sinh thái "
+    intro-p2-highlight: "Kotlin, Android và Ktor"
+    intro-p2-2: ". Từ việc thiết kế cấu trúc kiến trúc ứng dụng, xử lý luồng dữ liệu phức tạp bằng Coroutines & Flow, cho đến việc xây dựng các UI hiện đại bằng Jetpack Compose. Tôi quan niệm rằng một sản phẩm tốt phải là sự cân bằng hoàn hảo giữa "
+    intro-p2-highlight2: "hiệu năng vượt trội và trải nghiệm người dùng mượt mà"
+    intro-p2-3: "."
+    intro-p3: "Bên cạnh công việc chuyên môn, tôi còn là một người ủng hộ mạnh mẽ cộng đồng mã nguồn mở. Tôi tin rằng việc chia sẻ kiến thức là cách tốt nhất để cùng nhau tiến bộ. Blog này là nơi tôi ghi chép lại những bài học kỹ thuật, những thách thức đã vượt qua, và những xu hướng công nghệ mới mà tôi đang khám phá."
+    skills-title: "Kỹ năng công nghệ"
+    skills:
+      - Kotlin
+      - Coroutines
+      - Jetpack Compose
+      - Ktor
+      - Android SDK
+      - PostgreSQL
+      - Git
+    experience-title: "Kinh nghiệm làm việc"
+    experience:
+      senior:
+        title: "Senior Android Developer"
+        period: "2021 - Hiện tại"
+        company: "Techify Solutions"
+        description: "Dẫn dắt đội ngũ Android chuyển đổi toàn bộ kiến trúc ứng dụng sang Clean Architecture và MVVM. Triển khai Jetpack Compose cho các dự án mới, tối ưu hóa hiệu năng render UI và giảm 30% crash rate."
+      mid:
+        title: "Android Developer"
+        period: "2018 - 2021"
+        company: "AppNova Corp"
+        description: "Phát triển các tính năng cốt lõi cho ứng dụng thương mại điện tử với hơn 1 triệu lượt tải. Tích hợp thanh toán, tối ưu hóa logic giỏ hàng và áp dụng Coroutines để xử lý luồng dữ liệu bất đồng bộ."
+      junior:
+        title: "Junior Mobile Developer"
+        period: "2016 - 2018"
+        company: "InnoStartup"
+        description: "Bắt đầu sự nghiệp với việc bảo trì và nâng cấp các ứng dụng Java truyền thống. Chuyển đổi dần sang Kotlin và tham gia xây dựng các nguyên mẫu (prototypes) cho dự án mới."
+    projects-title: "Dự án tiêu biểu"
+    projects:
+      payflow:
+        title: "PayFlow SDK"
+        description: "Một giải pháp thanh toán tích hợp B2B, cung cấp các module giao dịch an toàn thông qua API Ktor, giảm 40% thời gian xử lý và cải thiện trải nghiệm trên ứng dụng cho đối tác với 10 triệu giao dịch/tháng."
+      taskminder:
+        title: "TaskMinder Android"
+        description: "Ứng dụng quản lý thời gian mã nguồn mở với giao diện hoàn toàn bằng Jetpack Compose. Áp dụng MVI Architecture và Room Database, cho phép đồng bộ offline-first với hiệu suất cao."
+    contact-title: "Liên hệ"
+    contact-description: "Tôi luôn mở cửa cho những cuộc trò chuyện thú vị về công nghệ hoặc thiết kế. Hãy gửi email cho tôi."
+    contact-email: "hello@devisland.com"
   blog:
     title: Blog
-    description: Blog cá nhân của tôi nơi tôi chia sẻ kiến thức và kinh nghiệm.
+    description: Bài viết về lập trình, công nghệ và cuộc sống.
+    all: Tất cả
     header:
-      title:
-        - Chia sẻ kiến thức
-        - Lập trình và cuộc sống
-      description: Nơi lưu lại những bài học, kinh nghiệm và những điều thú vị trong
-        hành trình phát triển bản thân để trở nên tốt hơn.
+      title: Tất cả bài viết
+      description: Khám phá các bài viết chuyên sâu về phát triển phần mềm, kiến trúc hệ thống và những công nghệ mới nhất.
+    author:
+      name: Nguyễn Thanh Tân
+      role: Kỹ sư hệ thống cao cấp
+  tag:
+    header:
+      title: "Bài viết với th\u1ebb \u201c${tag}\u201d"
+      description: "Kh\u00e1m ph\u00e1 t\u1ea5t c\u1ea3 c\u00e1c b\u00e0i vi\u1ebft \u0111\u01b0\u1ee3c g\u1eafn th\u1ebb ${tag}."
+  topic:
+    header:
+      title: "B\u00e0i vi\u1ebft v\u1ec1 \u201c${topic}\u201d"
+      description: "T\u00ecm hi\u1ec3u s\u00e2u v\u1ec1 ${topic} v\u1edbi c\u00e1c b\u00e0i vi\u1ebft v\u00e0 h\u01b0\u1edbng d\u1eabn chuy\u00ean s\u00e2u."
   home:
     title: Trang chủ
     description: Trang chủ của blog cá nhân của tôi
@@ -19,47 +79,32 @@ page:
     description: Nơi trưng bày các sản phẩm và dự án của tôi.
 section:
   footer:
-    copyright:
-      - "© 2026 tozydev. Mã nguồn ở "
-      - GitHub
-      - "Xây dựng với "
-      - Kotlin
-      - " và "
-      - Kobweb
+    copyright: "© 2026 tozydev. Blog cá nhân chia sẻ kiến thức lập trình."
     link:
       bluesky: Bluesky
       email: Email
       github: GitHub
+      linkedin: LinkedIn
+      privacy: Bảo mật
       rss: RSS
+      twitter: Twitter
   header:
     menu:
-      blog: Blog
+      blog: Bài viết
       home: Trang chủ
-      me: Về tôi
+      me: Giới thiệu
       projects: Dự án
   hero:
     title:
-      - Xin chào, tôi là
-      - Thanh Tân
-    description:
-      - "Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với "
-      - Kotlin
-      - . Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...
-    image-alt: Ảnh đại diện
-    learn-more: Tìm hiểu thêm
-    view-blog: Xem blog
-  socials:
-    label:
-      bluesky: Bluesky
-      email: Email
-      github: GitHub
-      linkedin: LinkedIn
-  techstack:
-    title: Tech Stack
-    badge:
-      java: Java
-      kobweb: Kobweb
-      kotlin: Kotlin
+      - "Chào bạn, tôi là "
+      - tozy.
+    description: "Xây dựng các hệ thống phần mềm thông qua mã nguồn chất lượng, thiết kế tối ưu và niềm đam mê sâu sắc với các kiến trúc lập trình hiện đại."
+    view-projects: Xem dự án
+    contact: Liên hệ ngay
+  featured-posts:
+    title: Bài viết mới nhất
+    description: Khám phá những bài viết, hướng dẫn và chia sẻ mới nhất về lập trình và công nghệ.
+    view-all: Xem tất cả
 widget:
   under-construction:
     title: Đang xây dựng
@@ -71,28 +116,19 @@ widget:
     home: Trang chủ
     me: Về tôi
     projects: Dự án
-  featured-project:
-    author-avatar-alt: Ảnh đại diện tác giả dự án
-    badge: Nổi bật
-    description: Website cá nhân của tôi, được xây dựng bằng Kotlin/JS và Kobweb.
-    view-details: Xem chi tiết
   latest-post:
-    badge: Mới nhất
     read-more: Đọc thêm
   location:
     title: Hồ Chí Minh, Việt Nam
     description: Đang học tại UTH
   next-prev-posts:
-    next: Bài tiếp theo
-    prev: Bài trước đó
+    next: "Bài sau \u2192"
+    prev: "\u2190 Bài trước"
   post:
     cover-alt: Ảnh bìa bài viết ${title}
+    read-article: Đọc bài viết ${title}
   quote:
     text: “I know that I know nothing”
     author: — Socrates
-  share-post:
-    title: Chia sẻ bài viết
-    link: Sao chép liên kết
-    link-copied: Liên kết đã được sao chép!
   table-of-contents:
     title: Mục lục

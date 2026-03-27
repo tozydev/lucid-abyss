@@ -6,7 +6,6 @@ import com.varabyte.kobweb.gradle.core.extensions.kobwebBlock
 plugins.withType<KobwebApplicationPlugin> {
     kobwebBlock.app.export.apply {
         enableTraces()
-        configureRoutes()
         suppressNoRootWarning = true
     }
 }

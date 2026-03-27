@@ -6,6 +6,12 @@ interface StaticRoute {
     val blog: String
     val projects: String
     val rss: String
+    val tagPattern: String
+    val topicPattern: String
+
+    fun tag(tag: String): String
+
+    fun topic(topic: String): String
 }
 
 object ViStaticRoute : StaticRoute {
@@ -14,20 +20,13 @@ object ViStaticRoute : StaticRoute {
     override val blog = "/blog"
     override val projects = "/projects"
     override val rss = "/rss.xml"
+    override val tagPattern = "/tags/{tag}"
+    override val topicPattern = "/topics/{topic}"
+
+    override fun tag(tag: String) = "/tags/$tag"
+
+    override fun topic(topic: String) = "/topics/$topic"
 }
 
-object EnStaticRoute : StaticRoute {
-    override val home = "/${SiteLanguage.En.code}/"
-    override val about = "/${SiteLanguage.En.code}/about"
-    override val blog = "/${SiteLanguage.En.code}/blog"
-    override val projects = "/${SiteLanguage.En.code}/projects"
-    override val rss = "/${SiteLanguage.En.code}/rss.xml"
-}
-
-context(language: SiteLanguage)
 val SiteRoutes: StaticRoute
-    get() =
-        when (language) {
-            SiteLanguage.Vi -> ViStaticRoute
-            SiteLanguage.En -> EnStaticRoute
-        }
+    get() = ViStaticRoute

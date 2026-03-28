@@ -24,14 +24,14 @@ private const val PACKAGE_NAME = "vn.id.tozydev.lucidabyss.core"
 private const val FILE_NAME = "Posts"
 private const val POSTS_PROPERTY_NAME = "Posts"
 
-internal fun generatePostsFileSpec(postBySlug: Map<String, Post>) =
+internal fun generatePostsFileSpec(posts: List<Post>) =
     FileSpec
         .builder(PACKAGE_NAME, FILE_NAME)
         .apply {
             val postType = Post::class.toTypeSpec()
             addType(postType)
             addProperty(
-                postBySlug.toPropertySpec(
+                posts.toPropertySpec(
                     POSTS_PROPERTY_NAME,
                     ClassName(PACKAGE_NAME, requireNotNull(postType.name)),
                 ),
@@ -41,19 +41,18 @@ internal fun generatePostsFileSpec(postBySlug: Map<String, Post>) =
 /**
  * Converts a map of blog post metadata to a KotlinPoet `PropertySpec` representation.
  */
-private fun Map<String, Post>.toPropertySpec(
+private fun List<Post>.toPropertySpec(
     name: String,
     postType: TypeName,
 ) = PropertySpec
-    .builder(name, Map::class.asClassName().parameterizedBy(String::class.asClassName(), postType))
+    .builder(name, List::class.asClassName().parameterizedBy(postType))
     .initializer(
         CodeBlock
             .builder()
             .apply {
-                add("mapOf(\n")
+                add("listOf(\n")
                 withIndent {
-                    this@toPropertySpec.forEach { (slug, post) ->
-                        add("%S to ", slug)
+                    this@toPropertySpec.forEach { post ->
                         add(post.toCodeBlockInstance(postType))
                         add(",\n")
                     }

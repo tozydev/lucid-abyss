@@ -20,12 +20,11 @@ data class Post(
     val coverImage: String?,
 )
 
-internal fun constructPostBySlug(entries: List<MarkdownEntry>): Map<String, Post> =
+internal fun constructPosts(entries: List<MarkdownEntry>): List<Post> =
     entries
         .filter { it.route.contains("/blog/") }
         .map { it.metadata }
         .sortedByDescending { it.publishedAt }
-        .associateBy { it.slug }
 
 private val MarkdownEntry.metadata
     get() =

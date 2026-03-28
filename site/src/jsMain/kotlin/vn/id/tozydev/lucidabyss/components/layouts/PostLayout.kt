@@ -12,7 +12,6 @@ import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
-import com.varabyte.kobwebx.markdown.markdown
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLHeadingElement
@@ -20,27 +19,18 @@ import vn.id.tozydev.lucidabyss.components.sections.PostHeader
 import vn.id.tozydev.lucidabyss.components.sections.PostNavigation
 import vn.id.tozydev.lucidabyss.components.sections.PostTableOfContents
 import vn.id.tozydev.lucidabyss.components.sections.PostTags
-import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
-import vn.id.tozydev.lucidabyss.utils.getBlogPost
+import vn.id.tozydev.lucidabyss.utils.findPost
 import vn.id.tozydev.lucidabyss.utils.getHeadings
-import vn.id.tozydev.lucidabyss.utils.language
-import vn.id.tozydev.lucidabyss.utils.postId
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
 fun initPostLayout(ctx: InitRouteContext) {
-    val postId =
-        requireNotNull(ctx.markdown?.postId) {
-            "No post ID found for path: ${ctx.markdown?.path}"
-        }
-    val language =
-        requireNotNull(ctx.markdown?.language) {
-            "No post language found for path: ${ctx.markdown?.path}"
-        }
+    val slug = ctx.route.slug
     val post =
-        requireNotNull(getBlogPost(language, postId)) {
-            "No post found for post $postId and language $language"
+        requireNotNull(findPost(slug)) {
+            "No post found for slug: $slug"
         }
 
     ctx.data.add(
@@ -58,7 +48,7 @@ fun PostLayout(
     ctx: PageContext,
     content: @Composable () -> Unit,
 ) {
-    val post = ctx.data.getValue<BlogPost>()
+    val post = ctx.data.getValue<Post>()
 
     Div({ tw("max-w-275 mx-auto flex flex-col lg:flex-row gap-8 items-start w-full") }) {
         var contentRef by remember { mutableStateOf<HTMLElement?>(null) }

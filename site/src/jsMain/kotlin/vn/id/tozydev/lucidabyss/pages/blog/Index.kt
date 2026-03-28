@@ -13,8 +13,7 @@ import vn.id.tozydev.lucidabyss.components.sections.BlogFilters
 import vn.id.tozydev.lucidabyss.components.sections.BlogGrid
 import vn.id.tozydev.lucidabyss.components.sections.BlogHeader
 import vn.id.tozydev.lucidabyss.components.widgets.Pagination
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.generated.BlogPosts
+import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -32,7 +31,7 @@ fun initIndex(ctx: InitRouteContext) {
 @Page
 @Composable
 fun Index() {
-    val posts = BlogPosts[SiteLanguage.Default] ?: emptyList()
+    val posts = Posts
     val tags = remember(posts) { posts.flatMap { it.tags }.distinct().filter { it.isNotBlank() } }
 
     Div({ tw("max-w-275 mx-auto w-full md:w-auto") }) {

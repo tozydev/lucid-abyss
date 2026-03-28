@@ -10,8 +10,7 @@ import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.FeaturedPosts
 import vn.id.tozydev.lucidabyss.components.sections.HomeHero
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.generated.BlogPosts
+import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
 
 @InitRoute
@@ -31,6 +30,6 @@ fun IndexPage() {
     HomeHero()
 
     FeaturedPosts(
-        posts = BlogPosts[SiteLanguage.Default]?.take(3) ?: emptyList(),
+        posts = Posts.take(3),
     )
 }

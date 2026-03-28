@@ -5,7 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.nextPost
 import vn.id.tozydev.lucidabyss.utils.previousPost
@@ -13,7 +13,7 @@ import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
 fun PostNavigation(
-    post: BlogPost,
+    post: Post,
     modifier: Modifier = Modifier,
 ) {
     val previousPost = post.previousPost

@@ -14,8 +14,7 @@ import vn.id.tozydev.lucidabyss.components.sections.BlogFilters
 import vn.id.tozydev.lucidabyss.components.sections.BlogGrid
 import vn.id.tozydev.lucidabyss.components.sections.BlogHeader
 import vn.id.tozydev.lucidabyss.components.widgets.Pagination
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import vn.id.tozydev.lucidabyss.generated.BlogPosts
+import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -39,7 +38,7 @@ fun initTopicPage(ctx: InitRouteContext) {
 @Composable
 fun TopicPage(ctx: PageContext) {
     val topic = remember(ctx.route.params) { ctx.route.params["topic"] ?: "" }
-    val allPosts = BlogPosts[SiteLanguage.Default] ?: emptyList()
+    val allPosts = Posts
     val filteredPosts =
         remember(allPosts, topic) {
             allPosts

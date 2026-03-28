@@ -5,12 +5,12 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.PostCard
-import vn.id.tozydev.lucidabyss.core.BlogPost
+import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
 fun BlogGrid(
-    posts: List<BlogPost>,
+    posts: List<Post>,
     modifier: Modifier = Modifier,
 ) {
     Div(
@@ -20,7 +20,7 @@ fun BlogGrid(
             .toAttrs(),
     ) {
         posts.forEach { post ->
-            key(post.id.value) {
+            key(post.slug) {
                 PostCard(post)
             }
         }

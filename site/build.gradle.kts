@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
     id("blog.lucid-abyss")
-    id("site-export.lucid-abyss")
     id("strings.lucid-abyss")
 }
 
@@ -25,6 +24,9 @@ kobweb {
                         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
                 )
             }
+        }
+        export {
+            enableTraces()
         }
     }
     markdown {

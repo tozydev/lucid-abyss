@@ -3,7 +3,6 @@ package vn.id.tozydev.lucidabyss.components.widgets
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
-import com.varabyte.kobweb.silk.components.icons.fa.FaArrowUp
 import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.SMOOTH
@@ -29,7 +28,7 @@ fun BackToTopButton(modifier: Modifier = Modifier) {
                 }
             },
         ) {
-            FaArrowUp()
+            Text("🔝")
         }
     }
 }

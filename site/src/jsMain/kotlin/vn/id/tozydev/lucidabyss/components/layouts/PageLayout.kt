@@ -5,10 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
 import com.varabyte.kobweb.core.PageContext
-import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.data.getValue
-import com.varabyte.kobweb.core.init.InitRoute
-import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import kotlinx.browser.document
 import org.jetbrains.compose.web.dom.*
@@ -17,23 +14,10 @@ import vn.id.tozydev.lucidabyss.components.sections.SiteFooter
 import vn.id.tozydev.lucidabyss.components.sections.SiteHeader
 import vn.id.tozydev.lucidabyss.components.widgets.BackToTopButton
 import vn.id.tozydev.lucidabyss.components.widgets.MetaTag
-import vn.id.tozydev.lucidabyss.utils.SiteLanguage
 import vn.id.tozydev.lucidabyss.utils.rememberScrollingState
 import vn.id.tozydev.lucidabyss.utils.tw
 
 const val PAGE_LAYOUT_FNQ = ".components.layouts.PageLayout"
-
-@InitRoute
-fun initPageLayout(ctx: InitRouteContext) {
-    val language =
-        SiteLanguage.fromCode(
-            ctx.route.path
-                .removePrefix("/")
-                .substringBefore('/'),
-        )
-    ctx.data.add(language)
-    SiteLanguage.current = language
-}
 
 @Layout
 @Composable

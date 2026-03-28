@@ -12,8 +12,6 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.work.ChangeType
 import org.gradle.work.Incremental
 import org.gradle.work.InputChanges
-import vn.id.tozydev.lucidabyss.core.PostId
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
 import java.io.File
 import kotlin.io.path.createParentDirectories
 import kotlin.io.path.deleteIfExists
@@ -42,11 +40,9 @@ abstract class ProcessBlogContentTask : DefaultTask() {
                 postSlug.split("-").joinToString("") { part -> part.replaceFirstChar { it.titlecase() } }
             val targetFile =
                 processedBlogContentDir
-                    .file(
-                        change.file.parentFile
-                            .relativeTo(blogContentDir.get().asFile)
-                            .path + "/$pascalCaseSlug.md",
-                    ).get()
+                    // For now, it supports only one language, so the last file in directory is the target
+                    .file("$pascalCaseSlug.md")
+                    .get()
                     .asFile
                     .toPath()
             if (change.changeType == ChangeType.REMOVED) {
@@ -61,11 +57,8 @@ abstract class ProcessBlogContentTask : DefaultTask() {
         }
     }
 
-    private val File.postId get() = PostId(nameWithoutExtension.substringBefore("."))
-
-    private val File.postSlug get() = nameWithoutExtension.substringAfter(".")
-
-    private val File.language get() = SiteLanguage.fromCode(parentFile.name)
+    private val File.postSlug
+        get() = path.substringBeforeLast(File.separatorChar).substringAfterLast(File.separatorChar)
 
     private fun File.processFrontmatter(
         routeOverride: String,
@@ -98,8 +91,6 @@ abstract class ProcessBlogContentTask : DefaultTask() {
             }
 
         frontmatter.apply {
-            setFrontmatterProperty("language", language.code)
-            setFrontmatterProperty("id", postId.value)
             setFrontmatterProperty("routeOverride", routeOverride)
             setFrontmatterProperty("funName", funName)
         }

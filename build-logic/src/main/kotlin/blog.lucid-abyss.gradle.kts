@@ -5,7 +5,6 @@ import com.varabyte.kobwebx.gradle.markdown.MarkdownBlock
 import com.varabyte.kobwebx.gradle.markdown.tasks.ProcessMarkdownTask
 import vn.id.tozydev.lucidabyss.build.blog.ProcessBlogContentTask
 import vn.id.tozydev.lucidabyss.build.blog.processBlogMarkdowns
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
 
 plugins.withType<KobwebApplicationPlugin> {
     apply<KobwebxMarkdownPlugin>()
@@ -23,10 +22,6 @@ plugins.withType<KobwebApplicationPlugin> {
         defaultLayout = ".components.layouts.PostLayout"
         process = { entries -> processBlogMarkdowns(entries) }
 
-        SiteLanguage.entries.forEach { language ->
-            val dir = processBlogContent.flatMap { it.processedBlogContentDir.dir(language.code) }
-            val targetPackage = ".pages${if (language == SiteLanguage.Default) "" else ".${language.code}"}.blog"
-            addSource(dir, targetPackage)
-        }
+        addSource(processBlogContent.flatMap { it.processedBlogContentDir }, ".pages.blog")
     }
 }

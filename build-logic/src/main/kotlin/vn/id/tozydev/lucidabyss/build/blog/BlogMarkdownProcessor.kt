@@ -4,8 +4,8 @@ import com.varabyte.kobwebx.gradle.markdown.MarkdownBlock
 import com.varabyte.kobwebx.gradle.markdown.MarkdownEntry
 
 fun MarkdownBlock.ProcessScope.processBlogMarkdowns(entries: List<MarkdownEntry>) {
-    val posts = generateBlogPosts(entries)
-    val code = generateBlogPostsCode(posts)
+    val posts = constructPostBySlug(entries)
+    val fileSpec = generatePostsFileSpec(posts)
 
-    generateKotlin("vn/id/tozydev/lucidabyss/generated/BlogPosts.kt", code)
+    generateKotlin(fileSpec.relativePath, fileSpec.toString())
 }

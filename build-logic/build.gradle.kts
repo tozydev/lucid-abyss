@@ -5,6 +5,7 @@ plugins {
 kotlin {
     jvmToolchain(21)
     compilerOptions {
+        optIn.addAll("kotlin.time.ExperimentalTime")
         freeCompilerArgs.add("-Xcontext-parameters")
     }
 }

@@ -1,28 +1,36 @@
-@file:OptIn(ExperimentalTime::class)
-
 package vn.id.tozydev.lucidabyss.build.blog
 
 import com.varabyte.kobwebx.frontmatter.FrontMatterElement
 import com.varabyte.kobwebx.gradle.markdown.MarkdownEntry
-import vn.id.tozydev.lucidabyss.core.BlogPost
-import vn.id.tozydev.lucidabyss.core.PostId
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
-import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
-internal fun generateBlogPosts(entries: List<MarkdownEntry>): Map<SiteLanguage, List<BlogPost>> =
+/**
+ * Represents a blog post metadata.
+ */
+data class Post(
+    val slug: String,
+    val route: String,
+    val title: String,
+    val description: String,
+    val author: String,
+    val publishedAt: Instant,
+    val modifiedAt: Instant?,
+    val topic: String,
+    val tags: Set<String>,
+    val coverImage: String?,
+)
+
+internal fun constructPostBySlug(entries: List<MarkdownEntry>): Map<String, Post> =
     entries
         .filter { it.route.contains("/blog/") }
-        .groupBy { it.language }
-        .mapValues { (_, entries) ->
-            entries.map { it.metadata }.sortedByDescending { it.publishedAt }
-        }
+        .map { it.metadata }
+        .sortedByDescending { it.publishedAt }
+        .associateBy { it.slug }
 
-private val MarkdownEntry.metadata: BlogPost
+private val MarkdownEntry.metadata
     get() =
-        BlogPost(
-            id = postId,
-            language = language,
+        Post(
+            slug = frontMatter.getString("routeOverride"),
             route = route,
             title = frontMatter.getString("title"),
             description = frontMatter.getString("description"),
@@ -33,16 +41,6 @@ private val MarkdownEntry.metadata: BlogPost
             tags = frontMatter.getSet("tags"),
             coverImage = frontMatter.getStringOrNull("coverImage"),
         )
-
-private val MarkdownEntry.postId: PostId get() = frontMatter.getString("id").let(::PostId)
-
-/**
- * Retrieves the language associated with the current Markdown entry.
- *
- * Example: `/blog-content/vi/2026-01-01.bai-viet.md` -> `Language.Vi`
- */
-private val MarkdownEntry.language: SiteLanguage
-    get() = SiteLanguage.fromCode(filePath.substringBefore("/"))
 
 private fun FrontMatterElement.getString(path: String) =
     requireNotNull(this[path]?.singleOrNull()) { "Missing required string value for path: $path" }

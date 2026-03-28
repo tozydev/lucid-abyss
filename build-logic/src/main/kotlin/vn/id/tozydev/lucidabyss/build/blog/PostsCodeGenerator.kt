@@ -20,7 +20,7 @@ import kotlin.reflect.full.memberProperties
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
-private const val PACKAGE_NAME = "vn.id.tozydev.lucidabyss.core"
+private const val PACKAGE_NAME = "vn.id.tozydev.lucidabyss.generated"
 private const val FILE_NAME = "Posts"
 private const val POSTS_PROPERTY_NAME = "Posts"
 

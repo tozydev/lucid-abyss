@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.core
+package vn.id.tozydev.lucidabyss.utils
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

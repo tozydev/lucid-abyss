@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.core
+package vn.id.tozydev.lucidabyss.utils
 
 object Links {
     const val GITHUB_URL = "https://github.com/tozydev"

@@ -9,9 +9,9 @@ import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.CustomEvent
 import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
-import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
+import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable

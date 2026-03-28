@@ -22,5 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "lucid-abyss"
 
-includeBuild("core")
 include("site")

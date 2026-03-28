@@ -11,5 +11,3 @@ dependencyResolutionManagement {
         }
     }
 }
-
-includeBuild("../core")

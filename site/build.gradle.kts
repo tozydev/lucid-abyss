@@ -57,8 +57,6 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlin.wrappers.browser)
 
-            implementation("vn.id.tozydev.lucidabyss:lucid-abyss-core")
-
             implementation(npm(npm.tailwindcss.asProvider()))
             implementation(npm(npm.tailwindcss.typography))
             implementation(npm(npm.tailwindcss.postcss))

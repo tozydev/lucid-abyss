@@ -8,9 +8,9 @@ import vn.id.tozydev.lucidabyss.components.widgets.Badge
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeSize
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeVariant
 import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
-import vn.id.tozydev.lucidabyss.core.SiteRoutes
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.formatDate
 import vn.id.tozydev.lucidabyss.utils.tw
 

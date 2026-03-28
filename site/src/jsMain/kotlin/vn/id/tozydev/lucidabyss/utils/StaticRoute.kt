@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.core
+package vn.id.tozydev.lucidabyss.utils
 
 interface StaticRoute {
     val home: String

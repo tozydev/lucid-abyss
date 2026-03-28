@@ -7,7 +7,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.Badge
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeSize
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeVariant
-import vn.id.tozydev.lucidabyss.core.SiteRoutes
+import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable

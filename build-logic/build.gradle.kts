@@ -13,15 +13,13 @@ kotlin {
 dependencies {
     implementation(libs.kotlinpoet)
     implementation(libs.snakeyaml)
+    implementation(libs.kobwebx.frontmatter)
+
     implementation(plugin(libs.plugins.kotlin.multiplatform))
     implementation(plugin(libs.plugins.compose.compiler))
     implementation(plugin(libs.plugins.kobweb.application))
     implementation(plugin(libs.plugins.kobwebx.markdown))
     implementation(plugin(libs.plugins.spotless))
-
-    implementation("vn.id.tozydev.lucidabyss:lucid-abyss-core")
-
-    implementation(libs.kobwebx.frontmatter)
 }
 
 @Suppress("UnusedReceiverParameter")

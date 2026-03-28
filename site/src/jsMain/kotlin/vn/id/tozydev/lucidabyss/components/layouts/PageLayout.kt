@@ -17,7 +17,7 @@ import vn.id.tozydev.lucidabyss.components.sections.SiteFooter
 import vn.id.tozydev.lucidabyss.components.sections.SiteHeader
 import vn.id.tozydev.lucidabyss.components.widgets.BackToTopButton
 import vn.id.tozydev.lucidabyss.components.widgets.MetaTag
-import vn.id.tozydev.lucidabyss.core.SiteLanguage
+import vn.id.tozydev.lucidabyss.utils.SiteLanguage
 import vn.id.tozydev.lucidabyss.utils.rememberScrollingState
 import vn.id.tozydev.lucidabyss.utils.tw
 

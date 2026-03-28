@@ -28,6 +28,7 @@ kobweb {
         }
     }
     markdown {
+        defaultLayout = ".components.layouts.PostLayout"
         handlers {
             useSilk = false
         }

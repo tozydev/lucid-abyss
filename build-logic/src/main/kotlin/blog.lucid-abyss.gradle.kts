@@ -19,7 +19,6 @@ plugins.withType<KobwebApplicationPlugin> {
     }
 
     kobwebBlock.extensions.configure<MarkdownBlock> {
-        defaultLayout = ".components.layouts.PostLayout"
         process = { entries -> processBlogMarkdowns(entries) }
 
         addSource(processBlogContent.flatMap { it.processedBlogContentDir }, ".pages.blog")

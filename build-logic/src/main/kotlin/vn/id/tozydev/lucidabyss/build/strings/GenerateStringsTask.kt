@@ -2,8 +2,8 @@ package vn.id.tozydev.lucidabyss.build.strings
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import org.gradle.api.DefaultTask
@@ -83,7 +83,9 @@ abstract class GenerateStringsTask : DefaultTask() {
 
         // Always generate shared files because they depend on the union of all inputs
         generateInterface(pkg, iName, structure).writeTo(outputFolder)
-        generateAccessor(pkg, iName, aName, structure).writeTo(outputFolder)
+
+        val defaultImplName = "$implPrefix${defaultLanguage.get().replaceFirstChar { it.uppercase() }}"
+        generateAccessor(pkg, iName, aName, defaultImplName, structure).writeTo(outputFolder)
 
         // Process implementations based on changes
         inputChanges.getFileChanges(stringsDir).forEach { change ->
@@ -153,6 +155,7 @@ abstract class GenerateStringsTask : DefaultTask() {
         pkg: String,
         interfaceName: String,
         accessorName: String,
+        defaultImplName: String,
         structure: Node.Object,
     ): FileSpec {
         val fileBuilder = FileSpec.builder(pkg, accessorName)
@@ -163,32 +166,13 @@ abstract class GenerateStringsTask : DefaultTask() {
                 .addSuperinterface(interfaceClassName)
                 .addModifiers(KModifier.PUBLIC)
 
-        val currentField =
-            PropertySpec
-                .builder("_current", interfaceClassName.copy(nullable = true))
-                .addModifiers(KModifier.PRIVATE)
-                .mutable(true)
-                .initializer("null")
-                .build()
-
         val currentProperty =
             PropertySpec
                 .builder("current", interfaceClassName)
                 .mutable(true)
-                .getter(
-                    FunSpec
-                        .getterBuilder()
-                        .addStatement("return _current ?: error(%S)", "$accessorName is not initialized")
-                        .build(),
-                ).setter(
-                    FunSpec
-                        .setterBuilder()
-                        .addParameter("value", interfaceClassName)
-                        .addStatement("_current = value")
-                        .build(),
-                ).build()
+                .initializer("%N", MemberName(pkg, defaultImplName))
+                .build()
 
-        objectBuilder.addProperty(currentField)
         objectBuilder.addProperty(currentProperty)
 
         val context = AccessorGenContext(objectBuilder, interfaceClassName)

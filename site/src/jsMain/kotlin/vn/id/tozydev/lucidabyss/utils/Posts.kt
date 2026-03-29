@@ -7,6 +7,11 @@ import vn.id.tozydev.lucidabyss.generated.Posts
 val Post.coverImagePathOrDefault: String
     get() = BasePath.prependTo(coverImage ?: "/images/default-cover.webp")
 
+fun List<Post>.allTags(): List<String> =
+    flatMap { it.tags }
+        .distinct()
+        .filter { it.isNotBlank() }
+
 private val postSlugIndices: Map<String, Int> by lazy {
     Posts.withIndex().associate { (index, post) -> post.slug to index }
 }

@@ -7,16 +7,12 @@ import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
-import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
-import vn.id.tozydev.lucidabyss.components.sections.BlogFilters
-import vn.id.tozydev.lucidabyss.components.sections.BlogGrid
-import vn.id.tozydev.lucidabyss.components.sections.BlogHeader
-import vn.id.tozydev.lucidabyss.components.widgets.Pagination
+import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
-import vn.id.tozydev.lucidabyss.utils.tw
+import vn.id.tozydev.lucidabyss.utils.allTags
 
 @InitRoute
 fun initTopicPage(ctx: InitRouteContext) {
@@ -47,27 +43,17 @@ fun TopicPage(ctx: PageContext) {
         }
     val tags =
         remember(filteredPosts) {
-            filteredPosts
-                .flatMap { it.tags }
-                .distinct()
-                .filter { it.isNotBlank() }
+            filteredPosts.allTags()
         }
 
-    Div({ tw("max-w-275 mx-auto w-full md:w-auto") }) {
-        BlogHeader(
-            title =
-                Strings.page.topic.header
-                    .title(topic),
-            description =
-                Strings.page.topic.header
-                    .description(topic),
-        )
-        BlogFilters(tags = tags, activeTag = "")
-        BlogGrid(posts = filteredPosts)
-        Pagination(
-            currentPage = 1,
-            totalPages = 1,
-            onPageChange = { /* Handle page change */ },
-        )
-    }
+    BlogListingContent(
+        posts = filteredPosts,
+        tags = tags,
+        title =
+            Strings.page.topic.header
+                .title(topic),
+        description =
+            Strings.page.topic.header
+                .description(topic),
+    )
 }

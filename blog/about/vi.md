@@ -132,3 +132,13 @@ has its own instructions for how it discovers your files, so please refer to the
 
 You can [read this blog post](https://bitspittle.dev/blog/2022/staticdeploy) for some concrete examples of exporting a
 Kobweb site to two popular static website hosting providers.
+
+```kotlin
+class AppEntry : AppEntryBase() {
+    @App
+    @Composable
+    override fun App() {
+        // ...
+    }
+}
+```

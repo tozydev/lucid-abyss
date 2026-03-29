@@ -1,8 +1,6 @@
-@file:OptIn(ExperimentalTime::class)
-
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
-import kotlin.time.ExperimentalTime
+import kotlinx.html.script
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -23,6 +21,11 @@ kobweb {
                     href =
                         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
                 )
+                link(rel = "stylesheet", href = "/prism/prism.css")
+                script {
+                    src = "/prism/prism.js"
+                    defer = true
+                }
             }
         }
         export {
@@ -33,6 +36,22 @@ kobweb {
         defaultLayout = ".components.layouts.PostLayout"
         handlers {
             useSilk = false
+
+            val widgetPath = "vn.id.tozydev.lucidabyss.components.widgets"
+
+            code = { code ->
+                var lang: String? = code.info
+
+                buildString {
+                    appendLine("$widgetPath.CodeBlock(")
+                    appendLine("${indent(1)}code =")
+                    appendLine("${indent(2)}\"\"\"${code.literal.escapeTripleQuotedText()}\"\"\",")
+                    if (lang != null) {
+                        appendLine("${indent(1)}lang = \"$lang\",")
+                    }
+                    append("${indent(1)})")
+                }
+            }
         }
     }
 }

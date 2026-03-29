@@ -21,7 +21,7 @@ fun SiteFooter(modifier: Modifier = Modifier) {
         Div({ tw("text-on-surface-variant text-sm font-body text-center md:text-left") }) {
             Text(Strings.section.footer.copyright)
         }
-        Div({ tw("flex items-center gap-6") }) {
+        Nav({ tw("flex items-center gap-6") }) {
             FooterLink(href = "#", label = Strings.section.footer.link.twitter)
             FooterLink(href = Links.GITHUB_URL, label = Strings.section.footer.link.github)
             FooterLink(href = Links.LINKEDIN_URL, label = Strings.section.footer.link.linkedin)

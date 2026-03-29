@@ -3,6 +3,7 @@ package vn.id.tozydev.lucidabyss.components.sections
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
 import vn.id.tozydev.lucidabyss.strings.Strings
@@ -11,8 +12,10 @@ import vn.id.tozydev.lucidabyss.utils.tw
 @Composable
 fun AboutProjects(modifier: Modifier = Modifier) {
     Section(Modifier.tw("mb-16 max-w-170 mx-auto").then(modifier).toAttrs()) {
-        H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
-            Text(Strings.page.about.projectsTitle)
+        Header {
+            H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
+                Text(Strings.page.about.projectsTitle)
+            }
         }
 
         Div(Modifier.tw("space-y-6").toAttrs()) {
@@ -53,7 +56,7 @@ private fun ProjectItem(
             ) {
                 Text(title)
             }
-            A(
+            Anchor(
                 href = href,
                 attrs = Modifier.tw("text-on-surface-variant hover:text-primary p-1").toAttrs(),
             ) {

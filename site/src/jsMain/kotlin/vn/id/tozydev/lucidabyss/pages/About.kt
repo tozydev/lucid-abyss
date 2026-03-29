@@ -41,7 +41,7 @@ fun AboutPage() {
             ).toAttrs(),
     ) {
         AboutHero()
-        Article(Modifier.tw("pt-16 md:pt-20 pb-12 md:pb-16 px-6 md:px-20").toAttrs()) {
+        Section(Modifier.tw("pt-16 md:pt-20 pb-12 md:pb-16 px-6 md:px-20").toAttrs()) {
             AboutContent()
             AboutSkills()
             AboutExperience()

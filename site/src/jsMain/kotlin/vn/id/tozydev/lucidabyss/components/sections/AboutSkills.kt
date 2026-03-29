@@ -10,8 +10,10 @@ import vn.id.tozydev.lucidabyss.utils.tw
 @Composable
 fun AboutSkills(modifier: Modifier = Modifier) {
     Section(Modifier.tw("mb-16 max-w-170 mx-auto").then(modifier).toAttrs()) {
-        H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
-            Text(Strings.page.about.skillsTitle)
+        Header {
+            H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
+                Text(Strings.page.about.skillsTitle)
+            }
         }
         Div(Modifier.tw("flex flex-wrap gap-3").toAttrs()) {
             Strings.page.about.skills.forEach { skill ->

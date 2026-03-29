@@ -75,8 +75,12 @@ fun PostLayout(
                     .tw("bg-surface-container-lowest rounded-2xl shadow-[0_20px_40px_rgba(42,40,37,0.06)] overflow-hidden w-full")
                     .toAttrs(),
             ) {
-                // Hero Image
-                Div({ tw("w-full h-75 md:h-125 relative") }) {
+                Div(
+                    {
+                        tw("w-full h-75 md:h-125 relative")
+                        attr("role", "figure")
+                    },
+                ) {
                     Img(
                         src = post.coverImagePathOrDefault,
                         alt = "",
@@ -88,7 +92,7 @@ fun PostLayout(
                 Div({ tw("px-5 md:px-12 lg:px-16 py-8 md:py-12") }) {
                     PostHeader(post)
 
-                    Div(
+                    Section(
                         Modifier
                             .tw(
                                 "prose prose-neutral max-w-none prose-p:text-[18px] prose-p:leading-[1.8] prose-p:text-on-surface prose-p:mb-8 prose-headings:font-headline prose-headings:font-bold prose-headings:text-primary prose-img:max-w-full prose-img:h-auto prose-pre:max-w-full prose-pre:overflow-x-auto prose-table:max-w-full prose-table:overflow-x-auto prose-table:block wrap-break-word w-full overflow-hidden",

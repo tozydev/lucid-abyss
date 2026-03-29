@@ -20,7 +20,7 @@ fun PostNavigation(
     val nextPost = post.nextPost
     if (previousPost == null && nextPost == null) return
 
-    Div(
+    Nav(
         Modifier
             .tw("grid grid-cols-1 md:grid-cols-2 gap-4")
             .then(modifier)

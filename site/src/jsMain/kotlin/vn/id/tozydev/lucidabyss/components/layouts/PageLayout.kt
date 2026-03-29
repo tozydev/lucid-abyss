@@ -38,23 +38,30 @@ fun PageLayout(
 
     MetaTag("description", pageProperties.description)
 
-    SiteHeader(
-        Modifier.thenIf(shouldHideHeaderAndNav) {
-            Modifier.tw("-translate-y-32")
-        },
-    )
+    Div {
+        SiteHeader(
+            Modifier.thenIf(shouldHideHeaderAndNav) {
+                Modifier.tw("-translate-y-32")
+            },
+        )
 
-    BottomNavbar()
+        BottomNavbar()
 
-    Main({ tw("pt-28 md:pt-32 pb-24 md:pb-20 px-4 max-w-7xl mx-auto") }) {
-        content()
+        Main(
+            {
+                id("main-content")
+                tw("pt-28 md:pt-32 pb-24 md:pb-20 px-4 max-w-7xl mx-auto")
+            },
+        ) {
+            content()
+        }
+
+        SiteFooter(Modifier.tw("max-w-6xl mx-auto mb-12 p-4"))
+
+        BackToTopButton(
+            Modifier.thenIf(shouldHideBackToTop) {
+                Modifier.opacity(0.0)
+            },
+        )
     }
-
-    SiteFooter(Modifier.tw("max-w-6xl mx-auto mb-12 p-4"))
-
-    BackToTopButton(
-        Modifier.thenIf(shouldHideBackToTop) {
-            Modifier.opacity(0.0)
-        },
-    )
 }

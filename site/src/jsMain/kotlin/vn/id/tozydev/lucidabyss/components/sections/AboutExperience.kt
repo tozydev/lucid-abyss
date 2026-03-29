@@ -10,8 +10,10 @@ import vn.id.tozydev.lucidabyss.utils.tw
 @Composable
 fun AboutExperience(modifier: Modifier = Modifier) {
     Section(Modifier.tw("mb-16 max-w-170 mx-auto").then(modifier).toAttrs()) {
-        H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
-            Text(Strings.page.about.experienceTitle)
+        Header {
+            H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
+                Text(Strings.page.about.experienceTitle)
+            }
         }
 
         Div(Modifier.tw("space-y-8").toAttrs()) {

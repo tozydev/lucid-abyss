@@ -10,8 +10,10 @@ import vn.id.tozydev.lucidabyss.utils.tw
 @Composable
 fun AboutContact(modifier: Modifier = Modifier) {
     Section(Modifier.tw("space-y-6 max-w-170 mx-auto").then(modifier).toAttrs()) {
-        H2(Modifier.tw("font-headline text-xl font-bold text-on-surface").toAttrs()) {
-            Text(Strings.page.about.contactTitle)
+        Header {
+            H2(Modifier.tw("font-headline text-xl font-bold text-on-surface").toAttrs()) {
+                Text(Strings.page.about.contactTitle)
+            }
         }
         P(Modifier.tw("text-on-surface-variant leading-relaxed").toAttrs()) {
             Text(Strings.page.about.contactDescription)

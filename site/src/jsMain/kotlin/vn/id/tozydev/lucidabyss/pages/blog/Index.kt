@@ -14,7 +14,7 @@ import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.allTags
 
 @InitRoute
-fun initBlogIndexPage(ctx: InitRouteContext) {
+fun initBlogPage(ctx: InitRouteContext) {
     ctx.data.add(
         PageProperties(
             title = Strings.page.blog.title,
@@ -26,7 +26,7 @@ fun initBlogIndexPage(ctx: InitRouteContext) {
 @Layout(PAGE_LAYOUT_FNQ)
 @Page
 @Composable
-fun BlogIndexPage() {
+fun BlogPage() {
     val posts = Posts
     val tags = remember(posts) { posts.allTags() }
 

@@ -14,7 +14,7 @@ import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
 
 @InitRoute
-fun initIndexPage(ctx: InitRouteContext) {
+fun initHomePage(ctx: InitRouteContext) {
     ctx.data.add(
         PageProperties(
             title = Strings.page.home.title,
@@ -26,7 +26,7 @@ fun initIndexPage(ctx: InitRouteContext) {
 @Page
 @Layout(PAGE_LAYOUT_FNQ)
 @Composable
-fun IndexPage() {
+fun HomePage() {
     HomeHero()
 
     FeaturedPosts(

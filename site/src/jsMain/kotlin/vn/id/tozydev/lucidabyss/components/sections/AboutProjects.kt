@@ -19,13 +19,13 @@ fun AboutProjects(modifier: Modifier = Modifier) {
         }
 
         Div(Modifier.tw("space-y-6").toAttrs()) {
-            ProjectItem(
+            AboutProjectItem(
                 title = Strings.page.about.projects.payflow.title,
                 description = Strings.page.about.projects.payflow.description,
                 tags = listOf("Kotlin", "Ktor", "Coroutines"),
                 href = "#",
             )
-            ProjectItem(
+            AboutProjectItem(
                 title = Strings.page.about.projects.taskminder.title,
                 description = Strings.page.about.projects.taskminder.description,
                 tags = listOf("Jetpack Compose", "MVI", "Room"),
@@ -36,7 +36,7 @@ fun AboutProjects(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun ProjectItem(
+private fun AboutProjectItem(
     title: String,
     description: String,
     tags: List<String>,

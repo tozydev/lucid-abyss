@@ -34,6 +34,11 @@ fun initAboutPage(ctx: InitRouteContext) {
 @Layout(PAGE_LAYOUT_FNQ)
 @Composable
 fun AboutPage() {
+    AboutPageContent()
+}
+
+@Composable
+private fun AboutPageContent() {
     Div(
         Modifier
             .tw(

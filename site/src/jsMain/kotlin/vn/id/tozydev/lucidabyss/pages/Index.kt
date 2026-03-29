@@ -10,6 +10,7 @@ import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.FeaturedPosts
 import vn.id.tozydev.lucidabyss.components.sections.HomeHero
+import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
 
@@ -27,9 +28,11 @@ fun initHomePage(ctx: InitRouteContext) {
 @Layout(PAGE_LAYOUT_FNQ)
 @Composable
 fun HomePage() {
-    HomeHero()
+    HomePageContent(featuredPosts = Posts.take(3))
+}
 
-    FeaturedPosts(
-        posts = Posts.take(3),
-    )
+@Composable
+private fun HomePageContent(featuredPosts: List<Post>) {
+    HomeHero()
+    FeaturedPosts(posts = featuredPosts)
 }

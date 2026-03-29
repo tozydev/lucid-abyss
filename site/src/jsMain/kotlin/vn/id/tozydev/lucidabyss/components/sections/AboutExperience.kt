@@ -17,21 +17,21 @@ fun AboutExperience(modifier: Modifier = Modifier) {
         }
 
         Div(Modifier.tw("space-y-8").toAttrs()) {
-            ExperienceItem(
+            AboutExperienceItem(
                 title = Strings.page.about.experience.senior.title,
                 period = Strings.page.about.experience.senior.period,
                 company = Strings.page.about.experience.senior.company,
                 description = Strings.page.about.experience.senior.description,
                 dotColor = "bg-primary",
             )
-            ExperienceItem(
+            AboutExperienceItem(
                 title = Strings.page.about.experience.mid.title,
                 period = Strings.page.about.experience.mid.period,
                 company = Strings.page.about.experience.mid.company,
                 description = Strings.page.about.experience.mid.description,
                 dotColor = "bg-secondary",
             )
-            ExperienceItem(
+            AboutExperienceItem(
                 title = Strings.page.about.experience.junior.title,
                 period = Strings.page.about.experience.junior.period,
                 company = Strings.page.about.experience.junior.company,
@@ -43,7 +43,7 @@ fun AboutExperience(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun ExperienceItem(
+private fun AboutExperienceItem(
     title: String,
     period: String,
     company: String,

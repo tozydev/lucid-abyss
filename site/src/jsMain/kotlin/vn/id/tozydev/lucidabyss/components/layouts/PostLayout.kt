@@ -19,6 +19,7 @@ import vn.id.tozydev.lucidabyss.components.sections.PostHeader
 import vn.id.tozydev.lucidabyss.components.sections.PostNavigation
 import vn.id.tozydev.lucidabyss.components.sections.PostTableOfContents
 import vn.id.tozydev.lucidabyss.components.sections.PostTags
+import vn.id.tozydev.lucidabyss.components.widgets.JsonLdScript
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.findPost
@@ -49,6 +50,10 @@ fun PostLayout(
     content: @Composable () -> Unit,
 ) {
     val post = ctx.data.getValue<Post>()
+    JsonLdScript(
+        id = "post-jsonld",
+        jsonLd = post.toBlogPostingJsonLd(),
+    )
 
     Div({ tw("max-w-275 mx-auto flex flex-col lg:flex-row gap-8 items-start w-full") }) {
         var contentRef by remember { mutableStateOf<HTMLElement?>(null) }
@@ -119,3 +124,24 @@ fun PostLayout(
         )
     }
 }
+
+private fun Post.toBlogPostingJsonLd(): String =
+    """
+    {
+      "@context":"https://schema.org",
+      "@type":"BlogPosting",
+      "headline":"${title.escapeJson()}",
+      "description":"${description.escapeJson()}",
+      "image":"${coverImagePathOrDefault.escapeJson()}",
+      "datePublished":"${publishedAt.toString().escapeJson()}",
+      "author":{"@type":"Person","name":"${author.escapeJson()}"},
+      "keywords":"${tags.joinToString(",").escapeJson()}"
+    }
+    """.trimIndent()
+
+private fun String.escapeJson(): String =
+    replace("\\", "\\\\")
+        .replace("\"", "\\\"")
+        .replace("\n", "\\n")
+        .replace("\r", "\\r")
+        .replace("\t", "\\t")

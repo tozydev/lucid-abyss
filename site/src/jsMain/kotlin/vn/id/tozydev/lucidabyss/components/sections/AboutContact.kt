@@ -3,6 +3,7 @@ package vn.id.tozydev.lucidabyss.components.sections
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
+import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -19,7 +20,7 @@ fun AboutContact(modifier: Modifier = Modifier) {
             Text(Strings.page.about.contactDescription)
         }
         Div {
-            A(
+            Anchor(
                 href = "mailto:${Strings.page.about.contactEmail}",
                 attrs =
                     Modifier

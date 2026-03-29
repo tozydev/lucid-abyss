@@ -17,14 +17,14 @@ fun AboutSkills(modifier: Modifier = Modifier) {
         }
         Div(Modifier.tw("flex flex-wrap gap-3").toAttrs()) {
             Strings.page.about.skills.forEach { skill ->
-                SkillTag(skill)
+                AboutSkillTag(skill)
             }
         }
     }
 }
 
 @Composable
-private fun SkillTag(name: String) {
+private fun AboutSkillTag(name: String) {
     Span(
         Modifier
             .tw("px-5 py-2.5 font-label text-[13px] font-bold rounded-xl bg-surface-container-low text-on-surface-variant")

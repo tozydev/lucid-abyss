@@ -9,6 +9,7 @@ import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLHeadingElement
 import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
 import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.utils.rememberActiveHeadingId
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -17,7 +18,11 @@ fun PostTableOfContents(
     modifier: Modifier = Modifier,
     intersectionObserverOptions: IntersectionObserver.Options? = null,
 ) {
-    var currentId by remember { mutableStateOf<String?>(null) }
+    val currentId =
+        rememberActiveHeadingId(
+            headings = headings,
+            intersectionObserverOptions = intersectionObserverOptions,
+        )
 
     Aside(
         Modifier
@@ -26,9 +31,11 @@ fun PostTableOfContents(
             .toAttrs(),
     ) {
         Div({ tw("bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant/30 shadow-sm") }) {
-            H3({ tw("font-headline font-extrabold text-primary text-base mb-4 flex items-center gap-2") }) {
-                MaterialSymbol("format_list_bulleted", Modifier.tw("text-secondary text-lg"))
-                Text(Strings.widget.tableOfContents.title)
+            Header {
+                H3({ tw("font-headline font-extrabold text-primary text-base mb-4 flex items-center gap-2") }) {
+                    MaterialSymbol("format_list_bulleted", Modifier.tw("text-secondary text-lg"))
+                    Text(Strings.widget.tableOfContents.title)
+                }
             }
 
             PostStaticTableOfContents(
@@ -36,43 +43,6 @@ fun PostTableOfContents(
                 currentId = currentId,
             )
         }
-    }
-
-    DisposableEffect(headings, intersectionObserverOptions) {
-        if (headings.isEmpty()) return@DisposableEffect onDispose { }
-        val headingsInRange = mutableSetOf<String>()
-
-        val observer =
-            IntersectionObserver(intersectionObserverOptions) { entries ->
-                entries.forEach { entry ->
-                    if (entry.isIntersecting) {
-                        headingsInRange += entry.target.id
-                    } else {
-                        headingsInRange -= entry.target.id
-                    }
-                }
-
-                if (headingsInRange.isNotEmpty()) {
-                    currentId = headings.firstOrNull { it.id in headingsInRange }?.id
-                    return@IntersectionObserver
-                }
-
-                val nextHeading = entries.firstOrNull { it.boundingClientRect.top > it.rootBounds.top }?.target
-                if (nextHeading != null) {
-                    currentId = headings.getOrNull(headings.indexOf(nextHeading) - 1)?.id
-                } else if (currentId == null) {
-                    // Handle case where page starts past the last heading
-                    val lastEntry = entries.lastOrNull()
-                    if (lastEntry != null && lastEntry.boundingClientRect.top <= lastEntry.rootBounds.top) {
-                        currentId = lastEntry.target.id
-                    }
-                }
-            }
-
-        headings.forEach { heading ->
-            observer.observe(heading)
-        }
-        onDispose { observer.disconnect() }
     }
 }
 

@@ -9,6 +9,7 @@ import com.varabyte.kobweb.core.layout.Layout
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
+import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.allTags
@@ -30,8 +31,25 @@ fun BlogPage() {
     val posts = Posts
     val tags = remember(posts) { posts.allTags() }
 
+    BlogPageContent(
+        posts = posts,
+        tags = tags,
+    )
+}
+
+@Composable
+private fun BlogPageContent(
+    posts: List<Post>,
+    tags: List<String>,
+    title: String = Strings.page.blog.header.title,
+    description: String = Strings.page.blog.header.description,
+    activeTag: String = "",
+) {
     BlogListingContent(
         posts = posts,
         tags = tags,
+        title = title,
+        description = description,
+        activeTag = activeTag,
     )
 }

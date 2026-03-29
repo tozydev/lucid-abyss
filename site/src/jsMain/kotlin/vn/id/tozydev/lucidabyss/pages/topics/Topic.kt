@@ -10,6 +10,7 @@ import com.varabyte.kobweb.core.layout.Layout
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
+import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.allTags
@@ -46,7 +47,7 @@ fun TopicPage(ctx: PageContext) {
             filteredPosts.allTags()
         }
 
-    BlogListingContent(
+    TopicPageContent(
         posts = filteredPosts,
         tags = tags,
         title =
@@ -55,5 +56,20 @@ fun TopicPage(ctx: PageContext) {
         description =
             Strings.page.topic.header
                 .description(topic),
+    )
+}
+
+@Composable
+private fun TopicPageContent(
+    posts: List<Post>,
+    tags: List<String>,
+    title: String,
+    description: String,
+) {
+    BlogListingContent(
+        posts = posts,
+        tags = tags,
+        title = title,
+        description = description,
     )
 }

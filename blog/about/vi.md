@@ -2,7 +2,7 @@
 title: About
 author: tozydev
 description: This is a description of the About page.
-publishedAt: 2025-12-15T14:30:00Z
+publishedAt: 2024-06-27T00:00:00Z
 topic: guide
 tags:
   - kobweb

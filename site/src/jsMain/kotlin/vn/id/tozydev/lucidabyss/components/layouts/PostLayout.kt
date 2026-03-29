@@ -89,7 +89,14 @@ fun PostLayout(
                     Img(
                         src = post.coverImagePathOrDefault,
                         alt = "",
-                        attrs = { tw("w-full h-full object-cover") },
+                        attrs = {
+                            tw("w-full h-full object-cover")
+                            attr("width", "1600")
+                            attr("height", "900")
+                            attr("loading", "eager")
+                            attr("fetchpriority", "high")
+                            attr("decoding", "async")
+                        },
                     )
                     Div({ tw("absolute inset-0 bg-linear-to-t from-primary/30 to-transparent") })
                 }

@@ -11,9 +11,9 @@ import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Post
-import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
-import vn.id.tozydev.lucidabyss.utils.allTags
+import vn.id.tozydev.lucidabyss.utils.postsForTopic
+import vn.id.tozydev.lucidabyss.utils.tagsForTopic
 
 @InitRoute
 fun initTopicPage(ctx: InitRouteContext) {
@@ -35,17 +35,8 @@ fun initTopicPage(ctx: InitRouteContext) {
 @Composable
 fun TopicPage(ctx: PageContext) {
     val topic = remember(ctx.route.params) { ctx.route.params["topic"] ?: "" }
-    val allPosts = Posts
-    val filteredPosts =
-        remember(allPosts, topic) {
-            allPosts
-                .filter { it.topic == topic }
-                .sortedByDescending { it.publishedAt }
-        }
-    val tags =
-        remember(filteredPosts) {
-            filteredPosts.allTags()
-        }
+    val filteredPosts = remember(topic) { postsForTopic(topic) }
+    val tags = remember(topic) { tagsForTopic(topic) }
 
     TopicPageContent(
         posts = filteredPosts,

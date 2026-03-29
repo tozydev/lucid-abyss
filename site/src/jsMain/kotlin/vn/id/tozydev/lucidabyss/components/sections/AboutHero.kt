@@ -13,7 +13,16 @@ fun AboutHero(modifier: Modifier = Modifier) {
         Img(
             src = "/images/default-cover.webp",
             alt = Strings.page.about.heroImageAlt,
-            attrs = Modifier.tw("w-full h-full object-cover").toAttrs(),
+            attrs =
+                Modifier
+                    .tw("w-full h-full object-cover")
+                    .toAttrs {
+                        attr("width", "1600")
+                        attr("height", "640")
+                        attr("loading", "eager")
+                        attr("fetchpriority", "high")
+                        attr("decoding", "async")
+                    },
         )
         Div(
             Modifier
@@ -32,7 +41,15 @@ fun AboutHero(modifier: Modifier = Modifier) {
                 Img(
                     src = "/images/avatar_96x.webp",
                     alt = Strings.page.about.profileImageAlt,
-                    attrs = Modifier.tw("w-full h-full object-cover").toAttrs(),
+                    attrs =
+                        Modifier
+                            .tw("w-full h-full object-cover")
+                            .toAttrs {
+                                attr("width", "128")
+                                attr("height", "128")
+                                attr("loading", "eager")
+                                attr("decoding", "async")
+                            },
                 )
             }
         }

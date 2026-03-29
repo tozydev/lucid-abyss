@@ -12,7 +12,7 @@ import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
-import vn.id.tozydev.lucidabyss.utils.allTags
+import vn.id.tozydev.lucidabyss.utils.allPostTags
 
 @InitRoute
 fun initBlogPage(ctx: InitRouteContext) {
@@ -29,7 +29,7 @@ fun initBlogPage(ctx: InitRouteContext) {
 @Composable
 fun BlogPage() {
     val posts = Posts
-    val tags = remember(posts) { posts.allTags() }
+    val tags = remember { allPostTags }
 
     BlogPageContent(
         posts = posts,

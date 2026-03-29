@@ -31,13 +31,15 @@ fun BlogFilters(
             modifier = Modifier.tw("shadow-sm font-bold"),
         )
         tags.forEach { tag ->
-            Badge(
-                text = tag,
-                href = SiteRoutes.tag(tag),
-                variant = if (activeTag == tag) BadgeVariant.Primary else BadgeVariant.Surface,
-                size = BadgeSize.Lg,
-                modifier = Modifier.tw("shadow-sm font-bold"),
-            )
+            key(tag) {
+                Badge(
+                    text = tag,
+                    href = SiteRoutes.tag(tag),
+                    variant = if (activeTag == tag) BadgeVariant.Primary else BadgeVariant.Surface,
+                    size = BadgeSize.Lg,
+                    modifier = Modifier.tw("shadow-sm font-bold"),
+                )
+            }
         }
     }
 }

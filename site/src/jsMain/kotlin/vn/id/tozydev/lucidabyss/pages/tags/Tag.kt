@@ -11,9 +11,9 @@ import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Post
-import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
-import vn.id.tozydev.lucidabyss.utils.allTags
+import vn.id.tozydev.lucidabyss.utils.allPostTags
+import vn.id.tozydev.lucidabyss.utils.postsForTag
 
 @InitRoute
 fun initTagPage(ctx: InitRouteContext) {
@@ -35,17 +35,8 @@ fun initTagPage(ctx: InitRouteContext) {
 @Composable
 fun TagPage(ctx: PageContext) {
     val tag = remember(ctx.route.params) { ctx.route.params["tag"] ?: "" }
-    val allPosts = Posts
-    val filteredPosts =
-        remember(allPosts, tag) {
-            allPosts
-                .filter { it.tags.contains(tag) }
-                .sortedByDescending { it.publishedAt }
-        }
-    val tags =
-        remember(allPosts) {
-            allPosts.allTags()
-        }
+    val filteredPosts = remember(tag) { postsForTag(tag) }
+    val tags = remember { allPostTags }
 
     TagPageContent(
         posts = filteredPosts,

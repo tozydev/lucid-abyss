@@ -43,6 +43,9 @@ fun PostCard(
                         tw("w-full h-full object-cover transition-transform duration-500 group-hover:scale-110")
                         attr("width", "720")
                         attr("height", "360")
+                        attr("loading", "lazy")
+                        attr("fetchpriority", "low")
+                        attr("decoding", "async")
                     },
                 )
             }

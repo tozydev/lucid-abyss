@@ -58,7 +58,12 @@ fun PostHeader(
                 Img(
                     src = "/images/avatar_96x.webp",
                     alt = Strings.page.about.profileImageAlt,
-                    attrs = { tw("w-full h-full object-cover") },
+                    attrs = {
+                        tw("w-full h-full object-cover")
+                        attr("width", "96")
+                        attr("height", "96")
+                        attr("decoding", "async")
+                    },
                 )
             }
             Div {

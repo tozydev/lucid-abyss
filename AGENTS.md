@@ -7,9 +7,9 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 
 ## Tech Stack
 
-- **Language:** Kotlin 2.3.0 (JVM & JS targets).
-- **Framework:** Kobweb 0.23.3 (based on JetBrains Compose HTML).
-- **Styling:** Tailwind CSS 4.x (configured via PostCSS) and DaisyUI 5.x (Component library).
+- **Language:** Kotlin JS 2.3.20.
+- **Framework:** Kobweb 0.24.0 (based on JetBrains Compose HTML).
+- **Styling:** Tailwind CSS 4.x (configured via PostCSS) and a custom design system (based on Material Design 3 tokens).
 - **Build Tool:** Gradle (Kotlin DSL).
 - **Internationalization:** YAML localization files (default: Vietnamese `vi`)
 - **Deployment:** Cloudflare Workers (Static layout export).
@@ -25,15 +25,15 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 
 - `site/`: The main Kobweb application.
     - `src/jsMain/kotlin/.../pages/`: Page entry points.
-    - `src/jsMain/kotlin/.../components/`: Reusable UI components.
-    - `src/jsMain/kotlin/.../layouts/`: Layouts for pages.
-    - `src/jsMain/resources/public/`: Static assets (Images, Fonts, etc).
-    - `src/jsMain/resources/styles.css`: Tailwind CSS configuration.
-    - `src/jsMain/resources/strings/`: Localization files (`en.yaml`, `vi.yaml`).
+    - `src/jsMain/kotlin/.../components/pages/`: Reusable layouts for pages.
+    - `src/jsMain/kotlin/.../components/sections/`: Reusable UI components for sections (e.g., header, footer, sidebar).
+    - `src/jsMain/kotlin/.../components/widgets/`: Low-level UI elements use across the site (e.g., buttons, cards).
+    - `src/jsMain/resources/public/`: Static assets (Images, Fonts, etc.).
+    - `src/jsMain/resources/styles.css`: Tailwind CSS 4 configuration.
+    - `src/jsMain/resources/strings/`: Localization files (`vi.yaml`).
 
 - `blog/`: Raw Markdown content for blog posts (DO NOT TOUCH).
-- `build-logic/`: Gradle convention plugins (e.g blog post processing).
-- `core/`: Shared logic and models (`BlogPost` data class, `SiteLanguage` enum).
+- `build-logic/`: Gradle convention plugins (e.g., blog post-processing, string type-safe generation).
 
 ## Notable Commands
 
@@ -46,34 +46,44 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 
 ## Boundaries & Rules
 
-- **NEVER** modify `blog` content except for mocking up new posts.
-- **ALWAYS** update `en.yaml` and `vi.yaml` when adding new text.
+- **NEVER** modify `blog` content.
+- **ALWAYS** update `vi.yaml` when adding new text.
 - **ALWAYS** run `./gradlew build` after making significant changes.
 - **ALWAYS** run `./gradlew spotlessApply` after finalizing code changes.
 - **ASK FIRST** before creating new Gradle modules or changing `build-logic`.
 - **ASK FIRST** before adding new dependencies.
-    - **ALWAYS** define dependencies in `gradle/libs.versions.toml` or `gradle/npm.versions.toml`.
-    - **NEVER** hardcode versions in `build.gradle.kts`.
+- **ALWAYS** define dependencies in `gradle/libs.versions.toml` or `gradle/npm.versions.toml`.
+- **NEVER** hardcode versions in `build.gradle.kts`.
 - **PREFER** using `{ }` attrs block over `Modifier.toAttrs()` for Compose HTML composables.
-- Refer to [DaisyUI llms.txt](https://daisyui.com/llms.txt) when working with DaisyUI.
+
+## Common Workflows (UI Development)
+
+1. Take the request and determine the user intent.
+2. Load relevant files, documentation, or memories to understand the context.
+3. Design the UI based on the user intent and context.
+4. Implement the UI using Kobweb and Tailwind CSS.
+5. Export the static site to `site/.kobweb/site/` and verify the UI.
+6. Show the screenshot if applicable.
 
 ## Coding Standards & Patterns
 
-### 1\. Styling (Tailwind \+ DaisyUI)
+### 1\. Styling (Tailwind)
 
 **ALWAYS** use the custom `tw` utility for styling.
 **NEVER** use standard CSS classes or inline styles unless absolutely necessary.
 
 - **Good:**
   ```kotlin
-  Div({ tw("card bg-base-100") }) { /* ... */ }
+  Div({ tw("m-4 text-lg bg-primary-container") }) { /* ... */ } // When use without Modifier.
   // OR
-  Div(Modifier.tw("card bg-base-100 shadow-xl").then(modifier).toAttrs()) { /* ... */ }
+  Div(Modifier.tw("m-4 text-lg bg-primary-container").then(modifier).toAttrs()) { /* ... */ } // When use or mix with Modifier.
   ```
 
 - **Bad:**
   ```kotlin
-  Div(attrs = { classes("card", "bg-base-100") }) { /* ... */ }
+  Div({ classes("m-4", "text-lg") }) { /* ... */ }
+  // OR
+  Div(Modifier.tw("m-4 text-lg").toAttrs()) { /* ... */ } // Only use `tw` attr, don't need to use Modifier and convert to Attrs.
   ```
 
 ### 2\. Internationalization
@@ -102,7 +112,7 @@ Create a new component for reusable UI elements. New components should have:
 // Example:
 @Composable
 fun MyComponent(modifier: Modifier = Modifier) {
-    Div(Modifier.tw("card bg-base-100 shadow-xl").then(modifier).toAttrs()) {
+    Div(Modifier.tw("m-4 text-lg bg-primary-container").then(modifier).toAttrs()) {
 
     }
 }

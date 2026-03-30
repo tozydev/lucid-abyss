@@ -5,10 +5,10 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.navigation.Anchor
-import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.*
-import org.w3c.dom.CustomEvent
-import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
+import vn.id.tozydev.lucidabyss.components.widgets.DarkModeIcon
+import vn.id.tozydev.lucidabyss.components.widgets.LightModeIcon
+import vn.id.tozydev.lucidabyss.components.widgets.RoutineIcon
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
@@ -93,50 +93,25 @@ private fun HeaderLink(
 
 @Composable
 private fun NavbarActions() {
-    var themeMode by ThemeMode.currentState
-
     Div({ tw("flex items-center gap-4") }) {
-        NavbarIconButton(
-            icon = "search",
-            onClick = {
-                window.dispatchEvent(CustomEvent("open-command-overlay"))
-            },
-        )
-        NavbarIconButton(
-            icon = "language",
-            onClick = {
-                console.log("Language switch not fully implemented yet")
-            },
-        )
-        Button(
-            {
-                id("theme-toggle")
-                tw("text-on-surface scale-95 active:scale-90 transition-transform")
-                onClick { themeMode = themeMode.cycle }
-            },
-        ) {
-            val icon =
-                when (themeMode) {
-                    ThemeMode.Light -> "light_mode"
-                    ThemeMode.Dark -> "dark_mode"
-                    ThemeMode.System -> "settings_brightness"
-                }
-            MaterialSymbol(icon)
-        }
+        ThemeToggleButton()
     }
 }
 
 @Composable
-private fun NavbarIconButton(
-    icon: String,
-    onClick: () -> Unit,
-) {
+private fun ThemeToggleButton() {
+    var themeMode by ThemeMode.currentState
     Button(
         {
-            tw("text-on-surface scale-95 active:scale-90 transition-transform")
-            onClick { onClick() }
+            id("theme-toggle")
+            tw("text-on-surface scale-95 active:scale-90 transition-transform cursor-pointer")
+            onClick { themeMode = themeMode.cycle }
         },
     ) {
-        MaterialSymbol(icon)
+        when (themeMode) {
+            ThemeMode.Light -> LightModeIcon()
+            ThemeMode.Dark -> DarkModeIcon()
+            ThemeMode.System -> RoutineIcon()
+        }
     }
 }

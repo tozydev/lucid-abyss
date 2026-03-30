@@ -37,6 +37,8 @@ kobweb {
         handlers {
             useSilk = false
 
+            idGenerator = { heading -> slugify(heading) }
+
             val widgetPath = "vn.id.tozydev.lucidabyss.components.widgets"
 
             code = { code ->

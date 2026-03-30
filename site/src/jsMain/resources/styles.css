@@ -2,7 +2,14 @@
 
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+    --font-headline: "Quicksand", sans-serif;
+    --font-body: "Be Vietnam Pro", sans-serif;
+    --font-label: "Quicksand", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
     --color-tertiary-fixed-dim: #c4c9b1;
     --color-on-surface-variant: #414941;
     --color-surface-container: #f1eee7;
@@ -50,15 +57,9 @@
     --color-inverse-surface: #31312c;
     --color-on-background: #1c1c18;
     --color-secondary-container: #fe9663;
-
-    --font-headline: "Quicksand", sans-serif;
-    --font-body: "Be Vietnam Pro", sans-serif;
-    --font-label: "Quicksand", sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
 }
 
 :root.dark {
-    /* Material 3 custom theme overrides to dark */
     --color-tertiary-fixed-dim: #c4c9b1;
     --color-on-surface-variant: #c1c9bf;
     --color-surface-container: #1e201d;
@@ -106,8 +107,6 @@
     --color-inverse-surface: #e2e3dd;
     --color-on-background: #e2e3dd;
     --color-secondary-container: #7a3003;
-
-
 }
 
 /* Hardcoded hex overrides for Dark Mode */

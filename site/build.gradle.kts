@@ -13,6 +13,7 @@ plugins {
 kobweb {
     app {
         index {
+            lang = "vi"
             head.add {
                 link("/lucid-abyss.css", rel = "stylesheet")
                 link(rel = "stylesheet", href = "/fonts/faces.css")

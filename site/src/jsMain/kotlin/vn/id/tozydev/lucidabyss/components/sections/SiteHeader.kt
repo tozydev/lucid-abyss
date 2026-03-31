@@ -24,10 +24,11 @@ fun SiteHeader(modifier: Modifier = Modifier) {
             .toAttrs(),
     ) {
         Nav(
-            Modifier
-                .tw(
+            {
+                tw(
                     "flex justify-between items-center px-4 md:px-6 py-3 bg-surface/80 backdrop-blur-md rounded-xl border-none shadow-[0_20px_40px_rgba(42,40,37,0.06)] tonal-contrast-no-borders",
-                ).toAttrs(),
+                )
+            },
         ) {
             NavbarLogo()
             NavbarLinks()

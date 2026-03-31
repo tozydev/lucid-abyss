@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kobweb.application)
     id("blog.lucid-abyss")
     id("strings.lucid-abyss")
+    id("pagefind.lucid-abyss")
 }
 
 kobweb {
@@ -86,6 +87,7 @@ kotlin {
             implementation(npm(npm.webpack.loader.postcss))
             implementation(npm(npm.webpack.plugin.miniCssExtract))
             implementation(npm(npm.webpack.plugin.cssMinimizer))
+            implementation(npm(npm.pagefind))
         }
     }
 }
@@ -99,7 +101,7 @@ tasks {
         into(layout.projectDirectory.dir(".kobweb/site"))
     }
     kobwebExport {
-        finalizedBy(copyProductionStylesheets)
+        finalizedBy(copyProductionStylesheets, pagefindIndex)
     }
 
     val copyDevStylesheets by registering(Copy::class) {

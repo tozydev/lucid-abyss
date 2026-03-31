@@ -3,6 +3,8 @@
  License Apache 2.0 (https://github.com/google/material-design-icons/blob/f2749daed485839fb131415339546549d302bebc/LICENSE)
 */
 
+@file:Suppress("ktlint:compose:param-order-check")
+
 package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
@@ -49,7 +51,6 @@ fun RoutineIcon(modifier: Modifier = Modifier) {
 }
 
 @Composable
-@Suppress("ktlint:compose:param-order-check")
 private fun IconWrapper(
     modifier: Modifier = Modifier,
     content: ContentBuilder<SVGSVGElement>,

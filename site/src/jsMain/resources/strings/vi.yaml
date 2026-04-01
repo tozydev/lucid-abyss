@@ -90,10 +90,9 @@ section:
       twitter: Twitter
   header:
     menu:
-      blog: Bài viết
       home: Trang chủ
-      me: Giới thiệu
-      projects: Dự án
+      blog: Blog
+      about: Về tôi
   hero:
     title:
       - "Chào bạn, tôi là "

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 @import "tailwindcss";
 
 @plugin "@tailwindcss/typography";
@@ -5,9 +7,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-headline: "Quicksand", sans-serif;
+    --font-headline: "Nunito", sans-serif;
     --font-body: "Be Vietnam Pro", sans-serif;
-    --font-label: "Quicksand", sans-serif;
+    --font-label: "Nunito", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
     --color-tertiary-fixed-dim: #c4c9b1;
@@ -57,6 +59,8 @@
     --color-inverse-surface: #31312c;
     --color-on-background: #1c1c18;
     --color-secondary-container: #fe9663;
+
+    --shadow-soft: 0 20px 40px rgba(42, 40, 37, 0.06);
 }
 
 :root.dark {
@@ -136,14 +140,6 @@
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     display: inline-block;
     line-height: 1;
-}
-
-.tonal-contrast-no-borders {
-    border: none !important;
-}
-
-.glass-effect {
-    backdrop-filter: blur(12px);
 }
 
 .skill-tag {

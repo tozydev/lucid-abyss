@@ -18,28 +18,33 @@ import vn.id.tozydev.lucidabyss.utils.tw
 fun SiteHeader(modifier: Modifier = Modifier) {
     Header(
         Modifier
-            .tw(
-                "fixed top-0 left-1/2 -translate-x-1/2 w-[calc(100%-1rem)] md:w-[calc(100%-2rem)] max-w-[800px] z-50 mt-4",
-            ).then(modifier)
+            .tw("fixed top-4 inset-x-2 md:inset-x-4 max-w-200 mx-auto z-50 select-none")
+            .then(modifier)
             .toAttrs(),
     ) {
         Nav(
             {
                 tw(
-                    "flex justify-between items-center px-4 md:px-6 py-3 bg-surface/80 backdrop-blur-md rounded-xl border-none shadow-[0_20px_40px_rgba(42,40,37,0.06)] tonal-contrast-no-borders",
+                    "flex justify-between items-center px-4 md:px-6 py-3 bg-surface/80 backdrop-blur-md rounded-xl border border-outline/10 antialiased shadow-soft",
                 )
             },
         ) {
-            NavbarLogo()
+            Div({ tw("flex-1") }) {
+                NavbarLogo()
+            }
+
             NavbarLinks()
-            NavbarActions()
+
+            Div({ tw("flex-1 flex justify-end") }) {
+                NavbarActions()
+            }
         }
     }
 }
 
 @Composable
 private fun NavbarLogo() {
-    Div({ tw("text-xl font-black text-on-surface font-headline tracking-tight") }) {
+    Div({ tw("text-xl font-extrabold text-on-surface font-headline hover:opacity-80 transition-opacity") }) {
         Anchor(href = SiteRoutes.home) {
             Text("tozy")
             Span({ tw("text-primary") }) {
@@ -51,44 +56,45 @@ private fun NavbarLogo() {
 
 @Composable
 private fun NavbarLinks() {
-    Div({ tw("hidden md:flex items-center gap-6 md:absolute md:left-1/2 md:-translate-x-1/2") }) {
-        HeaderLink(href = SiteRoutes.home) { Text(Strings.section.header.menu.home) }
-        HeaderLink(href = SiteRoutes.blog) { Text(Strings.section.header.menu.blog) }
-        HeaderLink(href = SiteRoutes.about) { Text(Strings.section.header.menu.me) }
+    Div({ tw("hidden md:flex flex-none items-center") }) {
+        Ul({ tw("flex items-center gap-6") }) {
+            HeaderLink(href = SiteRoutes.home) { Text(Strings.section.header.menu.home) }
+            HeaderLink(href = SiteRoutes.blog) { Text(Strings.section.header.menu.blog) }
+            HeaderLink(href = SiteRoutes.about) { Text(Strings.section.header.menu.about) }
+        }
     }
 }
 
 @Composable
 private fun HeaderLink(
     href: String,
-    modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
     val ctx = rememberPageContext()
     val isActive =
         remember(ctx.route.path, href) {
-            val homeRoute = SiteRoutes.home
-            if (href == homeRoute) {
-                ctx.route.path == homeRoute
+            if (href == SiteRoutes.home) {
+                ctx.route.path == href
             } else {
                 ctx.route.path.startsWith(href)
             }
         }
 
-    val activeClasses =
-        "text-primary font-extrabold border-b-2 border-primary/20 font-headline transition-colors scale-95 active:scale-90"
-    val inactiveClasses =
-        "text-on-surface-variant font-medium font-headline hover:text-primary transition-colors scale-95 active:scale-90 transition-transform"
-
-    Anchor(
-        href = href,
-        attrs =
-            Modifier
-                .tw(if (isActive) activeClasses else inactiveClasses)
-                .then(modifier)
-                .toAttrs(),
+    Li(
+        Modifier
+            .toAttrs {
+                if (isActive) {
+                    tw("text-primary font-extrabold border-b-2 border-primary/20 font-label transition-colors scale-95 active:scale-90")
+                } else {
+                    tw(
+                        "text-on-surface-variant font-medium font-label hover:text-primary transition scale-95 active:scale-90",
+                    )
+                }
+            },
     ) {
-        content()
+        Anchor(href = href) {
+            content()
+        }
     }
 }
 

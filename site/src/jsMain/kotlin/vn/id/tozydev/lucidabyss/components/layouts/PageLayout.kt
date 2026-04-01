@@ -40,9 +40,11 @@ fun PageLayout(
 
     Div {
         SiteHeader(
-            Modifier.thenIf(shouldHideHeaderAndNav) {
-                Modifier.tw("-translate-y-32")
-            },
+            Modifier
+                .tw("transition-transform duration-300")
+                .thenIf(shouldHideHeaderAndNav) {
+                    Modifier.tw("-translate-y-32")
+                },
         )
 
         BottomNavbar()

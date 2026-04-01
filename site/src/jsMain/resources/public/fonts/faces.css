@@ -1,7 +1,7 @@
 @font-face {
-    font-family: "Quicksand";
-    src: url("./Quicksand/Quicksand[wght].ttf");
-    font-weight: 100 700;
+    font-family: "Nunito";
+    src: url("./Nunito/Nunito[ital,wght].ttf");
+    font-weight: 200 1000;
     font-display: swap;
 }
 

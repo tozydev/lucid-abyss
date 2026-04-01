@@ -167,3 +167,13 @@
     background: #c1c9bf;
     border-radius: 10px;
 }
+
+@layer utilities {
+    .link {
+        @apply text-primary
+    }
+
+    .link-hover {
+        @apply no-underline hover:underline
+    }
+}

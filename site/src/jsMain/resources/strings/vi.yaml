@@ -79,20 +79,26 @@ page:
     description: Nơi trưng bày các sản phẩm và dự án của tôi.
 section:
   footer:
-    copyright: "© 2026 tozydev. Blog cá nhân chia sẻ kiến thức lập trình."
+    copyright:
+      - "© 2026 tozydev. Mã nguồn mở tại "
+      - GitHub
+    built-with:
+      - "Xây dựng với "
+      - Kotlin
+      - " và "
+      - Kobweb
     link:
       bluesky: Bluesky
       email: Email
       github: GitHub
-      linkedin: LinkedIn
-      privacy: Bảo mật
       rss: RSS
-      twitter: Twitter
+
   header:
     menu:
       home: Trang chủ
       blog: Blog
       about: Về tôi
+
   hero:
     title:
       - "Chào bạn, tôi là "

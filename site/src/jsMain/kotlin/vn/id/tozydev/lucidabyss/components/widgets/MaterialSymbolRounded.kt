@@ -51,6 +51,28 @@ fun RoutineIcon(modifier: Modifier = Modifier) {
 }
 
 @Composable
+fun ContentCopyIcon(modifier: Modifier = Modifier) {
+    IconWrapper(modifier) {
+        Path {
+            d(
+                "M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-520q0-17 11.5-28.5T160-720q17 0 28.5 11.5T200-680v520h400q17 0 28.5 11.5T640-120q0 17-11.5 28.5T600-80H200Zm160-240v-480 480Z",
+            )
+        }
+    }
+}
+
+@Composable
+fun CheckIcon(modifier: Modifier = Modifier) {
+    IconWrapper(modifier) {
+        Path {
+            d(
+                "m382-354 339-339q12-12 28-12t28 12q12 12 12 28.5T777-636L410-268q-12 12-28 12t-28-12L182-440q-12-12-11.5-28.5T183-497q12-12 28.5-12t28.5 12l142 143Z",
+            )
+        }
+    }
+}
+
+@Composable
 private fun IconWrapper(
     modifier: Modifier = Modifier,
     content: ContentBuilder<SVGSVGElement>,

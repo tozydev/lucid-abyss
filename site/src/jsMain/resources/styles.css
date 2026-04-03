@@ -1,3 +1,11 @@
+/*
+ Base colors:
+  - Seed: #2c5e3b
+  - Primary: #2c5e3b
+  - Secondary: #506352
+  - Tertiary: #6f5c3a
+*/
+
 @import "tailwindcss";
 
 @plugin "@tailwindcss/typography";
@@ -7,129 +15,144 @@
 @theme {
     --font-headline: "Nunito", sans-serif;
     --font-body: "Be Vietnam Pro", sans-serif;
-    --font-label: "Nunito", sans-serif;
+    --font-label: "Be Vietnam Pro", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
-    --color-tertiary-fixed-dim: #c4c9b1;
-    --color-on-surface-variant: #414941;
-    --color-surface-container: #f1eee7;
-    --color-error-container: #ffdad6;
-    --color-surface-container-low: #f6f3ec;
-    --color-on-error-container: #93000a;
-    --color-secondary-fixed-dim: #ffb694;
-    --color-on-primary: #ffffff;
-    --color-on-tertiary: #ffffff;
-    --color-error: #ba1a1a;
-    --color-on-primary-fixed-variant: #1e502f;
-    --color-on-tertiary-container: #c6cbb2;
-    --color-tertiary-container: #515643;
-    --color-on-secondary: #ffffff;
-    --color-on-secondary-container: #752d00;
-    --color-background: #fcf9f2;
-    --color-on-error: #ffffff;
-    --color-primary-fixed-dim: #9dd3a7;
-    --color-secondary-fixed: #ffdbcc;
-    --color-outline: #717971;
-    --color-inverse-primary: #9dd3a7;
-    --color-surface-dim: #dcdad3;
-    --color-on-primary-container: #9fd5a9;
-    --color-on-primary-fixed: #00210c;
-    --color-primary-container: #2c5e3b;
-    --color-on-surface: #1c1c18;
-    --color-primary-fixed: #b8f0c2;
-    --color-surface-bright: #fcf9f2;
-    --color-on-tertiary-fixed: #191d0e;
-    --color-outline-variant: #c1c9bf;
-    --color-surface-container-lowest: #ffffff;
-    --color-surface: #fcf9f2;
-    --color-surface-container-high: #ebe8e1;
-    --color-primary: #124626;
-    --color-tertiary-fixed: #e0e5cc;
-    --color-surface-tint: #376945;
-    --color-inverse-on-surface: #f3f0e9;
-    --color-on-secondary-fixed: #351000;
-    --color-on-tertiary-fixed-variant: #444936;
-    --color-secondary: #98471a;
-    --color-surface-container-highest: #e5e2db;
-    --color-on-secondary-fixed-variant: #7a3003;
-    --color-surface-variant: #e5e2db;
-    --color-tertiary: #3a3f2d;
-    --color-inverse-surface: #31312c;
-    --color-on-background: #1c1c18;
-    --color-secondary-container: #fe9663;
-
     --shadow-soft: 0 20px 40px rgba(42, 40, 37, 0.06);
+
+    /*region Colors*/
+    /* Primary */
+    --color-primary: oklch(0.475 0.08 151.396);
+    --color-on-primary: oklch(0.977 0.039 145.272);
+    --color-primary-container: oklch(0.905 0.085 149.819);
+    --color-on-primary-container: oklch(0.43 0.08 151.502);
+    --color-inverse-primary: oklch(0.922 0.085 149.286);
+
+    /* Secondary */
+    --color-secondary: oklch(0.482 0.035 147.891);
+    --color-on-secondary: oklch(0.978 0.038 144.082);
+    --color-secondary-container: oklch(0.91 0.036 145.272);
+    --color-on-secondary-container: oklch(0.433 0.034 147.989);
+
+    /* Tertiary */
+    --color-tertiary: oklch(0.485 0.055 81.377);
+    --color-on-tertiary: oklch(0.983 0.012 67.687);
+    --color-tertiary-container: oklch(0.915 0.063 79.309);
+    --color-on-tertiary-container: oklch(0.438 0.054 81.708);
+
+    /* Neutral & Surface */
+    --color-background: oklch(0.981 0.008 128.557);
+    --color-on-background: oklch(0.315 0.016 148.756);
+    --color-surface: oklch(0.981 0.008 128.557);
+    --color-on-surface: oklch(0.315 0.016 148.756);
+    --color-surface-variant: oklch(0.912 0.018 140.022);
+    --color-on-surface-variant: oklch(0.483 0.016 145.321);
+    --color-surface-tint: oklch(0.475 0.08 151.396);
+    --color-inverse-surface: oklch(0.163 0.009 152.903);
+    --color-inverse-on-surface: oklch(0.694 0.01 134.897);
+
+    /* Error */
+    --color-error: oklch(0.503 0.148 25.048);
+    --color-on-error: oklch(0.982 0.009 26.017);
+    --color-error-container: oklch(0.717 0.165 24.264);
+    --color-on-error-container: oklch(0.346 0.131 24.672);
+
+    /* Outline */
+    --color-outline: oklch(0.579 0.017 145.348);
+    --color-outline-variant: oklch(0.761 0.017 139.438);
+
+    /* Scrim */
+    --color-scrim: #000000;
+
+    /* Surface Container */
+    --color-surface-bright: oklch(0.981 0.008 128.557);
+    --color-surface-container: oklch(0.947 0.015 136.08);
+    --color-surface-container-high: oklch(0.929 0.015 136.082);
+    --color-surface-container-highest: oklch(0.912 0.018 140.022);
+    --color-surface-container-low: oklch(0.964 0.012 133.377);
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-dim: oklch(0.886 0.016 139.439);
+
+    /* Fixed */
+    --color-primary-fixed: oklch(0.905 0.085 149.819);
+    --color-primary-fixed-dim: oklch(0.86 0.083 149.401);
+    --color-on-primary-fixed: oklch(0.358 0.077 152.487);
+    --color-on-primary-fixed-variant: oklch(0.465 0.08 151.279);
+    --color-secondary-fixed: oklch(0.91 0.036 145.272);
+    --color-secondary-fixed-dim: oklch(0.867 0.036 145.253);
+    --color-on-secondary-fixed: oklch(0.365 0.036 149.086);
+    --color-on-secondary-fixed-variant: oklch(0.468 0.036 147.856);
+    --color-tertiary-fixed: oklch(0.915 0.063 79.309);
+    --color-tertiary-fixed-dim: oklch(0.872 0.062 79.627);
+    --color-on-tertiary-fixed: oklch(0.37 0.051 82.531);
+    --color-on-tertiary-fixed-variant: oklch(0.474 0.055 81.311);
+
+    /*endregion*/
 }
 
 :root.dark {
-    --color-tertiary-fixed-dim: #c4c9b1;
-    --color-on-surface-variant: #c1c9bf;
-    --color-surface-container: #1e201d;
-    --color-error-container: #93000a;
-    --color-surface-container-low: #1a1c19;
-    --color-on-error-container: #ffdad6;
-    --color-secondary-fixed-dim: #ffb694;
-    --color-on-primary: #003918;
-    --color-on-tertiary: #2e3322;
-    --color-error: #ffb4ab;
-    --color-on-primary-fixed-variant: #1e502f;
-    --color-on-tertiary-container: #e0e5cc;
-    --color-tertiary-container: #444936;
-    --color-on-secondary: #552000;
-    --color-on-secondary-container: #ffdbcc;
-    --color-background: #121411;
-    --color-on-error: #690005;
-    --color-primary-fixed-dim: #9dd3a7;
-    --color-secondary-fixed: #ffdbcc;
-    --color-outline: #8b938a;
-    --color-inverse-primary: #376945;
-    --color-surface-dim: #121411;
-    --color-on-primary-container: #b8f0c2;
-    --color-on-primary-fixed: #00210c;
-    --color-primary-container: #1e502f;
-    --color-on-surface: #e2e3dd;
-    --color-primary-fixed: #b8f0c2;
-    --color-surface-bright: #383a36;
-    --color-on-tertiary-fixed: #191d0e;
-    --color-outline-variant: #414941;
-    --color-surface-container-lowest: #0c0f0c;
-    --color-surface: #121411;
-    --color-surface-container-high: #282a27;
-    --color-primary: #9dd3a7;
-    --color-tertiary-fixed: #e0e5cc;
-    --color-surface-tint: #9dd3a7;
-    --color-inverse-on-surface: #2e312e;
-    --color-on-secondary-fixed: #351000;
-    --color-on-tertiary-fixed-variant: #444936;
-    --color-secondary: #ffb694;
-    --color-surface-container-highest: #333532;
-    --color-on-secondary-fixed-variant: #7a3003;
-    --color-surface-variant: #414941;
-    --color-tertiary: #c4c9b1;
-    --color-inverse-surface: #e2e3dd;
-    --color-on-background: #e2e3dd;
-    --color-secondary-container: #7a3003;
-}
+    /*region Colors*/
 
-/* Hardcoded hex overrides for Dark Mode */
-:root.dark .skill-tag {
-    border: 1.5px solid #8b938a;
-}
+    /* Primary */
+    --color-primary: oklch(0.818 0.083 149.889);
+    --color-on-primary: oklch(0.362 0.078 151.878);
+    --color-primary-container: oklch(0.43 0.08 151.502);
+    --color-on-primary-container: oklch(0.905 0.083 149.953);
+    --color-inverse-primary: oklch(0.475 0.08 151.396);
 
-:root.dark .code-block {
-    background-color: #282a27;
-    border-left: 4px solid #9dd3a7;
-}
+    /* Secondary */
+    --color-secondary: oklch(0.823 0.037 145.231);
+    --color-on-secondary: oklch(0.366 0.034 149.446);
+    --color-secondary-container: oklch(0.351 0.036 147.685);
+    --color-on-secondary-container: oklch(0.802 0.037 145.219);
 
-:root.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #414941;
-}
+    /* Tertiary */
+    --color-tertiary: oklch(0.959 0.036 78.135);
+    --color-on-tertiary: oklch(0.468 0.054 80.609);
+    --color-tertiary-container: oklch(0.915 0.063 79.309);
+    --color-on-tertiary-container: oklch(0.438 0.054 81.708);
 
+    /* Neutral & Surface */
+    --color-background: oklch(0.163 0.009 152.903);
+    --color-on-background: oklch(0.921 0.018 140.022);
+    --color-surface: oklch(0.163 0.009 152.903);
+    --color-on-surface: oklch(0.921 0.018 140.022);
+    --color-surface-variant: oklch(0.267 0.017 148.599);
+    --color-on-surface-variant: oklch(0.738 0.017 139.438);
+    --color-surface-tint: oklch(0.818 0.083 149.889);
+    --color-inverse-surface: oklch(0.981 0.008 128.557);
+    --color-inverse-on-surface: oklch(0.448 0.009 139.439);
+
+    /* Error */
+    --color-error: oklch(0.717 0.165 24.264);
+    --color-on-error: oklch(0.255 0.103 24.537);
+    --color-error-container: oklch(0.414 0.139 24.855);
+    --color-on-error-container: oklch(0.787 0.123 23.847);
+
+    /* Outline */
+    --color-outline: oklch(0.562 0.017 145.339);
+    --color-outline-variant: oklch(0.399 0.017 145.251);
+
+    /* Scrim */
+    --color-scrim: #000000;
+
+    /* Surface Container */
+    --color-surface-bright: oklch(0.291 0.017 148.686);
+    --color-surface-container: oklch(0.214 0.013 149.941);
+    --color-surface-container-high: oklch(0.239 0.014 145.112);
+    --color-surface-container-highest: oklch(0.267 0.017 148.599);
+    --color-surface-container-low: oklch(0.187 0.014 149.775);
+    --color-surface-container-lowest: #000000;
+    --color-surface-dim: oklch(0.163 0.009 152.903);
+
+    /*endregion*/
+}
 
 @layer base {
     body {
-        background-color: var(--color-background);
+        background-color: var(--color-surface-container-low);
         color: var(--color-on-surface);
+        /*noinspection CssNoGenericFontName*/
         font-family: var(--font-body);
     }
 }
@@ -140,33 +163,7 @@
     line-height: 1;
 }
 
-.skill-tag {
-    border: 1.5px solid #6B665E;
-}
-
-.tonal-shift-no-lines {
-    border: none !important;
-}
-
-.code-block {
-    background-color: #181B19;
-    border-left: 4px solid #2C5E3B;
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #c1c9bf;
-    border-radius: 10px;
-}
-
-@layer utilities {
+@layer components {
     .link {
         @apply text-primary
     }

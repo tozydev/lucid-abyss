@@ -216,7 +216,12 @@
         }
 
         table {
-            @apply bg-surface-container/50 rounded-xl overflow-x-auto block max-w-full border-separate border-spacing-0;
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+
+            @apply bg-surface-container/50 rounded-xl overflow-hidden max-w-full;
 
             th {
                 @apply bg-surface-container p-4 text-primary;

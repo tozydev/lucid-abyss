@@ -56,6 +56,8 @@ kobweb {
                     append("${indent(1)})")
                 }
             }
+
+            table = { "$widgetPath.Table" }
         }
     }
 }

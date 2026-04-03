@@ -172,3 +172,67 @@
         @apply no-underline hover:underline
     }
 }
+
+@layer utilities {
+    .prose-blog {
+        /* prose-p:mb-8 prose-pre:max-w-full prose-pre:overflow-x-auto prose-table:max-w-full prose-table:overflow-x-auto prose-table:block*/
+        --tw-prose-body: var(--color-on-surface);
+        --tw-prose-headings: var(--color-on-surface);
+        --tw-prose-lead: var(--color-on-surface-variant);
+        --tw-prose-links: var(--color-primary);
+        --tw-prose-bold: var(--color-on-surface);
+
+        --tw-prose-counters: var(--color-tertiary);
+        --tw-prose-bullets: var(--color-tertiary);
+
+        --tw-prose-hr: var(--color-outline-variant);
+
+        --tw-prose-quotes: var(--color-on-surface-variant);
+        --tw-prose-quote-borders: var(--color-outline-variant);
+
+        --tw-prose-captions: var(--color-on-surface-variant);
+
+        --tw-prose-kbd: var(--color-on-surface);
+
+        --tw-prose-code: var(--color-on-surface);
+        --tw-prose-pre-code: var(--color-on-primary-container);
+        --tw-prose-pre-bg: var(--color-surface-container-high);
+
+        --tw-prose-th-borders: var(--color-outline);
+        --tw-prose-td-borders: var(--color-outline-variant);
+
+        @apply prose-headings:font-headline prose-headings:font-bold;
+
+        img {
+            @apply max-w-full h-auto rounded-lg border border-outline/10 shadow-md;
+        }
+
+        blockquote {
+            @apply bg-surface-container/20 px-4 py-2;
+
+            p {
+                @apply m-0;
+            }
+        }
+
+        table {
+            @apply bg-surface-container/50 rounded-xl overflow-x-auto block max-w-full border-separate border-spacing-0;
+
+            th {
+                @apply bg-surface-container p-4 text-primary;
+            }
+
+            td {
+                @apply p-4 border-t border-outline-variant/30;
+            }
+        }
+
+        :where(code):not(pre > code) {
+            @apply bg-surface-container-high  border rounded border-outline/10 px-[0.5em] py-[0.2em] font-medium;
+
+            &:before, &:after {
+                content: none;
+            }
+        }
+    }
+}

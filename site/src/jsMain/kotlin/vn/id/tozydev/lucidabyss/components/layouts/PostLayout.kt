@@ -107,7 +107,7 @@ fun PostLayout(
                     Section(
                         Modifier
                             .tw(
-                                "prose prose-neutral max-w-none prose-p:text-[18px] prose-p:leading-[1.8] prose-p:text-on-surface prose-p:mb-8 prose-headings:font-headline prose-headings:font-bold prose-headings:text-primary prose-img:max-w-full prose-img:h-auto prose-pre:max-w-full prose-pre:overflow-x-auto prose-table:max-w-full prose-table:overflow-x-auto prose-table:block wrap-break-word w-full overflow-hidden",
+                                "prose prose-blog max-w-none md:prose-lg wrap-break-word w-full overflow-hidden",
                             ).toAttrs {
                                 ref {
                                     contentRef = it

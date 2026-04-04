@@ -15,10 +15,9 @@ plugins.withType<KobwebApplicationPlugin> {
     val processBlogPosts by tasks.registering(ProcessBlogPostsTask::class) {
         postsDir = rootProject.layout.projectDirectory.dir("blog")
         attachmentsDirName = ".attachments"
-        attachmentPathPrefix = "/attachments"
+        attachmentPathPrefix = "_la/attachments"
         processedPostsDir = layout.buildDirectory.dir("generated/$name/src/jsMain/markdown")
-        processedAttachmentsDir =
-            layout.buildDirectory.dir("generated/$name/src/jsMain/resources")
+        processedAttachmentsDir = layout.buildDirectory.dir("generated/$name/src/jsMain/resources")
     }
 
     tasks.withType<ProcessMarkdownTask> {
@@ -30,7 +29,6 @@ plugins.withType<KobwebApplicationPlugin> {
 
         addSource(processBlogPosts.flatMap { it.processedPostsDir }, ".pages.blog")
     }
-    kobwebBlock
 
     buildTargets.withType<KotlinJsIrTarget> {
         kotlin.sourceSets.named("${name}Main") {

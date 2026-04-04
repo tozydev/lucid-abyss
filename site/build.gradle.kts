@@ -118,4 +118,7 @@ tasks {
     named("kobwebStart") {
         mustRunAfter(copyDevStylesheets)
     }
+    named("jsBrowserProductionGenerateSwcConfig") {
+        mustRunAfter("jsBrowserDevelopmentTranspileWithSwc")
+    }
 }

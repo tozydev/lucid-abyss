@@ -94,6 +94,8 @@ kotlin {
             implementation(npm(npm.webpack.plugin.miniCssExtract))
             implementation(npm(npm.webpack.plugin.cssMinimizer))
             implementation(npm(npm.pagefind))
+
+            implementation(npm(npm.shiki))
         }
     }
 }
@@ -105,15 +107,15 @@ tasks {
         }
     }
 
-    val copyProductionStylesheets by registering(Copy::class) {
+    val copyProductionWebpackAssets by registering(Copy::class) {
         from(layout.buildDirectory.dir("kotlin-webpack/js/productionExecutable/_la")) {
-            include("*.css")
-            include("*.css.map")
+            include("*.js", "*.js.map")
+            include("*.css", "*.css.map")
         }
         into(layout.projectDirectory.dir(".kobweb/site/_la"))
     }
     kobwebExport {
-        finalizedBy(copyProductionStylesheets, pagefindIndex)
+        finalizedBy(copyProductionWebpackAssets, pagefindIndex)
     }
 
     named("jsBrowserProductionGenerateSwcConfig") {

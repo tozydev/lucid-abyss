@@ -8,7 +8,8 @@ import js.promise.await
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.dom.*
-import org.w3c.dom.HTMLElement
+import org.w3c.dom.HTMLDivElement
+import vn.id.tozydev.lucidabyss.utils.highlightCode
 import vn.id.tozydev.lucidabyss.utils.tw
 import web.navigator.navigator
 import kotlin.time.Duration.Companion.milliseconds
@@ -41,30 +42,38 @@ fun CodeBlock(
             }
         }
 
-        var codeElement by remember { mutableStateOf<HTMLElement?>(null) }
         Div({ tw("absolute top-3 right-3 z-10") }) {
-            CopyButton(codeElement)
+            CopyButton(code)
         }
-        Pre({ tw("p-5") }) {
-            Code(
-                {
-                    classes("language-${lang ?: "none"}")
-                    ref {
-                        codeElement = it
-                        onDispose { codeElement = null }
-                    }
-                },
-            ) {
-                Text(code)
-            }
-        }
+        CodeContent(code, lang)
     }
+}
+
+@Composable
+private fun CodeContent(
+    code: String,
+    lang: String? = null,
+) {
+    var highlightedCode by remember { mutableStateOf("<pre><code>$code</code></pre>") }
+
+    LaunchedEffect(code) {
+        highlightedCode = highlightCode(code, lang ?: "none")
+    }
+
+    Div(
+        {
+            prop<HTMLDivElement, String>(
+                { element, value -> element.innerHTML = value },
+                highlightedCode,
+            )
+        },
+    )
 }
 
 private val copyIconModifier = Modifier.tw("size-5 text-on-surface-variant/80")
 
 @Composable
-private fun CopyButton(codeElement: HTMLElement? = null) {
+private fun CopyButton(code: String) {
     val scope = rememberCoroutineScope()
     var copied by remember { mutableStateOf(false) }
 
@@ -75,12 +84,10 @@ private fun CopyButton(codeElement: HTMLElement? = null) {
             .onClick {
                 scope.launch {
                     delay(100.milliseconds)
-                    codeElement?.textContent?.let { navigator.clipboard.writeTextAsync(it).await() }
+                    navigator.clipboard.writeTextAsync(code).await()
                     copied = true
-                    launch {
-                        delay(2.seconds)
-                        copied = false
-                    }
+                    delay(2.seconds)
+                    copied = false
                 }
             }.toAttrs(),
     ) {

@@ -1,6 +1,6 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
-import kotlinx.html.script
+import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -24,6 +24,7 @@ kobweb {
                         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
                 )
             }
+            scriptAttributes.put("type", "module")
         }
         export {
             enableTraces()
@@ -64,6 +65,10 @@ dependencies {
 kotlin {
     configAsKobwebApplication("lucid-abyss")
 
+    js {
+        useEsModules()
+    }
+
     compilerOptions {
         freeCompilerArgs.addAll(
             "-Xcontext-parameters",
@@ -94,6 +99,12 @@ kotlin {
 }
 
 tasks {
+    withType<KotlinJsCompile>().configureEach {
+        compilerOptions {
+            target = "es2015"
+        }
+    }
+
     val copyProductionStylesheets by registering(Copy::class) {
         from(layout.buildDirectory.dir("kotlin-webpack/js/productionExecutable/_la")) {
             include("*.css")
@@ -102,7 +113,7 @@ tasks {
         into(layout.projectDirectory.dir(".kobweb/site/_la"))
     }
     kobwebExport {
-        finalizedBy(copyProductionStylesheets, pagefindIndex, transformSiteHtml)
+        finalizedBy(copyProductionStylesheets, pagefindIndex)
     }
 
     named("jsBrowserProductionGenerateSwcConfig") {

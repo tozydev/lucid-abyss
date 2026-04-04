@@ -10,6 +10,7 @@ compose-rules = "0.5.6"
 kotlinpoet = "2.2.0"
 snakeyaml = "2.6"
 kotlinx-coroutines = "1.10.2"
+jsoup = "1.21.1"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "jetbrains-compose" }
@@ -28,6 +29,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 
 kotlinpoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

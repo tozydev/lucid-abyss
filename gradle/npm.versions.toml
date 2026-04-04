@@ -7,6 +7,7 @@ css-loader = "7.1.4"
 mini-css-extract-plugin = "2.10.1"
 css-minimizer-webpack-plugin = "8.0.0"
 pagefind = "1.5.0-beta.1"
+shiki = "4.0.2"
 
 [libraries]
 tailwindcss = { group = "dev", name = "tailwindcss", version.ref = "tailwindcss" }
@@ -21,3 +22,5 @@ webpack-plugin-cssMinimizer = { group = "dev", name = "css-minimizer-webpack-plu
 webpack-plugin-miniCssExtract = { group = "dev", name = "mini-css-extract-plugin", version.ref = "mini-css-extract-plugin" }
 
 pagefind = { group = "dev", name = "pagefind", version.ref = "pagefind" }
+
+shiki = { group = "normal", name = "shiki", version.ref = "shiki" }

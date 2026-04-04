@@ -20,7 +20,7 @@
     })
 
     config.plugins.push(new MiniCssExtractPlugin({
-        filename: "lucid-abyss.css"
+        filename: "_la/lucid-abyss.css"
     }))
     config.optimization = {
         minimizer: [
@@ -28,4 +28,7 @@
             new CssMinimizerPlugin()
         ]
     }
+
+    const cssPath = require('path').resolve(__dirname, "kotlin/styles.css");
+    config.entry.main.push(cssPath);
 })(config);

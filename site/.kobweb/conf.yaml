@@ -5,10 +5,10 @@ server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "build/kotlin-webpack/js/developmentExecutable/lucid-abyss.js"
+      script: "build/kotlin-webpack/js/developmentExecutable/_la/lucid-abyss.js"
       api: "build/libs/lucidabyss.jar"
     prod:
-      script: "build/kotlin-webpack/js/productionExecutable/lucid-abyss.js"
+      script: "build/kotlin-webpack/js/productionExecutable/_la/lucid-abyss.js"
       siteRoot: ".kobweb/site"
 
   port: 8080

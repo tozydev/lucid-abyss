@@ -16,18 +16,13 @@ kobweb {
         index {
             lang = "vi"
             head.add {
-                link("/lucid-abyss.css", rel = "stylesheet")
                 link(rel = "stylesheet", href = "/fonts/faces.css")
+                link(rel = "stylesheet", href = "/_la/lucid-abyss.css")
                 link(
                     rel = "stylesheet",
                     href =
                         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
                 )
-                link(rel = "stylesheet", href = "/prism/prism.css")
-                script {
-                    src = "/prism/prism.js"
-                    defer = true
-                }
             }
         }
         export {
@@ -60,6 +55,10 @@ kobweb {
             table = { "$widgetPath.Table" }
         }
     }
+}
+
+dependencies {
+    kobwebServerPlugin(projects.devServerPlugin)
 }
 
 kotlin {
@@ -96,28 +95,16 @@ kotlin {
 
 tasks {
     val copyProductionStylesheets by registering(Copy::class) {
-        from(layout.buildDirectory.dir("kotlin-webpack/js/productionExecutable")) {
+        from(layout.buildDirectory.dir("kotlin-webpack/js/productionExecutable/_la")) {
             include("*.css")
             include("*.css.map")
         }
-        into(layout.projectDirectory.dir(".kobweb/site"))
+        into(layout.projectDirectory.dir(".kobweb/site/_la"))
     }
     kobwebExport {
-        finalizedBy(copyProductionStylesheets, pagefindIndex)
+        finalizedBy(copyProductionStylesheets, pagefindIndex, transformSiteHtml)
     }
 
-    val copyDevStylesheets by registering(Copy::class) {
-        from(layout.buildDirectory.dir("kotlin-webpack/js/developmentExecutable")) {
-            include("*.css")
-        }
-        into(layout.buildDirectory.dir("processedResources/js/main/public"))
-    }
-    named("jsBrowserDevelopmentWebpack") {
-        finalizedBy(copyDevStylesheets)
-    }
-    named("kobwebStart") {
-        mustRunAfter(copyDevStylesheets)
-    }
     named("jsBrowserProductionGenerateSwcConfig") {
         mustRunAfter("jsBrowserDevelopmentTranspileWithSwc")
     }

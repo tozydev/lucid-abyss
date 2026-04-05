@@ -15,7 +15,7 @@ plugins.withType<KobwebApplicationPlugin> {
     val processBlogPosts by tasks.registering(ProcessBlogPostsTask::class) {
         postsDir = rootProject.layout.projectDirectory.dir("blog")
         attachmentsDirName = ".attachments"
-        attachmentPathPrefix = "_la/attachments"
+        attachmentPathPrefix = "/_la/attachments"
         processedPostsDir = layout.buildDirectory.dir("generated/$name/src/jsMain/markdown")
         processedAttachmentsDir = layout.buildDirectory.dir("generated/$name/src/jsMain/resources")
     }

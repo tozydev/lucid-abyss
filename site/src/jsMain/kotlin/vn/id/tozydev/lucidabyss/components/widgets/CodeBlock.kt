@@ -9,7 +9,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLDivElement
-import vn.id.tozydev.lucidabyss.utils.highlightCode
+import vn.id.tozydev.lucidabyss.utils.shiki.highlightCode
 import vn.id.tozydev.lucidabyss.utils.tw
 import web.navigator.navigator
 import kotlin.time.Duration.Companion.milliseconds

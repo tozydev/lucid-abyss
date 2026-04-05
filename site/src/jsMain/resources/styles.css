@@ -241,3 +241,16 @@
         }
     }
 }
+
+/*noinspection CssUnresolvedCustomProperty*/
+.shiki,
+.shiki span {
+    background-color: var(--shiki-light-bg);
+    color: var(--shiki-light);
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+.dark :is(.shiki, .shiki span) {
+    background-color: var(--shiki-dark-bg);
+    color: var(--shiki-dark);
+}

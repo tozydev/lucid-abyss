@@ -12,8 +12,12 @@
         config.output.filename = subDir + "[name].js";
     }
 
-    config.output.chunkFilename = subDir + "[name]-[chunkhash].js";
+    config.output.publicPath = '/';
     config.output.assetModuleFilename = subDir + "[name][ext][query]";
 
-    config.output.publicPath = '/';
+    config.output.asyncChunks = true;
+    config.output.chunkFilename = subDir + "[name].[contenthash:8].js";
+
+    config.output.environment = config.output.environment || {};
+    config.output.environment.dynamicImport = true;
 })(config);

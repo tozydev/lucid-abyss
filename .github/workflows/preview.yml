@@ -1,0 +1,74 @@
+name: Preview
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - dev
+
+jobs:
+  call-export:
+    uses: ./.github/workflows/export-site.shared.yml
+    with:
+      upload-site: true
+      upload-traces: true
+
+  deploy-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs: call-export
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+
+      - name: Deploy to Cloudflare Workers
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: latest
+          command: versions upload
+
+      - name: Post preview URL to PR
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          issue-number: ${{ github.event.number }}
+          body: |
+            ### ⚡ Cloudflare Worker Deployed!
+            - **Status**: Success ✅
+            - **Preview URL**: ${{ steps.deploy.outputs.deployment-url }}
+            - **Commit**: `${{ github.sha }}`
+            - **Environment**: Preview
+
+  deploy-dev:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: call-export
+    permissions:
+      contents: read
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+
+      - name: Deploy to Cloudflare Workers
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: latest
+          command: upload site --preview-alias dev

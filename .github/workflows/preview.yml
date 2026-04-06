@@ -75,4 +75,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           wranglerVersion: latest
-          command: upload site --preview-alias dev
+          command: versions upload --preview-alias dev

@@ -52,7 +52,7 @@ fun PageLayout(
         Main(
             {
                 id("main-content")
-                tw("pt-28 md:pt-32 pb-24 md:pb-20 px-4 max-w-7xl mx-auto")
+                tw("pt-24 md:pt-28 pb-16 md:pb-20 px-4 md:px-8 max-w-7xl mx-auto")
             },
         ) {
             content()

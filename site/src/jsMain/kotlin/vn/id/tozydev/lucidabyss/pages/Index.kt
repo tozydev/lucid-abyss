@@ -39,9 +39,6 @@ fun HomePage() {
 private fun HomePageContent(latestPosts: List<Post>) {
     Div {
         HomeHero(Modifier.tw("mb-24"))
-        LatestPosts(
-            posts = latestPosts,
-            modifier = Modifier.tw("mb-32"),
-        )
+        LatestPosts(posts = latestPosts)
     }
 }

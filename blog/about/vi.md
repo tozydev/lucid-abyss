@@ -98,7 +98,7 @@ you find in the template that you don't plan to use in your final site.
 
 If instead you'd like to start from scratch, you can run
 
-```
+```shell
 $ kobweb create app/empty
 ```
 
@@ -114,7 +114,7 @@ can [read more about these choices here](https://kobweb.varabyte.com/docs/concep
 
 For most sites, a static layout site is what you want, so to do that, return to the command line and run:
 
-```
+```shell
 $ kobweb export --layout static
 ```
 
@@ -123,7 +123,7 @@ After that runs for a little while, your production site should be generated! Yo
 
 Test it locally by running:
 
-```
+```shell
 $ kobweb run --layout static --env prod
 ```
 

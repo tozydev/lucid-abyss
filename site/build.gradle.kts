@@ -39,17 +39,29 @@ kobweb {
 
             val widgetPath = "vn.id.tozydev.lucidabyss.components.widgets"
 
+            @Suppress("RegExpUnnecessaryNonCapturingGroup")
+            val codeInfoRegex = Regex("^(?:(?<lang>[a-z0-9-]+))?(?:\\s?title=\"(?<title>[^\"]+)\")?\$")
+
             code = { code ->
-                var lang: String? = code.info
+                val infoMatchGroups = code.info?.let { codeInfoRegex.matchEntire(it) }?.groups
+                val lang = infoMatchGroups?.get("lang")?.value
+                val title = infoMatchGroups?.get("title")?.value
 
                 buildString {
-                    appendLine("$widgetPath.CodeBlock(")
+                    appendLine("$widgetPath.code.CodeBlock(")
                     appendLine("${indent(1)}code =")
                     appendLine("${indent(2)}\"\"\"${code.literal.escapeTripleQuotedText()}\"\"\",")
                     if (lang != null) {
                         appendLine("${indent(1)}lang = \"$lang\",")
                     }
-                    append("${indent(1)})")
+
+                    appendLine("${indent(1)}header = { code, lang -> ")
+                    if (title != null) {
+                        appendLine("${indent(2)}$widgetPath.code.CodeBlockTitle(title = \"$title\")")
+                    }
+                    appendLine("${indent(2)}$widgetPath.code.CopyButton(code = code)")
+                    appendLine("${indent(1)}}")
+                    append("${indent(0)})")
                 }
             }
 

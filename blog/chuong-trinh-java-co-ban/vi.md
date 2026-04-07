@@ -9,7 +9,7 @@ tags:
 description: Giới thiệu về chương trình Java cơ bản, giải thích cấu trúc class, method và cách hoạt động của chương trình Java đầu tiên.
 ---
 
-```java
+```java title="Program.java"
 public class Program {
     static void main(String[] args) {
         var os = System.getProperty("os.name");

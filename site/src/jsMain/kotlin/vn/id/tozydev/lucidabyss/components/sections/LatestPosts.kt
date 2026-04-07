@@ -12,18 +12,18 @@ import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun FeaturedPosts(
+fun LatestPosts(
     posts: List<Post>,
     modifier: Modifier = Modifier,
 ) {
-    Section(Modifier.tw("mb-32").then(modifier).toAttrs()) {
+    Section(modifier.toAttrs()) {
         SectionHeader(
-            title = Strings.section.featuredPosts.title,
-            description = Strings.section.featuredPosts.description,
-            linkText = Strings.section.featuredPosts.viewAll,
+            title = Strings.section.latestPosts.title,
+            description = Strings.section.latestPosts.description,
+            linkText = Strings.section.latestPosts.viewAll,
             linkHref = SiteRoutes.blog,
         )
-        Div(Modifier.tw("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8").toAttrs()) {
+        Div({ tw("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8") }) {
             posts.forEach { post ->
                 key(post.slug) {
                     PostCard(post)

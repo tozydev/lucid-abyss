@@ -7,10 +7,11 @@ import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
+import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
-import vn.id.tozydev.lucidabyss.components.sections.FeaturedPosts
 import vn.id.tozydev.lucidabyss.components.sections.HomeHero
+import vn.id.tozydev.lucidabyss.components.sections.LatestPosts
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
@@ -30,11 +31,17 @@ fun initHomePage(ctx: InitRouteContext) {
 @Layout(PAGE_LAYOUT_FNQ)
 @Composable
 fun HomePage() {
-    HomePageContent(featuredPosts = Posts.take(3))
+    val latestPosts = remember { Posts.take(3) }
+    HomePageContent(latestPosts)
 }
 
 @Composable
-private fun HomePageContent(featuredPosts: List<Post>) {
-    HomeHero(Modifier.tw("mb-24"))
-    FeaturedPosts(posts = featuredPosts)
+private fun HomePageContent(latestPosts: List<Post>) {
+    Div {
+        HomeHero(Modifier.tw("mb-24"))
+        LatestPosts(
+            posts = latestPosts,
+            modifier = Modifier.tw("mb-32"),
+        )
+    }
 }

@@ -34,13 +34,10 @@ fun SectionHeader(
         if (linkText != null && linkHref != null) {
             Anchor(
                 href = linkHref,
-                attrs = Modifier.tw("text-secondary font-headline font-bold flex items-center gap-2 group").toAttrs(),
+                attrs = { tw("text-secondary font-label font-bold flex items-center gap-1 group") },
             ) {
                 Text(linkText)
-                MaterialSymbol(
-                    "arrow_forward",
-                    Modifier.tw("group-hover:translate-x-1 transition-transform"),
-                )
+                ArrowForwardIcon(Modifier.tw("group-hover:translate-x-1 transition-transform"))
             }
         }
     }

@@ -109,7 +109,7 @@ section:
     actions:
       learn-more: Tìm hiểu thêm
       view-posts: Xem bài viết
-  featured-posts:
+  latest-posts:
     title: Bài viết mới nhất
     description: Khám phá những bài viết, hướng dẫn và chia sẻ mới nhất về lập trình và công nghệ.
     view-all: Xem tất cả

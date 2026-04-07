@@ -83,12 +83,11 @@ private fun HeaderLink(
     Li(
         Modifier
             .toAttrs {
+                tw("border-b-2 border-primary/20 font-label scale-95 active:scale-90 transition")
                 if (isActive) {
-                    tw("text-primary font-extrabold border-b-2 border-primary/20 font-label transition-colors scale-95 active:scale-90")
+                    tw("text-primary font-extrabold")
                 } else {
-                    tw(
-                        "text-on-surface-variant font-medium font-label hover:text-primary transition scale-95 active:scale-90",
-                    )
+                    tw("text-on-surface-variant font-medium hover:text-primary")
                 }
             },
     ) {

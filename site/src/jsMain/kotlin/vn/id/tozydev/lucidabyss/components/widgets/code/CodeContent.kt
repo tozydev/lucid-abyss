@@ -14,7 +14,7 @@ fun CodeContent(
     modifier: Modifier = Modifier,
     lang: String? = null,
 ) {
-    var highlightedCode by remember { mutableStateOf("<pre><code>$code</code></pre>") }
+    var highlightedCode by remember { mutableStateOf("<pre><code>${code.escapeHtml()}</code></pre>") }
 
     LaunchedEffect(code) {
         highlightedCode = highlightCode(code, lang ?: "text")
@@ -32,3 +32,11 @@ fun CodeContent(
             },
     )
 }
+
+private fun String.escapeHtml(): String =
+    this
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace("\"", "&quot;")
+        .replace("'", "&#39;")

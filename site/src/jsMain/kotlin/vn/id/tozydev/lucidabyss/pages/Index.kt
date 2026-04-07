@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.pages
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
@@ -13,6 +14,7 @@ import vn.id.tozydev.lucidabyss.components.sections.HomeHero
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
@@ -33,6 +35,6 @@ fun HomePage() {
 
 @Composable
 private fun HomePageContent(featuredPosts: List<Post>) {
-    HomeHero()
+    HomeHero(Modifier.tw("mb-24"))
     FeaturedPosts(posts = featuredPosts)
 }

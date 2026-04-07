@@ -14,78 +14,97 @@ import vn.id.tozydev.lucidabyss.utils.tw
 @Composable
 fun HomeHero(modifier: Modifier = Modifier) {
     Section(
-        Modifier.tw("grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch mb-24").then(modifier).toAttrs(),
+        Modifier.tw("grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch").then(modifier).toAttrs(),
     ) {
-        // Text Island
-        Div(
-            Modifier
-                .tw(
-                    "lg:col-span-5 bg-surface-container-lowest p-6 md:p-8 lg:p-12 rounded-2xl shadow-[0_20px_40px_rgba(42,40,37,0.06)] flex flex-col justify-center space-y-4 md:space-y-6",
-                ).toAttrs(),
-        ) {
-            H1(
-                Modifier
-                    .tw("text-4xl md:text-5xl lg:text-6xl font-headline font-extrabold text-primary leading-tight")
-                    .toAttrs(),
-            ) {
-                Strings.section.hero.title { first, second ->
-                    Text(first)
-                    Span({ tw("text-secondary") }) {
-                        Text(second)
-                    }
-                }
-            }
-            P(Modifier.tw("text-lg text-on-surface-variant leading-relaxed max-w-md").toAttrs()) {
-                Text(Strings.section.hero.description)
-            }
+        Greeting(Modifier.tw("lg:col-span-5"))
 
-            Div(Modifier.tw("flex flex-col sm:flex-row flex-wrap items-center gap-3 sm:gap-4 pt-2 md:pt-4").toAttrs()) {
-                Anchor(
-                    href = SiteRoutes.about,
-                    attrs =
-                        Modifier
-                            .tw(
-                                "bg-linear-to-br from-primary to-primary-container text-on-primary w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-xl font-headline font-bold shadow-lg hover:opacity-90 transition-opacity",
-                            ).toAttrs(),
-                ) {
-                    Text(Strings.section.hero.viewProjects)
+        ShortIntro(Modifier.tw("lg:col-span-7"))
+    }
+}
+
+@Composable
+private fun ShortIntro(modifier: Modifier = Modifier) {
+    CodeBlock(
+        // language=kotlin
+        code =
+            """
+            val tozydev = developer {
+                about {
+                    name = "Thanh Tân"
+                    username = "tozydev"
+                    role = Kotlin_Developer
                 }
-                Anchor(
-                    href = "mailto:hello@devisland.com",
-                    attrs =
-                        Modifier
-                            .tw(
-                                "bg-surface-container-high text-primary w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-xl font-headline font-bold hover:bg-surface-container-highest transition-colors",
-                            ).toAttrs(),
-                ) {
-                    Text(Strings.section.hero.contact)
+                technicalSkills {
+                    languages = setOf("Kotlin", "Java", "TypeScript")
+                    frameworks = setOf("Ktor", "Spring Boot", "Kobweb")
+                }
+                tools {
+                    ide = setOf("IntelliJ IDEA")
+                    codeEditor = setOf("VS Code")
+                    ai = setOf("Gemini", "GitHub Copilot")
+                }
+            }
+            """.trimIndent(),
+        lang = "kotlin",
+        modifier = Modifier.tw("my-0! hero-code-block").then(modifier),
+    )
+}
+
+@Composable
+private fun Greeting(modifier: Modifier = Modifier) {
+    Div(
+        Modifier
+            .tw(
+                "bg-surface-container-lowest p-6 md:p-8 lg:p-12 rounded-xl shadow-soft flex flex-col justify-center space-y-4 md:space-y-6",
+            ).then(modifier)
+            .toAttrs(),
+    ) {
+        H1(
+            {
+                tw("text-3xl md:text-4xl font-headline font-extrabold text-secondary leading-tight")
+            },
+        ) {
+            Strings.section.hero.title { first, second ->
+                Text(first)
+                Br()
+                Span({ tw("text-primary text-4xl md:text-5xl lg:text-6xl") }) {
+                    Text(second)
                 }
             }
         }
+        P(
+            {
+                tw("text-lg text-on-surface-variant leading-relaxed max-w-md")
+            },
+        ) {
+            Text(Strings.section.hero.description)
+        }
 
-        CodeBlock(
-            // language=kotlin
-            code =
-                """
-                val tozydev = developer {
-                    about {
-                        name = "Thanh Tân"
-                        username = "tozydev"
-                        role = Kotlin_Developer
-                    }
-                    technicalSkills {
-                        languages = setOf("Kotlin", "Java", "TypeScript")
-                        frameworks = setOf("Ktor", "Spring Boot", "Kobweb")
-                    }
-                    tools {
-                        ide = setOf("IntelliJ IDEA")
-                        codeEditor = setOf("VS Code")
-                        ai = setOf("Gemini", "GitHub Copilot")
-                    }
-                }
-                """.trimIndent(),
-            lang = "kotlin",
-            modifier = Modifier.tw("lg:col-span-7 my-0! hero-code-block"),
-        )
+        Div(
+            {
+                tw("flex flex-col sm:flex-row flex-wrap items-center gap-3 sm:gap-4 pt-2 md:pt-4")
+            },
+        ) {
+            Anchor(
+                href = SiteRoutes.about,
+                attrs = {
+                    tw(
+                        "bg-primary-container text-on-primary-container w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold shadow-lg hover:opacity-90 transition-opacity",
+                    )
+                },
+            ) {
+                Text(Strings.section.hero.actions.learnMore)
+            }
+            Anchor(
+                href = SiteRoutes.blog,
+                attrs = {
+                    tw(
+                        "bg-surface-container-high text-on-surface w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold hover:bg-surface-container-highest transition-colors",
+                    )
+                },
+            ) {
+                Text(Strings.section.hero.actions.viewPosts)
+            }
+        }
     }
 }

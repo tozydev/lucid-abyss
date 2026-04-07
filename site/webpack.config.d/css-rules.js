@@ -20,7 +20,7 @@
     })
 
     config.plugins.push(new MiniCssExtractPlugin({
-        filename: "_la/lucid-abyss.css"
+        filename: "_la/css/lucid-abyss.css"
     }))
     config.optimization = {
         minimizer: [

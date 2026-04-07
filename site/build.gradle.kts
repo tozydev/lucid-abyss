@@ -17,7 +17,7 @@ kobweb {
             lang = "vi"
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
-                link(rel = "stylesheet", href = "/_la/lucid-abyss.css")
+                link(rel = "stylesheet", href = "/_la/css/lucid-abyss.css")
                 link(
                     rel = "stylesheet",
                     href =

@@ -12,14 +12,15 @@ const val STATIC_ASSETS_PATH = "/_la"
 class DevServerPlugin : KobwebServerPlugin {
     override fun configure(application: Application) {
         application.routing {
-            configureStaticAssets()
+            configureStaticAssets("js")
+            configureStaticAssets("css")
         }
     }
 
-    private fun Routing.configureStaticAssets() {
+    private fun Routing.configureStaticAssets(subRoute: String) {
         staticFiles(
-            remotePath = STATIC_ASSETS_PATH,
-            dir = File("build/kotlin-webpack/js/developmentExecutable$STATIC_ASSETS_PATH"),
+            remotePath = "$STATIC_ASSETS_PATH/$subRoute",
+            dir = File("build/kotlin-webpack/js/developmentExecutable$STATIC_ASSETS_PATH/$subRoute"),
             index = null,
         ) {
             enableAutoHeadResponse()

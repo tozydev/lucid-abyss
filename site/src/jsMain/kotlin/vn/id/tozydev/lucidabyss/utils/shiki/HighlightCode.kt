@@ -49,7 +49,7 @@ suspend fun highlightCode(
     codeToHtml(
         code,
         unsafeJso {
-            this.lang = lang
+            this.lang = if (bundledLanguages[lang] != null) lang else "text"
             this.themes = defaultThemes
             this.defaultColor = false
         },

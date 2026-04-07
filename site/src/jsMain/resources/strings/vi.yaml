@@ -109,21 +109,21 @@ section:
     actions:
       learn-more: Tìm hiểu thêm
       view-posts: Xem bài viết
+
   latest-posts:
     title: Bài viết mới nhất
     description: Khám phá những bài viết, hướng dẫn và chia sẻ mới nhất về lập trình và công nghệ.
     view-all: Xem tất cả
+
 widget:
-  under-construction:
-    title: Đang xây dựng
-    description: Trang này hiện đang được xây dựng. Vui lòng quay lại sau!
   back-to-top-button:
     label: Về đầu trang
+
   bottom-navbar:
     blog: Blog
     home: Trang chủ
     me: Về tôi
-    projects: Dự án
+
   latest-post:
     read-more: Đọc thêm
   location:

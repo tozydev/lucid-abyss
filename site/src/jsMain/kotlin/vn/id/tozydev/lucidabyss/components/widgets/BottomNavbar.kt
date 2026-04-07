@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.widgets
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -6,7 +6,6 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -16,29 +15,42 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
     Nav(
         Modifier
             .tw(
-                "md:hidden fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-6 py-2 bg-surface/95 backdrop-blur-md border-t border-surface-variant/30 shadow-[0_-10px_40px_rgba(42,40,37,0.06)] pb-[env(safe-area-inset-bottom)]",
+                "fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-6 pt-2 pb-[env(safe-area-inset-bottom)] bg-surface/95 backdrop-blur-md border-t border-outline/10",
             ).then(modifier)
             .toAttrs(),
     ) {
         BottomNavItem(
             href = SiteRoutes.home,
             label = Strings.widget.bottomNavbar.home,
-            icon = "home",
+            icon = { isActive ->
+                if (isActive) {
+                    HomeFilledIcon()
+                } else {
+                    HomeIcon()
+                }
+            },
         )
         BottomNavItem(
             href = SiteRoutes.blog,
             label = Strings.widget.bottomNavbar.blog,
-            icon = "article",
-        )
-        BottomNavItem(
-            href = SiteRoutes.projects,
-            label = Strings.widget.bottomNavbar.projects,
-            icon = "explore",
+            icon = { isActive ->
+                if (isActive) {
+                    ArticleFilledIcon()
+                } else {
+                    ArticleIcon()
+                }
+            },
         )
         BottomNavItem(
             href = SiteRoutes.about,
             label = Strings.widget.bottomNavbar.me,
-            icon = "person",
+            icon = { isActive ->
+                if (isActive) {
+                    PersonFilledIcon()
+                } else {
+                    PersonIcon()
+                }
+            },
         )
     }
 }
@@ -47,7 +59,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
 private fun BottomNavItem(
     href: String,
     label: String,
-    icon: String,
+    icon: @Composable (isActive: Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val ctx = rememberPageContext()
@@ -69,17 +81,23 @@ private fun BottomNavItem(
                 .then(modifier)
                 .toAttrs(),
     ) {
-        MaterialSymbol(
-            icon = icon,
-            modifier =
-                Modifier.tw(
-                    "text-2xl rounded-full px-4 py-0.5 transition-colors ${if (isActive) "bg-primary-container text-on-primary-container" else "text-on-surface-variant group-hover:bg-surface-container"}",
-                ),
-        )
         Span(
-            Modifier
-                .tw("text-[10px] font-headline font-bold ${if (isActive) "text-primary" else "text-on-surface-variant"}")
-                .toAttrs(),
+            {
+                tw("rounded-full px-4 py-0.5 transition-colors")
+                if (isActive) {
+                    tw("bg-primary-container text-on-primary-container")
+                } else {
+                    tw("text-on-surface-variant group-hover:bg-surface-container")
+                }
+            },
+        ) {
+            icon(isActive)
+        }
+        Span(
+            {
+                tw("text-[10px] font-label font-bold")
+                if (isActive) tw("text-primary") else tw("text-on-surface-variant")
+            },
         ) {
             Text(label)
         }

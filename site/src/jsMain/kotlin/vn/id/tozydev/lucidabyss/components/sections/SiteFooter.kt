@@ -15,13 +15,7 @@ import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
 fun SiteFooter(modifier: Modifier = Modifier) {
-    Footer(
-        Modifier
-            .tw(
-                "mx-auto max-w-200 mb-12 p-4",
-            ).then(modifier)
-            .toAttrs(),
-    ) {
+    Footer(modifier.toAttrs()) {
         Div(
             {
                 tw(

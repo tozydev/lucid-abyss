@@ -58,7 +58,7 @@ fun PageLayout(
             content()
         }
 
-        SiteFooter(Modifier.tw("max-w-6xl mx-auto mb-12 p-4"))
+        SiteFooter(Modifier.tw("max-w-7xl mx-auto mb-16 md:mb-12 p-4 md:p-8"))
 
         BackToTopButton(
             Modifier.thenIf(shouldHideBackToTop) {

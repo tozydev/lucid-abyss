@@ -5,7 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.widgets.HeroCodeSnippet
+import vn.id.tozydev.lucidabyss.components.widgets.code.CodeBlock
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.strings.title
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
@@ -63,6 +63,29 @@ fun HomeHero(modifier: Modifier = Modifier) {
             }
         }
 
-        HeroCodeSnippet()
+        CodeBlock(
+            // language=kotlin
+            code =
+                """
+                val tozydev = developer {
+                    about {
+                        name = "Thanh Tân"
+                        username = "tozydev"
+                        role = Kotlin_Developer
+                    }
+                    technicalSkills {
+                        languages = setOf("Kotlin", "Java", "TypeScript")
+                        frameworks = setOf("Ktor", "Spring Boot", "Kobweb")
+                    }
+                    tools {
+                        ide = setOf("IntelliJ IDEA")
+                        codeEditor = setOf("VS Code")
+                        ai = setOf("Gemini", "GitHub Copilot")
+                    }
+                }
+                """.trimIndent(),
+            lang = "kotlin",
+            modifier = Modifier.tw("lg:col-span-7 my-0! hero-code-block"),
+        )
     }
 }

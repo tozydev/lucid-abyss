@@ -18,11 +18,6 @@ kobweb {
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
                 link(rel = "stylesheet", href = "/_la/css/lucid-abyss.css")
-                link(
-                    rel = "stylesheet",
-                    href =
-                        "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
-                )
             }
             scriptAttributes.put("src", "/_la/js/lucid-abyss.js")
             scriptAttributes.put("type", "module")

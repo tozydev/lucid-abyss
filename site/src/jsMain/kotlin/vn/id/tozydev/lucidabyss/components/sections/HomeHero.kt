@@ -80,31 +80,36 @@ private fun Greeting(modifier: Modifier = Modifier) {
             Text(Strings.section.hero.description)
         }
 
-        Div(
-            {
-                tw("flex flex-col sm:flex-row flex-wrap items-center gap-3 sm:gap-4 pt-2 md:pt-4")
+        GreetingActions()
+    }
+}
+
+@Composable
+private fun GreetingActions() {
+    Div(
+        {
+            tw("flex flex-col sm:flex-row flex-wrap items-center gap-3 sm:gap-4 pt-2 md:pt-4")
+        },
+    ) {
+        Anchor(
+            href = SiteRoutes.about,
+            attrs = {
+                tw(
+                    "bg-primary text-on-primary w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold shadow-lg transition-all scale-100 active:scale-95 hover:bg-primary-container hover:text-on-primary-container",
+                )
             },
         ) {
-            Anchor(
-                href = SiteRoutes.about,
-                attrs = {
-                    tw(
-                        "bg-primary-container text-on-primary-container w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold shadow-lg hover:opacity-90 transition-opacity",
-                    )
-                },
-            ) {
-                Text(Strings.section.hero.actions.learnMore)
-            }
-            Anchor(
-                href = SiteRoutes.blog,
-                attrs = {
-                    tw(
-                        "bg-surface-container-high text-on-surface w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold hover:bg-surface-container-highest transition-colors",
-                    )
-                },
-            ) {
-                Text(Strings.section.hero.actions.viewPosts)
-            }
+            Text(Strings.section.hero.actions.learnMore)
+        }
+        Anchor(
+            href = SiteRoutes.blog,
+            attrs = {
+                tw(
+                    "bg-surface-container-high text-on-surface w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold hover:bg-surface-container-highest transition-colors",
+                )
+            },
+        ) {
+            Text(Strings.section.hero.actions.viewPosts)
         }
     }
 }

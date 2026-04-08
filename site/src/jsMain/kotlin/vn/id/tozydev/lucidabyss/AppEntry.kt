@@ -1,7 +1,6 @@
 package vn.id.tozydev.lucidabyss
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.KobwebComposeStyles
 import com.varabyte.kobweb.core.App
 import kotlinx.browser.document
 import org.w3c.dom.HTMLElement
@@ -11,7 +10,6 @@ import vn.id.tozydev.lucidabyss.styles.saveToLocalStorage
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
-    KobwebComposeStyles()
     ThemeModeAware()
     content()
 }

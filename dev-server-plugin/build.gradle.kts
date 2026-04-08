@@ -3,7 +3,10 @@ plugins {
 }
 
 dependencies {
-    compileOnly(libs.kobweb.server.plugin)
+    compileOnly(libs.kobweb.common)
+    compileOnly(libs.kobweb.server.plugin) {
+        exclude(group = "io.netty")
+    }
 }
 
 kotlin {

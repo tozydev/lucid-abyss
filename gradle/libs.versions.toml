@@ -17,6 +17,7 @@ compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.r
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jetbrains-compose" }
 kobweb-core = { module = "com.varabyte.kobweb:kobweb-core ", version.ref = "kobweb" }
 kobweb-compose = { module = "com.varabyte.kobweb:kobweb-compose ", version.ref = "kobweb" }
+kobweb-common = { module = "com.varabyte.kobweb:kobweb-common ", version.ref = "kobweb" }
 kobweb-server-plugin = { module = "com.varabyte.kobweb:kobweb-server-plugin", version.ref = "kobweb" }
 kobwebx-markdown = { module = "com.varabyte.kobwebx:kobwebx-markdown", version.ref = "kobweb" }
 kobwebx-frontmatter = { module = "com.varabyte.kobwebx:kobwebx-frontmatter", version.ref = "kobweb" }

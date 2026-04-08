@@ -121,8 +121,8 @@ tasks {
 
     val copyProductionWebpackAssets by registering(Copy::class) {
         from(layout.buildDirectory.dir("kotlin-webpack/js/productionExecutable/_la")) {
-            include("*.js", "*.js.map")
-            include("*.css", "*.css.map")
+            include("**/*.js", "**/*.js.map")
+            include("**/*.css", "**/*.css.map")
         }
         into(layout.projectDirectory.dir(".kobweb/site/_la"))
     }

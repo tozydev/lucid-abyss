@@ -24,6 +24,7 @@ kobweb {
                         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
                 )
             }
+            scriptAttributes.put("src", "/_la/js/lucid-abyss.js")
             scriptAttributes.put("type", "module")
         }
         export {
@@ -126,8 +127,15 @@ tasks {
         }
         into(layout.projectDirectory.dir(".kobweb/site/_la"))
     }
+
+    val cleanupDist by registering(Delete::class) {
+        mustRunAfter(copyProductionWebpackAssets, pagefindIndex)
+        val distDir = layout.projectDirectory.dir(".kobweb/site")
+        delete(distDir.file("lucid-abyss.js"), distDir.file("lucid-abyss.js.map"))
+    }
+
     kobwebExport {
-        finalizedBy(copyProductionWebpackAssets, pagefindIndex)
+        finalizedBy(copyProductionWebpackAssets, pagefindIndex, cleanupDist)
     }
 
     named("jsBrowserProductionGenerateSwcConfig") {

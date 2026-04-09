@@ -1,55 +1,64 @@
+about:
+  name: Thanh Tân
+  role: Kotlin Developer
+  skills:
+    - Kotlin
+    - Coroutines
+    - Jetpack Compose
+    - Ktor
+    - Android SDK
+    - PostgreSQL
+    - Git
+
+  experience:
+    - title: "Senior Android Developer"
+      period: "2021 - Hiện tại"
+      company: "Techify Solutions"
+      dot-color: bg-primary
+      description: >
+        Dẫn dắt đội ngũ Android chuyển đổi toàn bộ kiến trúc ứng dụng sang Clean Architecture và MVVM.
+        Triển khai Jetpack Compose cho các dự án mới, tối ưu hóa hiệu năng render UI và giảm 30% crash rate.
+
+    - title: "Android Developer"
+      period: "2018 - 2021"
+      company: "AppNova Corp"
+      dot-color: bg-primary
+      description: >
+        Phát triển các tính năng cốt lõi cho ứng dụng thương mại điện tử với hơn 1 triệu lượt tải.
+        Tích hợp thanh toán, tối ưu hóa logic giỏ hàng và áp dụng Coroutines để xử lý luồng dữ liệu bất đồng bộ.
+
+    - title: "Junior Mobile Developer"
+      period: "2016 - 2018"
+      company: "InnoStartup"
+      dot-color: bg-primary
+      description: >
+        Bắt đầu sự nghiệp với việc bảo trì và nâng cấp các ứng dụng Java truyền thống.
+        Chuyển đổi dần sang Kotlin và tham gia xây dựng các nguyên mẫu (prototypes) cho dự án mới.
+
+  projects:
+    - title: "PayFlow SDK"
+      description: >
+        Một giải pháp thanh toán tích hợp B2B, cung cấp các module giao dịch an toàn thông qua API Ktor,
+         giảm 40% thời gian xử lý và cải thiện trải nghiệm trên ứng dụng cho đối tác với 10 triệu giao dịch/tháng.
+      tags: [ "Kotlin", "Coroutines", "Ktor", "Android SDK" ]
+      link: https://github.com/tozydev
+
+    - title: "TaskMinder Android"
+      description: >
+        Ứng dụng quản lý thời gian mã nguồn mở với giao diện hoàn toàn bằng Jetpack Compose.
+        Áp dụng MVI Architecture và Room Database, cho phép đồng bộ offline-first với hiệu suất cao.
+      tags: [ "Kotlin", "Jetpack Compose", "MVI Architecture", "Room Database" ]
+      link: https://github.com/tozydev
+
 page:
   about:
     title: Về tôi
     description: Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang làm.
     hero-image-alt: "Phòng họp sáng sủa"
     profile-image-alt: "Nguyễn Thanh Tân"
-    name: "Nguyễn Thanh Tân"
-    role: "KOTLIN DEVELOPER"
-    intro-p1-1: "Xin chào! Tôi là một Kỹ sư Phần mềm đam mê việc xây dựng các sản phẩm công nghệ chất lượng cao. Với hơn "
-    intro-p1-highlight: "8 năm kinh nghiệm"
-    intro-p1-2: " trong lĩnh vực phát triển ứng dụng di động và hệ thống backend, tôi luôn khao khát mang lại giá trị thực tế thông qua những dòng mã nguồn sạch sẽ, dễ bảo trì và có tính mở rộng cao."
-    quote: "Mã nguồn xuất sắc không chỉ nằm ở việc máy tính có thể hiểu được, mà còn là nền tảng để những kỹ sư khác có thể dễ dàng tiếp nối và phát triển."
-    intro-p2-1: "Chuyên môn cốt lõi của tôi xoay quanh hệ sinh thái "
-    intro-p2-highlight: "Kotlin, Android và Ktor"
-    intro-p2-2: ". Từ việc thiết kế cấu trúc kiến trúc ứng dụng, xử lý luồng dữ liệu phức tạp bằng Coroutines & Flow, cho đến việc xây dựng các UI hiện đại bằng Jetpack Compose. Tôi quan niệm rằng một sản phẩm tốt phải là sự cân bằng hoàn hảo giữa "
-    intro-p2-highlight2: "hiệu năng vượt trội và trải nghiệm người dùng mượt mà"
-    intro-p2-3: "."
-    intro-p3: "Bên cạnh công việc chuyên môn, tôi còn là một người ủng hộ mạnh mẽ cộng đồng mã nguồn mở. Tôi tin rằng việc chia sẻ kiến thức là cách tốt nhất để cùng nhau tiến bộ. Blog này là nơi tôi ghi chép lại những bài học kỹ thuật, những thách thức đã vượt qua, và những xu hướng công nghệ mới mà tôi đang khám phá."
     skills-title: "Kỹ năng công nghệ"
-    skills:
-      - Kotlin
-      - Coroutines
-      - Jetpack Compose
-      - Ktor
-      - Android SDK
-      - PostgreSQL
-      - Git
     experience-title: "Kinh nghiệm làm việc"
-    experience:
-      senior:
-        title: "Senior Android Developer"
-        period: "2021 - Hiện tại"
-        company: "Techify Solutions"
-        description: "Dẫn dắt đội ngũ Android chuyển đổi toàn bộ kiến trúc ứng dụng sang Clean Architecture và MVVM. Triển khai Jetpack Compose cho các dự án mới, tối ưu hóa hiệu năng render UI và giảm 30% crash rate."
-      mid:
-        title: "Android Developer"
-        period: "2018 - 2021"
-        company: "AppNova Corp"
-        description: "Phát triển các tính năng cốt lõi cho ứng dụng thương mại điện tử với hơn 1 triệu lượt tải. Tích hợp thanh toán, tối ưu hóa logic giỏ hàng và áp dụng Coroutines để xử lý luồng dữ liệu bất đồng bộ."
-      junior:
-        title: "Junior Mobile Developer"
-        period: "2016 - 2018"
-        company: "InnoStartup"
-        description: "Bắt đầu sự nghiệp với việc bảo trì và nâng cấp các ứng dụng Java truyền thống. Chuyển đổi dần sang Kotlin và tham gia xây dựng các nguyên mẫu (prototypes) cho dự án mới."
     projects-title: "Dự án tiêu biểu"
-    projects:
-      payflow:
-        title: "PayFlow SDK"
-        description: "Một giải pháp thanh toán tích hợp B2B, cung cấp các module giao dịch an toàn thông qua API Ktor, giảm 40% thời gian xử lý và cải thiện trải nghiệm trên ứng dụng cho đối tác với 10 triệu giao dịch/tháng."
-      taskminder:
-        title: "TaskMinder Android"
-        description: "Ứng dụng quản lý thời gian mã nguồn mở với giao diện hoàn toàn bằng Jetpack Compose. Áp dụng MVI Architecture và Room Database, cho phép đồng bộ offline-first với hiệu suất cao."
     contact-title: "Liên hệ"
     contact-description: "Tôi luôn mở cửa cho những cuộc trò chuyện thú vị về công nghệ hoặc thiết kế. Hãy gửi email cho tôi."
     contact-email: "hello@devisland.com"

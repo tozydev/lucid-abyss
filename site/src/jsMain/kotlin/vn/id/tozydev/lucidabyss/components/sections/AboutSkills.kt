@@ -16,7 +16,7 @@ fun AboutSkills(modifier: Modifier = Modifier) {
             }
         }
         Div(Modifier.tw("flex flex-wrap gap-3").toAttrs()) {
-            Strings.page.about.skills.forEach { skill ->
+            Strings.about.skills.forEach { skill ->
                 AboutSkillTag(skill)
             }
         }

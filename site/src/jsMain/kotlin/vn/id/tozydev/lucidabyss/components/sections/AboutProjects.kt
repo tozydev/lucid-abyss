@@ -19,18 +19,16 @@ fun AboutProjects(modifier: Modifier = Modifier) {
         }
 
         Div(Modifier.tw("space-y-6").toAttrs()) {
-            AboutProjectItem(
-                title = Strings.page.about.projects.payflow.title,
-                description = Strings.page.about.projects.payflow.description,
-                tags = listOf("Kotlin", "Ktor", "Coroutines"),
-                href = "#",
-            )
-            AboutProjectItem(
-                title = Strings.page.about.projects.taskminder.title,
-                description = Strings.page.about.projects.taskminder.description,
-                tags = listOf("Jetpack Compose", "MVI", "Room"),
-                href = "#",
-            )
+            Strings.about.projects.forEach { project ->
+                key(project.title) {
+                    AboutProjectItem(
+                        title = project.title,
+                        description = project.description,
+                        tags = project.tags,
+                        href = project.link,
+                    )
+                }
+            }
         }
     }
 }
@@ -70,7 +68,7 @@ private fun AboutProjectItem(
             tags.forEach { tag ->
                 Span(
                     Modifier
-                        .tw("font-label text-xs font-bold text-primary-container bg-primary/10 px-3 py-1 rounded-full")
+                        .tw("font-label text-xs font-bold text-on-surface-variant bg-surface-variant px-3 py-1 rounded-full")
                         .toAttrs(),
                 ) {
                     Text(tag)

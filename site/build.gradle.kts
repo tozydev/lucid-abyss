@@ -28,6 +28,10 @@ kobweb {
     }
     markdown {
         defaultLayout = ".components.layouts.PostLayout"
+        kobweb.markdown.addSource(
+            project.layout.projectDirectory.dir("src/jsMain/resources/sections"),
+            ".components.sections",
+        )
         handlers {
             useSilk = false
 

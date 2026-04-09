@@ -17,27 +17,17 @@ fun AboutExperience(modifier: Modifier = Modifier) {
         }
 
         Div(Modifier.tw("space-y-8").toAttrs()) {
-            AboutExperienceItem(
-                title = Strings.page.about.experience.senior.title,
-                period = Strings.page.about.experience.senior.period,
-                company = Strings.page.about.experience.senior.company,
-                description = Strings.page.about.experience.senior.description,
-                dotColor = "bg-primary",
-            )
-            AboutExperienceItem(
-                title = Strings.page.about.experience.mid.title,
-                period = Strings.page.about.experience.mid.period,
-                company = Strings.page.about.experience.mid.company,
-                description = Strings.page.about.experience.mid.description,
-                dotColor = "bg-secondary",
-            )
-            AboutExperienceItem(
-                title = Strings.page.about.experience.junior.title,
-                period = Strings.page.about.experience.junior.period,
-                company = Strings.page.about.experience.junior.company,
-                description = Strings.page.about.experience.junior.description,
-                dotColor = "bg-tertiary",
-            )
+            Strings.about.experience.forEach { experience ->
+                key(experience.title) {
+                    AboutExperienceItem(
+                        title = experience.title,
+                        period = experience.period,
+                        company = experience.company,
+                        description = experience.description,
+                        dotColor = experience.dotColor,
+                    )
+                }
+            }
         }
     }
 }

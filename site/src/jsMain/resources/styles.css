@@ -165,11 +165,27 @@
 
 @layer components {
     .link {
-        @apply text-primary
+        @apply text-primary;
     }
 
     .link-hover {
-        @apply no-underline hover:underline
+        @apply no-underline hover:underline;
+    }
+
+    .btn {
+        @apply text-center rounded-md transition-all scale-100 active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container;
+    }
+
+    .btn-neutral {
+        @apply bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface;
+    }
+
+    .btn-lg {
+        @apply px-6 md:px-8 py-3 md:py-4;
     }
 }
 

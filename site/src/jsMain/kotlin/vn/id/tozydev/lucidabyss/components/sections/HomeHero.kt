@@ -94,9 +94,7 @@ private fun GreetingActions() {
         Anchor(
             href = SiteRoutes.about,
             attrs = {
-                tw(
-                    "bg-primary text-on-primary w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold shadow-lg transition-all scale-100 active:scale-95 hover:bg-primary-container hover:text-on-primary-container",
-                )
+                tw("btn btn-primary btn-lg w-full sm:w-auto font-semibold shadow-lg")
             },
         ) {
             Text(Strings.section.hero.actions.learnMore)
@@ -104,9 +102,7 @@ private fun GreetingActions() {
         Anchor(
             href = SiteRoutes.blog,
             attrs = {
-                tw(
-                    "bg-surface-container-high text-on-surface w-full sm:w-auto text-center px-6 md:px-8 py-3 md:py-4 rounded-md font-headline font-bold hover:bg-surface-container-highest transition-colors",
-                )
+                tw("btn btn-neutral btn-lg w-full sm:w-auto font-semibold")
             },
         ) {
             Text(Strings.section.hero.actions.viewPosts)

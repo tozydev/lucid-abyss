@@ -5,7 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
-import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
+import vn.id.tozydev.lucidabyss.components.widgets.OpenInNewIcon
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -58,7 +58,7 @@ private fun AboutProjectItem(
                 href = href,
                 attrs = Modifier.tw("text-on-surface-variant hover:text-primary p-1").toAttrs(),
             ) {
-                MaterialSymbol("open_in_new", Modifier.tw("text-[20px]"))
+                OpenInNewIcon(Modifier.tw("text-xl"))
             }
         }
         P(Modifier.tw("font-body text-[15px] text-on-surface-variant leading-relaxed mb-4").toAttrs()) {

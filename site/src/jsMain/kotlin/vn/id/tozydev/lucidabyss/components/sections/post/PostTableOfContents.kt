@@ -7,7 +7,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLHeadingElement
-import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
+import vn.id.tozydev.lucidabyss.components.widgets.FormatListBulletedIcon
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.rememberActiveHeadingId
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -33,7 +33,7 @@ fun PostTableOfContents(
         Div({ tw("bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant/30 shadow-sm") }) {
             Header {
                 H3({ tw("font-headline font-extrabold text-primary text-base mb-4 flex items-center gap-2") }) {
-                    MaterialSymbol("format_list_bulleted", Modifier.tw("text-secondary text-lg"))
+                    FormatListBulletedIcon(Modifier.tw("text-secondary text-lg"))
                     Text(Strings.commons.labels.toc)
                 }
             }

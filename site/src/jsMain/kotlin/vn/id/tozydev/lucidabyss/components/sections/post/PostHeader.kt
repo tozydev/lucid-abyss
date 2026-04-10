@@ -7,7 +7,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.Badge
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeSize
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeVariant
-import vn.id.tozydev.lucidabyss.components.widgets.MaterialSymbol
+import vn.id.tozydev.lucidabyss.components.widgets.CalendarTodayIcon
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
@@ -35,7 +35,7 @@ fun PostHeader(
             )
             Div({ tw("flex items-center gap-6") }) {
                 Div({ tw("flex items-center gap-2 text-on-surface") }) {
-                    MaterialSymbol("calendar_today", Modifier.tw("text-lg leading-none text-primary"))
+                    CalendarTodayIcon(Modifier.tw("text-lg leading-none text-primary"))
                     Span({ tw("font-mono text-[13px] font-semibold uppercase tracking-wider") }) {
                         Text(post.publishedAt.formatDate())
                     }

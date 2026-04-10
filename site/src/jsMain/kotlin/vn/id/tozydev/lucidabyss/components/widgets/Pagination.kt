@@ -27,7 +27,7 @@ fun Pagination(
                         }
                     },
         ) {
-            MaterialSymbol("chevron_left", Modifier.tw("text-lg"))
+            ChevronLeftIcon(Modifier.tw("text-lg"))
         }
 
         // Page Numbers
@@ -65,7 +65,7 @@ fun Pagination(
                         }
                     },
         ) {
-            MaterialSymbol("chevron_right", Modifier.tw("text-lg"))
+            ChevronRightIcon(Modifier.tw("text-lg"))
         }
     }
 }

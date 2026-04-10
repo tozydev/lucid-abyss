@@ -1,17 +1,22 @@
-Xin chào! Tôi là một Kỹ sư Phần mềm đam mê việc xây dựng các sản phẩm công nghệ chất lượng cao.
-Với hơn **8 năm kinh nghiệm** trong lĩnh vực phát triển ứng dụng di động và hệ thống backend,
-tôi luôn khao khát mang lại giá trị thực tế thông qua những dòng mã nguồn sạch sẽ, dễ bảo trì và có tính mở rộng cao.
+Xin chào 👋, cảm ơn vì đã ghé thăm blog của tôi.
+Tên tôi là **Thanh Tân**, 1 developer yêu thích **Kotlin**.
+Đối với tôi lập trình vừa là công việc, vừa là niềm đam mê.
+Tôi thích khám phá và tìm hiểu những thứ mới, những công nghệ mới, không chỉ trong lĩnh vực lập trình mà còn trong cuộc
+sống hàng ngày.
 
-> Mã nguồn xuất sắc không chỉ nằm ở việc máy tính có thể hiểu được, mà còn là nền tảng để những kỹ sư khác có thể dễ
-> dàng tiếp nối và phát triển.
+Blog của tôi cũng không có gì cao siêu cả, chỉ đơn giản là những câu chuyện tôi chia sẽ với các bạn.
+Chủ đề sẽ không nhất định nhất định về dev, về công nghệ,
+đôi khi tôi sẽ chia sẽ là những trải nghiệm đời thường, những kinh nghiệm cá nhân chẳng hạn.
+Dĩ nhiên, phần lớn sẽ nói nhiều tới dev (vì tôi là dev mà).
 
-Chuyên môn cốt lõi của tôi xoay quanh hệ sinh thái **Kotlin, Android và Ktor**.
-Từ việc thiết kế cấu trúc kiến trúc ứng dụng, xử lý luồng dữ liệu phức tạp bằng Coroutines & Flow,
-cho đến việc xây dựng các UI hiện đại bằng Jetpack Compose.
-Tôi quan niệm rằng một sản phẩm tốt phải là sự cân bằng hoàn hảo giữa
-**hiệu năng vượt trội và trải nghiệm người dùng mượt mà**.
+Có 1 điều mà tôi muốn cam kết và cố gắng thực hiện trên blog này, những bài viết sẽ do chính tôi viết, không phải do AI
+tạo nên.
+Tôi có thể sử dụng AI để hỗ trợ một số thứ lật vật như kiểm tra chính tả, cú pháp,... nhưng nội dung sẽ do tôi nghĩ ra
+và tiến hành triển khai.
+Trong thời đại AI được xem là lẽ đương nhiên, thì những điều tự tay mình làm lại trở nên có giá trị hơn bao giờ hết, ít
+nhất đối với tôi là như vậy.
 
-Bên cạnh công việc chuyên môn, tôi còn là một người ủng hộ mạnh mẽ cộng đồng mã nguồn mở.
-Tôi tin rằng việc chia sẻ kiến thức là cách tốt nhất để cùng nhau tiến bộ.
-Blog này là nơi tôi ghi chép lại những bài học kỹ thuật, những thách thức đã vượt qua,
-và những xu hướng công nghệ mới mà tôi đang khám phá.
+Nội dung của blog được chia sẽ dưới góc nhìn cá nhân, nếu có sai sót nào mong các bạn thông cảm bỏ qua.
+Tôi cũng rất sẵn lòng nhận các góp ý chỉnh sửa để cho blog của tôi ngày càng hoàn thiện hơn.
+
+Cảm ơn bạn đã ghé thăm blog của tôi!

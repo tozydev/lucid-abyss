@@ -26,15 +26,15 @@ fun SiteFooter(modifier: Modifier = Modifier) {
             Div({ tw("text-on-surface-variant text-sm font-body text-center md:text-left tracking-wide") }) {
                 Aside {
                     P {
-                        Strings.section.footer.copyright { first, github ->
+                        Strings.sections.footer.copyright { first, github ->
                             Text(first)
-                            Anchor(href = Links.LUCID_ABYSS_GITHUB_URL, attrs = { tw("link link-hover") }) {
+                            Anchor(href = Strings.profile.siteSource, attrs = { tw("link link-hover") }) {
                                 Text(github)
                             }
                         }
                     }
                     P {
-                        Strings.section.footer.builtWith { first, kotlin, separator, kobweb ->
+                        Strings.sections.footer.builtWith { first, kotlin, separator, kobweb ->
                             Text(first)
                             Anchor(href = Links.KOTLIN_HOMEPAGE_URL, attrs = { tw("link link-hover") }) {
                                 Text(kotlin)
@@ -48,10 +48,10 @@ fun SiteFooter(modifier: Modifier = Modifier) {
                 }
             }
             Nav({ tw("grid grid-flow-col gap-4") }) {
-                FooterLink(href = Links.GITHUB_URL, label = Strings.section.footer.link.github)
-                FooterLink(href = Links.BLUESKY_URL, label = Strings.section.footer.link.bluesky)
-                FooterLink(href = Links.EMAIL_URL, label = Strings.section.footer.link.email)
-                FooterLink(href = SiteRoutes.rss, label = Strings.section.footer.link.rss)
+                FooterLink(href = Strings.profile.contact.github, label = Strings.commons.labels.github)
+                FooterLink(href = Strings.profile.contact.bluesky, label = Strings.commons.labels.bluesky)
+                FooterLink(href = "mailto:${Strings.profile.contact.email}", label = Strings.commons.labels.email)
+                FooterLink(href = SiteRoutes.rss, label = Strings.commons.labels.rss)
             }
         }
     }

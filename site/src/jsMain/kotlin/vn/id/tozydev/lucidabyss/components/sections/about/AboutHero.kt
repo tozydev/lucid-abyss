@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.about
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -12,7 +12,7 @@ fun AboutHero(modifier: Modifier = Modifier) {
     Div(Modifier.tw("w-full h-62.5 md:h-100 relative").then(modifier).toAttrs()) {
         Img(
             src = "/images/default-cover.webp",
-            alt = Strings.page.about.heroImageAlt,
+            alt = Strings.pages.about.images.heroAlt,
             attrs =
                 Modifier
                     .tw("w-full h-full object-cover")
@@ -40,7 +40,7 @@ fun AboutHero(modifier: Modifier = Modifier) {
             ) {
                 Img(
                     src = "/images/avatar_96x.webp",
-                    alt = Strings.page.about.profileImageAlt,
+                    alt = Strings.pages.about.images.profileAlt,
                     attrs =
                         Modifier
                             .tw("w-full h-full object-cover")

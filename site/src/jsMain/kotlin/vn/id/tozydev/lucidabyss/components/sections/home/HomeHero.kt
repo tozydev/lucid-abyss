@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.home
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -64,7 +64,7 @@ private fun Greeting(modifier: Modifier = Modifier) {
                 tw("text-3xl md:text-4xl font-headline font-extrabold text-secondary leading-tight")
             },
         ) {
-            Strings.section.hero.title { first, second ->
+            Strings.pages.home.hero.title { first, second ->
                 Text(first)
                 Br()
                 Span({ tw("text-primary text-4xl md:text-5xl lg:text-6xl") }) {
@@ -77,7 +77,7 @@ private fun Greeting(modifier: Modifier = Modifier) {
                 tw("text-lg text-on-surface-variant leading-relaxed max-w-md")
             },
         ) {
-            Text(Strings.section.hero.description)
+            Text(Strings.pages.home.hero.description)
         }
 
         GreetingActions()
@@ -97,7 +97,7 @@ private fun GreetingActions() {
                 tw("btn btn-primary btn-lg w-full sm:w-auto font-semibold shadow-lg")
             },
         ) {
-            Text(Strings.section.hero.actions.learnMore)
+            Text(Strings.commons.actions.learnMore)
         }
         Anchor(
             href = SiteRoutes.blog,
@@ -105,7 +105,7 @@ private fun GreetingActions() {
                 tw("btn btn-neutral btn-lg w-full sm:w-auto font-semibold")
             },
         ) {
-            Text(Strings.section.hero.actions.viewPosts)
+            Text(Strings.commons.actions.viewPosts)
         }
     }
 }

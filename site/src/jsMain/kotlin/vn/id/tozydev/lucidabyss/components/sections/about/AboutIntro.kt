@@ -1,9 +1,10 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.about
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.sections.AboutStory
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -24,10 +25,10 @@ private fun IntroHeader() {
         H1(
             { tw("text-3xl md:text-5xl font-black font-headline text-primary tracking-tight mb-2") },
         ) {
-            Text(Strings.about.name)
+            Text(Strings.profile.name)
         }
         P({ tw("font-label text-secondary uppercase tracking-[0.2em] text-sm font-bold") }) {
-            Text(Strings.about.role)
+            Text(Strings.profile.role)
         }
     }
 }

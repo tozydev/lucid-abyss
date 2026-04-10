@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.blog
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -24,7 +24,7 @@ fun BlogFilters(
             .toAttrs(),
     ) {
         Badge(
-            text = Strings.page.blog.all,
+            text = Strings.commons.labels.all,
             href = SiteRoutes.blog,
             variant = if (activeTag.isEmpty()) BadgeVariant.Primary else BadgeVariant.Surface,
             size = BadgeSize.Lg,

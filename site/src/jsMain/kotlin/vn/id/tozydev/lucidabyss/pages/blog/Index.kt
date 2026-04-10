@@ -8,7 +8,7 @@ import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
-import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
+import vn.id.tozydev.lucidabyss.components.sections.blog.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
@@ -18,8 +18,8 @@ import vn.id.tozydev.lucidabyss.utils.allPostTags
 fun initBlogPage(ctx: InitRouteContext) {
     ctx.data.add(
         PageProperties(
-            title = Strings.page.blog.title,
-            description = Strings.page.blog.description,
+            title = Strings.pages.blog.title,
+            description = Strings.pages.blog.description,
         ),
     )
 }
@@ -41,8 +41,8 @@ fun BlogPage() {
 private fun BlogPageContent(
     posts: List<Post>,
     tags: List<String>,
-    title: String = Strings.page.blog.header.title,
-    description: String = Strings.page.blog.header.description,
+    title: String = Strings.pages.blog.header.title,
+    description: String = Strings.pages.blog.header.description,
     activeTag: String = "",
 ) {
     BlogListingContent(

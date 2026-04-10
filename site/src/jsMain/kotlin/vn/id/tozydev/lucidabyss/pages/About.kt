@@ -10,12 +10,12 @@ import com.varabyte.kobweb.core.layout.Layout
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
-import vn.id.tozydev.lucidabyss.components.sections.AboutContact
-import vn.id.tozydev.lucidabyss.components.sections.AboutExperience
-import vn.id.tozydev.lucidabyss.components.sections.AboutHero
-import vn.id.tozydev.lucidabyss.components.sections.AboutIntro
-import vn.id.tozydev.lucidabyss.components.sections.AboutProjects
-import vn.id.tozydev.lucidabyss.components.sections.AboutSkills
+import vn.id.tozydev.lucidabyss.components.sections.about.AboutContact
+import vn.id.tozydev.lucidabyss.components.sections.about.AboutExperience
+import vn.id.tozydev.lucidabyss.components.sections.about.AboutHero
+import vn.id.tozydev.lucidabyss.components.sections.about.AboutIntro
+import vn.id.tozydev.lucidabyss.components.sections.about.AboutProjects
+import vn.id.tozydev.lucidabyss.components.sections.about.AboutSkills
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.tw
 
@@ -23,8 +23,8 @@ import vn.id.tozydev.lucidabyss.utils.tw
 fun initAboutPage(ctx: InitRouteContext) {
     ctx.data.add(
         PageProperties(
-            title = Strings.page.about.title,
-            description = Strings.page.about.description,
+            title = Strings.pages.about.title,
+            description = Strings.pages.about.description,
         ),
     )
 }

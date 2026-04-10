@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.post
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -36,7 +36,7 @@ fun PostNavigation(
                 },
             ) {
                 Span({ tw("font-label text-xs uppercase tracking-wider text-outline group-hover:text-primary transition-colors") }) {
-                    Text(Strings.widget.nextPrevPosts.prev)
+                    Text(Strings.commons.actions.prevPost)
                 }
                 Span({ tw("font-headline text-lg font-bold text-on-surface line-clamp-2 mt-2") }) {
                     Text(previousPost.title)
@@ -56,7 +56,7 @@ fun PostNavigation(
                 },
             ) {
                 Span({ tw("font-label text-xs uppercase tracking-wider text-outline group-hover:text-primary transition-colors") }) {
-                    Text(Strings.widget.nextPrevPosts.next)
+                    Text(Strings.commons.actions.nextPost)
                 }
                 Span({ tw("font-headline text-lg font-bold text-on-surface line-clamp-2 mt-2") }) {
                     Text(nextPost.title)

@@ -9,7 +9,7 @@ import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.core.layout.Layout
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
-import vn.id.tozydev.lucidabyss.components.sections.BlogListingContent
+import vn.id.tozydev.lucidabyss.components.sections.blog.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.allPostTags

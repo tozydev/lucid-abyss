@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.about
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -14,12 +14,12 @@ fun AboutProjects(modifier: Modifier = Modifier) {
     Section(Modifier.tw("mb-16 max-w-170 mx-auto").then(modifier).toAttrs()) {
         Header {
             H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
-                Text(Strings.page.about.projectsTitle)
+                Text(Strings.pages.about.projects.title)
             }
         }
 
         Div(Modifier.tw("space-y-6").toAttrs()) {
-            Strings.about.projects.forEach { project ->
+            Strings.profile.projects.forEach { project ->
                 key(project.title) {
                     AboutProjectItem(
                         title = project.title,

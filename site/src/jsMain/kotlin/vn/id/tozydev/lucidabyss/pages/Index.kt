@@ -10,8 +10,8 @@ import com.varabyte.kobweb.core.layout.Layout
 import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.layouts.PAGE_LAYOUT_FNQ
 import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
-import vn.id.tozydev.lucidabyss.components.sections.HomeHero
 import vn.id.tozydev.lucidabyss.components.sections.LatestPosts
+import vn.id.tozydev.lucidabyss.components.sections.home.HomeHero
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.generated.Posts
 import vn.id.tozydev.lucidabyss.strings.Strings
@@ -21,8 +21,8 @@ import vn.id.tozydev.lucidabyss.utils.tw
 fun initHomePage(ctx: InitRouteContext) {
     ctx.data.add(
         PageProperties(
-            title = Strings.page.home.title,
-            description = Strings.page.home.description,
+            title = Strings.pages.home.title,
+            description = Strings.pages.home.description,
         ),
     )
 }

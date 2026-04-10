@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.post
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -57,7 +57,7 @@ fun PostHeader(
             Div({ tw("w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden") }) {
                 Img(
                     src = "/images/avatar_96x.webp",
-                    alt = Strings.page.about.profileImageAlt,
+                    alt = Strings.pages.about.images.profileAlt,
                     attrs = {
                         tw("w-full h-full object-cover")
                         attr("width", "96")
@@ -68,10 +68,10 @@ fun PostHeader(
             }
             Div {
                 P({ tw("font-headline font-bold text-on-surface") }) {
-                    Text(Strings.page.blog.author.name)
+                    Text(Strings.profile.name)
                 }
                 P({ tw("font-label text-xs text-outline uppercase tracking-wider") }) {
-                    Text(Strings.page.blog.author.role)
+                    Text(Strings.profile.role)
                 }
             }
         }

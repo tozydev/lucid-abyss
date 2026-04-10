@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.about
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -12,11 +12,11 @@ fun AboutSkills(modifier: Modifier = Modifier) {
     Section(Modifier.tw("mb-16 max-w-170 mx-auto").then(modifier).toAttrs()) {
         Header {
             H2(Modifier.tw("font-headline text-xl font-bold text-on-surface mb-8").toAttrs()) {
-                Text(Strings.page.about.skillsTitle)
+                Text(Strings.pages.about.skills.title)
             }
         }
         Div(Modifier.tw("flex flex-wrap gap-3").toAttrs()) {
-            Strings.about.skills.forEach { skill ->
+            Strings.profile.skills.forEach { skill ->
                 AboutSkillTag(skill)
             }
         }

@@ -15,10 +15,10 @@ import com.varabyte.kobweb.core.layout.Layout
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLHeadingElement
-import vn.id.tozydev.lucidabyss.components.sections.PostHeader
-import vn.id.tozydev.lucidabyss.components.sections.PostNavigation
-import vn.id.tozydev.lucidabyss.components.sections.PostTableOfContents
-import vn.id.tozydev.lucidabyss.components.sections.PostTags
+import vn.id.tozydev.lucidabyss.components.sections.post.PostHeader
+import vn.id.tozydev.lucidabyss.components.sections.post.PostNavigation
+import vn.id.tozydev.lucidabyss.components.sections.post.PostTableOfContents
+import vn.id.tozydev.lucidabyss.components.sections.post.PostTags
 import vn.id.tozydev.lucidabyss.components.widgets.JsonLdScript
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault

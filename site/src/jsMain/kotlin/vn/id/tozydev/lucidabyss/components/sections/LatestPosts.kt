@@ -18,9 +18,9 @@ fun LatestPosts(
 ) {
     Section(modifier.toAttrs()) {
         SectionHeader(
-            title = Strings.section.latestPosts.title,
-            description = Strings.section.latestPosts.description,
-            linkText = Strings.section.latestPosts.viewAll,
+            title = Strings.sections.latestPosts.title,
+            description = Strings.sections.latestPosts.description,
+            linkText = Strings.commons.actions.viewAll,
             linkHref = SiteRoutes.blog,
         )
         Div({ tw("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8") }) {

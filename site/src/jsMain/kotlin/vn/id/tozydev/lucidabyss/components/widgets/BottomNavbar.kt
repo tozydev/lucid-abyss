@@ -21,7 +21,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
     ) {
         BottomNavItem(
             href = SiteRoutes.home,
-            label = Strings.widget.bottomNavbar.home,
+            label = Strings.commons.navigation.home,
             icon = { isActive ->
                 if (isActive) {
                     HomeFilledIcon()
@@ -32,7 +32,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
         )
         BottomNavItem(
             href = SiteRoutes.blog,
-            label = Strings.widget.bottomNavbar.blog,
+            label = Strings.commons.navigation.blog,
             icon = { isActive ->
                 if (isActive) {
                     ArticleFilledIcon()
@@ -43,7 +43,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
         )
         BottomNavItem(
             href = SiteRoutes.about,
-            label = Strings.widget.bottomNavbar.me,
+            label = Strings.commons.navigation.about,
             icon = { isActive ->
                 if (isActive) {
                     PersonFilledIcon()

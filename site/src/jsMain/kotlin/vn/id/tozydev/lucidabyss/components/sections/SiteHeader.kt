@@ -58,9 +58,9 @@ private fun NavbarLogo() {
 private fun NavbarLinks() {
     Div({ tw("hidden md:flex flex-none items-center") }) {
         Ul({ tw("flex items-center gap-6") }) {
-            HeaderLink(href = SiteRoutes.home) { Text(Strings.section.header.menu.home) }
-            HeaderLink(href = SiteRoutes.blog) { Text(Strings.section.header.menu.blog) }
-            HeaderLink(href = SiteRoutes.about) { Text(Strings.section.header.menu.about) }
+            HeaderLink(href = SiteRoutes.home) { Text(Strings.commons.navigation.home) }
+            HeaderLink(href = SiteRoutes.blog) { Text(Strings.commons.navigation.blog) }
+            HeaderLink(href = SiteRoutes.about) { Text(Strings.commons.navigation.about) }
         }
     }
 }

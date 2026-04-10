@@ -32,7 +32,7 @@ fun PostCard(
                 attrs = Modifier.tw("absolute inset-0 z-10").toAttrs(),
             ) {
                 Span({ tw("sr-only") }) {
-                    Text(Strings.widget.post.readArticle(post.title))
+                    Text(Strings.commons.actions.readPost(post.title))
                 }
             }
             Div({ tw("aspect-video relative overflow-hidden") }) {
@@ -85,8 +85,8 @@ fun PostCard(
                         Text(post.publishedAt.formatDate())
                     }
                     Span({ tw("text-sm font-headline font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all") }) {
-                        Text(Strings.widget.latestPost.readMore)
-                        MaterialSymbol("arrow_forward", Modifier.tw("text-sm"))
+                        Text(Strings.commons.actions.readMore)
+                        ArrowForwardIcon(Modifier.tw("text-sm"))
                     }
                 }
             }

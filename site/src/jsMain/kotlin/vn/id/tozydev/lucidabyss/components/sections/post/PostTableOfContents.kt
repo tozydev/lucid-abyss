@@ -1,4 +1,4 @@
-package vn.id.tozydev.lucidabyss.components.sections
+package vn.id.tozydev.lucidabyss.components.sections.post
 
 import androidx.compose.runtime.*
 import com.varabyte.kobweb.browser.dom.observers.IntersectionObserver
@@ -34,7 +34,7 @@ fun PostTableOfContents(
             Header {
                 H3({ tw("font-headline font-extrabold text-primary text-base mb-4 flex items-center gap-2") }) {
                     MaterialSymbol("format_list_bulleted", Modifier.tw("text-secondary text-lg"))
-                    Text(Strings.widget.tableOfContents.title)
+                    Text(Strings.commons.labels.toc)
                 }
             }
 

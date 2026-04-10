@@ -2,7 +2,7 @@
 daisyui = "5.5.19"
 tailwindcss = "4.2.2"
 tailwindcss-typography = "0.5.19"
-postcss = "8.5.8"
+postcss = "8.5.9"
 postcss-loader = "8.2.1"
 css-loader = "7.1.4"
 mini-css-extract-plugin = "2.10.1"

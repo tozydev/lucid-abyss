@@ -16,8 +16,11 @@
         ]
     })
 
+    const cssFilePrefix = "_la/css/lucid-abyss.";
+    const cssFileName = isProd ? cssFilePrefix + "[contenthash:8].css" : cssFilePrefix + "css";
+
     config.plugins.push(new MiniCssExtractPlugin({
-        filename: "_la/css/lucid-abyss.css"
+        filename: cssFileName,
     }))
 
     const cssPath = require('path').resolve(__dirname, "kotlin/styles.css");

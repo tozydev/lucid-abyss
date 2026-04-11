@@ -14,6 +14,7 @@ dependencies {
     implementation(libs.kotlinpoet)
     implementation(libs.snakeyaml)
     implementation(libs.kobwebx.frontmatter)
+    implementation(libs.jsoup)
 
     implementation(plugin(libs.plugins.kotlin.multiplatform))
     implementation(plugin(libs.plugins.compose.compiler))

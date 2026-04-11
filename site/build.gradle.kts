@@ -1,6 +1,7 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
+import vn.id.tozydev.lucidabyss.build.site.TransformSiteHtmlTask
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -124,14 +125,38 @@ tasks {
         into(layout.projectDirectory.dir(".kobweb/site/_la"))
     }
 
+    val transformSiteHtml by registering(TransformSiteHtmlTask::class) {
+        mustRunAfter(copyProductionWebpackAssets)
+        sourceDir = layout.projectDirectory.dir(".kobweb/site")
+        modifier.set { doc ->
+            val cssFileName =
+                sourceDir
+                    .dir("_la/css")
+                    .map {
+                        it.asFileTree
+                            .matching {
+                                include("lucid-abyss.**.css")
+                                exclude("lucid-abyss.**.css.map")
+                            }.singleFile.name
+                    }.get()
+            doc
+                .select("link[href=\"/_la/css/lucid-abyss.css\"]")
+                .attr("href", "/_la/css/$cssFileName")
+        }
+    }
+
+    pagefindIndex {
+        mustRunAfter(transformSiteHtml)
+    }
+
     val cleanupDist by registering(Delete::class) {
-        mustRunAfter(copyProductionWebpackAssets, pagefindIndex)
+        mustRunAfter(copyProductionWebpackAssets, transformSiteHtml, pagefindIndex)
         val distDir = layout.projectDirectory.dir(".kobweb/site")
         delete(distDir.file("lucid-abyss.js"), distDir.file("lucid-abyss.js.map"))
     }
 
     kobwebExport {
-        finalizedBy(copyProductionWebpackAssets, pagefindIndex, cleanupDist)
+        finalizedBy(copyProductionWebpackAssets, transformSiteHtml, pagefindIndex, cleanupDist)
     }
 
     named("jsBrowserProductionGenerateSwcConfig") {

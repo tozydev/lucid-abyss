@@ -10,52 +10,34 @@ profile:
 
   skills:
     - Kotlin
-    - Coroutines
-    - Jetpack Compose
+    - Java
+    - Typescript
+    - Spring Boot
     - Ktor
-    - Android SDK
+    - Compose Multiplatform
     - PostgreSQL
+    - SQLite
     - Git
+    - IntelliJ IDEA
+    - AI
 
   experience:
-    - title: "Senior Android Developer"
-      period: "2021 - Hiện tại"
-      company: "Techify Solutions"
+    - title: Freelance Developer
+      period: 2023 - 2025
+      company: Minecraft Plugin Development
       dot-color: bg-primary
       description: >
-        Dẫn dắt đội ngũ Android chuyển đổi toàn bộ kiến trúc ứng dụng sang Clean Architecture và MVVM.
-        Triển khai Jetpack Compose cho các dự án mới, tối ưu hóa hiệu năng render UI và giảm 30% crash rate.
-
-    - title: "Android Developer"
-      period: "2018 - 2021"
-      company: "AppNova Corp"
-      dot-color: bg-primary
-      description: >
-        Phát triển các tính năng cốt lõi cho ứng dụng thương mại điện tử với hơn 1 triệu lượt tải.
-        Tích hợp thanh toán, tối ưu hóa logic giỏ hàng và áp dụng Coroutines để xử lý luồng dữ liệu bất đồng bộ.
-
-    - title: "Junior Mobile Developer"
-      period: "2016 - 2018"
-      company: "InnoStartup"
-      dot-color: bg-primary
-      description: >
-        Bắt đầu sự nghiệp với việc bảo trì và nâng cấp các ứng dụng Java truyền thống.
-        Chuyển đổi dần sang Kotlin và tham gia xây dựng các nguyên mẫu (prototypes) cho dự án mới.
+        Phát triển và bảo trì hơn 10 plugins tùy chỉnh cho các máy chủ có lượng người chơi đồng thời từ 50-100.
+        Refactor code, tối ưu hiệu năng, xử lý các tác vụ nặng bằng bất đồng bộ giúp duy trì server ổn định ở mức 20 TPS.
 
   projects:
-    - title: "PayFlow SDK"
+    - title: lucid-abyss
       description: >
-        Một giải pháp thanh toán tích hợp B2B, cung cấp các module giao dịch an toàn thông qua API Ktor,
-         giảm 40% thời gian xử lý và cải thiện trải nghiệm trên ứng dụng cho đối tác với 10 triệu giao dịch/tháng.
-      tags: [ "Kotlin", "Coroutines", "Ktor", "Android SDK" ]
-      link: https://github.com/tozydev
-
-    - title: "TaskMinder Android"
-      description: >
-        Ứng dụng quản lý thời gian mã nguồn mở với giao diện hoàn toàn bằng Jetpack Compose.
-        Áp dụng MVI Architecture và Room Database, cho phép đồng bộ offline-first với hiệu suất cao.
-      tags: [ "Kotlin", "Jetpack Compose", "MVI Architecture", "Room Database" ]
-      link: https://github.com/tozydev
+        Website cá nhân được xây dựng hoàn toàn bằng Kotlin thông qua framework Kobweb và Compose HTML.
+        Dự án tận dụng sức mạnh của Tailwind CSS v4 để tối ưu giao diện,
+        hỗ trợ Static Site Generation từ các tệp Markdown giúp tối ưu hóa tốc độ tải trang và SEO
+      tags: [ "Kotlin", "Kobweb", "Compose HTML", "Tailwind CSS" ]
+      link: https://github.com/tozydev/lucid-abyss
 
 commons:
   actions:

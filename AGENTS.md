@@ -9,7 +9,7 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 
 - **Language:** Kotlin JS 2.3.20.
 - **Framework:** Kobweb 0.24.0 (based on JetBrains Compose HTML).
-- **Styling:** Tailwind CSS 4.x (configured via PostCSS) and a custom design system (based on Material Design 3 tokens).
+- **Styling:** Tailwind CSS 4.x (configured via Webpack) and a custom design system (based on Material Design 3 tokens).
 - **Build Tool:** Gradle (Kotlin DSL).
 - **Internationalization:** YAML localization files (default: Vietnamese `vi`)
 - **Deployment:** Cloudflare Workers (Static layout export).

@@ -1,4 +1,4 @@
-(function (config) {
+(/** @param {import('webpack').Configuration} config */ function (config) {
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
     const isProd = config.mode === "production";
 
@@ -24,5 +24,6 @@
     }))
 
     const cssPath = require('path').resolve(__dirname, "kotlin/styles.css");
+    // noinspection JSUnresolvedReference
     config.entry.main.push(cssPath);
-})(config);
+})(/** noinspection JSUnresolvedReference */ config);

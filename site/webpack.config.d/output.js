@@ -1,4 +1,4 @@
-(function (config) {
+(/** @param {import('webpack').Configuration} config */ function (config) {
     const isProd = config.mode === "production";
     const subDir = "_la/";
 
@@ -15,7 +15,7 @@
             case 'main':
                 return subDir + "js/lucid-abyss." + (isProd ? "[contenthash:8].js" : "js");
             default:
-                return subDir + "js/[name].js" + (isProd ? "[contenthash:8].js" : "js");
+                return subDir + "js/[name]." + (isProd ? "[contenthash:8].js" : "js");
         }
     };
 

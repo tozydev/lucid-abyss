@@ -20,7 +20,6 @@ kobweb {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
                 link(rel = "stylesheet", href = "/_la/css/lucid-abyss.css")
             }
-            scriptAttributes.put("src", "/_la/js/lucid-abyss.js")
             scriptAttributes.put("type", "module")
         }
         export {
@@ -142,6 +141,20 @@ tasks {
             doc
                 .select("link[href=\"/_la/css/lucid-abyss.css\"]")
                 .attr("href", "/_la/css/$cssFileName")
+
+            val jsFilename =
+                sourceDir
+                    .dir("_la/js")
+                    .map {
+                        it.asFileTree
+                            .matching {
+                                include("lucid-abyss.**.js")
+                                exclude("lucid-abyss.**.js.map")
+                            }.singleFile.name
+                    }.get()
+            doc
+                .select("script[src=\"/lucid-abyss.js\"]")
+                .attr("src", "/_la/js/$jsFilename")
         }
     }
 
@@ -151,8 +164,12 @@ tasks {
 
     val cleanupDist by registering(Delete::class) {
         mustRunAfter(copyProductionWebpackAssets, transformSiteHtml, pagefindIndex)
+
         val distDir = layout.projectDirectory.dir(".kobweb/site")
         delete(distDir.file("lucid-abyss.js"), distDir.file("lucid-abyss.js.map"))
+
+        val distJsDir = distDir.dir("_la/js")
+        delete(distJsDir.file("lucid-abyss.js"), distJsDir.file("lucid-abyss.js.map"))
     }
 
     kobwebExport {

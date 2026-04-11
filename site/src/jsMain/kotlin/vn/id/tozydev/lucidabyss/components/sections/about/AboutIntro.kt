@@ -13,7 +13,7 @@ fun AboutIntro(modifier: Modifier = Modifier) {
     Section(modifier.toAttrs()) {
         IntroHeader()
 
-        Div({ tw("prose prose-lg prose-blog max-w-none") }) {
+        Div({ tw("prose md:prose-lg prose-blog max-w-none wrap-break-word") }) {
             AboutStory()
         }
     }

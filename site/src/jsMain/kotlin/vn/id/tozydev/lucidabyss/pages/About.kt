@@ -35,19 +35,20 @@ fun initAboutPage(ctx: InitRouteContext) {
 fun AboutPage() {
     Div(
         {
-            tw("max-w-200 mx-auto bg-surface-container-lowest rounded-xl overflow-hidden")
-            tw("shadow-[0_20px_40px_rgba(42,40,37,0.06)]")
+            tw("max-w-200 mx-auto bg-surface-container-lowest rounded-xl overflow-hidden shadow-soft")
         },
     ) {
         AboutHero()
         Article({ tw("pt-16 md:pt-20 pb-12 md:pb-16 px-6 md:px-20") }) {
-            AboutIntro(Modifier.tw("mb-16"))
+            val sectionModifier = Modifier.tw("mb-16")
 
-            AboutSkills()
-            AboutExperience()
-            AboutProjects()
+            AboutIntro(sectionModifier)
 
-            Hr { tw("border-outline-variant/30 mb-16 max-w-170 mx-auto") }
+            AboutSkills(sectionModifier)
+            AboutExperience(sectionModifier)
+            AboutProjects(sectionModifier)
+
+            Hr { tw("border-outline-variant mb-16 max-w-170 mx-auto") }
 
             AboutContact()
         }

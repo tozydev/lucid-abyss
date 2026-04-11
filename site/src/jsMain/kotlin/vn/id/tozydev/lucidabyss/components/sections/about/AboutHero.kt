@@ -13,43 +13,35 @@ fun AboutHero(modifier: Modifier = Modifier) {
         Img(
             src = "/images/default-cover.webp",
             alt = Strings.pages.about.images.heroAlt,
-            attrs =
-                Modifier
-                    .tw("w-full h-full object-cover")
-                    .toAttrs {
-                        attr("width", "1600")
-                        attr("height", "640")
-                        attr("loading", "eager")
-                        attr("fetchpriority", "high")
-                        attr("decoding", "async")
-                    },
+            attrs = {
+                tw("w-full h-full object-cover")
+                attr("width", "1600")
+                attr("height", "640")
+                attr("loading", "eager")
+                attr("fetchpriority", "high")
+                attr("decoding", "async")
+            },
         )
-        Div(
-            Modifier
-                .tw("absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-surface-container-lowest to-transparent")
-                .toAttrs(),
-        )
+        Div({ tw("absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-surface-container-lowest to-transparent") })
 
-        // Profile Image Overlay
-        Div(Modifier.tw("absolute -bottom-10 md:-bottom-12 left-1/2 -translate-x-1/2").toAttrs()) {
+        Div({ tw("absolute -bottom-10 md:-bottom-12 left-1/2 -translate-x-1/2") }) {
             Div(
-                Modifier
-                    .tw(
+                {
+                    tw(
                         "w-24 h-24 md:w-32 md:h-32 rounded-full border-8 border-surface-container-lowest overflow-hidden shadow-lg bg-surface-container-lowest",
-                    ).toAttrs(),
+                    )
+                },
             ) {
                 Img(
                     src = "/images/avatar_96x.webp",
                     alt = Strings.pages.about.images.profileAlt,
-                    attrs =
-                        Modifier
-                            .tw("w-full h-full object-cover")
-                            .toAttrs {
-                                attr("width", "128")
-                                attr("height", "128")
-                                attr("loading", "eager")
-                                attr("decoding", "async")
-                            },
+                    attrs = {
+                        tw("w-full h-full object-cover")
+                        attr("width", "128")
+                        attr("height", "128")
+                        attr("loading", "eager")
+                        attr("decoding", "async")
+                    },
                 )
             }
         }

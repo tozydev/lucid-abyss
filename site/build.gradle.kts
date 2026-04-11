@@ -99,12 +99,9 @@ kotlin {
 
             implementation(npm(npm.tailwindcss.asProvider()))
             implementation(npm(npm.tailwindcss.typography))
-            implementation(npm(npm.tailwindcss.postcss))
-            implementation(npm(npm.postcss))
+            implementation(npm(npm.tailwindcss.webpack))
             implementation(npm(npm.webpack.loader.css))
-            implementation(npm(npm.webpack.loader.postcss))
             implementation(npm(npm.webpack.plugin.miniCssExtract))
-            implementation(npm(npm.webpack.plugin.cssMinimizer))
             implementation(npm(npm.pagefind))
 
             implementation(npm(npm.shiki))

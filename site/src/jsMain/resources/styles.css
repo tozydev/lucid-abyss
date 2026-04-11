@@ -180,6 +180,10 @@
         @apply bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container;
     }
 
+    .btn-secondary {
+        @apply bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container;
+    }
+
     .btn-neutral {
         @apply bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface;
     }

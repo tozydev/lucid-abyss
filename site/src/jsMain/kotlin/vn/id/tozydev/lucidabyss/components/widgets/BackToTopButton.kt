@@ -21,14 +21,14 @@ fun BackToTopButton(modifier: Modifier = Modifier) {
     ) {
         Button(
             {
-                tw("btn btn-primary btn-circle")
+                tw("btn rounded-full btn-secondary w-12 h-12 flex items-center justify-center")
                 attr("aria-label", Strings.commons.labels.backToTop)
                 onClick {
                     window.scrollTo(ScrollToOptions(top = 0.0, behavior = ScrollBehavior.SMOOTH))
                 }
             },
         ) {
-            Text("🔝")
+            ArrowUpwardIcon()
         }
     }
 }

@@ -195,7 +195,6 @@
 
 @layer utilities {
     .prose-blog {
-        /* prose-p:mb-8 prose-pre:max-w-full prose-pre:overflow-x-auto prose-table:max-w-full prose-table:overflow-x-auto prose-table:block*/
         --tw-prose-body: var(--color-on-surface);
         --tw-prose-headings: var(--color-on-surface);
         --tw-prose-lead: var(--color-on-surface-variant);

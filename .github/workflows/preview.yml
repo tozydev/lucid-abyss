@@ -22,6 +22,7 @@ jobs:
     permissions:
       contents: read
       deployments: write
+      issues: write
 
     steps:
       - name: Download artifact

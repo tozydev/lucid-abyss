@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Nunito";
+    src: url("./Nunito/Nunito[ital,wght].ttf");
+    font-weight: 200 1000;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("./BeVietnamPro/BeVietnamPro[wght].ttf");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("./BeVietnamPro/BeVietnamPro-Italic[wght].ttf");
+    font-weight: 100 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("./JetBrainsMono/JetBrainsMono[wght].ttf");
+    font-weight: 100 800;
+    font-style: normal;
+}

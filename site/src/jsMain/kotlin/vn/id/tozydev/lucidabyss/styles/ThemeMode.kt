@@ -68,7 +68,7 @@ fun initThemeMode() {
                     actualTheme = prefersDark ? "dark" : "light"
                 }
 
-                document.documentElement.setAttribute("data-theme", actualTheme)
+                document.documentElement.classList.toggle("dark", actualTheme === "dark")
                 """.trimIndent()
         },
     )

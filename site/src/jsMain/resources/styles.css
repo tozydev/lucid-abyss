@@ -1,89 +1,295 @@
+/*
+ Base colors:
+  - Seed: #2c5e3b
+  - Primary: #2c5e3b
+  - Secondary: #506352
+  - Tertiary: #6f5c3a
+*/
+
 @import "tailwindcss";
 
 @plugin "@tailwindcss/typography";
 
-@plugin "daisyui" {
-    exclude: fab
-}
-
-@plugin "daisyui/theme" {
-    name: "light";
-    prefersdark: false;
-    color-scheme: "light";
-    --root-bg: oklch(95% 0.02 155);
-    --color-base-100: oklch(100% 0 0);
-    --color-base-200: oklch(98% 0.01 155);
-    --color-base-300: oklch(92% 0.02 155);
-    --color-base-content: oklch(22% 0.03 155);
-    --color-primary: oklch(52% 0.14 155);
-    --color-primary-content: oklch(98% 0.01 155);
-    --color-secondary: oklch(82% 0.08 145);
-    --color-secondary-content: oklch(25% 0.04 155);
-    --color-accent: oklch(68% 0.16 45);
-    --color-accent-content: oklch(20% 0.05 45);
-    --color-neutral: oklch(28% 0.04 155);
-    --color-neutral-content: oklch(94% 0.02 155);
-    --color-info: oklch(75% 0.11 240);
-    --color-info-content: oklch(25% 0.05 240);
-    --color-success: oklch(72% 0.14 132);
-    --color-success-content: oklch(22% 0.05 132);
-    --color-warning: oklch(80% 0.14 85);
-    --color-warning-content: oklch(25% 0.05 85);
-    --color-error: oklch(70% 0.15 25);
-    --color-error-content: oklch(25% 0.05 25);
-    --radius-selector: 0.25rem;
-    --radius-field: 1rem;
-    --radius-box: 2rem;
-    --size-selector: 0.28125rem;
-    --size-field: 0.28125rem;
-    --border: 1px;
-    --depth: 0;
-    --noise: 0;
-}
-
-@plugin "daisyui/theme" {
-    name: "dark";
-    prefersdark: true;
-    color-scheme: "dark";
-    --root-bg: oklch(15% 0.02 155);
-    --color-base-100: oklch(25% 0.005 155);
-    --color-base-200: oklch(30% 0.005 155);
-    --color-base-300: oklch(40% 0.005 155);
-    --color-base-content: oklch(96% 0.002 155);
-    --color-primary: oklch(64% 0.16 155);
-    --color-primary-content: oklch(14% 0.05 155);
-    --color-secondary: oklch(78% 0.06 145);
-    --color-secondary-content: oklch(15% 0.04 145);
-    --color-accent: oklch(68% 0.18 45);
-    --color-accent-content: oklch(15% 0.05 45);
-    --color-neutral: oklch(85% 0.02 155);
-    --color-neutral-content: oklch(20% 0.04 155);
-    --color-info: oklch(65% 0.12 240);
-    --color-info-content: oklch(15% 0.05 240);
-    --color-success: oklch(62% 0.15 132);
-    --color-success-content: oklch(15% 0.05 132);
-    --color-warning: oklch(75% 0.16 85);
-    --color-warning-content: oklch(15% 0.05 85);
-    --color-error: oklch(65% 0.16 25);
-    --color-error-content: oklch(15% 0.05 25);
-    --radius-selector: 0.25rem;
-    --radius-field: 1rem;
-    --radius-box: 2rem;
-    --size-selector: 0.28125rem;
-    --size-field: 0.28125rem;
-    --border: 1px;
-    --depth: 0;
-    --noise: 0;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-kotlin: radial-gradient(circle at 100% 0%, #E44857 0%, #C711E1 50.45%, #7F52FF 100%);
+    --font-headline: "Nunito", sans-serif;
+    --font-body: "Be Vietnam Pro", sans-serif;
+    --font-label: "Be Vietnam Pro", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --shadow-soft: 0 20px 40px rgba(42, 40, 37, 0.06);
+
+    /*region Colors*/
+    /* Primary */
+    --color-primary: oklch(0.475 0.08 151.396);
+    --color-on-primary: oklch(0.977 0.039 145.272);
+    --color-primary-container: oklch(0.905 0.085 149.819);
+    --color-on-primary-container: oklch(0.43 0.08 151.502);
+    --color-inverse-primary: oklch(0.922 0.085 149.286);
+
+    /* Secondary */
+    --color-secondary: oklch(0.482 0.035 147.891);
+    --color-on-secondary: oklch(0.978 0.038 144.082);
+    --color-secondary-container: oklch(0.91 0.036 145.272);
+    --color-on-secondary-container: oklch(0.433 0.034 147.989);
+
+    /* Tertiary */
+    --color-tertiary: oklch(0.485 0.055 81.377);
+    --color-on-tertiary: oklch(0.983 0.012 67.687);
+    --color-tertiary-container: oklch(0.915 0.063 79.309);
+    --color-on-tertiary-container: oklch(0.438 0.054 81.708);
+
+    /* Neutral & Surface */
+    --color-background: oklch(0.981 0.008 128.557);
+    --color-on-background: oklch(0.315 0.016 148.756);
+    --color-surface: oklch(0.981 0.008 128.557);
+    --color-on-surface: oklch(0.315 0.016 148.756);
+    --color-surface-variant: oklch(0.912 0.018 140.022);
+    --color-on-surface-variant: oklch(0.483 0.016 145.321);
+    --color-surface-tint: oklch(0.475 0.08 151.396);
+    --color-inverse-surface: oklch(0.163 0.009 152.903);
+    --color-inverse-on-surface: oklch(0.694 0.01 134.897);
+
+    /* Error */
+    --color-error: oklch(0.503 0.148 25.048);
+    --color-on-error: oklch(0.982 0.009 26.017);
+    --color-error-container: oklch(0.717 0.165 24.264);
+    --color-on-error-container: oklch(0.346 0.131 24.672);
+
+    /* Outline */
+    --color-outline: oklch(0.579 0.017 145.348);
+    --color-outline-variant: oklch(0.761 0.017 139.438);
+
+    /* Scrim */
+    --color-scrim: #000000;
+
+    /* Surface Container */
+    --color-surface-bright: oklch(0.981 0.008 128.557);
+    --color-surface-container: oklch(0.947 0.015 136.08);
+    --color-surface-container-high: oklch(0.929 0.015 136.082);
+    --color-surface-container-highest: oklch(0.912 0.018 140.022);
+    --color-surface-container-low: oklch(0.964 0.012 133.377);
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-dim: oklch(0.886 0.016 139.439);
+
+    /* Fixed */
+    --color-primary-fixed: oklch(0.905 0.085 149.819);
+    --color-primary-fixed-dim: oklch(0.86 0.083 149.401);
+    --color-on-primary-fixed: oklch(0.358 0.077 152.487);
+    --color-on-primary-fixed-variant: oklch(0.465 0.08 151.279);
+    --color-secondary-fixed: oklch(0.91 0.036 145.272);
+    --color-secondary-fixed-dim: oklch(0.867 0.036 145.253);
+    --color-on-secondary-fixed: oklch(0.365 0.036 149.086);
+    --color-on-secondary-fixed-variant: oklch(0.468 0.036 147.856);
+    --color-tertiary-fixed: oklch(0.915 0.063 79.309);
+    --color-tertiary-fixed-dim: oklch(0.872 0.062 79.627);
+    --color-on-tertiary-fixed: oklch(0.37 0.051 82.531);
+    --color-on-tertiary-fixed-variant: oklch(0.474 0.055 81.311);
+
+    /*endregion*/
 }
 
-@utility hover-primary-glow {
-    @apply hover:border-primary hover:shadow-[0_0_20px_-5px_var(--color-primary)] transition-all duration-300;
+:root.dark {
+    /*region Colors*/
+
+    /* Primary */
+    --color-primary: oklch(0.818 0.083 149.889);
+    --color-on-primary: oklch(0.362 0.078 151.878);
+    --color-primary-container: oklch(0.43 0.08 151.502);
+    --color-on-primary-container: oklch(0.905 0.083 149.953);
+    --color-inverse-primary: oklch(0.475 0.08 151.396);
+
+    /* Secondary */
+    --color-secondary: oklch(0.823 0.037 145.231);
+    --color-on-secondary: oklch(0.366 0.034 149.446);
+    --color-secondary-container: oklch(0.351 0.036 147.685);
+    --color-on-secondary-container: oklch(0.802 0.037 145.219);
+
+    /* Tertiary */
+    --color-tertiary: oklch(0.959 0.036 78.135);
+    --color-on-tertiary: oklch(0.468 0.054 80.609);
+    --color-tertiary-container: oklch(0.915 0.063 79.309);
+    --color-on-tertiary-container: oklch(0.438 0.054 81.708);
+
+    /* Neutral & Surface */
+    --color-background: oklch(0.163 0.009 152.903);
+    --color-on-background: oklch(0.921 0.018 140.022);
+    --color-surface: oklch(0.163 0.009 152.903);
+    --color-on-surface: oklch(0.921 0.018 140.022);
+    --color-surface-variant: oklch(0.267 0.017 148.599);
+    --color-on-surface-variant: oklch(0.738 0.017 139.438);
+    --color-surface-tint: oklch(0.818 0.083 149.889);
+    --color-inverse-surface: oklch(0.981 0.008 128.557);
+    --color-inverse-on-surface: oklch(0.448 0.009 139.439);
+
+    /* Error */
+    --color-error: oklch(0.717 0.165 24.264);
+    --color-on-error: oklch(0.255 0.103 24.537);
+    --color-error-container: oklch(0.414 0.139 24.855);
+    --color-on-error-container: oklch(0.787 0.123 23.847);
+
+    /* Outline */
+    --color-outline: oklch(0.562 0.017 145.339);
+    --color-outline-variant: oklch(0.399 0.017 145.251);
+
+    /* Scrim */
+    --color-scrim: #000000;
+
+    /* Surface Container */
+    --color-surface-bright: oklch(0.291 0.017 148.686);
+    --color-surface-container: oklch(0.214 0.013 149.941);
+    --color-surface-container-high: oklch(0.239 0.014 145.112);
+    --color-surface-container-highest: oklch(0.267 0.017 148.599);
+    --color-surface-container-low: oklch(0.187 0.014 149.775);
+    --color-surface-container-lowest: #000000;
+    --color-surface-dim: oklch(0.163 0.009 152.903);
+
+    /*endregion*/
 }
 
-@utility hover-primary-glow-translate {
-    @apply hover-primary-glow hover:-translate-y-1
+@layer base {
+    body {
+        background-color: var(--color-surface-container-low);
+        color: var(--color-on-surface);
+        /*noinspection CssNoGenericFontName*/
+        font-family: var(--font-body);
+    }
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+}
+
+@layer components {
+    .link {
+        @apply text-primary;
+    }
+
+    .link-hover {
+        @apply no-underline hover:underline;
+    }
+
+    .btn {
+        @apply text-center rounded-md transition-all scale-100 active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container;
+    }
+
+    .btn-secondary {
+        @apply bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container;
+    }
+
+    .btn-neutral {
+        @apply bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface;
+    }
+
+    .btn-lg {
+        @apply px-6 md:px-8 py-3 md:py-4;
+    }
+}
+
+@layer utilities {
+    .prose-blog {
+        --tw-prose-body: var(--color-on-surface);
+        --tw-prose-headings: var(--color-on-surface);
+        --tw-prose-lead: var(--color-on-surface-variant);
+        --tw-prose-links: var(--color-primary);
+        --tw-prose-bold: var(--color-on-surface);
+
+        --tw-prose-counters: var(--color-tertiary);
+        --tw-prose-bullets: var(--color-tertiary);
+
+        --tw-prose-hr: var(--color-outline-variant);
+
+        --tw-prose-quotes: var(--color-secondary);
+        --tw-prose-quote-borders: var(--color-primary);
+
+        --tw-prose-captions: var(--color-on-surface-variant);
+
+        --tw-prose-kbd: var(--color-on-surface);
+
+        --tw-prose-code: var(--color-on-surface);
+        --tw-prose-pre-code: var(--color-on-primary-container);
+        --tw-prose-pre-bg: var(--color-surface-container-high);
+
+        --tw-prose-th-borders: var(--color-outline);
+        --tw-prose-td-borders: var(--color-outline-variant);
+
+        @apply prose-headings:font-headline prose-headings:font-bold;
+
+        img {
+            @apply max-w-full h-auto rounded-lg border border-outline/10 shadow-md;
+        }
+
+        blockquote {
+            @apply bg-surface-container px-8 py-4 rounded-xl;
+
+            p {
+                @apply m-0;
+            }
+        }
+
+        table {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+
+            @apply bg-surface-container/50 rounded-xl overflow-hidden max-w-full;
+
+            th {
+                @apply bg-surface-container p-4 text-primary;
+            }
+
+            td {
+                @apply p-4 border-t border-outline-variant/30;
+            }
+        }
+
+        :where(code):not(pre > code) {
+            @apply bg-surface-container-high  border rounded border-outline/10 px-[0.5em] py-[0.2em] font-medium;
+
+            &:before, &:after {
+                content: none;
+            }
+        }
+    }
+
+    .hero-code-block {
+        @apply dark:bg-[#fafafa]! bg-[#282c34]! p-2;
+
+        /*noinspection CssUnresolvedCustomProperty*/
+
+        & .shiki,
+        & .shiki span {
+            background-color: var(--shiki-dark-bg) !important;
+            color: var(--shiki-dark) !important;
+        }
+
+        /*noinspection CssUnresolvedCustomProperty*/
+
+        :where(.dark) & .shiki,
+        :where(.dark) & .shiki span {
+            background-color: var(--shiki-light-bg) !important;
+            color: var(--shiki-light) !important;
+        }
+    }
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+.shiki,
+.shiki span {
+    background-color: var(--shiki-light-bg);
+    color: var(--shiki-light);
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+.dark :is(.shiki, .shiki span) {
+    background-color: var(--shiki-dark-bg);
+    color: var(--shiki-dark);
 }

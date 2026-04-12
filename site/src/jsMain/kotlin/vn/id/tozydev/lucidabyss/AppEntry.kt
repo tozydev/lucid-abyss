@@ -1,7 +1,6 @@
 package vn.id.tozydev.lucidabyss
 
 import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.KobwebComposeStyles
 import com.varabyte.kobweb.core.App
 import kotlinx.browser.document
 import org.w3c.dom.HTMLElement
@@ -11,12 +10,11 @@ import vn.id.tozydev.lucidabyss.styles.saveToLocalStorage
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
-    KobwebComposeStyles()
     ThemeModeAware()
     content()
 }
 
-private const val DATA_THEME_ATTR = "data-theme"
+private const val DARK_MODE_CLASS = "dark"
 
 @Composable
 private fun ThemeModeAware() {
@@ -24,9 +22,9 @@ private fun ThemeModeAware() {
     DisposableEffect(themeMode) {
         themeMode.saveToLocalStorage()
         val element = document.documentElement.unsafeCast<HTMLElement>()
-        element.setAttribute(DATA_THEME_ATTR, themeMode.actualMode.name.lowercase())
+        element.classList.toggle(DARK_MODE_CLASS, themeMode.actualMode == ThemeMode.Dark)
         onDispose {
-            element.removeAttribute(DATA_THEME_ATTR)
+            element.classList.remove(DARK_MODE_CLASS)
         }
     }
 }

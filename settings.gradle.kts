@@ -22,5 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "lucid-abyss"
 
-includeBuild("core")
-include("site")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+include("site", "dev-server-plugin")

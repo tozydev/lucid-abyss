@@ -1,0 +1,34 @@
+package vn.id.tozydev.lucidabyss.components.widgets
+
+import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.toAttrs
+import kotlinx.browser.window
+import org.jetbrains.compose.web.dom.*
+import org.w3c.dom.SMOOTH
+import org.w3c.dom.ScrollBehavior
+import org.w3c.dom.ScrollToOptions
+import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.utils.tw
+
+@Composable
+fun BackToTopButton(modifier: Modifier = Modifier) {
+    Div(
+        Modifier
+            .tw("fixed bottom-24 right-6 z-50 transition duration-300 md:bottom-8 md:right-8")
+            .then(modifier)
+            .toAttrs(),
+    ) {
+        Button(
+            {
+                tw("btn rounded-full btn-secondary w-12 h-12 flex items-center justify-center")
+                attr("aria-label", Strings.commons.labels.backToTop)
+                onClick {
+                    window.scrollTo(ScrollToOptions(top = 0.0, behavior = ScrollBehavior.SMOOTH))
+                }
+            },
+        ) {
+            ArrowUpwardIcon()
+        }
+    }
+}

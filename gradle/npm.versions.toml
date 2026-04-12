@@ -1,23 +1,19 @@
 [versions]
-daisyui = "5.5.19"
 tailwindcss = "4.2.2"
 tailwindcss-typography = "0.5.19"
-postcss = "8.5.8"
-postcss-loader = "8.2.1"
 css-loader = "7.1.4"
 mini-css-extract-plugin = "2.10.1"
-css-minimizer-webpack-plugin = "8.0.0"
+pagefind = "1.5.0-beta.1"
+shiki = "4.0.2"
 
 [libraries]
-daisyui = { group = "dev", name = "daisyui", version.ref = "daisyui" }
-
 tailwindcss = { group = "dev", name = "tailwindcss", version.ref = "tailwindcss" }
+tailwindcss-webpack = { group = "dev", name = "@tailwindcss/webpack", version.ref = "tailwindcss" }
 tailwindcss-typography = { group = "dev", name = "@tailwindcss/typography", version.ref = "tailwindcss-typography" }
-tailwindcss-postcss = { group = "dev", name = "@tailwindcss/postcss", version.ref = "tailwindcss" }
-
-postcss = { group = "dev", name = "postcss", version.ref = "postcss" }
-webpack-loader-postcss = { group = "dev", name = "postcss-loader", version.ref = "postcss-loader" }
 
 webpack-loader-css = { group = "dev", name = "css-loader", version.ref = "css-loader" }
-webpack-plugin-cssMinimizer = { group = "dev", name = "css-minimizer-webpack-plugin", version.ref = "css-minimizer-webpack-plugin" }
 webpack-plugin-miniCssExtract = { group = "dev", name = "mini-css-extract-plugin", version.ref = "mini-css-extract-plugin" }
+
+pagefind = { group = "dev", name = "pagefind", version.ref = "pagefind" }
+
+shiki = { group = "normal", name = "shiki", version.ref = "shiki" }

@@ -1,98 +1,124 @@
-page:
-  about:
-    title: Về tôi
-    description: Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang làm.
-  blog:
-    title: Blog
-    description: Blog cá nhân của tôi nơi tôi chia sẻ kiến thức và kinh nghiệm.
-    header:
-      title:
-        - Chia sẻ kiến thức
-        - Lập trình và cuộc sống
-      description: Nơi lưu lại những bài học, kinh nghiệm và những điều thú vị trong
-        hành trình phát triển bản thân để trở nên tốt hơn.
-  home:
-    title: Trang chủ
-    description: Trang chủ của blog cá nhân của tôi
+profile:
+  name: Thanh Tân
+  role: Kotlin Developer
+  site-source: https://github.com/tozydev/lucid-abyss
+  contact:
+    email: me@tozydev.id.vn
+    github: https://github.com/tozydev
+    bluesky: https://bsky.app/profile/tozydev.id.vn
+    linkedin: https://www.linkedin.com/in/tozydev/
+
+  skills:
+    - Kotlin
+    - Java
+    - Typescript
+    - Spring Boot
+    - Ktor
+    - Compose Multiplatform
+    - PostgreSQL
+    - SQLite
+    - Git
+    - IntelliJ IDEA
+    - AI
+
+  experience:
+    - title: Freelance Developer
+      period: 2023 - 2025
+      company: Minecraft Plugin Development
+      dot-color: bg-primary
+      description: >
+        Phát triển và bảo trì hơn 10 plugins tùy chỉnh cho các máy chủ có lượng người chơi đồng thời từ 50-100.
+        Refactor code, tối ưu hiệu năng, xử lý các tác vụ nặng bằng bất đồng bộ giúp duy trì server ổn định ở mức 20 TPS.
+
   projects:
-    title: Dự án
-    description: Nơi trưng bày các sản phẩm và dự án của tôi.
-section:
+    - title: lucid-abyss
+      description: >
+        Website cá nhân được xây dựng hoàn toàn bằng Kotlin thông qua framework Kobweb và Compose HTML.
+        Dự án tận dụng sức mạnh của Tailwind CSS v4 để tối ưu giao diện,
+        hỗ trợ Static Site Generation từ các tệp Markdown giúp tối ưu hóa tốc độ tải trang và SEO
+      tags: [ "Kotlin", "Kobweb", "Compose HTML", "Tailwind CSS" ]
+      link: https://github.com/tozydev/lucid-abyss
+
+commons:
+  actions:
+    learn-more: Tìm hiểu thêm
+    view-posts: Xem bài viết
+    view-all: Xem tất cả
+    read-more: Đọc thêm
+    next-post: "Bài sau \u2192"
+    prev-post: "\u2190 Bài trước"
+    read-post: Đọc bài viết ${title}
+
+  labels:
+    bluesky: Bluesky
+    email: Email
+    github: GitHub
+    rss: RSS
+    back-to-top: Về đầu trang
+    toc: Mục lục
+    all: Tất cả
+
+  navigation:
+    home: Trang chủ
+    about: Về tôi
+    blog: Blog
+
+sections:
+  latest-posts:
+    title: Bài viết mới nhất
+    description: Khám phá những bài viết, hướng dẫn và chia sẻ mới nhất về lập trình và công nghệ.
+
   footer:
     copyright:
-      - "© 2026 tozydev. Mã nguồn ở "
+      - "© 2026 tozydev. Mã nguồn mở tại "
       - GitHub
+    built-with:
       - "Xây dựng với "
       - Kotlin
       - " và "
       - Kobweb
-    link:
-      bluesky: Bluesky
-      email: Email
-      github: GitHub
-      rss: RSS
-  header:
-    menu:
-      blog: Blog
-      home: Trang chủ
-      me: Về tôi
-      projects: Dự án
-  hero:
-    title:
-      - Xin chào, tôi là
-      - Thanh Tân
-    description:
-      - "Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với "
-      - Kotlin
-      - . Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...
-    image-alt: Ảnh đại diện
-    learn-more: Tìm hiểu thêm
-    view-blog: Xem blog
-  socials:
-    label:
-      bluesky: Bluesky
-      email: Email
-      github: GitHub
-      linkedin: LinkedIn
-  techstack:
-    title: Tech Stack
-    badge:
-      java: Java
-      kobweb: Kobweb
-      kotlin: Kotlin
-widget:
-  under-construction:
-    title: Đang xây dựng
-    description: Trang này hiện đang được xây dựng. Vui lòng quay lại sau!
-  back-to-top-button:
-    label: Về đầu trang
-  bottom-navbar:
-    blog: Blog
-    home: Trang chủ
-    me: Về tôi
-    projects: Dự án
-  featured-project:
-    author-avatar-alt: Ảnh đại diện tác giả dự án
-    badge: Nổi bật
-    description: Website cá nhân của tôi, được xây dựng bằng Kotlin/JS và Kobweb.
-    view-details: Xem chi tiết
-  latest-post:
-    badge: Mới nhất
-    read-more: Đọc thêm
-  location:
-    title: Hồ Chí Minh, Việt Nam
-    description: Đang học tại UTH
-  next-prev-posts:
-    next: Bài tiếp theo
-    prev: Bài trước đó
-  post:
-    cover-alt: Ảnh bìa bài viết ${title}
-  quote:
-    text: “I know that I know nothing”
-    author: — Socrates
-  share-post:
-    title: Chia sẻ bài viết
-    link: Sao chép liên kết
-    link-copied: Liên kết đã được sao chép!
-  table-of-contents:
-    title: Mục lục
+
+pages:
+  home:
+    title: Trang chủ
+    description: Trang chủ của blog cá nhân của tôi
+    hero:
+      title:
+        - "Xin chào, tôi là "
+        - Thanh Tân.
+      description: >
+        Hay còn được gọi là tozydev, một developer. Với tôi, code là một đam mê, nó tuyệt vời hơn khi tôi code với Kotlin.
+         Và blog này, nơi tôi chia sẽ nhưng câu chuyện của mình...
+
+  about:
+    title: Giới thiệu
+    description: Một chút về bản thân tôi, hành trình của tôi và những gì tôi đang làm.
+    skills:
+      title: Kỹ năng công nghệ
+    experience:
+      title: Kinh nghiệm làm việc
+    projects:
+      title: Dự án tiêu biểu
+    contact:
+      title: Liên hệ
+      description: Tôi luôn mở cửa cho những cuộc trò chuyện thú vị về công nghệ hoặc thiết kế. Hãy gửi email cho tôi.
+    images:
+      hero-alt: ...
+      profile-alt: Thanh Tân
+
+  blog:
+    title: Blog
+    description: Bài viết về lập trình, công nghệ và cuộc sống.
+    header:
+      title: Tất cả bài viết
+      description: Nơi lưu lại những bài học, kinh nghiệm và những điều thú vị trong hành trình phát triển bản thân để trở nên tốt hơn.
+
+page:
+  tag:
+    header:
+      title: "Bài viết với th\u1ebb \u201c${tag}\u201d"
+      description: "Kh\u00e1m ph\u00e1 t\u1ea5t c\u1ea3 c\u00e1c b\u00e0i vi\u1ebft \u0111\u01b0\u1ee3c g\u1eafn th\u1ebb ${tag}."
+  topic:
+    header:
+      title: "B\u00e0i vi\u1ebft v\u1ec1 \u201c${topic}\u201d"
+      description: "T\u00ecm hi\u1ec3u s\u00e2u v\u1ec1 ${topic} v\u1edbi c\u00e1c b\u00e0i vi\u1ebft v\u00e0 h\u01b0\u1edbng d\u1eabn chuy\u00ean s\u00e2u."

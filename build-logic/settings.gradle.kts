@@ -12,4 +12,4 @@ dependencyResolutionManagement {
     }
 }
 
-includeBuild("../core")
+rootProject.name = "lucid-abyss-build-logic"

@@ -5,6 +5,8 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.widgets.CheckIcon
+import vn.id.tozydev.lucidabyss.components.widgets.PersonIcon
 import vn.id.tozydev.lucidabyss.components.widgets.code.CodeBlock
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.strings.title
@@ -24,30 +26,63 @@ fun HomeHero(modifier: Modifier = Modifier) {
 
 @Composable
 private fun ShortIntro(modifier: Modifier = Modifier) {
-    CodeBlock(
-        // language=kotlin
-        code =
-            """
-            val tozydev = developer {
-                about {
-                    name = "Thanh Tân"
-                    username = "tozydev"
-                    role = Kotlin_Developer
-                }
-                technicalSkills {
-                    languages = setOf("Kotlin", "Java", "TypeScript")
-                    frameworks = setOf("Ktor", "Spring Boot", "Kobweb")
-                }
-                tools {
-                    ide = setOf("IntelliJ IDEA")
-                    codeEditor = setOf("VS Code")
-                    ai = setOf("Gemini", "GitHub Copilot")
+    Div(
+        Modifier.tw("flex flex-col rounded-xl overflow-hidden shadow-soft bg-surface border border-outline/30").then(modifier).toAttrs(),
+    ) {
+        Div(
+            Modifier.tw("flex items-center justify-between bg-surface-container-low border-b border-outline/30").toAttrs(),
+        ) {
+            Div(Modifier.tw("flex").toAttrs()) {
+                Div(
+                    Modifier.tw("flex items-center gap-2 px-4 py-3 bg-surface border-r border-outline/30 relative").toAttrs(),
+                ) {
+                    PersonIcon(Modifier.tw("w-4 h-4 text-primary"))
+                    Span(Modifier.tw("text-xs font-mono text-on-surface").toAttrs()) { Text("Profile.kt") }
+                    Div(Modifier.tw("absolute bottom-0 left-0 right-0 h-[2px] bg-primary").toAttrs())
                 }
             }
-            """.trimIndent(),
-        lang = "kotlin",
-        modifier = Modifier.tw("my-0! hero-code-block").then(modifier),
-    )
+            Div(Modifier.tw("flex gap-2 pr-4").toAttrs()) {
+                Div(Modifier.tw("w-2.5 h-2.5 rounded-full bg-outline-variant").toAttrs())
+                Div(Modifier.tw("w-2.5 h-2.5 rounded-full bg-outline-variant").toAttrs())
+                Div(Modifier.tw("w-2.5 h-2.5 rounded-full bg-outline-variant").toAttrs())
+            }
+        }
+        Div(Modifier.tw("flex-1 overflow-hidden relative").toAttrs()) {
+            CodeBlock(
+                // language=kotlin
+                code =
+                    """
+                    val tozydev = developer {
+                        about {
+                            name = "Thanh Tân"
+                            username = "tozydev"
+                            role = Kotlin_Developer
+                        }
+                        technicalSkills {
+                            languages = setOf("Kotlin", "Java", "TypeScript")
+                            frameworks = setOf("Ktor", "Spring Boot", "Kobweb")
+                        }
+                        tools {
+                            ide = setOf("IntelliJ IDEA")
+                            codeEditor = setOf("VS Code")
+                            ai = setOf("Gemini", "GitHub Copilot")
+                        }
+                    }
+                    """.trimIndent(),
+                lang = "kotlin",
+                modifier = Modifier.tw("my-0! hero-code-block !rounded-none !border-none !shadow-none"),
+            )
+        }
+        Div(
+            Modifier.tw("px-4 py-1.5 bg-primary text-on-primary text-[10px] font-mono flex justify-between items-center").toAttrs(),
+        ) {
+            Div(Modifier.tw("flex items-center gap-2").toAttrs()) {
+                CheckIcon(Modifier.tw("w-3.5 h-3.5"))
+                Span { Text("SYSTEM: OPTIMIZED") }
+            }
+            Span { Text("main* ᛡ utf-8") }
+        }
+    }
 }
 
 @Composable

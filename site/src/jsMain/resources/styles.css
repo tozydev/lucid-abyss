@@ -278,6 +278,22 @@
             background-color: var(--shiki-light-bg) !important;
             color: var(--shiki-light) !important;
         }
+
+        & .shiki {
+            counter-reset: line;
+        }
+
+        & .shiki code .line::before {
+            counter-increment: line;
+            content: counter(line);
+            display: inline-block;
+            width: 1.5rem;
+            margin-right: 1.5rem;
+            text-align: right;
+            color: var(--color-outline);
+            border-right: 1px solid var(--color-outline-variant);
+            padding-right: 0.5rem;
+        }
     }
 }
 

@@ -26,7 +26,7 @@ fun Badge(
     variant: BadgeVariant = BadgeVariant.Primary,
     size: BadgeSize = BadgeSize.Md,
 ) {
-    val baseClasses = "rounded uppercase transition-all tracking-widest inline-flex items-center"
+    val baseClasses = "rounded uppercase transition-all tracking-widest inline-flex items-center whitespace-nowrap shrink-0"
 
     val sizeClasses =
         when (size) {

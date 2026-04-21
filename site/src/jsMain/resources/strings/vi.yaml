@@ -57,6 +57,8 @@ commons:
     back-to-top: Về đầu trang
     toc: Mục lục
     all: Tất cả
+    expand-chips: Mở rộng danh sách thẻ
+    collapse-chips: Thu gọn danh sách thẻ
 
   navigation:
     home: Trang chủ

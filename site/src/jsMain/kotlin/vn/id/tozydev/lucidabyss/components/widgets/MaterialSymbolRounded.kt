@@ -162,6 +162,22 @@ fun ArrowUpwardIcon(modifier: Modifier = Modifier) {
 }
 
 @Composable
+fun KeyboardArrowUpIcon(modifier: Modifier = Modifier) {
+    SimpleSvgIcon(
+        "M480-528 324-372q-11 11-28 11t-28-11q-11-11-11-28t11-28l184-184q12-12 28-12t28 12l184 184q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-528Z",
+        modifier,
+    )
+}
+
+@Composable
+fun KeyboardArrowDownIcon(modifier: Modifier = Modifier) {
+    SimpleSvgIcon(
+        "M465-363.5q-7-2.5-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5q-8 0-15-2.5Z",
+        modifier,
+    )
+}
+
+@Composable
 private fun SimpleSvgIcon(
     path: String,
     modifier: Modifier = Modifier,

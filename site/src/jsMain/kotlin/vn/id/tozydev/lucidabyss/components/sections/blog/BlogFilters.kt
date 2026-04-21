@@ -7,6 +7,7 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.Badge
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeSize
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeVariant
+import vn.id.tozydev.lucidabyss.components.widgets.ExpandableChipRail
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -17,28 +18,25 @@ fun BlogFilters(
     modifier: Modifier = Modifier,
     activeTag: String = "",
 ) {
-    Section(
-        Modifier
-            .tw("mb-12 flex flex-wrap gap-2 items-center")
-            .then(modifier)
-            .toAttrs(),
-    ) {
-        Badge(
-            text = Strings.commons.labels.all,
-            href = SiteRoutes.blog,
-            variant = if (activeTag.isEmpty()) BadgeVariant.Primary else BadgeVariant.Surface,
-            size = BadgeSize.Lg,
-            modifier = Modifier.tw("shadow-sm font-bold"),
-        )
-        tags.forEach { tag ->
-            key(tag) {
-                Badge(
-                    text = tag,
-                    href = SiteRoutes.tag(tag),
-                    variant = if (activeTag == tag) BadgeVariant.Primary else BadgeVariant.Surface,
-                    size = BadgeSize.Lg,
-                    modifier = Modifier.tw("shadow-sm font-bold"),
-                )
+    Section(Modifier.tw("mb-12").then(modifier).toAttrs()) {
+        ExpandableChipRail(rowClass = "gap-2") {
+            Badge(
+                text = Strings.commons.labels.all,
+                href = SiteRoutes.blog,
+                variant = if (activeTag.isEmpty()) BadgeVariant.Primary else BadgeVariant.Surface,
+                size = BadgeSize.Lg,
+                modifier = Modifier.tw("shadow-sm font-bold"),
+            )
+            tags.forEach { tag ->
+                key(tag) {
+                    Badge(
+                        text = tag,
+                        href = SiteRoutes.tag(tag),
+                        variant = if (activeTag == tag) BadgeVariant.Primary else BadgeVariant.Surface,
+                        size = BadgeSize.Lg,
+                        modifier = Modifier.tw("shadow-sm font-bold"),
+                    )
+                }
             }
         }
     }

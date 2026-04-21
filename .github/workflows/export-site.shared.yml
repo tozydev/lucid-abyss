@@ -38,6 +38,19 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v6
+        with:
+          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
+          gradle-home-cache-includes: |
+            nodejs
+            swc
+
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('gradle/libs.versions.toml', 'gradle/npm.versions.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: Query Browser Cache ID
         id: browser-cache-id

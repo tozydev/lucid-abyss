@@ -31,3 +31,6 @@ dist/
 
 ### Wrangler
 .wrangler
+
+### AI
+.playwright-mcp

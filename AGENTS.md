@@ -52,6 +52,7 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 - **ALWAYS** run `./gradlew spotlessApply` after finalizing code changes.
 - **ASK FIRST** before creating new Gradle modules or changing `build-logic`.
 - **ASK FIRST** before adding new dependencies.
+- **ASK FIRST** before modifying `dev-server-plugin/` or the custom tasks in `site/build.gradle.kts` (e.g. `transformSiteHtml`, `copyProductionWebpackAssets`, `pagefindIndex`, `cleanupDist`). These tasks influence the exported output and deployment pipeline.
 - **ALWAYS** define dependencies in `gradle/libs.versions.toml` or `gradle/npm.versions.toml`.
 - **NEVER** hardcode versions in `build.gradle.kts`.
 - **PREFER** using `{ }` attrs block over `Modifier.toAttrs()` for Compose HTML composables.

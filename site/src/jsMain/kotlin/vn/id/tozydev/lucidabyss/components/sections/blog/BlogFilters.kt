@@ -14,25 +14,26 @@ import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
 fun BlogFilters(
-    tags: List<String>,
+    items: List<String>,
+    itemHref: (String) -> String,
     modifier: Modifier = Modifier,
-    activeTag: String = "",
+    activeItem: String = "",
 ) {
     Section(Modifier.tw("mb-12").then(modifier).toAttrs()) {
         ExpandableChipRail(rowClass = "gap-2") {
             Badge(
                 text = Strings.commons.labels.all,
                 href = SiteRoutes.blog,
-                variant = if (activeTag.isEmpty()) BadgeVariant.Primary else BadgeVariant.Surface,
+                variant = if (activeItem.isEmpty()) BadgeVariant.Primary else BadgeVariant.Surface,
                 size = BadgeSize.Lg,
                 modifier = Modifier.tw("shadow-sm font-bold"),
             )
-            tags.forEach { tag ->
-                key(tag) {
+            items.forEach { item ->
+                key(item) {
                     Badge(
-                        text = tag,
-                        href = SiteRoutes.tag(tag),
-                        variant = if (activeTag == tag) BadgeVariant.Primary else BadgeVariant.Surface,
+                        text = item,
+                        href = itemHref(item),
+                        variant = if (activeItem == item) BadgeVariant.Primary else BadgeVariant.Surface,
                         size = BadgeSize.Lg,
                         modifier = Modifier.tw("shadow-sm font-bold"),
                     )

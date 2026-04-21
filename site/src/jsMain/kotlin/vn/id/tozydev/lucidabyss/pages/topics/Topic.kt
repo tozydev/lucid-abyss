@@ -12,6 +12,7 @@ import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.blog.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.postsForTopic
 import vn.id.tozydev.lucidabyss.utils.tagsForTopic
 
@@ -59,7 +60,8 @@ private fun TopicPageContent(
 ) {
     BlogListingContent(
         posts = posts,
-        tags = tags,
+        filters = tags,
+        hrefForFilter = { tag -> SiteRoutes.tag(tag) },
         title = title,
         description = description,
     )

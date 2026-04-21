@@ -12,13 +12,15 @@ import vn.id.tozydev.lucidabyss.utils.tw
 @Composable
 fun BlogListingContent(
     posts: List<Post>,
-    tags: List<String>,
+    filters: List<String>,
+    hrefForFilter: (String) -> String,
     title: String,
     description: String,
     modifier: Modifier = Modifier,
-    activeTag: String = "",
+    activeFilter: String = "",
     years: List<Int> = emptyList(),
     currentYear: Int? = null,
+    selectedTopic: String = "",
 ) {
     val selectedYear = currentYear?.takeIf { it in years }
 
@@ -32,13 +34,17 @@ fun BlogListingContent(
             title = title,
             description = description,
         )
-        BlogFilters(tags = tags, activeTag = activeTag)
+        BlogFilters(
+            items = filters,
+            itemHref = hrefForFilter,
+            activeItem = activeFilter,
+        )
         BlogGrid(posts = posts)
         if (years.size > 1 && selectedYear != null) {
             Pagination(
                 pages = years,
                 currentPage = selectedYear,
-                hrefForPage = { year -> SiteRoutes.blog(year) },
+                hrefForPage = { year -> SiteRoutes.blog(year = year, topic = selectedTopic.takeIf { it.isNotBlank() }) },
             )
         }
     }

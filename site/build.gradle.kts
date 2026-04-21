@@ -17,7 +17,6 @@ kobweb {
         index {
             lang = "vi"
             head.add {
-                link(rel = "stylesheet", href = "/fonts/faces.css")
                 link(rel = "stylesheet", href = "/_la/css/lucid-abyss.css")
             }
             scriptAttributes.put("type", "module")

@@ -20,7 +20,14 @@
     };
 
     config.output.publicPath = '/';
-    config.output.assetModuleFilename = subDir + "[name][ext][query]";
+
+    config.output.assetModuleFilename = (pathData) => {
+        if (pathData.filename.endsWith(".woff2")) {
+            return subDir + "fonts/[name]" + (isProd ? ".[contenthash:8]" : "") + "[ext][query]";
+        }
+
+        return subDir + "[name][ext][query]";
+    };
 
     config.output.asyncChunks = true;
     config.output.chunkFilename = subDir + "js/[name]." + (isProd ? "[contenthash:8].js" : "js");

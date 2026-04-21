@@ -12,6 +12,38 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+    font-family: "Nunito";
+    src: url("./fonts/Nunito/Nunito[ital,wght].woff2") format("woff2-variations");
+    font-weight: 200 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("./fonts/BeVietnamPro/BeVietnamPro[wght].woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Be Vietnam Pro";
+    src: url("./fonts/BeVietnamPro/BeVietnamPro-Italic[wght].woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("./fonts/JetBrainsMono/JetBrainsMono[wght].woff2") format("woff2-variations");
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     --font-headline: "Nunito", sans-serif;
     --font-body: "Be Vietnam Pro", sans-serif;

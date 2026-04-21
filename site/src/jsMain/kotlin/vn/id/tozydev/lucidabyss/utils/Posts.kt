@@ -7,11 +7,6 @@ import vn.id.tozydev.lucidabyss.generated.Posts
 val Post.coverImagePathOrDefault: String
     get() = BasePath.prependTo(coverImage ?: "/images/default-cover.webp")
 
-fun List<Post>.allTags(): List<String> =
-    flatMap { it.tags }
-        .distinct()
-        .filter { it.isNotBlank() }
-
 fun List<Post>.allTopics(): List<String> =
     map { it.topic }
         .distinct()
@@ -21,10 +16,6 @@ fun List<Post>.allYears(): List<Int> =
     map { it.publishedAt.year }
         .distinct()
         .sortedDescending()
-
-val allPostTags: List<String> by lazy {
-    Posts.allTags()
-}
 
 val allPostTopics: List<String> by lazy {
     Posts.allTopics()
@@ -57,12 +48,6 @@ private val postsByTopic: Map<String, List<Post>> by lazy {
         }
 }
 
-private val tagsByTopic: Map<String, List<String>> by lazy {
-    postsByTopic.mapValues { (_, posts) ->
-        posts.allTags()
-    }
-}
-
 fun postsForTag(tag: String): List<Post> =
     if (tag.isBlank()) {
         emptyList()
@@ -75,13 +60,6 @@ fun postsForTopic(topic: String): List<Post> =
         emptyList()
     } else {
         postsByTopic[topic].orEmpty()
-    }
-
-fun tagsForTopic(topic: String): List<String> =
-    if (topic.isBlank()) {
-        emptyList()
-    } else {
-        tagsByTopic[topic].orEmpty()
     }
 
 fun postsForYear(year: Int): List<Post> = Posts.filter { it.publishedAt.year == year }

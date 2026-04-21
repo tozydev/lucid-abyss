@@ -12,8 +12,6 @@ import vn.id.tozydev.lucidabyss.components.layouts.PageProperties
 import vn.id.tozydev.lucidabyss.components.sections.blog.BlogListingContent
 import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.strings.Strings
-import vn.id.tozydev.lucidabyss.utils.SiteRoutes
-import vn.id.tozydev.lucidabyss.utils.allPostTags
 import vn.id.tozydev.lucidabyss.utils.postsForTag
 
 @InitRoute
@@ -37,35 +35,27 @@ fun initTagPage(ctx: InitRouteContext) {
 fun TagPage(ctx: PageContext) {
     val tag = remember(ctx.route.params) { ctx.route.params["tag"] ?: "" }
     val filteredPosts = remember(tag) { postsForTag(tag) }
-    val tags = remember { allPostTags }
 
     TagPageContent(
         posts = filteredPosts,
-        tags = tags,
         title =
             Strings.page.tag.header
                 .title(tag),
         description =
             Strings.page.tag.header
                 .description(tag),
-        activeTag = tag,
     )
 }
 
 @Composable
 private fun TagPageContent(
     posts: List<Post>,
-    tags: List<String>,
     title: String,
     description: String,
-    activeTag: String,
 ) {
     BlogListingContent(
         posts = posts,
-        filters = tags,
-        hrefForFilter = { tag -> SiteRoutes.tag(tag) },
         title = title,
         description = description,
-        activeFilter = activeTag,
     )
 }

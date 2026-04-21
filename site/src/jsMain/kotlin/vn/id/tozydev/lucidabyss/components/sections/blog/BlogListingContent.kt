@@ -12,11 +12,11 @@ import vn.id.tozydev.lucidabyss.utils.tw
 @Composable
 fun BlogListingContent(
     posts: List<Post>,
-    filters: List<String>,
-    hrefForFilter: (String) -> String,
     title: String,
     description: String,
     modifier: Modifier = Modifier,
+    filters: List<String> = emptyList(),
+    hrefForFilter: ((String) -> String)? = null,
     activeFilter: String = "",
     years: List<Int> = emptyList(),
     currentYear: Int? = null,
@@ -34,11 +34,13 @@ fun BlogListingContent(
             title = title,
             description = description,
         )
-        BlogFilters(
-            items = filters,
-            itemHref = hrefForFilter,
-            activeItem = activeFilter,
-        )
+        if (filters.isNotEmpty() && hrefForFilter != null) {
+            BlogFilters(
+                items = filters,
+                itemHref = hrefForFilter,
+                activeItem = activeFilter,
+            )
+        }
         BlogGrid(posts = posts)
         if (years.size > 1 && selectedYear != null) {
             Pagination(

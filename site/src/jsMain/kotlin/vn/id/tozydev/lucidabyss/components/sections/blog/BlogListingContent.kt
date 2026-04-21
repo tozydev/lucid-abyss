@@ -42,7 +42,7 @@ fun BlogListingContent(
             )
         }
         BlogGrid(posts = posts)
-        if (years.size > 1 && selectedYear != null) {
+        if (years.isNotEmpty() && selectedYear != null) {
             Pagination(
                 pages = years,
                 currentPage = selectedYear,

@@ -14,7 +14,7 @@ fun Pagination(
     hrefForPage: (Int) -> String,
     modifier: Modifier = Modifier,
 ) {
-    if (pages.size <= 1) return
+    if (pages.isEmpty()) return
 
     val currentIndex = pages.indexOf(currentPage).takeIf { it >= 0 } ?: return
     val prevPage = pages.getOrNull(currentIndex - 1)

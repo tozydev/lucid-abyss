@@ -12,8 +12,17 @@ fun List<Post>.allTags(): List<String> =
         .distinct()
         .filter { it.isNotBlank() }
 
+fun List<Post>.allYears(): List<Int> =
+    map { it.publishedAt.year }
+        .distinct()
+        .sortedDescending()
+
 val allPostTags: List<String> by lazy {
     Posts.allTags()
+}
+
+val allPostYears: List<Int> by lazy {
+    Posts.allYears()
 }
 
 private val postsByTag: Map<String, List<Post>> by lazy {
@@ -65,6 +74,10 @@ fun tagsForTopic(topic: String): List<String> =
     } else {
         tagsByTopic[topic].orEmpty()
     }
+
+fun postsForYear(year: Int): List<Post> = Posts.filter { it.publishedAt.year == year }
+
+fun resolveBlogYear(year: Int?): Int? = year?.takeIf { it in allPostYears } ?: allPostYears.firstOrNull()
 
 private val postSlugIndices: Map<String, Int> by lazy {
     Posts.withIndex().associate { (index, post) -> post.slug to index }

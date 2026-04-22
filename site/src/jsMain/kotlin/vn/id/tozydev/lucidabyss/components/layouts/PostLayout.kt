@@ -70,7 +70,7 @@ fun PostLayout(
             remember {
                 IntersectionObserver.Options(
                     rootMargin = "0px 0% -77%",
-                    thresholds = listOf(1.0),
+                    thresholds = listOf(0.0),
                 )
             }
 

@@ -26,7 +26,7 @@ fun rememberActiveHeadingId(
                 }
 
                 if (headingsInRange.isNotEmpty()) {
-                    currentId = headings.firstOrNull { it.id in headingsInRange }?.id
+                    currentId = headings.lastOrNull { it.id in headingsInRange }?.id
                     return@IntersectionObserver
                 }
 

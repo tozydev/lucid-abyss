@@ -1,4 +1,5 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import kotlinx.html.LinkAs
 import kotlinx.html.link
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 import vn.id.tozydev.lucidabyss.build.site.TransformSiteHtmlTask
@@ -18,6 +19,16 @@ kobweb {
             lang = "vi"
             head.add {
                 link(rel = "stylesheet", href = "/_la/css/lucid-abyss.css")
+                listOf("BeVietnamPro-Regular.woff2", "Nunito.woff2").forEach { fontFileName ->
+                    link(
+                        rel = "preload",
+                        href = "/_la/fonts/$fontFileName",
+                        htmlAs = LinkAs.font,
+                        type = "font/woff2",
+                    ) {
+                        attributes["crossorigin"] = "anonymous"
+                    }
+                }
             }
             scriptAttributes.put("type", "module")
         }
@@ -141,6 +152,24 @@ tasks {
             doc
                 .select("link[href=\"/_la/css/lucid-abyss.css\"]")
                 .attr("href", "/_la/css/$cssFileName")
+
+            listOf("BeVietnamPro-Regular.woff2", "Nunito.woff2").forEach { fontFileName ->
+                val fontBaseName = fontFileName.removeSuffix(".woff2")
+                val hashedFontFileName =
+                    sourceDir
+                        .dir("_la/fonts")
+                        .map {
+                            it.asFileTree
+                                .matching {
+                                    include("$fontBaseName.**.woff2")
+                                }.singleFile.name
+                        }.get()
+
+                doc
+                    .select(
+                        "link[href=\"/_la/fonts/$fontFileName\"][rel=\"preload\"][as=\"font\"][type=\"font/woff2\"]",
+                    ).attr("href", "/_la/fonts/$hashedFontFileName")
+            }
 
             val jsFilename =
                 sourceDir

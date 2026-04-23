@@ -199,6 +199,16 @@ tasks {
 
         val distJsDir = distDir.dir("_la/js")
         delete(distJsDir.file("lucid-abyss.js"), distJsDir.file("lucid-abyss.js.map"))
+
+        val pagefindDir = distDir.dir("_la/pagefind")
+        delete(
+            pagefindDir.file("pagefind-component-ui.css"),
+            pagefindDir.file("pagefind-component-ui.js"),
+            pagefindDir.file("pagefind-modular-ui.css"),
+            pagefindDir.file("pagefind-modular-ui.js"),
+            pagefindDir.file("pagefind-ui.css"),
+            pagefindDir.file("pagefind-ui.js"),
+        )
     }
 
     kobwebExport {

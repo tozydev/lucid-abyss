@@ -12,5 +12,3 @@ NodeJsExec.register(jsMainCompilation, "pagefindIndex") {
     val pagefindBin = npmProject.nodeModulesDir.map { it.file("pagefind/lib/runner/bin.cjs").asFile.absolutePath }.get()
     nodeArgs = mutableListOf(pagefindBin)
 }
-
-// todo cleanup unused files produce by pagefind

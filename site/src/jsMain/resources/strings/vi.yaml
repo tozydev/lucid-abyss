@@ -45,6 +45,11 @@ commons:
     view-posts: Xem bài viết
     view-all: Xem tất cả
     read-more: Đọc thêm
+    quick-search: Tìm nhanh
+    open-command-palette: Mở bảng lệnh
+    search-posts: Tìm kiếm bài viết
+    toggle-theme: Chuyển giao diện
+    scroll-to-top: Về đầu trang
     next-post: "Bài sau \u2192"
     prev-post: "\u2190 Bài trước"
     read-post: Đọc bài viết ${title}
@@ -64,6 +69,21 @@ commons:
     home: Trang chủ
     about: Về tôi
     blog: Blog
+
+command-overlay:
+  cancel: Hủy
+  placeholder: Tìm kiếm hành động, điều hướng, bài viết...
+  loading: Đang tìm kiếm bài viết...
+  no-results: Không tìm thấy kết quả phù hợp.
+  sections:
+    quick-actions: Hành động nhanh
+    navigation: Điều hướng
+    recent-posts: Bài viết gần đây
+    search-results: Kết quả bài viết
+  hints:
+    move: Di chuyển
+    select: Chọn
+    close: Nhấn ESC để đóng
 
 sections:
   latest-posts:

@@ -9,13 +9,17 @@ import org.jetbrains.compose.web.dom.*
 import vn.id.tozydev.lucidabyss.components.widgets.DarkModeIcon
 import vn.id.tozydev.lucidabyss.components.widgets.LightModeIcon
 import vn.id.tozydev.lucidabyss.components.widgets.RoutineIcon
+import vn.id.tozydev.lucidabyss.components.widgets.SearchIcon
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.styles.ThemeMode
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
-fun SiteHeader(modifier: Modifier = Modifier) {
+fun SiteHeader(
+    modifier: Modifier = Modifier,
+    onOpenCommandOverlay: () -> Unit = {},
+) {
     Header(
         Modifier
             .tw("fixed top-4 inset-x-2 md:inset-x-4 max-w-200 mx-auto z-50 select-none")
@@ -36,7 +40,7 @@ fun SiteHeader(modifier: Modifier = Modifier) {
             NavbarLinks()
 
             Div({ tw("flex-1 flex justify-end") }) {
-                NavbarActions()
+                NavbarActions(onOpenCommandOverlay = onOpenCommandOverlay)
             }
         }
     }
@@ -98,9 +102,24 @@ private fun HeaderLink(
 }
 
 @Composable
-private fun NavbarActions() {
+private fun NavbarActions(onOpenCommandOverlay: () -> Unit) {
     Div({ tw("flex items-center gap-4") }) {
+        CommandOverlayButton(onClick = onOpenCommandOverlay)
         ThemeToggleButton()
+    }
+}
+
+@Composable
+private fun CommandOverlayButton(onClick: () -> Unit) {
+    Button(
+        {
+            id("command-overlay-toggle")
+            tw("text-on-surface scale-95 active:scale-90 transition-transform cursor-pointer")
+            attr("aria-label", Strings.commons.actions.openCommandPalette)
+            onClick { onClick() }
+        },
+    ) {
+        SearchIcon()
     }
 }
 

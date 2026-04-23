@@ -8,11 +8,16 @@ import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.getValue
 import com.varabyte.kobweb.core.layout.Layout
 import kotlinx.browser.document
+import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.*
+import org.w3c.dom.HTMLElement
+import org.w3c.dom.events.Event
+import org.w3c.dom.events.KeyboardEvent
 import vn.id.tozydev.lucidabyss.components.sections.SiteFooter
 import vn.id.tozydev.lucidabyss.components.sections.SiteHeader
 import vn.id.tozydev.lucidabyss.components.widgets.BackToTopButton
 import vn.id.tozydev.lucidabyss.components.widgets.BottomNavbar
+import vn.id.tozydev.lucidabyss.components.widgets.CommandOverlay
 import vn.id.tozydev.lucidabyss.components.widgets.MetaTag
 import vn.id.tozydev.lucidabyss.utils.rememberScrollingState
 import vn.id.tozydev.lucidabyss.utils.tw
@@ -26,6 +31,7 @@ fun PageLayout(
     content: @Composable () -> Unit,
 ) {
     val pageProperties = ctx.data.getValue<PageProperties>()
+    var isCommandOverlayOpen by remember { mutableStateOf(false) }
 
     val scrollingState = rememberScrollingState()
 
@@ -34,6 +40,30 @@ fun PageLayout(
 
     LaunchedEffect(pageProperties.title) {
         document.title = "${pageProperties.title} | tozydev"
+    }
+
+    DisposableEffect(isCommandOverlayOpen) {
+        val handleKeyboardShortcuts: (Event) -> Unit = handler@{ event ->
+            val keyboardEvent = event as? KeyboardEvent ?: return@handler
+            val key = keyboardEvent.key.lowercase()
+
+            val isOpenOverlayShortcut = (keyboardEvent.ctrlKey || keyboardEvent.metaKey) && key == "k"
+            if (isOpenOverlayShortcut && !isInteractiveElementFocused()) {
+                keyboardEvent.preventDefault()
+                isCommandOverlayOpen = true
+                return@handler
+            }
+
+            if (isCommandOverlayOpen && keyboardEvent.key == "Escape") {
+                keyboardEvent.preventDefault()
+                isCommandOverlayOpen = false
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyboardShortcuts)
+        onDispose {
+            window.removeEventListener("keydown", handleKeyboardShortcuts)
+        }
     }
 
     MetaTag("description", pageProperties.description)
@@ -45,6 +75,7 @@ fun PageLayout(
                 .thenIf(shouldHideHeaderAndNav) {
                     Modifier.tw("-translate-y-32")
                 },
+            onOpenCommandOverlay = { isCommandOverlayOpen = true },
         )
 
         BottomNavbar(Modifier.tw("md:hidden"))
@@ -65,5 +96,20 @@ fun PageLayout(
                 Modifier.opacity(0.0)
             },
         )
+
+        CommandOverlay(
+            isOpen = isCommandOverlayOpen,
+            onClose = { isCommandOverlayOpen = false },
+        )
+    }
+}
+
+private fun isInteractiveElementFocused(): Boolean {
+    val activeElement = document.activeElement as? HTMLElement ?: return false
+    if (activeElement.isContentEditable) return true
+
+    return when (activeElement.tagName.lowercase()) {
+        "input", "textarea", "select", "button" -> true
+        else -> false
     }
 }

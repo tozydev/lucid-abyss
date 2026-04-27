@@ -34,7 +34,9 @@ private external interface PagefindModule {
 
     fun options(options: dynamic): Promise<Unit>
 
-    fun search(term: String): Promise<PagefindResponse>
+    fun preload(term: String): Promise<Unit>
+
+    fun debouncedSearch(term: String): Promise<PagefindResponse?>
 }
 
 object PagefindSearchClient {
@@ -46,11 +48,12 @@ object PagefindSearchClient {
     suspend fun search(
         query: String,
         limit: Int = 5,
-    ): List<PagefindSearchResult> {
+    ): List<PagefindSearchResult>? {
         if (query.isBlank()) return emptyList()
 
         val module = loadModule()
-        val response = module.search(query).await()
+        module.preload(query)
+        val response = module.debouncedSearch(query).await() ?: return null
 
         return response.results
             .asList()

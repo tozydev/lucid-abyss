@@ -6,7 +6,6 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.rememberPageContext
 import kotlinx.browser.document
 import kotlinx.browser.window
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.attributes.InputType
 import org.jetbrains.compose.web.dom.*
 import org.w3c.dom.HTMLButtonElement
@@ -23,7 +22,6 @@ import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.pagefind.PagefindSearchClient
 import vn.id.tozydev.lucidabyss.utils.pagefind.PagefindSearchResult
 import vn.id.tozydev.lucidabyss.utils.tw
-import kotlin.time.Duration.Companion.milliseconds
 
 private data class OverlayCommand(
     val id: String,
@@ -241,9 +239,10 @@ fun CommandOverlay(
         }
 
         isSearchingPosts = true
-        delay(180.milliseconds)
 
-        val pagefindResults = runCatching { PagefindSearchClient.search(normalizedQuery) }.getOrDefault(emptyList())
+        val pagefindResults = runCatching { PagefindSearchClient.search(normalizedQuery) }.getOrElse { emptyList() }
+        if (pagefindResults == null) return@LaunchedEffect
+
         searchedPosts =
             pagefindResults.ifEmpty {
                 Posts

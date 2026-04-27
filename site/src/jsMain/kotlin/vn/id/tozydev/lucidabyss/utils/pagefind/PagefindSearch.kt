@@ -79,6 +79,7 @@ object PagefindSearchClient {
         module
             .options(
                 unsafeJso {
+                    baseUrl = "/"
                     bundlePath = PAGEFIND_BUNDLE_PATH
                 },
             ).await()

@@ -17,6 +17,7 @@ import vn.id.tozydev.lucidabyss.components.sections.about.AboutIntro
 import vn.id.tozydev.lucidabyss.components.sections.about.AboutProjects
 import vn.id.tozydev.lucidabyss.components.sections.about.AboutSkills
 import vn.id.tozydev.lucidabyss.strings.Strings
+import vn.id.tozydev.lucidabyss.utils.pagefind.pagefindBody
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
@@ -39,7 +40,12 @@ fun AboutPage() {
         },
     ) {
         AboutHero()
-        Article({ tw("pt-16 md:pt-20 pb-12 md:pb-16 px-6 md:px-20") }) {
+        Article(
+            {
+                tw("pt-16 md:pt-20 pb-12 md:pb-16 px-6 md:px-20")
+                pagefindBody()
+            },
+        ) {
             val sectionModifier = Modifier.tw("mb-16")
 
             AboutIntro(sectionModifier)

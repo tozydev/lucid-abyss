@@ -12,6 +12,7 @@ import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.formatDate
+import vn.id.tozydev.lucidabyss.utils.pagefind.pagefindMeta
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -31,12 +32,17 @@ fun PostHeader(
                 href = SiteRoutes.topic(post.topic),
                 variant = BadgeVariant.Primary,
                 size = BadgeSize.Md,
-                modifier = Modifier.tw("rounded-md"),
+                modifier = Modifier.tw("rounded-md").pagefindMeta("topic"),
             )
             Div({ tw("flex items-center gap-6") }) {
                 Div({ tw("flex items-center gap-2 text-on-surface") }) {
                     CalendarTodayIcon(Modifier.tw("text-lg leading-none text-primary"))
-                    Span({ tw("font-mono text-[13px] font-semibold uppercase tracking-wider") }) {
+                    Span(
+                        {
+                            tw("font-mono text-[13px] font-semibold uppercase tracking-wider")
+                            pagefindMeta("date")
+                        },
+                    ) {
                         Text(post.publishedAt.formatDate())
                     }
                 }
@@ -48,6 +54,7 @@ fun PostHeader(
                 tw(
                     "text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-on-surface leading-tight mb-8 wrap-break-word break-all md:wrap-break-word",
                 )
+                pagefindMeta("title")
             },
         ) {
             Text(post.title)

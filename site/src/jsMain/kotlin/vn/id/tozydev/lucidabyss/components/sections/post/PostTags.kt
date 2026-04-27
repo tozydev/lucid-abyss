@@ -8,6 +8,7 @@ import vn.id.tozydev.lucidabyss.components.widgets.Badge
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeSize
 import vn.id.tozydev.lucidabyss.components.widgets.BadgeVariant
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
+import vn.id.tozydev.lucidabyss.utils.pagefind.pagefindMeta
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @Composable
@@ -29,7 +30,7 @@ fun PostTags(
                 href = SiteRoutes.tag(tag),
                 variant = BadgeVariant.Surface,
                 size = BadgeSize.Lg,
-                modifier = Modifier.tw("cursor-pointer"),
+                modifier = Modifier.tw("cursor-pointer").pagefindMeta("tag"),
             )
         }
     }

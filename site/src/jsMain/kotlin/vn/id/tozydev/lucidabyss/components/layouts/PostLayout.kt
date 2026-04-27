@@ -24,6 +24,7 @@ import vn.id.tozydev.lucidabyss.generated.Post
 import vn.id.tozydev.lucidabyss.utils.coverImagePathOrDefault
 import vn.id.tozydev.lucidabyss.utils.findPost
 import vn.id.tozydev.lucidabyss.utils.getHeadings
+import vn.id.tozydev.lucidabyss.utils.pagefind.pagefindBody
 import vn.id.tozydev.lucidabyss.utils.tw
 
 @InitRoute
@@ -76,9 +77,10 @@ fun PostLayout(
 
         Div({ tw("flex flex-col gap-8 flex-1 w-full min-w-0") }) {
             Article(
-                Modifier
-                    .tw("bg-surface-container-lowest rounded-2xl shadow-[0_20px_40px_rgba(42,40,37,0.06)] overflow-hidden w-full")
-                    .toAttrs(),
+                {
+                    tw("bg-surface-container-lowest rounded-2xl shadow-[0_20px_40px_rgba(42,40,37,0.06)] overflow-hidden w-full")
+                    pagefindBody()
+                },
             ) {
                 Div(
                     {

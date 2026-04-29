@@ -31,7 +31,7 @@ fun PostNavigation(
                 href = previousPost.route,
                 attrs = {
                     tw(
-                        "flex flex-col gap-1 p-5 md:p-6 rounded-2xl bg-surface-container-lowest shadow-[0_20px_40px_rgba(42,40,37,0.06)] hover:shadow-[0_25px_50px_rgba(42,40,37,0.1)] transition-all group text-left",
+                        "flex flex-col gap-1 p-5 md:p-6 rounded-2xl bg-surface-container-lowest shadow-soft hover:shadow-[0_25px_50px_rgba(42,40,37,0.1)] transition-all group text-left",
                     )
                 },
             ) {
@@ -51,7 +51,7 @@ fun PostNavigation(
                 href = nextPost.route,
                 attrs = {
                     tw(
-                        "flex flex-col gap-1 p-5 md:p-6 rounded-2xl bg-surface-container-lowest shadow-[0_20px_40px_rgba(42,40,37,0.06)] hover:shadow-[0_25px_50px_rgba(42,40,37,0.1)] transition-all group text-right",
+                        "flex flex-col gap-1 p-5 md:p-6 rounded-2xl bg-surface-container-lowest shadow-soft hover:shadow-[0_25px_50px_rgba(42,40,37,0.1)] transition-all group text-right",
                     )
                 },
             ) {

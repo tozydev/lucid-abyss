@@ -76,7 +76,7 @@ fun PostLayout(
         Div({ tw("flex flex-col gap-8 flex-1 w-full min-w-0") }) {
             Article(
                 {
-                    tw("bg-surface-container-lowest rounded-2xl shadow-[0_20px_40px_rgba(42,40,37,0.06)] overflow-hidden w-full")
+                    tw("bg-surface-container-lowest rounded-2xl shadow-soft overflow-hidden w-full")
                     pagefindBody()
                 },
             ) {

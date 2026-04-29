@@ -22,7 +22,7 @@ fun PostCard(
     Article(
         Modifier
             .tw(
-                "bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(42,40,37,0.06)] flex flex-col group hover:-translate-y-2 transition-transform duration-300 relative",
+                "bg-surface-container-lowest rounded-xl overflow-hidden shadow-soft flex flex-col group hover:-translate-y-2 transition-transform duration-300 relative",
             ).then(modifier)
             .toAttrs(),
     ) {

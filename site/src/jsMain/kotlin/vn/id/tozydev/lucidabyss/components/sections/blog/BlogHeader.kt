@@ -15,7 +15,7 @@ fun BlogHeader(
     Header(
         Modifier
             .tw(
-                "mb-8 bg-surface-container-lowest rounded-2xl p-6 md:p-8 lg:p-12 shadow-[0_20px_40px_rgba(42,40,37,0.06)] border-none",
+                "mb-8 bg-surface-container-lowest rounded-2xl p-6 md:p-8 lg:p-12 shadow-soft border-none",
             ).then(modifier)
             .toAttrs(),
     ) {

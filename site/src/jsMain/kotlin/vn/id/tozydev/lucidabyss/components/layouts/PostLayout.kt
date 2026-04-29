@@ -4,8 +4,6 @@ import androidx.compose.runtime.*
 import com.varabyte.kobweb.browser.dom.observers.IntersectionObserver
 import com.varabyte.kobweb.compose.dom.ref
 import com.varabyte.kobweb.compose.dom.registerRefScope
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.data.getValue
@@ -107,15 +105,13 @@ fun PostLayout(
                     PostHeader(post)
 
                     Section(
-                        Modifier
-                            .tw(
-                                "prose prose-blog max-w-none md:prose-lg wrap-break-word w-full overflow-hidden",
-                            ).toAttrs {
-                                ref {
-                                    contentRef = it
-                                    onDispose { }
-                                }
-                            },
+                        {
+                            tw("prose prose-blog max-w-none md:prose-lg wrap-break-word w-full overflow-hidden")
+                            ref {
+                                contentRef = it
+                                onDispose { }
+                            }
+                        },
                     ) {
                         content()
                     }

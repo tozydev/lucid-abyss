@@ -27,27 +27,28 @@ fun HomeHero(modifier: Modifier = Modifier) {
 @Composable
 private fun ShortIntro(modifier: Modifier = Modifier) {
     Div(
-        Modifier.tw("flex flex-col rounded-xl overflow-hidden shadow-soft bg-surface border border-outline/30").then(modifier).toAttrs(),
+        Modifier
+            .tw("flex flex-col rounded-xl overflow-hidden shadow-soft bg-surface border border-outline/30")
+            .then(modifier)
+            .toAttrs(),
     ) {
         Div(
-            Modifier.tw("flex items-center justify-between bg-surface-container-low border-b border-outline/30").toAttrs(),
+            { tw("flex items-center justify-between bg-surface-container-low border-b border-outline/30") },
         ) {
             Div(Modifier.tw("flex").toAttrs()) {
-                Div(
-                    Modifier.tw("flex items-center gap-2 px-4 py-3 bg-surface border-r border-outline/30 relative").toAttrs(),
-                ) {
+                Div({ tw("flex items-center gap-2 px-4 py-3 bg-surface border-r border-outline/30 relative") }) {
                     PersonIcon(Modifier.tw("w-4 h-4 text-primary"))
-                    Span(Modifier.tw("text-xs font-mono text-on-surface").toAttrs()) { Text("Profile.kt") }
-                    Div(Modifier.tw("absolute bottom-0 left-0 right-0 h-[2px] bg-primary").toAttrs())
+                    Span({ tw("text-xs font-mono text-on-surface") }) { Text("Profile.kt") }
+                    Div({ tw("absolute bottom-0 left-0 right-0 h-0.5 bg-primary") })
                 }
             }
-            Div(Modifier.tw("flex gap-2 pr-4").toAttrs()) {
-                Div(Modifier.tw("w-2.5 h-2.5 rounded-full bg-outline-variant").toAttrs())
-                Div(Modifier.tw("w-2.5 h-2.5 rounded-full bg-outline-variant").toAttrs())
-                Div(Modifier.tw("w-2.5 h-2.5 rounded-full bg-outline-variant").toAttrs())
+            Div({ tw("flex gap-2 pr-4") }) {
+                Div({ tw("w-2.5 h-2.5 rounded-full bg-outline-variant") })
+                Div({ tw("w-2.5 h-2.5 rounded-full bg-outline-variant") })
+                Div({ tw("w-2.5 h-2.5 rounded-full bg-outline-variant") })
             }
         }
-        Div(Modifier.tw("flex-1 overflow-hidden relative").toAttrs()) {
+        Div({ tw("flex-1 overflow-hidden relative") }) {
             CodeBlock(
                 // language=kotlin
                 code =
@@ -70,13 +71,13 @@ private fun ShortIntro(modifier: Modifier = Modifier) {
                     }
                     """.trimIndent(),
                 lang = "kotlin",
-                modifier = Modifier.tw("my-0! hero-code-block !rounded-none !border-none !shadow-none"),
+                modifier = Modifier.tw("my-0! hero-code-block rounded-none! border-none! shadow-none!"),
             )
         }
         Div(
-            Modifier.tw("px-4 py-1.5 bg-primary text-on-primary text-[10px] font-mono flex justify-between items-center").toAttrs(),
+            { tw("px-4 py-1.5 bg-primary text-on-primary text-[10px] font-mono flex justify-between items-center") },
         ) {
-            Div(Modifier.tw("flex items-center gap-2").toAttrs()) {
+            Div({ tw("flex items-center gap-2") }) {
                 CheckIcon(Modifier.tw("w-3.5 h-3.5"))
                 Span { Text("SYSTEM: OPTIMIZED") }
             }

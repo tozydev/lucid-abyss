@@ -9,7 +9,7 @@ spotless = "8.4.0"
 compose-rules = "0.5.8"
 kotlinpoet = "2.3.0"
 snakeyaml = "2.6"
-kotlinx-coroutines = "1.10.2"
+kotlinx-coroutines = "1.11.0"
 jsoup = "1.22.2"
 
 [libraries]

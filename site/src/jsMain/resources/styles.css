@@ -1,9 +1,8 @@
 /*
- Base colors:
-  - Seed: #2c5e3b
-  - Primary: #2c5e3b
-  - Secondary: #506352
-  - Tertiary: #6f5c3a
+ Colors generated using MaterialKolor Builder version 1.3.0, with:
+ - Seed color: #2c5e3b
+ - Color spec: 2025
+ - Style: Tonal Spot
 */
 
 @import "tailwindcss";
@@ -61,16 +60,16 @@
     --color-inverse-primary: oklch(0.922 0.085 149.286);
 
     /* Secondary */
-    --color-secondary: oklch(0.482 0.035 147.891);
-    --color-on-secondary: oklch(0.978 0.038 144.082);
-    --color-secondary-container: oklch(0.91 0.036 145.272);
-    --color-on-secondary-container: oklch(0.433 0.034 147.989);
+    --color-secondary: oklch(0.481 0.036 149.214);
+    --color-on-secondary: oklch(0.978 0.037 145.285);
+    --color-secondary-container: oklch(0.909 0.037 146.526);
+    --color-on-secondary-container: oklch(0.432 0.035 149.369);
 
     /* Tertiary */
-    --color-tertiary: oklch(0.485 0.055 81.377);
-    --color-on-tertiary: oklch(0.983 0.012 67.687);
-    --color-tertiary-container: oklch(0.915 0.063 79.309);
-    --color-on-tertiary-container: oklch(0.438 0.054 81.708);
+    --color-tertiary: oklch(0.481 0.074 119.46);
+    --color-on-tertiary: oklch(0.977 0.078 117.057);
+    --color-tertiary-container: oklch(0.969 0.083 117.309);
+    --color-on-tertiary-container: oklch(0.474 0.073 119.655);
 
     /* Neutral & Surface */
     --color-background: oklch(0.981 0.008 128.557);
@@ -79,7 +78,7 @@
     --color-on-surface: oklch(0.315 0.016 148.756);
     --color-surface-variant: oklch(0.912 0.018 140.022);
     --color-on-surface-variant: oklch(0.483 0.016 145.321);
-    --color-surface-tint: oklch(0.475 0.08 151.396);
+    --color-surface-tint: oklch(0.474 0.089 151.721);
     --color-inverse-surface: oklch(0.163 0.009 152.903);
     --color-inverse-on-surface: oklch(0.694 0.01 134.897);
 
@@ -94,7 +93,7 @@
     --color-outline-variant: oklch(0.761 0.017 139.438);
 
     /* Scrim */
-    --color-scrim: #000000;
+    --color-scrim: oklch(0 0 none);
 
     /* Surface Container */
     --color-surface-bright: oklch(0.981 0.008 128.557);
@@ -102,7 +101,7 @@
     --color-surface-container-high: oklch(0.929 0.015 136.082);
     --color-surface-container-highest: oklch(0.912 0.018 140.022);
     --color-surface-container-low: oklch(0.964 0.012 133.377);
-    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-lowest: oklch(1 0 none);
     --color-surface-dim: oklch(0.886 0.016 139.439);
 
     /* Fixed */
@@ -110,14 +109,14 @@
     --color-primary-fixed-dim: oklch(0.86 0.083 149.401);
     --color-on-primary-fixed: oklch(0.358 0.077 152.487);
     --color-on-primary-fixed-variant: oklch(0.465 0.08 151.279);
-    --color-secondary-fixed: oklch(0.91 0.036 145.272);
-    --color-secondary-fixed-dim: oklch(0.867 0.036 145.253);
+    --color-secondary-fixed: oklch(0.909 0.037 146.526);
+    --color-secondary-fixed-dim: oklch(0.866 0.037 146.502);
     --color-on-secondary-fixed: oklch(0.365 0.036 149.086);
-    --color-on-secondary-fixed-variant: oklch(0.468 0.036 147.856);
-    --color-tertiary-fixed: oklch(0.915 0.063 79.309);
-    --color-tertiary-fixed-dim: oklch(0.872 0.062 79.627);
-    --color-on-tertiary-fixed: oklch(0.37 0.051 82.531);
-    --color-on-tertiary-fixed-variant: oklch(0.474 0.055 81.311);
+    --color-on-secondary-fixed-variant: oklch(0.468 0.035 149.483);
+    --color-tertiary-fixed: oklch(0.969 0.083 117.309);
+    --color-tertiary-fixed-dim: oklch(0.927 0.083 117.517);
+    --color-on-tertiary-fixed: oklch(0.41 0.072 120.42);
+    --color-on-tertiary-fixed-variant: oklch(0.513 0.075 119.09);
 
     /*endregion*/
 }
@@ -133,16 +132,16 @@
     --color-inverse-primary: oklch(0.475 0.08 151.396);
 
     /* Secondary */
-    --color-secondary: oklch(0.823 0.037 145.231);
-    --color-on-secondary: oklch(0.366 0.034 149.446);
-    --color-secondary-container: oklch(0.351 0.036 147.685);
-    --color-on-secondary-container: oklch(0.802 0.037 145.219);
+    --color-secondary: oklch(0.824 0.036 146.558);
+    --color-on-secondary: oklch(0.369 0.036 149.105);
+    --color-secondary-container: oklch(0.35 0.036 150.693);
+    --color-on-secondary-container: oklch(0.801 0.037 147.796);
 
     /* Tertiary */
-    --color-tertiary: oklch(0.959 0.036 78.135);
-    --color-on-tertiary: oklch(0.468 0.054 80.609);
-    --color-tertiary-container: oklch(0.915 0.063 79.309);
-    --color-on-tertiary-container: oklch(0.438 0.054 81.708);
+    --color-tertiary: oklch(0.978 0.073 116.796);
+    --color-on-tertiary: oklch(0.481 0.074 119.46);
+    --color-tertiary-container: oklch(0.934 0.082 116.788);
+    --color-on-tertiary-container: oklch(0.451 0.071 119.062);
 
     /* Neutral & Surface */
     --color-background: oklch(0.163 0.009 152.903);
@@ -166,7 +165,7 @@
     --color-outline-variant: oklch(0.399 0.017 145.251);
 
     /* Scrim */
-    --color-scrim: #000000;
+    --color-scrim: oklch(0 0 none);
 
     /* Surface Container */
     --color-surface-bright: oklch(0.291 0.017 148.686);
@@ -174,7 +173,7 @@
     --color-surface-container-high: oklch(0.239 0.014 145.112);
     --color-surface-container-highest: oklch(0.267 0.017 148.599);
     --color-surface-container-low: oklch(0.187 0.014 149.775);
-    --color-surface-container-lowest: #000000;
+    --color-surface-container-lowest: oklch(0 0 none);
     --color-surface-dim: oklch(0.163 0.009 152.903);
 
     /*endregion*/
@@ -222,6 +221,10 @@
 
     .btn-lg {
         @apply px-6 md:px-8 py-3 md:py-4;
+    }
+
+    .card {
+        @apply bg-surface-container rounded-lg shadow-soft text-on-surface;
     }
 }
 

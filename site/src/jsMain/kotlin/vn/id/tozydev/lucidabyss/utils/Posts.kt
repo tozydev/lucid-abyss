@@ -8,14 +8,18 @@ val Post.coverImagePathOrDefault: String
     get() = BasePath.prependTo(coverImage ?: "/images/default-cover.webp")
 
 fun List<Post>.allTopics(): List<String> =
-    map { it.topic }
-        .distinct()
+    asSequence()
+        .map { it.topic }
         .filter { it.isNotBlank() }
+        .distinct()
+        .toList()
 
 fun List<Post>.allYears(): List<Int> =
-    map { it.publishedAt.year }
+    asSequence()
+        .map { it.publishedAt.year }
         .distinct()
         .sortedDescending()
+        .toList()
 
 val allPostTopics: List<String> by lazy {
     Posts.allTopics()
@@ -27,8 +31,10 @@ val allPostYears: List<Int> by lazy {
 
 private val postsByTag: Map<String, List<Post>> by lazy {
     Posts
+        .asSequence()
         .flatMap { post ->
             post.tags
+                .asSequence()
                 .filter { it.isNotBlank() }
                 .map { tag -> tag to post }
         }.groupBy(
@@ -41,8 +47,17 @@ private val postsByTag: Map<String, List<Post>> by lazy {
 
 private val postsByTopic: Map<String, List<Post>> by lazy {
     Posts
+        .asSequence()
         .filter { it.topic.isNotBlank() }
         .groupBy { it.topic }
+        .mapValues { (_, posts) ->
+            posts.sortedByDescending { it.publishedAt }
+        }
+}
+
+private val postsByYear: Map<Int, List<Post>> by lazy {
+    Posts
+        .groupBy { it.publishedAt.year }
         .mapValues { (_, posts) ->
             posts.sortedByDescending { it.publishedAt }
         }
@@ -62,7 +77,7 @@ fun postsForTopic(topic: String): List<Post> =
         postsByTopic[topic].orEmpty()
     }
 
-fun postsForYear(year: Int): List<Post> = Posts.filter { it.publishedAt.year == year }
+fun postsForYear(year: Int): List<Post> = postsByYear[year].orEmpty()
 
 fun resolveBlogYear(
     year: Int?,

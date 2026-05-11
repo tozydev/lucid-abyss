@@ -19,6 +19,12 @@
       "registryUrls": [
         "https://registry.npmjs.org"
       ]
+    },
+    {
+      "matchPackageNames": [
+        "org.jetbrains.kotlinx:kotlinx-datetime"
+      ],
+      "versioning": "semver"
     }
   ]
 }

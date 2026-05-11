@@ -10,7 +10,7 @@ spotless {
             "*.gradle.kts",
             "build-logic/*.gradle.kts",
             "build-logic/src/**/*.kts",
-            "core/*.gradle.kts",
+            "dev-server-plugin/*.gradle.kts",
             "site/*.gradle.kts",
         )
         ktlint()
@@ -18,7 +18,7 @@ spotless {
     kotlin {
         target(
             "build-logic/src/**/*.kt",
-            "core/src/**/*.kt",
+            "dev-server-plugin/src/**/*.kt",
             "site/src/**/*.kt",
         )
         val composeRulesKtlint =

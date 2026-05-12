@@ -17,6 +17,8 @@ import vn.id.tozydev.lucidabyss.utils.BLOG_YEAR_PARAM
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
 import vn.id.tozydev.lucidabyss.utils.allPostTopics
 import vn.id.tozydev.lucidabyss.utils.allPostYears
+import vn.id.tozydev.lucidabyss.utils.allYears
+import vn.id.tozydev.lucidabyss.utils.postsForTopic
 import vn.id.tozydev.lucidabyss.utils.postsForYear
 import vn.id.tozydev.lucidabyss.utils.resolveBlogYear
 
@@ -41,9 +43,7 @@ fun BlogPage(ctx: PageContext) {
             if (selectedTopic == null) {
                 allPostYears
             } else {
-                allPostYears.filter { year ->
-                    postsForYear(year).any { post -> post.topic == selectedTopic }
-                }
+                postsForTopic(selectedTopic).allYears()
             }
         }
     val currentYear = remember(requestedYear, years) { resolveBlogYear(requestedYear, years) }

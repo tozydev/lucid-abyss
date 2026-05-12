@@ -18,7 +18,7 @@ fun AboutContact(modifier: Modifier = Modifier) {
             Anchor(
                 href = "mailto:${Strings.profile.contact.email}",
                 attrs = {
-                    tw("btn btn-primary btn-lg inline-block font-label font-bold shadow-md")
+                    tw("btn btn-primary btn-lg inline-block font-label font-bold")
                 },
             ) {
                 Text(Strings.profile.contact.email)

@@ -15,7 +15,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
     Nav(
         Modifier
             .tw(
-                "fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-6 pt-2 pb-[env(safe-area-inset-bottom)] bg-surface/95 backdrop-blur-md border-t border-outline/10",
+                "fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-6 pt-2 pb-[env(safe-area-inset-bottom)] bg-surface/95 backdrop-blur-md elevation-0",
             ).then(modifier)
             .toAttrs(),
     ) {
@@ -77,17 +77,18 @@ private fun BottomNavItem(
         href = href,
         attrs =
             Modifier
-                .tw("flex flex-col items-center justify-center gap-0.5 scale-95 active:scale-90 transition-transform group")
-                .then(modifier)
+                .tw(
+                    "flex flex-col items-center justify-center gap-0.5 scale-95 active:scale-90 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 rounded-xl",
+                ).then(modifier)
                 .toAttrs(),
     ) {
         Span(
             {
-                tw("rounded-full px-4 py-0.5 transition-colors")
+                tw("rounded-full px-4 py-0.5 transition-all duration-200")
                 if (isActive) {
                     tw("bg-primary-container text-on-primary-container")
                 } else {
-                    tw("text-on-surface-variant group-hover:bg-surface-container")
+                    tw("text-on-surface-variant group-hover:bg-surface-container group-hover:text-on-surface")
                 }
             },
         ) {

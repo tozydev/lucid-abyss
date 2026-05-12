@@ -15,7 +15,7 @@ fun BlogHeader(
     Header(
         Modifier
             .tw(
-                "mb-8 bg-surface-container-lowest rounded-2xl p-6 md:p-8 lg:p-12 shadow-soft border-none",
+                "mb-8 surface-island p-6 md:p-8 lg:p-12",
             ).then(modifier)
             .toAttrs(),
     ) {

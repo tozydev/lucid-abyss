@@ -49,154 +49,219 @@
     --font-label: "Be Vietnam Pro", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
 
-    --shadow-soft: 0 20px 40px rgba(42, 40, 37, 0.06);
+    /* Material 3 Elevation Shadows */
+    --shadow-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.30), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --shadow-elevation-2: 0 1px 2px 0 rgba(0, 0, 0, 0.30), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+    --shadow-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.30);
+    --shadow-elevation-4: 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.30);
+    --shadow-elevation-5: 0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.30);
 
     /*region Colors*/
     /* Primary */
-    --color-primary: oklch(0.475 0.08 151.396);
-    --color-on-primary: oklch(0.977 0.039 145.272);
-    --color-primary-container: oklch(0.905 0.085 149.819);
-    --color-on-primary-container: oklch(0.43 0.08 151.502);
-    --color-inverse-primary: oklch(0.922 0.085 149.286);
+    --color-primary: #376945;
+    --color-on-primary: #e8ffe8;
+    --color-primary-container: #b8f0c2;
+    --color-on-primary-container: #2a5c39;
+    --color-inverse-primary: #bef6c7;
 
     /* Secondary */
-    --color-secondary: oklch(0.481 0.036 149.214);
-    --color-on-secondary: oklch(0.978 0.037 145.285);
-    --color-secondary-container: oklch(0.909 0.037 146.526);
-    --color-on-secondary-container: oklch(0.432 0.035 149.369);
+    --color-secondary: #506453;
+    --color-on-secondary: #e9ffe9;
+    --color-secondary-container: #d2e8d3;
+    --color-on-secondary-container: #435646;
 
     /* Tertiary */
-    --color-tertiary: oklch(0.481 0.074 119.46);
-    --color-on-tertiary: oklch(0.977 0.078 117.057);
-    --color-tertiary-container: oklch(0.969 0.083 117.309);
-    --color-on-tertiary-container: oklch(0.474 0.073 119.655);
+    --color-tertiary: #596432;
+    --color-on-tertiary: #f3ffc3;
+    --color-tertiary-container: #f0fdbd;
+    --color-on-tertiary-container: #576231;
 
     /* Neutral & Surface */
-    --color-background: oklch(0.981 0.008 128.557);
-    --color-on-background: oklch(0.315 0.016 148.756);
-    --color-surface: oklch(0.981 0.008 128.557);
-    --color-on-surface: oklch(0.315 0.016 148.756);
-    --color-surface-variant: oklch(0.912 0.018 140.022);
-    --color-on-surface-variant: oklch(0.483 0.016 145.321);
-    --color-surface-tint: oklch(0.474 0.089 151.721);
-    --color-inverse-surface: oklch(0.163 0.009 152.903);
-    --color-inverse-on-surface: oklch(0.694 0.01 134.897);
+    --color-background: #f7faf4;
+    --color-on-background: #2c342d;
+    --color-surface: #f7faf4;
+    --color-on-surface: #2c342d;
+    --color-surface-variant: #dce5da;
+    --color-on-surface-variant: #596159;
+    --color-surface-tint: #376945;
+    --color-inverse-surface: #0b0f0c;
+    --color-inverse-on-surface: #9a9e98;
 
     /* Error */
-    --color-error: oklch(0.503 0.148 25.048);
-    --color-on-error: oklch(0.982 0.009 26.017);
-    --color-error-container: oklch(0.717 0.165 24.264);
-    --color-on-error-container: oklch(0.346 0.131 24.672);
+    --color-error: #a83836;
+    --color-on-error: #fff7f6;
+    --color-error-container: #fa746f;
+    --color-on-error-container: #6e0a12;
 
     /* Outline */
-    --color-outline: oklch(0.579 0.017 145.348);
-    --color-outline-variant: oklch(0.761 0.017 139.438);
+    --color-outline: #747d74;
+    --color-outline-variant: #acb4aa;
 
     /* Scrim */
-    --color-scrim: oklch(0 0 none);
+    --color-scrim: #000000;
 
     /* Surface Container */
-    --color-surface-bright: oklch(0.981 0.008 128.557);
-    --color-surface-container: oklch(0.947 0.015 136.08);
-    --color-surface-container-high: oklch(0.929 0.015 136.082);
-    --color-surface-container-highest: oklch(0.912 0.018 140.022);
-    --color-surface-container-low: oklch(0.964 0.012 133.377);
-    --color-surface-container-lowest: oklch(1 0 none);
-    --color-surface-dim: oklch(0.886 0.016 139.439);
+    --color-surface-bright: #f7faf4;
+    --color-surface-container: #e9f0e6;
+    --color-surface-container-high: #e3eae0;
+    --color-surface-container-highest: #dce5da;
+    --color-surface-container-low: #f0f5ed;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-dim: #d4dcd2;
 
     /* Fixed */
-    --color-primary-fixed: oklch(0.905 0.085 149.819);
-    --color-primary-fixed-dim: oklch(0.86 0.083 149.401);
-    --color-on-primary-fixed: oklch(0.358 0.077 152.487);
-    --color-on-primary-fixed-variant: oklch(0.465 0.08 151.279);
-    --color-secondary-fixed: oklch(0.909 0.037 146.526);
-    --color-secondary-fixed-dim: oklch(0.866 0.037 146.502);
-    --color-on-secondary-fixed: oklch(0.365 0.036 149.086);
-    --color-on-secondary-fixed-variant: oklch(0.468 0.035 149.483);
-    --color-tertiary-fixed: oklch(0.969 0.083 117.309);
-    --color-tertiary-fixed-dim: oklch(0.927 0.083 117.517);
-    --color-on-tertiary-fixed: oklch(0.41 0.072 120.42);
-    --color-on-tertiary-fixed-variant: oklch(0.513 0.075 119.09);
+    --color-primary-fixed: #b8f0c2;
+    --color-primary-fixed-dim: #abe1b4;
+    --color-on-primary-fixed: #154828;
+    --color-on-primary-fixed-variant: #346642;
+    --color-secondary-fixed: #d2e8d3;
+    --color-secondary-fixed-dim: #c4dac5;
+    --color-on-secondary-fixed: #314434;
+    --color-on-secondary-fixed-variant: #4d6050;
+    --color-tertiary-fixed: #f0fdbd;
+    --color-tertiary-fixed-dim: #e2efb0;
+    --color-on-tertiary-fixed: #455020;
+    --color-on-tertiary-fixed-variant: #626d3a;
 
     /*endregion*/
 }
 
 :root.dark {
+    /* Material 3 Elevation Shadows (Dark) */
+    --shadow-elevation-1: 0 1px 3px 1px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.30);
+    --shadow-elevation-2: 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.30);
+    --shadow-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.30);
+    --shadow-elevation-4: 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.30);
+    --shadow-elevation-5: 0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.30);
+
     /*region Colors*/
 
     /* Primary */
-    --color-primary: oklch(0.818 0.083 149.889);
-    --color-on-primary: oklch(0.362 0.078 151.878);
-    --color-primary-container: oklch(0.43 0.08 151.502);
-    --color-on-primary-container: oklch(0.905 0.083 149.953);
-    --color-inverse-primary: oklch(0.475 0.08 151.396);
+    --color-primary: #9dd3a7;
+    --color-on-primary: #164928;
+    --color-primary-container: #2a5c39;
+    --color-on-primary-container: #b9f0c3;
+    --color-inverse-primary: #376945;
 
     /* Secondary */
-    --color-secondary: oklch(0.824 0.036 146.558);
-    --color-on-secondary: oklch(0.369 0.036 149.105);
-    --color-secondary-container: oklch(0.35 0.036 150.693);
-    --color-on-secondary-container: oklch(0.801 0.037 147.796);
+    --color-secondary: #b7ccb8;
+    --color-on-secondary: #324535;
+    --color-secondary-container: #2d4031;
+    --color-on-secondary-container: #afc5b1;
 
     /* Tertiary */
-    --color-tertiary: oklch(0.978 0.073 116.796);
-    --color-on-tertiary: oklch(0.481 0.074 119.46);
-    --color-tertiary-container: oklch(0.934 0.082 116.788);
-    --color-on-tertiary-container: oklch(0.451 0.071 119.062);
+    --color-tertiary: #f4ffc7;
+    --color-on-tertiary: #596432;
+    --color-tertiary-container: #e5f1b2;
+    --color-on-tertiary-container: #515b2b;
 
     /* Neutral & Surface */
-    --color-background: oklch(0.163 0.009 152.903);
-    --color-on-background: oklch(0.921 0.018 140.022);
-    --color-surface: oklch(0.163 0.009 152.903);
-    --color-on-surface: oklch(0.921 0.018 140.022);
-    --color-surface-variant: oklch(0.267 0.017 148.599);
-    --color-on-surface-variant: oklch(0.738 0.017 139.438);
-    --color-surface-tint: oklch(0.818 0.083 149.889);
-    --color-inverse-surface: oklch(0.981 0.008 128.557);
-    --color-inverse-on-surface: oklch(0.448 0.009 139.439);
+    --color-background: #0b0f0c;
+    --color-on-background: #dfe8dd;
+    --color-surface: #0b0f0c;
+    --color-on-surface: #dfe8dd;
+    --color-surface-variant: #202821;
+    --color-on-surface-variant: #a5ada3;
+    --color-surface-tint: #9dd3a7;
+    --color-inverse-surface: #f7faf4;
+    --color-inverse-on-surface: #525651;
 
     /* Error */
-    --color-error: oklch(0.717 0.165 24.264);
-    --color-on-error: oklch(0.255 0.103 24.537);
-    --color-error-container: oklch(0.414 0.139 24.855);
-    --color-on-error-container: oklch(0.787 0.123 23.847);
+    --color-error: #fa746f;
+    --color-on-error: #490006;
+    --color-error-container: #871f21;
+    --color-on-error-container: #ff9993;
 
     /* Outline */
-    --color-outline: oklch(0.562 0.017 145.339);
-    --color-outline-variant: oklch(0.399 0.017 145.251);
+    --color-outline: #6f786f;
+    --color-outline-variant: #424a42;
 
     /* Scrim */
-    --color-scrim: oklch(0 0 none);
+    --color-scrim: #000000;
 
     /* Surface Container */
-    --color-surface-bright: oklch(0.291 0.017 148.686);
-    --color-surface-container: oklch(0.214 0.013 149.941);
-    --color-surface-container-high: oklch(0.239 0.014 145.112);
-    --color-surface-container-highest: oklch(0.267 0.017 148.599);
-    --color-surface-container-low: oklch(0.187 0.014 149.775);
-    --color-surface-container-lowest: oklch(0 0 none);
-    --color-surface-dim: oklch(0.163 0.009 152.903);
+    --color-surface-bright: #262e27;
+    --color-surface-container: #151b16;
+    --color-surface-container-high: #1b211b;
+    --color-surface-container-highest: #202821;
+    --color-surface-container-low: #0f1510;
+    --color-surface-container-lowest: #000000;
+    --color-surface-dim: #0b0f0c;
 
     /*endregion*/
 }
 
 @layer base {
     body {
-        background-color: var(--color-surface-container-low);
-        color: var(--color-on-surface);
+        background-color: var(--color-background);
+        color: var(--color-on-background);
         /*noinspection CssNoGenericFontName*/
         font-family: var(--font-body);
     }
 }
 
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    display: inline-block;
-    line-height: 1;
+@utility elevation-0 {
+    box-shadow: none;
+    background-image: none;
+}
+
+@utility elevation-1 {
+    box-shadow: var(--shadow-elevation-1);
+    /* Blend 5% tint with transparent, covering 100% of the area */
+    background-image: linear-gradient(
+            color-mix(in oklab, var(--color-surface-tint) 5%, transparent),
+            color-mix(in oklab, var(--color-surface-tint) 5%, transparent)
+    );
+}
+
+@utility elevation-2 {
+    box-shadow: var(--shadow-elevation-2);
+    background-image: linear-gradient(
+            color-mix(in oklab, var(--color-surface-tint) 8%, transparent),
+            color-mix(in oklab, var(--color-surface-tint) 8%, transparent)
+    );
+}
+
+@utility elevation-3 {
+    box-shadow: var(--shadow-elevation-3);
+    background-image: linear-gradient(
+            color-mix(in oklab, var(--color-surface-tint) 11%, transparent),
+            color-mix(in oklab, var(--color-surface-tint) 11%, transparent)
+    );
+}
+
+@utility elevation-4 {
+    box-shadow: var(--shadow-elevation-4);
+    background-image: linear-gradient(
+            color-mix(in oklab, var(--color-surface-tint) 12%, transparent),
+            color-mix(in oklab, var(--color-surface-tint) 12%, transparent)
+    );
+}
+
+@utility elevation-5 {
+    box-shadow: var(--shadow-elevation-5);
+    background-image: linear-gradient(
+            color-mix(in oklab, var(--color-surface-tint) 14%, transparent),
+            color-mix(in oklab, var(--color-surface-tint) 14%, transparent)
+    );
 }
 
 @layer components {
+    .surface-island {
+        transition: transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease;
+        @apply rounded-xl bg-surface-container text-on-surface;
+    }
+
+    .surface-island-interactive:hover {
+        transform: translateY(-4px);
+        @apply elevation-1;
+    }
+
     .link {
-        @apply text-primary;
+        @apply text-primary transition-colors;
     }
 
     .link-hover {
@@ -204,27 +269,23 @@
     }
 
     .btn {
-        @apply text-center rounded-md transition-all scale-100 active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+        @apply inline-flex items-center justify-center gap-2 rounded-full text-center transition-all duration-200 scale-100 active:scale-[0.98] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30;
     }
 
     .btn-primary {
-        @apply bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container;
+        @apply bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container hover:shadow-md;
     }
 
     .btn-secondary {
-        @apply bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container;
+        @apply bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container hover:shadow-md;
     }
 
     .btn-neutral {
-        @apply bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface;
+        @apply bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-sm;
     }
 
     .btn-lg {
         @apply px-6 md:px-8 py-3 md:py-4;
-    }
-
-    .card {
-        @apply bg-surface-container rounded-lg shadow-soft text-on-surface;
     }
 }
 
@@ -296,13 +357,13 @@
     }
 
     .hero-code-block {
-        @apply dark:bg-[#fafafa]! bg-[#282c34]! p-2;
+        @apply bg-surface-container-high p-2;
 
         /*noinspection CssUnresolvedCustomProperty*/
 
         & .shiki,
         & .shiki span {
-            background-color: var(--shiki-dark-bg) !important;
+            background-color: var(--shiki-light-bg) !important;
             color: var(--shiki-dark) !important;
         }
 
@@ -310,7 +371,7 @@
 
         :where(.dark) & .shiki,
         :where(.dark) & .shiki span {
-            background-color: var(--shiki-light-bg) !important;
+            background-color: var(--shiki-dark-bg) !important;
             color: var(--shiki-light) !important;
         }
 

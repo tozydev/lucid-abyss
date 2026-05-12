@@ -28,7 +28,7 @@ fun HomeHero(modifier: Modifier = Modifier) {
 private fun ShortIntro(modifier: Modifier = Modifier) {
     Div(
         Modifier
-            .tw("flex flex-col rounded-xl overflow-hidden shadow-soft bg-surface border border-outline/30")
+            .tw("surface-island flex flex-col overflow-hidden")
             .then(modifier)
             .toAttrs(),
     ) {
@@ -85,13 +85,13 @@ private fun ShortIntro(modifier: Modifier = Modifier) {
         }
     }
 }
-
+// FIXME code block
 @Composable
 private fun Greeting(modifier: Modifier = Modifier) {
     Div(
         Modifier
             .tw(
-                "bg-surface-container-lowest p-6 md:p-8 lg:p-12 rounded-xl shadow-soft flex flex-col justify-center space-y-4 md:space-y-6",
+                "surface-island elevation-1 p-6 md:p-8 lg:p-12 flex flex-col justify-center space-y-4 md:space-y-6",
             ).then(modifier)
             .toAttrs(),
     ) {
@@ -130,7 +130,7 @@ private fun GreetingActions() {
         Anchor(
             href = SiteRoutes.about,
             attrs = {
-                tw("btn btn-primary btn-lg w-full sm:w-auto font-semibold shadow-lg")
+                tw("btn btn-primary btn-lg w-full sm:w-auto font-semibold")
             },
         ) {
             Text(Strings.commons.actions.learnMore)

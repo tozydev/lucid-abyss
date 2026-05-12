@@ -18,8 +18,9 @@ fun CodeBlock(
 ) {
     Figure(
         Modifier
-            .tw("relative rounded-xl overflow-hidden border border-outline/30 shadow-md bg-[#fafafa] dark:bg-[#282c34] not-prose my-4")
-            .then(modifier)
+            .tw(
+                "surface-island bg-surface-container-high relative overflow-hidden border border-outline/10 not-prose my-4",
+            ).then(modifier)
             .toAttrs(),
     ) {
         header?.invoke(code, lang)

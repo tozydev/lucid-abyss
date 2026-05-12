@@ -20,6 +20,7 @@ external interface CodeToHastOptions {
     var lang: String
     var themes: Record<String, String>
     var defaultColor: Boolean
+    var colorReplacements: Record<String, String>?
 }
 
 external interface SingletonShorthands {

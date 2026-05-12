@@ -30,7 +30,7 @@ fun PostTableOfContents(
             .then(modifier)
             .toAttrs(),
     ) {
-        Div({ tw("bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant/30 shadow-sm") }) {
+        Div({ tw("surface-island p-6") }) {
             Header {
                 H3({ tw("font-headline font-extrabold text-primary text-base mb-4 flex items-center gap-2") }) {
                     FormatListBulletedIcon(Modifier.tw("text-secondary text-lg"))

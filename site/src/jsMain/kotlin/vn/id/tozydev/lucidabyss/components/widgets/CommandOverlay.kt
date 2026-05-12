@@ -323,7 +323,7 @@ fun CommandOverlay(
         Div(
             {
                 tw(
-                    "w-full h-full md:h-auto md:max-w-160 bg-surface-container-lowest md:rounded-2xl shadow-soft overflow-hidden flex flex-col border-0 md:border md:border-outline/10",
+                    "surface-island elevation-3 w-full h-full md:h-auto md:max-w-160 md:rounded-2xl overflow-hidden flex flex-col",
                 )
                 onClick { it.stopPropagation() } // Prevent overlay click
             },

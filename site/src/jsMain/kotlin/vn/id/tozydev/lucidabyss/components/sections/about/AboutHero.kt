@@ -28,7 +28,7 @@ fun AboutHero(modifier: Modifier = Modifier) {
             Div(
                 {
                     tw(
-                        "w-24 h-24 md:w-32 md:h-32 rounded-full border-8 border-surface-container-lowest overflow-hidden shadow-lg bg-surface-container-lowest",
+                        "w-24 h-24 md:w-32 md:h-32 rounded-full border-8 border-surface-container-lowest overflow-hidden bg-surface-container-lowest",
                     )
                 },
             ) {

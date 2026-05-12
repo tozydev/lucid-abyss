@@ -18,9 +18,7 @@ fun SiteFooter(modifier: Modifier = Modifier) {
     Footer(modifier.toAttrs()) {
         Div(
             {
-                tw(
-                    "flex flex-col md:flex-row items-center p-6 justify-between gap-4 bg-surface-container-lowest rounded-xl shadow-soft border-none",
-                )
+                tw("surface-island flex flex-col md:flex-row items-center p-6 justify-between gap-4")
             },
         ) {
             Div({ tw("text-on-surface-variant text-sm font-body text-center md:text-left tracking-wide") }) {

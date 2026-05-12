@@ -42,6 +42,12 @@ private val defaultThemes =
         "dark" to "one-dark-pro",
     )
 
+private val backgroundColorReplacements =
+    recordOf(
+        "#fafafa" to "var(--color-surface-container-high)",
+        "#282c34" to "var(--color-surface-container-high)",
+    )
+
 suspend fun highlightCode(
     code: String,
     lang: String,
@@ -52,5 +58,6 @@ suspend fun highlightCode(
             this.lang = if (bundledLanguages[lang] != null) lang else "text"
             this.themes = defaultThemes
             this.defaultColor = false
+            this.colorReplacements = backgroundColorReplacements
         },
     ).unsafeCast<Promise<String>>().await()

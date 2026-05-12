@@ -40,9 +40,9 @@ fun Pagination(
                 attrs = {
                     tw(
                         if (isActive) {
-                            "h-12 px-4 flex items-center justify-center rounded-2xl bg-primary text-on-primary font-headline font-bold shadow-lg shadow-primary/20 transition-all"
+                            "h-12 px-4 flex items-center justify-center rounded-2xl bg-primary text-on-primary font-headline font-bold shadow-lg shadow-primary/20 transition-all duration-200"
                         } else {
-                            "h-12 px-4 flex items-center justify-center rounded-2xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors font-headline font-bold"
+                            "h-12 px-4 flex items-center justify-center rounded-2xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 font-headline font-bold"
                         },
                     )
                     if (isActive) {
@@ -78,7 +78,7 @@ private fun ArchiveArrowLink(
         href = href,
         attrs = {
             tw(
-                "h-12 flex items-center justify-center rounded-2xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors px-3",
+                "h-12 flex items-center justify-center rounded-2xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 px-3",
             )
             attr("aria-label", contentDescription)
         },

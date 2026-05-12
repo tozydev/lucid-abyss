@@ -22,7 +22,7 @@ fun PostCard(
     Article(
         Modifier
             .tw(
-                "bg-surface-container-lowest rounded-xl overflow-hidden shadow-soft flex flex-col group hover:-translate-y-2 transition-transform duration-300 relative",
+                "surface-island surface-island-interactive overflow-hidden flex flex-col group relative",
             ).then(modifier)
             .toAttrs(),
     ) {
@@ -84,7 +84,13 @@ fun PostCard(
                     ) {
                         Text(post.publishedAt.formatDate())
                     }
-                    Span({ tw("text-sm font-headline font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all") }) {
+                    Span(
+                        {
+                            tw(
+                                "text-sm font-headline font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all duration-200",
+                            )
+                        },
+                    ) {
                         Text(Strings.commons.actions.readMore)
                         ArrowForwardIcon(Modifier.tw("text-sm"))
                     }

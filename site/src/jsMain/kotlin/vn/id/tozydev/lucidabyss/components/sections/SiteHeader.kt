@@ -29,7 +29,7 @@ fun SiteHeader(
         Nav(
             {
                 tw(
-                    "flex justify-between items-center px-4 md:px-6 py-3 bg-surface/80 backdrop-blur-md rounded-xl border border-outline/10 antialiased shadow-soft",
+                    "flex justify-between items-center px-4 md:px-6 py-3 bg-surface/80 backdrop-blur-md rounded-xl border border-outline/10 antialiased elevation-2",
                 )
             },
         ) {
@@ -114,7 +114,9 @@ private fun CommandOverlayButton(onClick: () -> Unit) {
     Button(
         {
             id("command-overlay-toggle")
-            tw("text-on-surface scale-95 active:scale-90 transition-transform cursor-pointer")
+            tw(
+                "text-on-surface rounded-full scale-95 active:scale-90 transition-all duration-200 cursor-pointer hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30",
+            )
             attr("aria-label", Strings.commons.actions.openCommandPalette)
             onClick { onClick() }
         },
@@ -129,7 +131,9 @@ private fun ThemeToggleButton() {
     Button(
         {
             id("theme-toggle")
-            tw("text-on-surface scale-95 active:scale-90 transition-transform cursor-pointer")
+            tw(
+                "text-on-surface rounded-full scale-95 active:scale-90 transition-all duration-200 cursor-pointer hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30",
+            )
             onClick { themeMode = themeMode.cycle }
         },
     ) {

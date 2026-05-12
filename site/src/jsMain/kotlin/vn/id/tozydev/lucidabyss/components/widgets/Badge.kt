@@ -26,7 +26,10 @@ fun Badge(
     variant: BadgeVariant = BadgeVariant.Primary,
     size: BadgeSize = BadgeSize.Md,
 ) {
-    val baseClasses = "rounded uppercase transition-all tracking-widest inline-flex items-center whitespace-nowrap shrink-0"
+    val baseClasses =
+        "rounded uppercase transition-all duration-200 tracking-widest inline-flex items-center " +
+            "whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 " +
+            "focus-visible:ring-primary/30"
 
     val sizeClasses =
         when (size) {
@@ -38,11 +41,11 @@ fun Badge(
     val variantClasses =
         when (variant) {
             BadgeVariant.Primary -> {
-                "bg-primary-container text-on-primary-container font-mono hover:brightness-110"
+                "bg-primary-container text-on-primary-container font-mono hover:shadow-sm"
             }
 
             BadgeVariant.Surface -> {
-                "bg-surface-container-high text-on-surface-variant font-label hover:bg-primary-container hover:text-on-primary-container"
+                "bg-surface-container-high text-on-surface-variant font-label hover:bg-surface-container hover:text-on-surface"
             }
         }
 

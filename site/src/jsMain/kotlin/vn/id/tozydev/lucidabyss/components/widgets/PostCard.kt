@@ -40,7 +40,7 @@ fun PostCard(
                     src = post.coverImagePathOrDefault,
                     alt = "",
                     attrs = {
-                        tw("w-full h-full object-cover transition-transform duration-500 group-hover:scale-110")
+                        tw("w-full h-full object-cover transition-transform duration-500 group-hover:scale-102")
                         attr("width", "720")
                         attr("height", "360")
                         attr("loading", "lazy")

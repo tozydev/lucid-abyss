@@ -36,7 +36,7 @@ fun initAboutPage(ctx: InitRouteContext) {
 fun AboutPage() {
     Div(
         {
-            tw("max-w-200 mx-auto surface-island overflow-hidden elevation-1")
+            tw("max-w-200 mx-auto surface-island overflow-hidden shadow-elevation-1")
         },
     ) {
         AboutHero()

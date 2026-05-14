@@ -51,9 +51,7 @@ fun PostHeader(
 
         H1(
             {
-                tw(
-                    "text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-on-surface leading-tight mb-8 wrap-break-word break-all md:wrap-break-word",
-                )
+                tw("text-3xl md:text-4xl lg:text-5xl font-headline font-extrabold text-primary leading-tight mb-8")
                 pagefindMeta("title")
             },
         ) {

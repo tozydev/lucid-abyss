@@ -143,6 +143,15 @@ abstract class ProcessBlogPostsTask : DefaultTask() {
             }
         }
 
+        fun MutableList<String>.replaceAndSetCoverPath() {
+            val coverIndex = indexOfFirst { it.startsWith("coverImage:") }
+            if (coverIndex != -1) {
+                val originalPath = this[coverIndex].substringAfter("coverImage:").trim()
+                val newPath = "$attachmentPathPrefixValue/$routeOverride/${originalPath.substringAfterLast("/")}"
+                this[coverIndex] = "coverImage: $newPath"
+            }
+        }
+
         val (frontmatter, content) =
             if (hasFrontmatter && frontmatterEndIndex > 0) {
                 val extracted = lines.subList(1, frontmatterEndIndex).toMutableList()
@@ -155,6 +164,7 @@ abstract class ProcessBlogPostsTask : DefaultTask() {
         frontmatter.apply {
             setFrontmatterProperty("routeOverride", routeOverride)
             setFrontmatterProperty("funName", funName)
+            replaceAndSetCoverPath()
         }
 
         val processedContent =

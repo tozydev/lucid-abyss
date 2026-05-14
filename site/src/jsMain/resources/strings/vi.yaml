@@ -1,6 +1,6 @@
 profile:
   name: Thanh Tân
-  role: Kotlin Developer
+  role: Software Developer
   site-source: https://github.com/tozydev/lucid-abyss
   contact:
     email: me@tozydev.id.vn
@@ -125,8 +125,8 @@ pages:
       title: Liên hệ
       description: Tôi luôn mở cửa cho những cuộc trò chuyện thú vị về công nghệ hoặc thiết kế. Hãy gửi email cho tôi.
     images:
-      hero-alt: ...
-      profile-alt: Thanh Tân
+      hero-alt: Tranh phong cảnh đồng cỏ xanh mướt và đồi núi dưới ánh nắng vàng do AI tạo.
+      profile-alt: Avatar chibi phong cách manhwa của Thanh Tân.
 
   blog:
     title: Blog

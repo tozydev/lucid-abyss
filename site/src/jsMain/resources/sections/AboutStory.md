@@ -1,5 +1,5 @@
 Xin chào 👋, cảm ơn vì đã ghé thăm blog của tôi.
-Tên tôi là **Thanh Tân**, 1 developer yêu thích **Kotlin**.
+Tên tôi là **Thanh Tân**, một developer yêu thích **Kotlin**.
 Đối với tôi lập trình vừa là công việc, vừa là niềm đam mê.
 Tôi thích khám phá và tìm hiểu những thứ mới, những công nghệ mới, không chỉ trong lĩnh vực lập trình mà còn trong cuộc
 sống hàng ngày.
@@ -20,3 +20,9 @@ Nội dung của blog được chia sẽ dưới góc nhìn cá nhân, nếu có
 Tôi cũng rất sẵn lòng nhận các góp ý chỉnh sửa để cho blog của tôi ngày càng hoàn thiện hơn.
 
 Cảm ơn bạn đã ghé thăm blog của tôi!
+
+<p class="text-sm text-on-surface-variant">
+<i>*Ảnh bìa được tạo bởi AI, cụ thể là ChatGPT Images 2.0, với prompt: "vast meadow + manhwa style + depth of field +
+afternoon + horizon + sun light + no people + far cozy house"
+</i>
+</p>

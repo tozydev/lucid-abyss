@@ -15,7 +15,7 @@ fun BottomNavbar(modifier: Modifier = Modifier) {
     Nav(
         Modifier
             .tw(
-                "fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-6 pt-2 pb-[env(safe-area-inset-bottom)] bg-surface/95 backdrop-blur-md elevation-0",
+                "fixed bottom-0 left-0 right-0 w-full z-50 flex justify-around items-center px-6 pt-2 pb-[env(safe-area-inset-bottom)] bg-surface-container elevation-2",
             ).then(modifier)
             .toAttrs(),
     ) {

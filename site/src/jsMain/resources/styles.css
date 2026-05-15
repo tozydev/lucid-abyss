@@ -269,19 +269,39 @@
     }
 
     .btn {
-        @apply inline-flex items-center justify-center gap-2 rounded-full text-center transition-all duration-200 scale-100 active:scale-[0.98] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30;
+        @apply inline-flex relative items-center justify-center gap-2 rounded-full text-center font-medium;
+        @apply transition-all duration-200 ease-in-out cursor-pointer select-none outline-none overflow-hidden;
+        @apply disabled:opacity-38 disabled:cursor-not-allowed disabled:shadow-none;
+        @apply focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+
+        &::before {
+            content: "";
+            @apply absolute inset-0 bg-current opacity-0 transition-opacity duration-200;
+        }
+
+        &:hover:not(:disabled)::before {
+            @apply opacity-[0.08];
+        }
+
+        &:focus-visible:not(:disabled)::before {
+            @apply opacity-[0.12];
+        }
+
+        &:active:not(:disabled) {
+            @apply scale-[0.98];
+
+            &::before {
+                @apply opacity-[0.12];
+            }
+        }
     }
 
     .btn-primary {
-        @apply bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container hover:shadow-md;
+        @apply bg-primary text-on-primary;
     }
 
-    .btn-secondary {
-        @apply bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-container hover:shadow-md;
-    }
-
-    .btn-neutral {
-        @apply bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:shadow-sm;
+    .btn-tonal {
+        @apply bg-secondary-container text-on-secondary-container;
     }
 
     .btn-lg {

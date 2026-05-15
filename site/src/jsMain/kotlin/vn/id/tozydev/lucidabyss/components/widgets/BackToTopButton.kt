@@ -21,7 +21,7 @@ fun BackToTopButton(modifier: Modifier = Modifier) {
     ) {
         Button(
             {
-                tw("btn rounded-full btn-secondary w-12 h-12 flex items-center justify-center")
+                tw("btn rounded-full bg-surface-container-high w-12 h-12 flex items-center justify-center elevation-3")
                 attr("aria-label", Strings.commons.labels.backToTop)
                 onClick {
                     window.scrollTo(ScrollToOptions(top = 0.0, behavior = ScrollBehavior.SMOOTH))

@@ -85,6 +85,7 @@ private fun ShortIntro(modifier: Modifier = Modifier) {
         }
     }
 }
+
 // FIXME code block
 @Composable
 private fun Greeting(modifier: Modifier = Modifier) {
@@ -138,7 +139,7 @@ private fun GreetingActions() {
         Anchor(
             href = SiteRoutes.blog,
             attrs = {
-                tw("btn btn-neutral btn-lg w-full sm:w-auto font-semibold")
+                tw("btn btn-tonal btn-lg w-full sm:w-auto font-semibold")
             },
         ) {
             Text(Strings.commons.actions.viewPosts)

@@ -1,6 +1,7 @@
 package vn.id.tozydev.lucidabyss.components.layouts
 
 import androidx.compose.runtime.*
+import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.thenIf
@@ -36,7 +37,7 @@ fun PageLayout(
     val scrollingState = rememberScrollingState()
 
     val shouldHideHeaderAndNav = scrollingState.isScrollingDown && scrollingState.currentScrollY > 50
-    val shouldHideBackToTop = !scrollingState.isScrollingDown || scrollingState.currentScrollY <= 300
+    val shouldHideBackToTop = scrollingState.isScrollingDown || scrollingState.currentScrollY <= 400
 
     LaunchedEffect(pageProperties.title) {
         document.title = "${pageProperties.title} | tozydev"
@@ -93,7 +94,7 @@ fun PageLayout(
 
         BackToTopButton(
             Modifier.thenIf(shouldHideBackToTop) {
-                Modifier.opacity(0.0)
+                Modifier.opacity(0).pointerEvents(PointerEvents.None)
             },
         )
 

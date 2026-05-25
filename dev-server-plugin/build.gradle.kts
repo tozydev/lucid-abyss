@@ -8,7 +8,3 @@ dependencies {
         exclude(group = "io.netty")
     }
 }
-
-kotlin {
-    jvmToolchain(21)
-}

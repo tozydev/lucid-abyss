@@ -5,6 +5,7 @@ out/
 !**/src/**/build/
 !**/src/**/out/
 *.log
+*.ffs_db
 
 ### IntelliJ
 *.iml

@@ -50,12 +50,17 @@ This project using **Kotlin Multiplatform** (KMP) and **Kobweb**.
 - **ALWAYS** update `vi.yaml` when adding new text.
 - **ALWAYS** run `./gradlew build` after making significant changes.
 - **ALWAYS** run `./gradlew spotlessApply` after finalizing code changes.
+- **ALWAYS** use `-q --console=plain` flags for Gradle commands to reduce noise, remove when necessary (e.g., when need
+  more logs for debugging).
 - **ASK FIRST** before creating new Gradle modules or changing `build-logic`.
 - **ASK FIRST** before adding new dependencies.
-- **ASK FIRST** before modifying `dev-server-plugin/` or the custom tasks in `site/build.gradle.kts` (e.g. `transformSiteHtml`, `copyProductionWebpackAssets`, `pagefindIndex`, `cleanupDist`). These tasks influence the exported output and deployment pipeline.
+- **ASK FIRST** before modifying `dev-server-plugin/` or the custom tasks in `site/build.gradle.kts` (e.g.
+  `transformSiteHtml`, `copyProductionWebpackAssets`, `pagefindIndex`, `cleanupDist`). These tasks influence the
+  exported output and deployment pipeline.
 - **ALWAYS** define dependencies in `gradle/libs.versions.toml` or `gradle/npm.versions.toml`.
 - **NEVER** hardcode versions in `build.gradle.kts`.
 - **PREFER** using `{ }` attrs block over `Modifier.toAttrs()` for Compose HTML composables.
+- **READ** [`tools/AGENTS.md](tools/AGENTS.md) first if the request involves CLI development for the Tools subproject.
 
 ## Common Workflows (UI Development)
 

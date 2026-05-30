@@ -5,9 +5,9 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.sections.HomeHeroSnippet
 import vn.id.tozydev.lucidabyss.components.widgets.CheckIcon
 import vn.id.tozydev.lucidabyss.components.widgets.PersonIcon
-import vn.id.tozydev.lucidabyss.components.widgets.code.CodeBlock
 import vn.id.tozydev.lucidabyss.strings.Strings
 import vn.id.tozydev.lucidabyss.strings.title
 import vn.id.tozydev.lucidabyss.utils.SiteRoutes
@@ -48,31 +48,8 @@ private fun ShortIntro(modifier: Modifier = Modifier) {
                 Div({ tw("w-2.5 h-2.5 rounded-full bg-outline-variant") })
             }
         }
-        Div({ tw("flex-1 overflow-hidden relative") }) {
-            CodeBlock(
-                // language=kotlin
-                code =
-                    """
-                    val tozydev = developer {
-                        about {
-                            name = "Thanh Tân"
-                            username = "tozydev"
-                            role = Kotlin_Developer
-                        }
-                        technicalSkills {
-                            languages = setOf("Kotlin", "Java", "TypeScript")
-                            frameworks = setOf("Ktor", "Spring Boot", "Kobweb")
-                        }
-                        tools {
-                            ide = setOf("IntelliJ IDEA")
-                            codeEditor = setOf("VS Code")
-                            ai = setOf("Gemini", "GitHub Copilot")
-                        }
-                    }
-                    """.trimIndent(),
-                lang = "kotlin",
-                modifier = Modifier.tw("my-0! hero-code-block rounded-none! border-none! shadow-none!"),
-            )
+        Div({ tw("flex-1 overflow-hidden relative hero-code-container") }) {
+            HomeHeroSnippet()
         }
         Div(
             { tw("px-4 py-1.5 bg-primary text-on-primary text-[10px] font-mono flex justify-between items-center") },

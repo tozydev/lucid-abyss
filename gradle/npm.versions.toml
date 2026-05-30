@@ -4,7 +4,6 @@ tailwindcss-typography = "0.5.19"
 css-loader = "7.1.4"
 mini-css-extract-plugin = "2.10.2"
 pagefind = "1.5.2"
-shiki = "4.1.0"
 
 [libraries]
 tailwindcss = { group = "dev", name = "tailwindcss", version.ref = "tailwindcss" }
@@ -15,5 +14,3 @@ webpack-loader-css = { group = "dev", name = "css-loader", version.ref = "css-lo
 webpack-plugin-miniCssExtract = { group = "dev", name = "mini-css-extract-plugin", version.ref = "mini-css-extract-plugin" }
 
 pagefind = { group = "dev", name = "pagefind", version.ref = "pagefind" }
-
-shiki = { group = "normal", name = "shiki", version.ref = "shiki" }

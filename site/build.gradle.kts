@@ -3,6 +3,7 @@ import kotlinx.html.LinkAs
 import kotlinx.html.link
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 import vn.id.tozydev.lucidabyss.build.site.TransformSiteHtmlTask
+import vn.id.tozydev.lucidabyss.build.tools.highlightCodeWithShiki
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -52,16 +53,25 @@ kobweb {
             @Suppress("RegExpUnnecessaryNonCapturingGroup")
             val codeInfoRegex = Regex("^(?:(?<lang>[a-z0-9-]+))?(?:\\s?title=\"(?<title>[^\"]+)\")?\$")
 
+            val toolsExecutableFile = tasks.buildTools.map { it.outputs.files.first() }
+
             code = { code ->
                 val infoMatchGroups = code.info?.let { codeInfoRegex.matchEntire(it) }?.groups
-                val lang = infoMatchGroups?.get("lang")?.value
+                val lang = infoMatchGroups?.get("lang")?.value ?: "text"
                 val title = infoMatchGroups?.get("title")?.value
 
+                val highlightedComposeHtml =
+                    highlightCodeWithShiki(
+                        toolsExecutableFile.get(),
+                        code.literal,
+                        lang,
+                    )
+
                 buildString {
-                    appendLine("$widgetPath.code.CodeBlock(")
+                    appendLine("$widgetPath.code.CodeFrame(")
                     appendLine("${indent(1)}code =")
-                    appendLine("${indent(2)}\"\"\"${code.literal.escapeTripleQuotedText()}\"\"\",")
-                    if (lang != null) {
+                    appendLine("${indent(2)}\"\"\"${code.literal.escapeTripleQuotedText().trimEnd('\n', '\r')}\"\"\",")
+                    if (lang != "text") {
                         appendLine("${indent(1)}lang = \"$lang\",")
                     }
 
@@ -70,6 +80,13 @@ kobweb {
                         appendLine("${indent(2)}$widgetPath.code.CodeBlockTitle(title = \"$title\")")
                     }
                     appendLine("${indent(2)}$widgetPath.code.CopyButton(code = code)")
+                    appendLine("${indent(1)}},")
+                    appendLine("${indent(1)}content = {")
+                    highlightedComposeHtml.lineSequence().forEach { line ->
+                        if (line.isNotBlank()) {
+                            appendLine("${indent(2)}$line")
+                        }
+                    }
                     appendLine("${indent(1)}}")
                     append("${indent(0)})")
                 }
@@ -113,8 +130,6 @@ kotlin {
             implementation(npm(npm.webpack.loader.css))
             implementation(npm(npm.webpack.plugin.miniCssExtract))
             implementation(npm(npm.pagefind))
-
-            implementation(npm(npm.shiki))
         }
     }
 }

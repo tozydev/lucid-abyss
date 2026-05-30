@@ -20,6 +20,7 @@ dependencies {
     implementation(plugin(libs.plugins.kobweb.application))
     implementation(plugin(libs.plugins.kobwebx.markdown))
     implementation(plugin(libs.plugins.spotless))
+    implementation(plugin(libs.plugins.bun))
 }
 
 @Suppress("UnusedReceiverParameter")

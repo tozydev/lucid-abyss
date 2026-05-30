@@ -376,6 +376,13 @@
         }
     }
 
+    .hero-code-container figure {
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
     .hero-code-block {
         @apply bg-surface-container-high p-2;
 

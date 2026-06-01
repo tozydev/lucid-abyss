@@ -20,14 +20,17 @@ plugins.withType<KobwebApplicationPlugin> {
 
     val buildTools by tasks.registering(BunTask::class) {
         workingDir = rootProject.layout.projectDirectory.dir("tools")
-        args.set(listOf("run", "build"))
+
+        val executableName = "tools"
+        val outPath = "dist/$executableName"
+        args.set(listOf("build", "--target=bun", "--compile", "--bytecode", "--outfile=$outPath", "src/index.ts"))
 
         inputs.dir(workingDir.map { it.dir("src") })
         inputs.file(workingDir.map { it.file("package.json") })
+        inputs.file(workingDir.map { it.file("bun.lock") })
         inputs.file(workingDir.map { it.file("tsconfig.json") })
 
-        val executableName = "tools".toPlatformExecutable()
-        outputs.file(workingDir.map { it.file("dist/$executableName") })
+        outputs.file(workingDir.map { it.file(outPath.toPlatformExecutable()) })
     }
 
     val processBlogPosts by tasks.registering(ProcessBlogPostsTask::class) {

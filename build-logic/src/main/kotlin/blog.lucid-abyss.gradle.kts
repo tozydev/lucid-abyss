@@ -19,6 +19,7 @@ plugins.withType<KobwebApplicationPlugin> {
     }
 
     val buildTools by tasks.registering(BunTask::class) {
+        dependsOn("bunInstall")
         workingDir = rootProject.layout.projectDirectory.dir("tools")
 
         val executableName = "tools"

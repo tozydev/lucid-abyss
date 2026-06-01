@@ -33,4 +33,4 @@ do some utility work like syntax highlighting.
 - Command controllers should be focused on a single responsibility (e.g., Shiki highlighting) and should not contain
   CLI parsing logic.
 - Utility functions in 'src/utils/' should be pure and reusable across different commands if needed.
-- Use `sneak-case` for file names and `camelCase` for variables and functions.
+- Use `snak-case` for file names and `camelCase` for variables and functions.

@@ -8,6 +8,7 @@ import io.clroot.gradle.bun.task.BunTask
 import org.jetbrains.kotlin.gradle.targets.js.ir.KotlinJsIrTarget
 import vn.id.tozydev.lucidabyss.build.blog.ProcessBlogPostsTask
 import vn.id.tozydev.lucidabyss.build.blog.processBlogMarkdowns
+import vn.id.tozydev.lucidabyss.build.utils.ShikiCompilerService
 
 plugins.withType<KobwebApplicationPlugin> {
     plugins.apply("com.varabyte.kobwebx.markdown")
@@ -15,14 +16,14 @@ plugins.withType<KobwebApplicationPlugin> {
 
     configure<io.clroot.gradle.bun.BunExtension> {
         version = "1.3.14"
-        workingDir = rootProject.layout.projectDirectory.dir("tools")
+        workingDir = rootProject.layout.projectDirectory.dir("utils")
     }
 
-    val buildTools by tasks.registering(BunTask::class) {
+    val buildUtils by tasks.registering(BunTask::class) {
         dependsOn("bunInstall")
-        workingDir = rootProject.layout.projectDirectory.dir("tools")
+        workingDir = rootProject.layout.projectDirectory.dir("utils")
 
-        val executableName = "tools"
+        val executableName = "utils"
         val outPath = "dist/$executableName"
         args.set(listOf("build", "--target=bun", "--compile", "--bytecode", "--outfile=$outPath", "src/index.ts"))
 
@@ -34,6 +35,11 @@ plugins.withType<KobwebApplicationPlugin> {
         outputs.file(workingDir.map { it.file(outPath.toPlatformExecutable()) })
     }
 
+    val shikiCompilerService =
+        gradle.sharedServices.registerIfAbsent(ShikiCompilerService.NAME, ShikiCompilerService::class.java) {
+            parameters.executable = rootProject.layout.file(buildUtils.map { it.outputs.files.first() })
+        }
+
     val processBlogPosts by tasks.registering(ProcessBlogPostsTask::class) {
         postsDir = rootProject.layout.projectDirectory.dir("blog")
         attachmentsDirName = ".attachments"
@@ -43,7 +49,8 @@ plugins.withType<KobwebApplicationPlugin> {
     }
 
     tasks.withType<ProcessMarkdownTask> {
-        dependsOn(processBlogPosts, buildTools)
+        dependsOn(processBlogPosts, buildUtils)
+        usesService(shikiCompilerService)
     }
 
     kobwebBlock.extensions.configure<MarkdownBlock> {

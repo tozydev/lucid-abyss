@@ -1,4 +1,4 @@
-import type {Node} from 'hast'
+import type {Node, Text, Comment, Root, Element} from 'hast'
 
 export function escapeKotlinString(str: string): string {
     return str
@@ -21,15 +21,15 @@ export function hastToComposeHtml(node: Node, indentLevel = 0): string {
 
     switch (node.type) {
         case TEXT_NODE:
-            return handleTextNode(node, indent)
+            return handleTextNode(node as Text, indent)
         case COMMENT_NODE:
-            return handleCommentNode(node, indent)
+            return handleCommentNode(node as Comment, indent)
         case DOCTYPE_NODE:
             return handleDoctypeNode(indent)
         case ELEMENT_NODE:
-            return handleElementNode(node, indentLevel)
+            return handleElementNode(node as Element, indentLevel)
         case ROOT_NODE:
-            return handleRootNode(node, indentLevel)
+            return handleRootNode(node as Root, indentLevel)
         default:
             return `${indent}// Unknown HAST node type: ${node.type}\n`
     }
@@ -37,13 +37,13 @@ export function hastToComposeHtml(node: Node, indentLevel = 0): string {
 
 const JB_COMPOSE_WEB_DOM = "org.jetbrains.compose.web.dom."
 
-function handleTextNode(node: any, indent: string): string {
+function handleTextNode(node: Text, indent: string): string {
     const val = node.value || ''
     if (val === '') return ''
     return `${indent}${JB_COMPOSE_WEB_DOM}Text("${escapeKotlinString(val)}")\n`
 }
 
-function handleCommentNode(node: any, indent: string): string {
+function handleCommentNode(node: Comment, indent: string): string {
     const val = node.value || ''
     return `${indent}// ${val.replace(/\n/g, `\n${indent}// `)}\n`
 }
@@ -52,7 +52,7 @@ function handleDoctypeNode(indent: string): string {
     return `${indent}// DOCTYPE html\n`
 }
 
-function handleRootNode(node: any, indentLevel: number): string {
+function handleRootNode(node: Root, indentLevel: number): string {
     let rootCode = ''
     if (node.children) {
         for (const child of node.children) {
@@ -62,7 +62,7 @@ function handleRootNode(node: any, indentLevel: number): string {
     return rootCode
 }
 
-function handleElementNode(node: any, indentLevel: number): string {
+function handleElementNode(node: Element, indentLevel: number): string {
     const indent = '    '.repeat(indentLevel)
     const tagName = node.tagName || ''
     const attrs = buildAttributes(node.properties)
@@ -92,7 +92,7 @@ function handleElementNode(node: any, indentLevel: number): string {
     return code + '\n'
 }
 
-function buildAttributes(properties: any): string[] {
+function buildAttributes(properties: Element['properties']): string[] {
     const attrs: string[] = []
     if (!properties) return attrs
 

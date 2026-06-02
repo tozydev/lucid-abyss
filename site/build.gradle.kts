@@ -3,7 +3,7 @@ import kotlinx.html.LinkAs
 import kotlinx.html.link
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 import vn.id.tozydev.lucidabyss.build.site.TransformSiteHtmlTask
-import vn.id.tozydev.lucidabyss.build.tools.highlightCodeWithShiki
+import vn.id.tozydev.lucidabyss.build.utils.ShikiCompilerService
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -53,7 +53,11 @@ kobweb {
             @Suppress("RegExpUnnecessaryNonCapturingGroup")
             val codeInfoRegex = Regex("^(?:(?<lang>[a-z0-9-]+))?(?:\\s?title=\"(?<title>[^\"]+)\")?\$")
 
-            val toolsExecutableFile = tasks.buildTools.map { it.outputs.files.first() }
+            val shikiService =
+                gradle.sharedServices.registrations
+                    .named<BuildServiceRegistration<ShikiCompilerService, ShikiCompilerService.Params>>(
+                        ShikiCompilerService.NAME,
+                    ).flatMap { it.service }
 
             code = { code ->
                 val infoMatchGroups = code.info?.let { codeInfoRegex.matchEntire(it) }?.groups
@@ -61,8 +65,7 @@ kobweb {
                 val title = infoMatchGroups?.get("title")?.value
 
                 val highlightedComposeHtml =
-                    highlightCodeWithShiki(
-                        toolsExecutableFile.get(),
+                    shikiService.get().highlight(
                         code.literal,
                         lang,
                     )

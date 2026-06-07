@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kobweb.application)
+    alias(libs.plugins.kfc.latestTools)
     id("blog.lucid-abyss")
     id("strings.lucid-abyss")
     id("pagefind.lucid-abyss")

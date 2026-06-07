@@ -10,6 +10,7 @@ compose-rules = "0.5.9"
 kotlinpoet = "2.3.0"
 snakeyaml = "2.6"
 jsoup = "1.22.2"
+kfc = "19.7.0"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "jetbrains-compose" }
@@ -38,3 +39,4 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+kfc-latestTools = { id = "io.github.turansky.kfc.latest-tools", version.ref = "kfc" }

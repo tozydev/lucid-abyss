@@ -19,6 +19,7 @@ out/
 ### Kotlin
 .kotlin/
 kotlin-js-store/
+.kotlin-locks
 
 ### Kobweb
 */.kobweb/*

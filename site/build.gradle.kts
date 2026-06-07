@@ -92,12 +92,6 @@ kotlin {
         useEsModules()
     }
 
-    compilerOptions {
-        freeCompilerArgs.addAll(
-            "-Xcontext-parameters",
-        )
-    }
-
     sourceSets {
         jsMain.dependencies {
             implementation(libs.compose.runtime)

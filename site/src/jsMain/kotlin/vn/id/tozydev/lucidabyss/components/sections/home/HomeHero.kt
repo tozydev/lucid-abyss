@@ -5,6 +5,7 @@ import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.navigation.Anchor
 import org.jetbrains.compose.web.dom.*
+import vn.id.tozydev.lucidabyss.components.sections.HomeHeroCodeSnippets
 import vn.id.tozydev.lucidabyss.components.widgets.CheckIcon
 import vn.id.tozydev.lucidabyss.components.widgets.PersonIcon
 import vn.id.tozydev.lucidabyss.components.widgets.code.CodeBlock
@@ -50,29 +51,14 @@ private fun ShortIntro(modifier: Modifier = Modifier) {
         }
         Div({ tw("flex-1 overflow-hidden relative") }) {
             CodeBlock(
-                // language=kotlin
-                code =
-                    """
-                    val tozydev = developer {
-                        about {
-                            name = "Thanh Tân"
-                            username = "tozydev"
-                            role = Kotlin_Developer
-                        }
-                        technicalSkills {
-                            languages = setOf("Kotlin", "Java", "TypeScript")
-                            frameworks = setOf("Ktor", "Spring Boot", "Kobweb")
-                        }
-                        tools {
-                            ide = setOf("IntelliJ IDEA")
-                            codeEditor = setOf("VS Code")
-                            ai = setOf("Gemini", "GitHub Copilot")
-                        }
-                    }
-                    """.trimIndent(),
+                code = "",
                 lang = "kotlin",
                 modifier = Modifier.tw("my-0! hero-code-block rounded-none! border-none! shadow-none!"),
-            )
+            ) { _, _ ->
+                Div({ tw("p-4 overflow-x-auto") }) {
+                    HomeHeroCodeSnippets()
+                }
+            }
         }
         Div(
             { tw("px-4 py-1.5 bg-primary text-on-primary text-[10px] font-mono flex justify-between items-center") },

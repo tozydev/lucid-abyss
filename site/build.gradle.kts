@@ -2,6 +2,9 @@ import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.LinkAs
 import kotlinx.html.link
 import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Element
+import org.jsoup.nodes.TextNode
 import vn.id.tozydev.lucidabyss.build.site.TransformSiteHtmlTask
 
 plugins {
@@ -77,6 +80,75 @@ kobweb {
             }
 
             table = { "$widgetPath.Table" }
+
+            html = { htmlBlock ->
+                val kobwebDom = "com.varabyte.kobweb.compose.dom"
+                val w3cDom = "org.w3c.dom"
+                val jbDom = "org.jetbrains.compose.web.dom"
+
+                // Convert a set of HTML attributes to an `AttrBuilderContext` lambda block.
+                fun org.jsoup.nodes.Attributes.toAttrsBlock(): String {
+                    val styleMap = this.takeUnless { it.isEmpty } ?: return "{}"
+                    return buildString {
+                        append("{")
+                        append(
+                            styleMap.joinToString(";") { (key, value) ->
+                                "attr(\"$key\", \"${value.escapeSingleQuotedText()}\")"
+                            },
+                        )
+                        append("}")
+                    }
+                }
+
+                fun renderNode(
+                    el: Element,
+                    indentCount: Int,
+                    sb: StringBuilder,
+                ) {
+                    sb.append("${indent(indentCount)}$kobwebDom.GenericTag<$w3cDom.Element>(\"${el.tagName()}\"")
+
+                    if (el.attributesSize() > 0) {
+                        val attrs = el.attributes().toAttrsBlock()
+                        sb.append(", attrs = $attrs")
+                    }
+
+                    if (el.childNodeSize() > 0) {
+                        sb.appendLine(") {")
+                        el.childNodes().forEach { child ->
+                            if (child is TextNode) {
+                                val wholeText = child.wholeText
+                                if (wholeText.isNotEmpty()) {
+                                    sb.append("${indent(indentCount + 1)}$jbDom.Text(")
+                                    if (wholeText == "\n") {
+                                        sb.append("\"\\n\"")
+                                    } else {
+                                        sb.append(
+                                            "\"\"\"${
+                                                wholeText.removePrefix("\n").escapeTripleQuotedText()
+                                            }\"\"\"",
+                                        )
+                                    }
+                                    sb.appendLine(")")
+                                }
+                            } else if (child is Element) {
+                                renderNode(child, indentCount + 1, sb)
+                                if (!sb.endsWith("\n")) {
+                                    sb.appendLine()
+                                }
+                            }
+                        }
+                        sb.appendLine(indent(indentCount) + "}")
+                    } else {
+                        sb.append(')')
+                    }
+                }
+
+                val sb = StringBuilder()
+                val doc = Jsoup.parseBodyFragment(htmlBlock.literal)
+                doc.body().children().forEach { root -> renderNode(root, indentCount = 0, sb) }
+
+                sb.toString()
+            }
         }
     }
 }

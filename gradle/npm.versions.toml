@@ -1,6 +1,6 @@
 [versions]
 tailwindcss = "4.3.0"
-tailwindcss-typography = "0.5.19"
+tailwindcss-typography = "0.5.20"
 css-loader = "7.1.4"
 mini-css-extract-plugin = "2.10.2"
 pagefind = "1.5.2"

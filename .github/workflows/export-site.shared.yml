@@ -45,7 +45,7 @@ jobs:
             swc
 
       - name: Cache Yarn dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/yarn
           key: ${{ runner.os }}-yarn-${{ hashFiles('gradle/libs.versions.toml', 'gradle/npm.versions.toml') }}
@@ -57,7 +57,7 @@ jobs:
         run: echo "value=$(./gradlew -q :site:kobwebBrowserCacheId)" >> $GITHUB_OUTPUT
 
       - name: Cache Browser Dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright

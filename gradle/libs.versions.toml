@@ -10,7 +10,7 @@ compose-rules = "0.6.0"
 kotlinpoet = "2.3.0"
 snakeyaml = "2.6"
 jsoup = "1.22.2"
-kfc = "19.7.0"
+kfc = "19.10.0"
 
 [libraries]
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "jetbrains-compose" }
